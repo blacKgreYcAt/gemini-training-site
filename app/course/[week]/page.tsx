@@ -2,12 +2,12 @@
 
 import Link from 'next/link'
 import { courseData } from '@/lib/course-data'
-import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 export default function CoursePage({ params }: any) {
   const [week, setWeek] = useState<number | null>(null)
   const [mounted, setMounted] = useState(false)
+  const [currentPageIndex, setCurrentPageIndex] = useState(0)
 
   useEffect(() => {
     const resolveParams = async () => {
@@ -42,121 +42,126 @@ export default function CoursePage({ params }: any) {
     )
   }
 
+  // 計算當前課程和頁面
+  let totalPageCount = 0
+  let currentCourseIndex = 0
+  let currentPageInCourse = currentPageIndex
+
+  for (let i = 0; i < weekCourses.length; i++) {
+    const coursePageCount = weekCourses[i].pages.length
+    if (totalPageCount + coursePageCount > currentPageIndex) {
+      currentCourseIndex = i
+      currentPageInCourse = currentPageIndex - totalPageCount
+      break
+    }
+    totalPageCount += coursePageCount
+  }
+
+  const currentCourse = weekCourses[currentCourseIndex]
+  const currentPage = currentCourse.pages[currentPageInCourse]
+  const totalPages = weekCourses.reduce((sum, c) => sum + c.pages.length, 0)
+
+  const handlePrevious = () => {
+    if (currentPageIndex > 0) {
+      setCurrentPageIndex(currentPageIndex - 1)
+    }
+  }
+
+  const handleNext = () => {
+    if (currentPageIndex < totalPages - 1) {
+      setCurrentPageIndex(currentPageIndex + 1)
+    }
+  }
+
+  // 鍵盤導航
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') handlePrevious()
+      if (e.key === 'ArrowRight') handleNext()
+      if (e.key === 'Escape') window.location.href = '/'
+    }
+    window.addEventListener('keydown', handleKeyPress)
+    return () => window.removeEventListener('keydown', handleKeyPress)
+  }, [currentPageIndex, totalPages])
+
   return (
-    <div style={{ background: '#0a0a0a', color: '#ffffff', minHeight: '100vh' }}>
+    <div style={{ background: '#0a0a0a', color: '#ffffff', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       {/* Header */}
-      <header style={{ borderBottom: '3px solid #00aeef', padding: '20px 0' }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 40px' }}>
-          <Link href="/" style={{ color: '#00aeef', fontSize: '16px', fontWeight: 700, textDecoration: 'none' }}>
-            ← 返回首頁
-          </Link>
+      <header style={{ borderBottom: '2px solid #00aeef', padding: '20px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Link href="/" style={{ color: '#00aeef', fontSize: '16px', fontWeight: 700, textDecoration: 'none' }}>
+          ← 返回首頁
+        </Link>
+        <div style={{ fontSize: '14px', color: '#999' }}>
+          第 {week} 週 • 頁碼：{currentPageIndex + 1} / {totalPages}
         </div>
       </header>
 
-      {/* Content */}
-      <section style={{ maxWidth: '1400px', margin: '0 auto', padding: '60px 40px' }}>
-        <div style={{ marginBottom: '40px' }}>
-          <h1 style={{ fontSize: '64px', fontWeight: 900, textTransform: 'uppercase', marginBottom: '20px' }}>
-            第 {week} 週課程
-          </h1>
-          <div style={{ borderLeft: '8px solid #00aeef', paddingLeft: '20px' }}>
-            <p style={{ fontSize: '18px', color: '#ccc' }}>
-              {weekCourses.length} 個模組 • {weekCourses.reduce((sum, c) => sum + c.duration_minutes, 0)} 分鐘
-            </p>
-          </div>
+      {/* Main Content - Full Screen Slide */}
+      <section style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '80px 60px', maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
+        {/* Page Title */}
+        <h1 style={{ fontSize: '56px', fontWeight: 900, marginBottom: '40px', color: '#00aeef', textAlign: 'center', lineHeight: 1.2 }}>
+          {currentPage.title}
+        </h1>
+
+        {/* Page Content */}
+        <div style={{ fontSize: '28px', color: '#ccc', lineHeight: 1.8, textAlign: 'left', whiteSpace: 'pre-wrap', wordWrap: 'break-word', maxWidth: '900px' }}>
+          {currentPage.content}
         </div>
 
-        {/* Courses Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '40px', marginTop: '60px' }}>
-          {weekCourses.map((course) => (
-            <div
-              key={course.id}
-              style={{
-                border: '3px solid #00aeef',
-                padding: '40px',
-                background: '#111111',
-                transition: 'all 0.3s ease',
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget;
-                el.style.transform = 'translate(-5px, -5px)';
-                el.style.boxShadow = '5px 5px 0 #00aeef';
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget;
-                el.style.transform = 'translate(0, 0)';
-                el.style.boxShadow = 'none';
-              }}
-            >
-              <div style={{ fontSize: '14px', textTransform: 'uppercase', color: '#00aeef', marginBottom: '15px', letterSpacing: '2px', fontWeight: 700 }}>
-                模組 {course.module}
-              </div>
-              <h3 style={{ fontSize: '24px', fontWeight: 900, marginBottom: '20px', color: '#00aeef', lineHeight: 1.2 }}>
-                {course.title}
-              </h3>
-              <p style={{ fontSize: '16px', color: '#ccc', marginBottom: '20px', lineHeight: 1.5 }}>
-                {course.description}
-              </p>
-              <div style={{ borderTop: '2px solid #333', paddingTop: '20px', marginTop: '20px' }}>
-                <p style={{ fontSize: '14px', color: '#999', marginBottom: '15px' }}>
-                  ⏱️ {course.duration_minutes} 分鐘課程
-                </p>
-                <div style={{ fontSize: '14px', color: '#ccc', lineHeight: 1.8, whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>
-                  📝 {course.content}
-                </div>
-              </div>
-            </div>
-          ))}
+        {/* Course Info */}
+        <div style={{ marginTop: '60px', fontSize: '16px', color: '#999', textAlign: 'center' }}>
+          {currentCourse.title} • {currentCourse.duration_minutes} 分鐘
         </div>
       </section>
 
-      {/* Navigation */}
-      <section style={{ maxWidth: '1400px', margin: '0 auto', padding: '60px 40px', textAlign: 'center' }}>
-        <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
-          {week > 1 && (
-            <Link
-              href={`/course/${week - 1}`}
-              style={{
-                display: 'inline-block',
-                padding: '16px 40px',
-                border: '3px solid #00aeef',
-                color: '#00aeef',
-                fontWeight: 900,
-                fontSize: '14px',
-                textTransform: 'uppercase',
-                letterSpacing: '2px',
-                textDecoration: 'none',
-                transition: 'all 0.3s ease',
-              }}
-            >
-              ← 上一週
-            </Link>
-          )}
-          {week < 4 && (
-            <Link
-              href={`/course/${week + 1}`}
-              style={{
-                display: 'inline-block',
-                padding: '16px 40px',
-                background: '#00aeef',
-                color: '#0a0a0a',
-                fontWeight: 900,
-                fontSize: '14px',
-                textTransform: 'uppercase',
-                letterSpacing: '2px',
-                textDecoration: 'none',
-                transition: 'all 0.3s ease',
-              }}
-            >
-              下一週 →
-            </Link>
-          )}
+      {/* Navigation Bar */}
+      <section style={{ borderTop: '2px solid #00aeef', padding: '30px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <button
+          onClick={handlePrevious}
+          disabled={currentPageIndex === 0}
+          style={{
+            padding: '12px 30px',
+            border: '2px solid #00aeef',
+            color: currentPageIndex === 0 ? '#666' : '#00aeef',
+            background: 'transparent',
+            fontWeight: 900,
+            fontSize: '14px',
+            textTransform: 'uppercase',
+            cursor: currentPageIndex === 0 ? 'not-allowed' : 'pointer',
+            opacity: currentPageIndex === 0 ? 0.5 : 1,
+            transition: 'all 0.3s ease',
+          }}
+        >
+          ← 上一頁
+        </button>
+
+        <div style={{ fontSize: '14px', color: '#00aeef', fontWeight: 700 }}>
+          {currentPageIndex + 1} / {totalPages}
         </div>
+
+        <button
+          onClick={handleNext}
+          disabled={currentPageIndex === totalPages - 1}
+          style={{
+            padding: '12px 30px',
+            background: currentPageIndex === totalPages - 1 ? '#333' : '#00aeef',
+            color: currentPageIndex === totalPages - 1 ? '#666' : '#0a0a0a',
+            border: 'none',
+            fontWeight: 900,
+            fontSize: '14px',
+            textTransform: 'uppercase',
+            cursor: currentPageIndex === totalPages - 1 ? 'not-allowed' : 'pointer',
+            opacity: currentPageIndex === totalPages - 1 ? 0.5 : 1,
+            transition: 'all 0.3s ease',
+          }}
+        >
+          下一頁 →
+        </button>
       </section>
 
-      {/* Footer */}
-      <footer style={{ borderTop: '3px solid #00aeef', padding: '40px', textAlign: 'center', color: '#666', marginTop: '60px' }}>
-        <p>© 2026 大豐集團 • AI 企業協作大師課</p>
+      {/* Keyboard Hints */}
+      <footer style={{ borderTop: '1px solid #333', padding: '15px 40px', textAlign: 'center', color: '#666', fontSize: '12px' }}>
+        ⌨️ 鍵盤快捷鍵：← 上一頁 • → 下一頁 • ESC 返回首頁
       </footer>
     </div>
   )
