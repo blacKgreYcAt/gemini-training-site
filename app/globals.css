@@ -25,29 +25,44 @@
 @layer components {
   /* Claymorphism Card */
   .clay-card {
-    @apply rounded-[20px] bg-white shadow-[0_4px_6px_rgba(0,174,239,0.1),0_10px_20px_rgba(0,0,0,0.08)];
-    @apply hover:shadow-[0_8px_12px_rgba(0,174,239,0.15),0_20px_40px_rgba(0,0,0,0.1)];
-    @apply transition-all duration-300 hover:-translate-y-1;
+    @apply rounded-clay bg-white transition-all duration-300;
+    box-shadow: 0 4px 6px rgba(0, 174, 239, 0.1), 0 10px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .clay-card:hover {
+    box-shadow: 0 8px 12px rgba(0, 174, 239, 0.15), 0 20px 40px rgba(0, 0, 0, 0.1);
+    @apply -translate-y-1;
   }
 
   /* Claymorphism Button Primary */
   .clay-btn {
-    @apply rounded-[20px] px-6 py-3 bg-[#00aeef] text-white font-semibold;
-    @apply shadow-[0_4px_6px_rgba(0,174,239,0.1),0_10px_20px_rgba(0,0,0,0.08)];
-    @apply hover:bg-[#0088bb] hover:shadow-[0_8px_12px_rgba(0,174,239,0.15),0_20px_40px_rgba(0,0,0,0.1)];
-    @apply transition-all duration-300 hover:-translate-y-1;
+    @apply rounded-clay px-6 py-3 bg-primary text-white font-semibold transition-all duration-300;
+    box-shadow: 0 4px 6px rgba(0, 174, 239, 0.1), 0 10px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .clay-btn:hover {
+    @apply bg-primary-dark -translate-y-1;
+    box-shadow: 0 8px 12px rgba(0, 174, 239, 0.15), 0 20px 40px rgba(0, 0, 0, 0.1);
   }
 
   /* Claymorphism Button Outline */
   .clay-btn-outline {
-    @apply rounded-[20px] px-6 py-3 border-2 border-[#00aeef] text-[#00aeef] font-semibold;
-    @apply hover:bg-[#00aeef]/5 transition-all duration-300;
+    @apply rounded-clay px-6 py-3 border-2 border-primary text-primary font-semibold transition-all duration-300 hover:bg-opacity-5;
+    background-color: rgba(0, 174, 239, 0.05);
+  }
+
+  .clay-btn-outline:hover {
+    background-color: rgba(0, 174, 239, 0.1);
   }
 
   /* Claymorphism Input */
   .clay-input {
-    @apply rounded-[20px] px-4 py-3 border-2 border-gray-200 focus:border-[#00aeef] focus:outline-none;
-    @apply transition-all duration-300;
-    @apply shadow-[0_2px_4px_rgba(0,174,239,0.08),0_6px_12px_rgba(0,0,0,0.06)];
+    @apply rounded-clay px-4 py-3 border-2 border-gray-200 transition-all duration-300;
+    box-shadow: 0 2px 4px rgba(0, 174, 239, 0.08), 0 6px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .clay-input:focus {
+    @apply border-primary outline-none;
+    box-shadow: 0 2px 8px rgba(0, 174, 239, 0.15), 0 6px 16px rgba(0, 0, 0, 0.08);
   }
 }

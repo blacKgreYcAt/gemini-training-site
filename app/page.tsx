@@ -33,10 +33,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-clay">
+      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100" style={{boxShadow: '0 2px 4px rgba(0, 174, 239, 0.08), 0 4px 8px rgba(0, 0, 0, 0.05)'}}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-[#00aeef] to-[#0088bb] rounded-clay flex items-center justify-center">
+            <div className="w-10 h-10 rounded-clay flex items-center justify-center" style={{background: 'linear-gradient(to bottom right, #00aeef, #0088bb)'}}>
               <span className="text-white font-bold text-lg">G</span>
             </div>
             <h1 className="font-bold text-gray-900">大豐 Gemini 學院</h1>
@@ -50,7 +50,12 @@ export default function Home() {
         <div className="text-center">
           <h1 className="text-6xl font-black text-gray-900 mb-6">
             讓 AI 成為你的<br />
-            <span className="bg-gradient-to-r from-[#00aeef] to-[#0088bb] bg-clip-text text-transparent">
+            <span style={{
+              background: 'linear-gradient(to right, #00aeef, #0088bb)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>
               24 小時超級幕僚
             </span>
           </h1>
@@ -69,8 +74,8 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {courses.map((course) => (
             <Link key={course.week} href={`/course/${course.week}`}>
-              <div className="h-full p-8 rounded-clay bg-white shadow-clay hover:shadow-clay-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer">
-                <div className="inline-block px-3 py-1 rounded-full bg-[#00aeef]/10 text-[#00aeef] text-sm font-semibold mb-4">
+              <div className="h-full p-8 clay-card cursor-pointer" style={{backgroundColor: '#ffffff'}}>
+                <div className="inline-block px-3 py-1 rounded-full text-sm font-semibold mb-4" style={{backgroundColor: 'rgba(0, 174, 239, 0.1)', color: '#00aeef'}}>
                   第 {course.week} 週
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
@@ -81,7 +86,7 @@ export default function Home() {
                 </p>
                 <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                   <span className="text-xs text-gray-500">⏱️ {course.duration} 分鐘</span>
-                  <span className="text-[#00aeef] font-semibold">查看 →</span>
+                  <span className="font-semibold" style={{color: '#00aeef'}}>查看 →</span>
                 </div>
               </div>
             </Link>

@@ -23,9 +23,9 @@ export default function CoursePage({ params }: { params: { week: string } }) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-clay">
+      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100" style={{boxShadow: '0 2px 4px rgba(0, 174, 239, 0.08), 0 4px 8px rgba(0, 0, 0, 0.05)'}}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Link href="/" className="text-[#00aeef] hover:underline text-sm font-semibold">
+          <Link href="/" className="hover:underline text-sm font-semibold" style={{color: '#00aeef'}}>
             ← 返回首頁
           </Link>
         </div>
@@ -34,13 +34,13 @@ export default function CoursePage({ params }: { params: { week: string } }) {
       {/* Content */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-8">
-          <div className="inline-block px-4 py-2 rounded-full bg-[#00aeef]/10 text-[#00aeef] font-semibold mb-6">
+          <div className="inline-block px-4 py-2 rounded-full font-semibold mb-6" style={{backgroundColor: 'rgba(0, 174, 239, 0.1)', color: '#00aeef'}}>
             第 {week} 週
           </div>
         </div>
 
         {weekCourses.map((course) => (
-          <div key={course.id} className="mb-12 p-8 rounded-clay bg-white shadow-clay">
+          <div key={course.id} className="mb-12 p-8 clay-card">
             <div className="mb-6">
               <h2 className="text-3xl font-bold text-gray-900 mb-2">
                 {course.title}
@@ -65,7 +65,7 @@ export default function CoursePage({ params }: { params: { week: string } }) {
           {week > 1 && (
             <Link
               href={`/course/${week - 1}`}
-              className="px-6 py-3 rounded-clay border-2 border-[#00aeef] text-[#00aeef] font-semibold hover:bg-[#00aeef]/5 transition"
+              className="clay-btn-outline px-6 py-3"
             >
               ← 上一週
             </Link>
@@ -73,7 +73,8 @@ export default function CoursePage({ params }: { params: { week: string } }) {
           {week < 4 && (
             <Link
               href={`/course/${week + 1}`}
-              className="px-6 py-3 rounded-clay bg-gradient-to-r from-[#00aeef] to-[#0088bb] text-white font-semibold shadow-clay hover:shadow-clay-lg transition-all"
+              className="clay-btn px-6 py-3"
+              style={{backgroundImage: 'linear-gradient(to right, #00aeef, #0088bb)'}}
             >
               下一週 →
             </Link>

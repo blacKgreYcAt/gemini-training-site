@@ -21,18 +21,8 @@ module.exports = {
       borderRadius: {
         'clay': '20px',
         'clay-lg': '30px',
-        '25': '25px',
       },
     },
   },
-  safelist: [
-    'rounded-[25px]',
-    'shadow-[0_8px_16px_rgba(0,174,239,0.2),0_12px_24px_rgba(0,136,187,0.15)]',
-    'hover:shadow-[0_12px_28px_rgba(0,174,239,0.3),0_16px_40px_rgba(0,136,187,0.2)]',
-    'hover:bg-[#00aeef]/5',
-    'bg-gradient-to-r',
-    'from-[#00aeef]',
-    'to-[#0088bb]',
-  ],
   plugins: [],
 }
