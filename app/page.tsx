@@ -65,13 +65,13 @@ export default function Home() {
                     cursor: 'pointer',
                     transition: 'all 0.3s ease',
                   }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget;
+                  onMouseEnter={(e: React.MouseEvent<HTMLDivElement>) => {
+                    const el = e.currentTarget as HTMLDivElement;
                     el.style.transform = 'translate(-5px, -5px)';
                     el.style.boxShadow = '5px 5px 0 #00aeef';
                   }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget;
+                  onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) => {
+                    const el = e.currentTarget as HTMLDivElement;
                     el.style.transform = 'translate(0, 0)';
                     el.style.boxShadow = 'none';
                   }}

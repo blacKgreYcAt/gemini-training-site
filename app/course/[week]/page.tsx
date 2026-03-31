@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { courseData } from '@/lib/course-data'
 import { useState, useEffect } from 'react'
 
-export default function CoursePage({ params }: any) {
+export default function CoursePage({ params }: { params: Promise<{ week: string }> }) {
   const [week, setWeek] = useState<number | null>(null)
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [pageIdx, setPageIdx] = useState(0)
@@ -12,6 +12,26 @@ export default function CoursePage({ params }: any) {
   useEffect(() => {
     Promise.resolve(params).then((p) => setWeek(parseInt(p.week)))
   }, [params])
+
+  // 鍵盤控制事件 - 使用 selectedId 作為依賴，因為它決定了課程
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (!selectedId || !week) return
+
+      const courses = courseData.filter(c => c.week === week)
+      const course = courses.find(c => c.id === selectedId)
+      if (!course?.pages) return
+
+      if (e.key === 'ArrowLeft') {
+        setPageIdx(p => Math.max(0, p - 1))
+      } else if (e.key === 'ArrowRight') {
+        setPageIdx(p => Math.min(course.pages.length - 1, p + 1))
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyPress)
+    return () => window.removeEventListener('keydown', handleKeyPress)
+  }, [selectedId, week])
 
   if (!week) return <div style={{ padding: '40px', color: '#fff', background: '#0a0a0a' }}>加載中...</div>
 
@@ -49,7 +69,7 @@ export default function CoursePage({ params }: any) {
           <button
             onClick={() => setPageIdx(p => Math.min(total - 1, p + 1))}
             disabled={pageIdx === total - 1}
-            style={{ padding: '10px 20px', background: pageIdx === total - 1 ? '#333' : '#00aeef', color: '#0a0a0a', border: 'none', cursor: pageIdx === total - 1 ? 'not-allowed' : 'pointer', opacity: pageIdx === total - 1 ? 0.5 : 1 }}
+            style={{ padding: '10px 20px', background: pageIdx === total - 1 ? '#333' : '#00aeef', color: pageIdx === total - 1 ? '#666' : '#0a0a0a', border: 'none', cursor: pageIdx === total - 1 ? 'not-allowed' : 'pointer', opacity: pageIdx === total - 1 ? 0.5 : 1 }}
           >
             下一頁 →
           </button>
