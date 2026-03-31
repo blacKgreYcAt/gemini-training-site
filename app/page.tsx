@@ -3,7 +3,6 @@
 import { Header } from '@/components/Header'
 import { CourseCard } from '@/components/CourseCard'
 import Link from 'next/link'
-import { useState } from 'react'
 
 const courseWeeks = [
   {
@@ -68,18 +67,13 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20">
             <Link
               href="/auth/signup"
-              className="inline-block px-10 py-5 rounded-[25px] bg-gradient-to-r from-[#00aeef] to-[#0088bb] text-white font-bold text-lg
-              shadow-[0_8px_16px_rgba(0,174,239,0.2),0_12px_24px_rgba(0,136,187,0.15)]
-              hover:shadow-[0_12px_28px_rgba(0,174,239,0.3),0_16px_40px_rgba(0,136,187,0.2)]
-              hover:-translate-y-2 transition-all duration-300 transform"
+              className="inline-block px-10 py-5 rounded-[25px] bg-gradient-to-r from-[#00aeef] to-[#0088bb] text-white font-bold text-lg shadow-[0_8px_16px_rgba(0,174,239,0.2),0_12px_24px_rgba(0,136,187,0.15)] hover:shadow-[0_12px_28px_rgba(0,174,239,0.3),0_16px_40px_rgba(0,136,187,0.2)] hover:-translate-y-2 transition-all duration-300 transform"
             >
               🚀 立即報名
             </Link>
             <Link
               href="#courses"
-              className="inline-block px-10 py-5 rounded-[25px] border-2 border-[#00aeef] text-[#00aeef] font-bold text-lg
-              hover:bg-[#00aeef]/5 transition-all duration-300
-              shadow-[0_4px_12px_rgba(0,174,239,0.1)]"
+              className="inline-block px-10 py-5 rounded-[25px] border-2 border-[#00aeef] text-[#00aeef] font-bold text-lg hover:bg-[#00aeef]/5 transition-all duration-300 shadow-[0_4px_12px_rgba(0,174,239,0.1)]"
             >
               📚 查看課程
             </Link>
@@ -88,15 +82,15 @@ export default function Home() {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-8 pt-12 border-t border-gray-200">
             <div>
-              <div className="text-3xl font-bold text-primary">4</div>
+              <div className="text-3xl font-bold text-[#00aeef]">4</div>
               <p className="text-gray-600 text-sm mt-2">週完整課程</p>
             </div>
             <div>
-              <div className="text-3xl font-bold text-primary">8</div>
+              <div className="text-3xl font-bold text-[#00aeef]">8</div>
               <p className="text-gray-600 text-sm mt-2">小時精華教學</p>
             </div>
             <div>
-              <div className="text-3xl font-bold text-primary">6</div>
+              <div className="text-3xl font-bold text-[#00aeef]">6</div>
               <p className="text-gray-600 text-sm mt-2">大神器精通</p>
             </div>
           </div>
@@ -128,89 +122,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="bg-gradient-to-r from-primary/5 to-primary-dark/5 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-gray-900 mb-16 text-center">
-            課程核心特色
-          </h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: '🎯',
-                title: '針對傳產設計',
-                desc: '所有案例來自實際製造業工作場景',
-              },
-              {
-                icon: '💼',
-                title: '立即可用',
-                desc: '課程內容直接應用於日常工作',
-              },
-              {
-                icon: '📊',
-                title: '實踐導向',
-                desc: '每堂課都有實戰演練與反思時間',
-              },
-              {
-                icon: '🔒',
-                title: '資安防線',
-                desc: '重視企業機密保護與資安意識',
-              },
-              {
-                icon: '🚀',
-                title: '系統化框架',
-                desc: '掌握黃金公式，輕鬆駕馭 AI',
-              },
-              {
-                icon: '👥',
-                title: '小班教學',
-                desc: '20 人高管精英班，互動討論充分',
-              },
-            ].map((feature, idx) => (
-              <div
-                key={idx}
-                className="p-6 rounded-clay bg-white shadow-clay hover:shadow-clay-lg transition"
-              >
-                <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="font-bold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600 text-sm">{feature.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <h2 className="text-4xl font-bold text-gray-900 mb-16 text-center">
-          主管推薦
-        </h2>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          {[
-            {
-              name: '王董 - 金屬加工廠廠長',
-              content: '這堂課讓我們工廠的效率提升了 40%，員工再也不用花時間找資料，AI 幫忙做初稿，我們只需審核！',
-            },
-            {
-              name: '李經理 - 電子產業採購主管',
-              content: '學到的 Prompt 公式真的很實用，原本一份合約要改半小時，現在只要 5 分鐘！',
-            },
-          ].map((testimonial, idx) => (
-            <div
-              key={idx}
-              className="p-8 rounded-clay bg-white shadow-clay border-l-4 border-primary"
-            >
-              <p className="text-gray-700 mb-4 italic">"{testimonial.content}"</p>
-              <p className="font-semibold text-gray-900">{testimonial.name}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-primary to-primary-dark py-20">
+      <section className="bg-gradient-to-r from-[#00aeef] to-[#0088bb] py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold text-white mb-6">
             準備好升級你的管理能力了嗎？
@@ -220,7 +133,7 @@ export default function Home() {
           </p>
           <Link
             href="/auth/signup"
-            className="inline-block px-10 py-4 rounded-clay-lg bg-white text-primary font-semibold hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+            className="inline-block px-10 py-4 rounded-[25px] bg-white text-[#00aeef] font-semibold hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
           >
             現在就報名，掌握未來！
           </Link>
