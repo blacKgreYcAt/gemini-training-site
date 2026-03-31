@@ -35,7 +35,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center gap-3">
             <div
-              className="w-10 h-10 rounded-2xl flex items-center justify-center"
+              className="w-10 h-10 rounded-xl flex items-center justify-center"
               style={{
                 background: 'linear-gradient(to bottom right, #00aeef, #0088bb)',
               }}
@@ -68,7 +68,7 @@ export default function Home() {
               value={searchTerm}
               onChange={(e) => handleSearch(e.target.value)}
               placeholder="搜尋課程內容... 例如：Prompt、會議記錄、數據分析"
-              className="w-full px-6 py-4 rounded-2xl border-2 border-gray-200 focus:border-blue-400 focus:outline-none text-lg shadow-sm"
+              className="w-full px-6 py-4 rounded-xl border-2 border-gray-200 focus:border-blue-400 focus:outline-none text-lg shadow-sm"
             />
             <span className="absolute right-4 top-4 text-2xl">🔍</span>
           </div>

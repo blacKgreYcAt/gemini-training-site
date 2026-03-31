@@ -19,7 +19,7 @@
 
 @layer components {
   .clay-card {
-    @apply rounded-2xl bg-white transition-all duration-300;
+    @apply rounded-xl bg-white transition-all duration-300;
     box-shadow: 0 4px 6px rgba(0, 174, 239, 0.1), 0 10px 20px rgba(0, 0, 0, 0.08);
   }
 
@@ -29,7 +29,7 @@
   }
 
   .clay-btn {
-    @apply rounded-2xl px-6 py-3 font-semibold transition-all duration-300;
+    @apply rounded-xl px-6 py-3 font-semibold transition-all duration-300;
     background: linear-gradient(to right, #00aeef, #0088bb);
     color: white;
     box-shadow: 0 4px 6px rgba(0, 174, 239, 0.1), 0 10px 20px rgba(0, 0, 0, 0.08);
@@ -41,7 +41,7 @@
   }
 
   .btn-outline {
-    @apply rounded-2xl px-6 py-3 font-semibold border-2 transition-all duration-300;
+    @apply rounded-xl px-6 py-3 font-semibold border-2 transition-all duration-300;
     border-color: #00aeef;
     color: #00aeef;
   }
