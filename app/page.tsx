@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { courseData } from '@/lib/course-data'
 
 export default function Home() {
+  // 強制 Vercel 重新部署 - 2026-03-31 16:50
   // 按週次組織課程
   const coursesByWeek = [1, 2, 3, 4].map(week => ({
     week,
