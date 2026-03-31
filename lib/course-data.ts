@@ -62,7 +62,7 @@ export const courseData: Course[] = [
     pages: [
       {
         title: "模組 1-2 六大神器介紹",
-        content: "Gemini 的六大核心能力：\n1. Deep Research - 超級研究員\n2. Write - 精準編輯器\n3. Create Image - AI 美術設計師\n4. Create Video - 影片製作人\n5. Create Audio - 聲音設計大師\n6. Learning Mode - 蘇格拉底導師"
+        content: "Gemini 的六大核心能力：\n1. 建立圖像 - AI 美術設計師\n2. CANVAS - 精準編輯器\n3. Deep Research - 超級研究員\n4. 建立影片 - 影片製作人\n5. 創作音樂 - 聲音設計大師\n6. 引導式學習 - 蘇格拉底導師"
       },
       {
         title: "Deep Research - 超級研究員",
