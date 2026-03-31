@@ -19,7 +19,9 @@
 
 @layer components {
   .clay-card {
-    @apply rounded-xl bg-white transition-all duration-300;
+    border-radius: 12px;
+    background: white;
+    transition: all 300ms;
     box-shadow: 0 4px 6px rgba(0, 174, 239, 0.1), 0 10px 20px rgba(0, 0, 0, 0.08);
   }
 
@@ -29,10 +31,15 @@
   }
 
   .clay-btn {
-    @apply rounded-xl px-6 py-3 font-semibold transition-all duration-300;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-weight: 600;
+    transition: all 300ms;
     background: linear-gradient(to right, #00aeef, #0088bb);
     color: white;
     box-shadow: 0 4px 6px rgba(0, 174, 239, 0.1), 0 10px 20px rgba(0, 0, 0, 0.08);
+    border: none;
+    cursor: pointer;
   }
 
   .clay-btn:hover {
@@ -41,9 +48,14 @@
   }
 
   .btn-outline {
-    @apply rounded-xl px-6 py-3 font-semibold border-2 transition-all duration-300;
-    border-color: #00aeef;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-weight: 600;
+    border: 2px solid #00aeef;
     color: #00aeef;
+    background: transparent;
+    transition: all 300ms;
+    cursor: pointer;
   }
 
   .btn-outline:hover {
