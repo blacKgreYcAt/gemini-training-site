@@ -4,6 +4,15 @@ import Link from 'next/link'
 import { courseData } from '@/lib/course-data'
 import { useState, useEffect } from 'react'
 
+export async function generateStaticParams() {
+  return [
+    { week: '1' },
+    { week: '2' },
+    { week: '3' },
+    { week: '4' },
+  ]
+}
+
 export default function CoursePage({ params }: { params: { week: string } }) {
   const [weekNum, setWeekNum] = useState<number | null>(null)
 
