@@ -28,8 +28,8 @@ export default function Home() {
             <h1 style={{ fontSize: '24px', margin: '0', marginTop: '0' }}>大豐集團</h1>
           </div>
           <nav style={{ display: 'flex', gap: '40px' }}>
-            <a href="#cases" style={{ color: '#00aeef', fontWeight: 700 }}>案例研究</a>
-            <a href="#" style={{ color: '#ffffff' }}>聯絡</a>
+            <a href="#cases" style={{ color: '#00aeef', fontWeight: 700 }}>課程</a>
+            <Link href="/quiz" style={{ color: '#00aeef', fontWeight: 700, textDecoration: 'none' }}>題庫</Link>
           </nav>
         </div>
       </header>
