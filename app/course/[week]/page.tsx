@@ -51,9 +51,22 @@ export default function CoursePage({ params }: { params: Promise<{ week: string 
         </div>
 
         <section style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '60px 40px' }}>
-          <h1 style={{ fontSize: '56px', color: '#000000', marginBottom: '40px', textAlign: 'center', fontWeight: 900 }}>{page.title}</h1>
-          <div style={{ fontSize: '28px', color: '#000000', lineHeight: 1.8, whiteSpace: 'pre-wrap', maxWidth: '900px', textAlign: 'left', fontWeight: 500 }}>
-            {page.content}
+          <div style={{ display: 'flex', gap: '60px', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+            <div style={{ flex: 1 }}>
+              <h1 style={{ fontSize: '56px', color: '#000000', marginBottom: '40px', textAlign: 'center', fontWeight: 900 }}>{page.title}</h1>
+              <div style={{ fontSize: '28px', color: '#000000', lineHeight: 1.8, whiteSpace: 'pre-wrap', maxWidth: '700px', textAlign: 'left', fontWeight: 500 }}>
+                {page.content}
+              </div>
+            </div>
+            {selectedId === '1-2' && (
+              <div style={{ flex: 0.8, display: 'flex', justifyContent: 'center' }}>
+                <img
+                  src="/images/gemini-features.png"
+                  alt="Gemini Features"
+                  style={{ maxWidth: '100%', maxHeight: '500px', objectFit: 'contain' }}
+                />
+              </div>
+            )}
           </div>
         </section>
 
