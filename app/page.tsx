@@ -13,7 +13,7 @@ export default function Home() {
   }))
 
   return (
-    <div style={{ background: '#0a0a0a', color: '#ffffff' }}>
+    <div style={{ background: '#f5f5f7', color: '#1d1d1f' }}>
       {/* Header */}
       <header>
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
@@ -27,8 +27,8 @@ export default function Home() {
             />
           </div>
           <nav style={{ display: 'flex', gap: '40px' }}>
-            <a href="#cases" style={{ color: '#00aeef', fontWeight: 700 }}>課程</a>
-            <Link href="/quiz" style={{ color: '#00aeef', fontWeight: 700, textDecoration: 'none' }}>題庫</Link>
+            <a href="#cases" style={{ color: '#0071e3', fontWeight: 700 }}>課程</a>
+            <Link href="/quiz" style={{ color: '#0071e3', fontWeight: 700, textDecoration: 'none' }}>題庫</Link>
           </nav>
         </div>
       </header>
@@ -60,8 +60,8 @@ export default function Home() {
             {coursesByWeek.map(({ week, courses }) => (
               <div key={week} style={{ display: 'flex', flexDirection: 'column' }}>
                 {/* 週表頭 */}
-                <div style={{ marginBottom: '30px', paddingBottom: '20px', borderBottom: '3px solid #00aeef' }}>
-                  <h3 style={{ fontSize: '24px', fontWeight: 900, color: '#00aeef', margin: '0', textTransform: 'uppercase' }}>
+                <div style={{ marginBottom: '30px', paddingBottom: '20px', borderBottom: '3px solid #0071e3' }}>
+                  <h3 style={{ fontSize: '24px', fontWeight: 900, color: '#0071e3', margin: '0', textTransform: 'uppercase' }}>
                     第 {week} 週
                   </h3>
                   <p style={{ fontSize: '14px', color: '#999', margin: '8px 0 0 0' }}>
@@ -79,8 +79,8 @@ export default function Home() {
                           flexDirection: 'column',
                           justifyContent: 'space-between',
                           padding: '25px',
-                          background: '#111111',
-                          border: '2px solid #00aeef',
+                          background: '#ffffff',
+                          border: '2px solid #0071e3',
                           cursor: 'pointer',
                           transition: 'all 0.3s ease',
                           minHeight: '200px',
@@ -88,7 +88,7 @@ export default function Home() {
                         onMouseEnter={(e: React.MouseEvent<HTMLDivElement>) => {
                           const el = e.currentTarget as HTMLDivElement;
                           el.style.transform = 'translate(-5px, -5px)';
-                          el.style.boxShadow = '5px 5px 0 #00aeef';
+                          el.style.boxShadow = '5px 5px 0 #0071e3';
                         }}
                         onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) => {
                           const el = e.currentTarget as HTMLDivElement;
@@ -97,10 +97,10 @@ export default function Home() {
                         }}
                       >
                         <div>
-                          <div style={{ fontSize: '12px', textTransform: 'uppercase', color: '#00aeef', marginBottom: '12px', letterSpacing: '1px', fontWeight: 700 }}>
+                          <div style={{ fontSize: '12px', textTransform: 'uppercase', color: '#0071e3', marginBottom: '12px', letterSpacing: '1px', fontWeight: 700 }}>
                             模組 {course.module}
                           </div>
-                          <h4 style={{ fontSize: '18px', fontWeight: 900, marginBottom: '12px', color: '#00aeef', lineHeight: 1.3 }}>
+                          <h4 style={{ fontSize: '18px', fontWeight: 900, marginBottom: '12px', color: '#0071e3', lineHeight: 1.3 }}>
                             {course.title}
                           </h4>
                           <p style={{ fontSize: '14px', color: '#ccc', marginBottom: '0', lineHeight: 1.4 }}>
@@ -111,7 +111,7 @@ export default function Home() {
                           <p style={{ fontSize: '12px', color: '#999', margin: '0 0 8px 0' }}>
                             ⏱️ {course.duration_minutes} 分鐘
                           </p>
-                          <p style={{ fontSize: '12px', color: '#00aeef', fontWeight: 700, margin: '0' }}>
+                          <p style={{ fontSize: '12px', color: '#0071e3', fontWeight: 700, margin: '0' }}>
                             📑 查看詳情 →
                           </p>
                         </div>
