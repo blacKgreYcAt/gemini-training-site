@@ -267,7 +267,7 @@ export default function CardsPage() {
                 justifyContent: 'flex-start',
                 alignItems: 'center',
                 gap: 'clamp(12px, 3vw, 20px)',
-                overflow: 'hidden',
+                overflow: 'visible',
               }}>
                 {/* Card Header */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
@@ -314,16 +314,19 @@ export default function CardsPage() {
                   lineHeight: 1.6,
                   color: '#ffffff',
                   flex: 1,
+                  minHeight: 0,
                   display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
+                  alignItems: 'flex-start',
+                  justifyContent: 'flex-start',
                   textShadow: '0 1px 3px rgba(0,0,0,0.4)',
                   backgroundColor: 'rgba(0,0,0,0.3)',
                   padding: 'clamp(12px, 3vw, 20px)',
                   borderRadius: '8px',
                   backdropFilter: 'blur(4px)',
                   overflowY: 'auto',
-                  maxHeight: 'calc(100% - 120px)',
+                  overflowX: 'hidden',
+                  WebkitOverflowScrolling: 'touch',
+                  width: '100%',
                 }}>
                   {isFlipped ? (
                     <div>
