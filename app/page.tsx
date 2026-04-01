@@ -129,9 +129,6 @@ export default function Home() {
       <footer>
         <div className="container">
           <p>© 2026 大豐貿易集團 • AI 企業協作課程</p>
-          <p style={{ fontSize: '12px', color: '#666', marginTop: '20px' }}>
-            大膽設計 • 創意驅動 • 專注成果
-          </p>
         </div>
       </footer>
     </div>
