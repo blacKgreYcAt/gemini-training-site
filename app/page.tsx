@@ -17,15 +17,14 @@ export default function Home() {
       {/* Header */}
       <header>
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-          <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+          <div className="logo">
             <Image
-              src="/logo_TF-04.png"
+              src="/logo_banner.png"
               alt="大豐集團"
-              width={50}
+              width={200}
               height={50}
               style={{ height: '50px', width: 'auto' }}
             />
-            <h1 style={{ fontSize: '24px', margin: '0', marginTop: '0' }}>大豐集團</h1>
           </div>
           <nav style={{ display: 'flex', gap: '40px' }}>
             <a href="#cases" style={{ color: '#00aeef', fontWeight: 700 }}>課程</a>
