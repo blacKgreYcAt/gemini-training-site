@@ -58,34 +58,34 @@ export const courseData: Course[] = [
     week: 1,
     module: 2,
     title: "六大神器快速巡禮與火力展示",
-    description: "Deep Research、Write、Create Image、Create Video、Create Audio、Learning Mode 一次看懂",
+    description: "Deep Research、Canvas、Create Image、Create Video、Create Audio、Learning Mode 一次看懂",
     pages: [
       {
         title: "模組 1-2 六大神器介紹",
         content: "Gemini 的六大核心能力：\n1. 建立圖像 - AI 美術設計師\n2. CANVAS - 精準編輯器\n3. Deep Research - 超級研究員\n4. 建立影片 - 影片製作人\n5. 創作音樂 - 聲音設計大師\n6. 引導式學習 - 蘇格拉底導師"
       },
       {
+        title: "建立圖像 - AI 美術設計師",
+        content: "痛點：找不到好看且無版權爭議的配圖\n\n能力：\n✓ Nano Banana 2 圖像模型\n✓ 文字直出商業級圖片\n✓ 自定場景與光影\n\n用途：簡報配圖、活動視覺、企業宣傳素材"
+      },
+      {
+        title: "Canvas - 精準編輯器",
+        content: "痛點：對話框改文章，AI 常整篇重寫無法微調\n\n解決方案：\n✓ 左邊聊天、右邊修改\n✓ 精準局部選取\n✓ 逐句優化不動其他段落\n\n應用：反覆潤飾、精細改稿的神器"
+      },
+      {
         title: "Deep Research - 超級研究員",
         content: "痛點：競品分析需開幾十個網頁、複製貼上、自己歸納\n\n功能：\n✓ 自動規劃研究路徑\n✓ 跨網頁爬梳資料\n✓ 統整結構完整的深度報告\n✓ 附帶資料來源（嚴謹可信）"
       },
       {
-        title: "Write - 精準編輯器",
-        content: "痛點：對話框改文章，AI 常整篇重寫無法微調\n\n解決方案：\n✓ 左邊聊天、右邊修改\n✓ 精準局部選取\n✓ 逐句優化不動其他段落\n\n應用：反覆潤飾、精細改稿的神器"
-      },
-      {
-        title: "Create Image - AI 美術設計師",
-        content: "痛點：找不到好看且無版權爭議的配圖\n\n能力：\n✓ Nano Banana 2 圖像模型\n✓ 文字直出商業級圖片\n✓ 自定場景與光影\n\n用途：簡報配圖、活動視覺、企業宣傳素材"
-      },
-      {
-        title: "Create Video - 高級影片製作人",
+        title: "建立影片 - 高級影片製作人",
         content: "痛點：影片製作成本高，只需短片卻無合適工具\n\n能力：\n✓ Google Veo 影片引擎\n✓ 生成高畫質動態影像\n✓ 從圖片延伸為動態內容\n\n⚠️ 重要：Pro 3次/日、Ultra 5次/日額度限制"
       },
       {
-        title: "Create Audio - 聲音設計大師",
+        title: "創作音樂 - 聲音設計大師",
         content: "痛點：找不到合適的無版權背景音樂\n\n能力：\n✓ Lyria 3 聲音模型\n✓ 生成 30 秒專業級音樂\n✓ 自帶情緒氛圍設定\n\n應用：影片背景音、活動開場、企業宣傳音樂"
       },
       {
-        title: "Learning Mode - 蘇格拉底導師",
+        title: "引導式學習 - 蘇格拉底導師",
         content: "痛點：AI 直接給答案反而看不懂複雜概念\n\n特色：\n✓ 不給直接答案\n✓ 用提問引導思考\n✓ 循序漸進拆解概念\n\n應用：深度學習、面試演練、能力內化"
       }
     ],
