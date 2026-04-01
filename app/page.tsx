@@ -13,7 +13,7 @@ export default function Home() {
   }))
 
   return (
-    <div style={{ background: '#f5f5f7', color: '#1d1d1f' }}>
+    <div style={{ background: '#f5f5f7', color: '#000000' }}>
       {/* Header */}
       <header>
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
@@ -128,8 +128,8 @@ export default function Home() {
       {/* Footer */}
       <footer>
         <div className="container">
-          <p>© 2026 大豐集團 • AI 企業協作大師課</p>
-          <p style={{ fontSize: '12px', color: '#444', marginTop: '20px' }}>
+          <p>© 2026 大豐貿易集團 • AI 企業協作課程</p>
+          <p style={{ fontSize: '12px', color: '#666', marginTop: '20px' }}>
             大膽設計 • 創意驅動 • 專注成果
           </p>
         </div>

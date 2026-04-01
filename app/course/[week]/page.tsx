@@ -33,7 +33,7 @@ export default function CoursePage({ params }: { params: Promise<{ week: string 
     return () => window.removeEventListener('keydown', handleKeyPress)
   }, [selectedId, week])
 
-  if (!week) return <div style={{ padding: '40px', color: '#1d1d1f', background: '#f5f5f7' }}>加載中...</div>
+  if (!week) return <div style={{ padding: '40px', color: '#000000', background: '#f5f5f7' }}>加載中...</div>
 
   const courses = courseData.filter(c => c.week === week)
   const course = courses.find(c => c.id === selectedId)
@@ -44,7 +44,7 @@ export default function CoursePage({ params }: { params: Promise<{ week: string 
     const total = course.pages.length
 
     return (
-      <div style={{ background: '#f5f5f7', color: '#1d1d1f', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ background: '#f5f5f7', color: '#000000', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <div style={{ borderBottom: '2px solid #0071e3', padding: '20px 40px', display: 'flex', justifyContent: 'space-between' }}>
           <button onClick={() => setSelectedId(null)} style={{ background: 'none', border: 'none', color: '#0071e3', cursor: 'pointer', fontSize: '16px' }}>← 返回</button>
           <span style={{ color: '#999' }}>第 {week} 週 | {pageIdx + 1}/{total}</span>
@@ -80,7 +80,7 @@ export default function CoursePage({ params }: { params: Promise<{ week: string 
 
   // 課程列表視圖
   return (
-    <div style={{ padding: '40px', background: '#f5f5f7', color: '#1d1d1f', minHeight: '100vh' }}>
+    <div style={{ padding: '40px', background: '#f5f5f7', color: '#000000', minHeight: '100vh' }}>
       <Link href="/">← 返回首頁</Link>
       <h1 style={{ fontSize: '44px', marginTop: '40px', marginBottom: '40px' }}>第 {week} 週 ({courses.length})</h1>
 

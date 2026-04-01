@@ -274,7 +274,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   title: {
     fontSize: '64px',
     fontWeight: 'bold',
-    color: '#1d1d1f',
+    color: '#000000',
     margin: '20px 0 10px 0',
   },
   subtitle: {
@@ -290,7 +290,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   sectionCard: {
     padding: '32px',
-    border: '2px solid #1d1d1f',
+    border: '2px solid #000000',
     cursor: 'pointer',
     transition: 'all 0.3s ease',
     backgroundColor: '#f5f5f5',
@@ -306,7 +306,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   sectionTitle: {
     fontSize: '24px',
     fontWeight: 'bold',
-    color: '#1d1d1f',
+    color: '#000000',
     margin: '12px 0',
   },
   sectionRange: {
@@ -322,7 +322,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   infoBox: {
     padding: '32px',
-    border: '2px solid #1d1d1f',
+    border: '2px solid #000000',
     backgroundColor: '#f9f9f9',
   },
   infoTitle: {
@@ -358,13 +358,13 @@ const styles: { [key: string]: React.CSSProperties } = {
   progressInfo: {
     fontSize: '18px',
     fontWeight: '600',
-    color: '#1d1d1f',
+    color: '#000000',
   },
   progressBar: {
     width: '100%',
     height: '8px',
     backgroundColor: '#e0e0e0',
-    border: '1px solid #1d1d1f',
+    border: '1px solid #000000',
     overflow: 'hidden',
   },
   progressFill: {
@@ -374,7 +374,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   questionBox: {
     padding: '40px',
-    border: '2px solid #1d1d1f',
+    border: '2px solid #000000',
     backgroundColor: '#fff',
   },
   questionNumber: {
@@ -388,7 +388,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   questionText: {
     fontSize: '28px',
     fontWeight: 'bold',
-    color: '#1d1d1f',
+    color: '#000000',
     margin: '0 0 32px 0',
     lineHeight: '1.4',
   },
@@ -399,7 +399,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   optionButton: {
     padding: '20px 24px',
-    border: '2px solid #1d1d1f',
+    border: '2px solid #000000',
     backgroundColor: '#f5f5f5',
     textAlign: 'left',
     fontSize: '18px',
@@ -430,7 +430,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   answerBox: {
     padding: '32px',
-    border: '2px solid #1d1d1f',
+    border: '2px solid #000000',
     backgroundColor: '#f9f9f9',
   },
   answerResult: {
@@ -486,7 +486,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   completeBox: {
     textAlign: 'center',
     padding: '60px 40px',
-    border: '2px solid #1d1d1f',
+    border: '2px solid #000000',
     backgroundColor: '#f5f5f5',
   },
   completeTitle: {
@@ -496,7 +496,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   scoreCard: {
     padding: '40px',
-    border: '2px solid #1d1d1f',
+    border: '2px solid #000000',
     backgroundColor: '#fff',
     marginBottom: '32px',
   },
@@ -509,7 +509,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   gradeText: {
     fontSize: '32px',
     fontWeight: 'bold',
-    color: '#1d1d1f',
+    color: '#000000',
     margin: '0 0 8px 0',
   },
   percentageText: {
@@ -540,9 +540,9 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   homeButton: {
     padding: '16px 32px',
-    border: '2px solid #1d1d1f',
+    border: '2px solid #000000',
     backgroundColor: 'transparent',
-    color: '#1d1d1f',
+    color: '#000000',
     fontSize: '18px',
     fontWeight: 'bold',
     cursor: 'pointer',
