@@ -37,9 +37,9 @@ export default function Home() {
       <section className="hero">
         <div className="container">
           <div className="hero-content">
-            <h1>
-              大豐集團<br />
-              <span className="hero-accent">AI 企業協作大師課</span>
+            <h1 style={{ fontSize: '96px', lineHeight: 1.2, color: '#000000' }}>
+              大豐貿易集團<br />
+              <span className="hero-accent">AI 企業協作課程</span>
             </h1>
             <p>
               四週密集課程，掌握 Gemini 六大神器。
@@ -97,21 +97,21 @@ export default function Home() {
                         }}
                       >
                         <div>
-                          <div style={{ fontSize: '12px', textTransform: 'uppercase', color: '#0071e3', marginBottom: '12px', letterSpacing: '1px', fontWeight: 700 }}>
+                          <div style={{ fontSize: '14px', textTransform: 'uppercase', color: '#0071e3', marginBottom: '12px', letterSpacing: '1px', fontWeight: 700 }}>
                             模組 {course.module}
                           </div>
-                          <h4 style={{ fontSize: '18px', fontWeight: 900, marginBottom: '12px', color: '#0071e3', lineHeight: 1.3 }}>
+                          <h4 style={{ fontSize: '22px', fontWeight: 900, marginBottom: '12px', color: '#000000', lineHeight: 1.3 }}>
                             {course.title}
                           </h4>
-                          <p style={{ fontSize: '14px', color: '#ccc', marginBottom: '0', lineHeight: 1.4 }}>
+                          <p style={{ fontSize: '16px', color: '#333', marginBottom: '0', lineHeight: 1.4 }}>
                             {course.description}
                           </p>
                         </div>
-                        <div style={{ marginTop: '15px', paddingTop: '15px', borderTop: '1px solid #333' }}>
-                          <p style={{ fontSize: '12px', color: '#999', margin: '0 0 8px 0' }}>
+                        <div style={{ marginTop: '15px', paddingTop: '15px', borderTop: '1px solid #d0d0d0' }}>
+                          <p style={{ fontSize: '14px', color: '#666', margin: '0 0 8px 0' }}>
                             ⏱️ {course.duration_minutes} 分鐘
                           </p>
-                          <p style={{ fontSize: '12px', color: '#0071e3', fontWeight: 700, margin: '0' }}>
+                          <p style={{ fontSize: '14px', color: '#0071e3', fontWeight: 700, margin: '0' }}>
                             📑 查看詳情 →
                           </p>
                         </div>
