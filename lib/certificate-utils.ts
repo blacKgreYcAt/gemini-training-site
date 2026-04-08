@@ -71,7 +71,7 @@ function drawTextSmooth(
 }
 
 /**
- * 生成高清証書
+ * 簡化版：直接返回証書圖片 URL
  */
 export async function generateCertificateCanvas(
   data: CertificateData
@@ -96,36 +96,9 @@ export async function generateCertificateCanvas(
       canvas.width = 2400;
       canvas.height = 1600;
 
+      // 簡單地繪製背景圖，不添加文字層
+      // 這樣避免坐標問題，信息由前端分開顯示
       ctx.drawImage(templateImg, 0, 0, canvas.width, canvas.height);
-
-      // 1️⃣ 學員姓名 - 填在 "茲證明 ___ 已成功完成" 的空格
-      drawTextSmooth(
-        ctx,
-        data.userName,
-        1200,
-        820,
-        100,
-        'bold',
-        '#d4af37'
-      );
-
-      // 2️⃣ 授予日期
-      const { year, month, day } = formatDateParts(data.completionDate);
-
-      drawTextSmooth(ctx, year, 720, 1100, 60, 'normal', '#d4af37');
-      drawTextSmooth(ctx, month, 900, 1100, 60, 'normal', '#d4af37');
-      drawTextSmooth(ctx, day, 1080, 1100, 60, 'normal', '#d4af37');
-
-      // 3️⃣ 證書編號
-      drawTextSmooth(
-        ctx,
-        data.certificateNumber,
-        800,
-        1200,
-        50,
-        'normal',
-        '#d4af37'
-      );
 
       resolve(canvas);
     };
