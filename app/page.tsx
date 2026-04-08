@@ -86,7 +86,7 @@ export default function Home() {
                 {/* 該週的課程卡片 */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                   {courses.map((course) => (
-                    <Link key={course.id} href={`/course/${course.week}`}>
+                    <Link key={course.id} href={`/course/${course.week}?id=${course.id}`}>
                       <div
                         style={{
                           display: 'flex',
@@ -166,7 +166,7 @@ export default function Home() {
               gap: '40px',
             }}>
               {advancedCourses.map((course) => (
-                <Link key={course.id} href={`/course/${course.week}`}>
+                <Link key={course.id} href={`/course/${course.week}?id=${course.id}`}>
                   <div
                     style={{
                       display: 'flex',

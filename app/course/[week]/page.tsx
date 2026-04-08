@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation'
 
 export default function CoursePage() {
   const pathname = usePathname()
+  const searchParams = useSearchParams()
   const [week, setWeek] = useState<number | null>(null)
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [pageIdx, setPageIdx] = useState(0)
@@ -21,7 +22,14 @@ export default function CoursePage() {
         setWeek(weekNum)
       }
     }
-  }, [pathname])
+
+    // 從查詢參數提取 id，例如 ?id=1-1
+    const id = searchParams.get('id')
+    if (id) {
+      setSelectedId(id)
+      setPageIdx(0)
+    }
+  }, [pathname, searchParams])
 
   // 鍵盤控制事件 - 使用 selectedId 作為依賴，因為它決定了課程
   useEffect(() => {
