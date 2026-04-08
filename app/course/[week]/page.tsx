@@ -43,7 +43,7 @@ export default function CoursePage() {
     return () => window.removeEventListener('keydown', handleKeyPress)
   }, [selectedId, week])
 
-  if (!week) {
+  if (week === null) {
     return (
       <div style={{ padding: '40px', color: '#000000', background: '#f5f5f7', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
         <div style={{ textAlign: 'center' }}>
