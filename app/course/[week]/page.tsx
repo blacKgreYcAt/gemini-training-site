@@ -114,24 +114,31 @@ export default function CoursePage() {
             width: '100%',
             flexDirection: 'column',
           }}>
-            <div style={{ flex: 1, width: '100%' }}>
+            <div style={{ flex: 1, width: '100%', display: 'flex', flexDirection: 'column', maxHeight: '100%', overflow: 'hidden' }}>
               <h1 style={{
-                fontSize: 'clamp(28px, 8vw, 56px)',
+                fontSize: 'clamp(24px, 6vw, 42px)',
                 color: '#000000',
-                marginBottom: 'clamp(20px, 5vw, 40px)',
+                marginBottom: 'clamp(12px, 3vw, 24px)',
                 textAlign: 'center',
                 fontWeight: 900,
+                flexShrink: 0,
               }}>{page.title}</h1>
               <div style={{
-                fontSize: 'clamp(16px, 4vw, 28px)',
+                fontSize: 'clamp(14px, 3vw, 20px)',
                 color: '#000000',
-                lineHeight: 1.8,
+                lineHeight: 1.6,
                 whiteSpace: 'pre-wrap',
                 maxWidth: '100%',
                 textAlign: 'left',
                 fontWeight: 500,
+                flex: 1,
+                overflow: 'hidden',
+                display: 'flex',
+                alignItems: 'flex-start',
               }}>
-                {page.content}
+                <div style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  {page.content}
+                </div>
               </div>
             </div>
             {selectedId === '1-2' && (
