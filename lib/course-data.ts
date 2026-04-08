@@ -459,7 +459,7 @@ export const courseData: Course[] = [
   // Adv-1：高階提示詞的藝術
   {
     id: "adv-1-1",
-    week: 99,
+    week: 5,
     module: 1,
     title: "高階提示詞的藝術",
     description: "掌握 ROPE 框架與進階提示詞技巧，打造完美指令",
@@ -507,7 +507,7 @@ export const courseData: Course[] = [
   // Adv-2：多模態應用
   {
     id: "adv-2-1",
-    week: 99,
+    week: 6,
     module: 2,
     title: "多模態應用",
     description: "視覺、音聲、視頻分析與 Gemini Live 實戰",
@@ -555,7 +555,7 @@ export const courseData: Course[] = [
   // Adv-3：打造專屬AI
   {
     id: "adv-3-1",
-    week: 99,
+    week: 7,
     module: 3,
     title: "打造專屬AI",
     description: "創建和管理個性化 AI 助手（Gems），實現定制化工作流",
@@ -603,7 +603,7 @@ export const courseData: Course[] = [
   // Adv-4：AI 素養與正確查證
   {
     id: "adv-4-1",
-    week: 99,
+    week: 8,
     module: 4,
     title: "AI 素養與正確查證",
     description: "識別幻覺、事實查證、倫理考量、批判性思維",

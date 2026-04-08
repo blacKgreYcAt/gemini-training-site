@@ -13,7 +13,7 @@ export default function Home() {
   }))
 
   // 進階應用課程
-  const advancedCourses = courseData.filter(c => c.week === 99)
+  const advancedCourses = courseData.filter(c => c.week >= 5 && c.week <= 8)
 
   return (
     <div style={{ background: '#f5f5f7', color: '#000000' }}>
@@ -166,7 +166,7 @@ export default function Home() {
               gap: '40px',
             }}>
               {advancedCourses.map((course) => (
-                <Link key={course.id} href={`/course/99`}>
+                <Link key={course.id} href={`/course/${course.week}`}>
                   <div
                     style={{
                       display: 'flex',
