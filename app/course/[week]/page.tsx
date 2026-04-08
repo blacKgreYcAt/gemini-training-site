@@ -3,26 +3,25 @@
 import Link from 'next/link'
 import { courseData } from '@/lib/course-data'
 import { useState, useEffect } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
-export default function CoursePage({ params }: { params: Promise<{ week: string }> }) {
+export default function CoursePage() {
+  const pathname = usePathname()
   const [week, setWeek] = useState<number | null>(null)
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [pageIdx, setPageIdx] = useState(0)
 
   useEffect(() => {
-    const resolveParams = async () => {
-      try {
-        const resolvedParams = await params
-        const weekNum = parseInt(resolvedParams.week, 10)
-        if (!isNaN(weekNum)) {
-          setWeek(weekNum)
-        }
-      } catch (error) {
-        console.error('Failed to resolve params:', error)
+    // 從路徑提取 week 參數，例如 /course/0 -> 0
+    const match = pathname.match(/\/course\/(\d+)/)
+    if (match && match[1]) {
+      const weekNum = parseInt(match[1], 10)
+      if (!isNaN(weekNum)) {
+        setWeek(weekNum)
       }
     }
-    resolveParams()
-  }, [params])
+  }, [pathname])
 
   // 鍵盤控制事件 - 使用 selectedId 作為依賴，因為它決定了課程
   useEffect(() => {
