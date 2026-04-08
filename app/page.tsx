@@ -97,7 +97,7 @@ export default function Home() {
                           border: '2px solid #0071e3',
                           cursor: 'pointer',
                           transition: 'all 0.3s ease',
-                          height: '280px',
+                          height: '380px',
                         }}
                         onMouseEnter={(e: React.MouseEvent<HTMLDivElement>) => {
                           const el = e.currentTarget as HTMLDivElement;
