@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { cardsData } from '@/lib/cards-data'
+import { updateCardsProgress } from '@/lib/progress-utils'
 import { useState, useEffect } from 'react'
 
 export default function CardsPage() {
@@ -129,7 +130,7 @@ export default function CardsPage() {
           >
             全部 ({cardsData.length})
           </button>
-          {[0, 1, 2, 3, 4].map(week => {
+          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(week => {
             const weekCount = cardsData.filter(c => c.week === week).length
             return (
               <button
@@ -211,7 +212,14 @@ export default function CardsPage() {
 
             {/* Card */}
             <div
-              onClick={() => setIsFlipped(!isFlipped)}
+              onClick={() => {
+                const newFlipped = !isFlipped
+                setIsFlipped(newFlipped)
+                // Track card flip in progress
+                if (newFlipped && currentCard) {
+                  updateCardsProgress(currentCard.id, true)
+                }
+              }}
               style={{
                 width: '100%',
                 maxWidth: 'clamp(280px, 70vw, 500px)',
@@ -454,7 +462,7 @@ export default function CardsPage() {
       <div style={{ borderTop: '2px solid #0071e3', padding: 'clamp(16px, 5vw, 20px) clamp(16px, 8vw, 40px)', textAlign: 'center', color: '#666', fontSize: 'clamp(12px, 3vw, 14px)' }}>
         <p style={{ margin: '0 0 12px 0' }}>💡 提示：點擊卡片翻開、使用 ← → 箭頭導覽或搜尋特定內容</p>
         <p style={{ margin: 0, lineHeight: 1.6 }}>
-          © 2026 大豐貿易集團 • AI 企業協作課程 • 課程與網站規劃：大豐資訊Benjamin •{' '}
+          © 2026 大豐貿易集團 • AI 企業協作課程 •{' '}
           <a href="mailto:benjaminchu@tfg.com.tw" style={{ color: '#0071e3', textDecoration: 'none', fontWeight: 600 }}>
             我要提問
           </a>

@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { courseData } from '@/lib/course-data'
+import { updateSlidesProgress } from '@/lib/progress-utils'
 import { useState, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { usePathname } from 'next/navigation'
@@ -50,6 +51,17 @@ export default function CoursePage() {
     window.addEventListener('keydown', handleKeyPress)
     return () => window.removeEventListener('keydown', handleKeyPress)
   }, [selectedId, week])
+
+  // 追踪幻燈片進度
+  useEffect(() => {
+    if (week !== null && selectedId) {
+      const courses = courseData.filter(c => c.week === week)
+      const course = courses.find(c => c.id === selectedId)
+      if (course?.pages) {
+        updateSlidesProgress(selectedId, pageIdx, course.pages.length)
+      }
+    }
+  }, [week, selectedId, pageIdx])
 
   if (week === null) {
     return (
@@ -132,11 +144,11 @@ export default function CoursePage() {
                 textAlign: 'left',
                 fontWeight: 500,
                 flex: 1,
-                overflow: 'hidden',
+                overflow: 'auto',
                 display: 'flex',
                 alignItems: 'flex-start',
               }}>
-                <div style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                <div style={{ width: '100%', paddingRight: '10px' }}>
                   {page.content}
                 </div>
               </div>
@@ -211,7 +223,7 @@ export default function CoursePage() {
           marginTop: '40px',
         }}>
           <p style={{ margin: 0, lineHeight: 1.6 }}>
-            © 2026 大豐貿易集團 • AI 企業協作課程 • 課程與網站規劃：大豐資訊Benjamin •{' '}
+            © 2026 大豐貿易集團 • AI 企業協作課程 •{' '}
             <a href="mailto:benjaminchu@tfg.com.tw" style={{ color: '#0071e3', textDecoration: 'none', fontWeight: 600 }}>
               我要提問
             </a>
@@ -251,7 +263,7 @@ export default function CoursePage() {
         marginTop: '40px',
       }}>
         <p style={{ margin: 0, lineHeight: 1.6 }}>
-          © 2026 大豐貿易集團 • AI 企業協作課程 • 課程與網站規劃：大豐資訊Benjamin •{' '}
+          © 2026 大豐貿易集團 • AI 企業協作課程 •{' '}
           <a href="mailto:benjaminchu@tfg.com.tw" style={{ color: '#0071e3', textDecoration: 'none', fontWeight: 600 }}>
             我要提問
           </a>

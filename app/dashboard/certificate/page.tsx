@@ -166,7 +166,7 @@ export default function CertificatePage() {
             marginBottom: '30px'
           }}>
             <p style={{ fontSize: '16px', color: '#047857', margin: 0, lineHeight: '1.6' }}>
-              您已成功完成「Gemini 全方位實戰大師課」的所有課程內容、卡牌自學和題庫測驗。
+              您已成功完成「Gemini 企業協作課程」的所有課程內容、卡牌自學和題庫測驗。
               <br />
               <br />
               現在就生成你的專屬證書吧！
