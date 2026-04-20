@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { quizData, getQuestionsBySection } from '@/lib/quiz-data';
+import { updateQuizProgress } from '@/lib/progress-utils';
 import type { QuizQuestion } from '@/lib/quiz-data';
 
 const SECTIONS = [
@@ -40,10 +41,14 @@ export default function QuizPage() {
     if (!showAnswer) {
       setSelectedAnswer(answer);
       setShowAnswer(true);
-      if (answer === currentQuestion.correctAnswer) {
+      const isCorrect = answer === currentQuestion.correctAnswer;
+      if (isCorrect) {
         setScore(score + 1);
       }
       setTotalAnswered(totalAnswered + 1);
+
+      // 更新進度
+      updateQuizProgress(currentQuestion.id, answer, isCorrect);
     }
   };
 
