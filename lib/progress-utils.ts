@@ -174,15 +174,15 @@ export function calculateCompletionRates(progress: UserProgress): void {
       (completedSlides / slidesCourses.length) * 100;
   }
 
-  // 卡牌完成率（預估 39 張卡牌）
-  const totalCards = 39;
+  // 卡牌完成率（Week 0-10: 37 + 18 = 55 張卡牌）
+  const totalCards = 55;
   const flippedCards = Object.values(progress.cardsProgress).filter(
     (c) => c.flipped
   ).length;
   progress.statistics.cardsCompletionRate = (flippedCards / totalCards) * 100;
 
-  // 題庫完成率（130 題）
-  const totalQuestions = 130;
+  // 題庫完成率（100 題）
+  const totalQuestions = 100;
   const answeredQuestions = Object.values(progress.quizProgress).filter(
     (q) => q.answered
   ).length;
