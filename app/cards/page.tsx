@@ -63,6 +63,8 @@ export default function CardsPage() {
       newCompleted.delete(cardId)
     } else {
       newCompleted.add(cardId)
+      // 标记为完成时也追踪进度
+      updateCardsProgress(cardId, true)
     }
     setCompletedCards(newCompleted)
   }
