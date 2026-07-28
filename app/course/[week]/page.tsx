@@ -8,8 +8,11 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { usePathname } from 'next/navigation'
 import { ProtectedRoute } from '@/components/ProtectedRoute'
 import { Navbar } from '@/components/Navbar'
+import { useLanguage } from '@/lib/language-context'
+import { t } from '@/lib/translations'
 
 function CoursePageContent() {
+  const { language } = useLanguage()
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const [week, setWeek] = useState<number | null>(null)
@@ -69,10 +72,10 @@ function CoursePageContent() {
     return (
       <div style={{ padding: '40px', color: '#000000', background: '#f5f5f7', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
         <div style={{ textAlign: 'center' }}>
-          <p style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '20px' }}>加載中...</p>
+          <p style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '20px' }}>{language === 'ja' ? '読み込み中...' : '加載中...'}</p>
           <p style={{ fontSize: '14px', color: '#666', marginBottom: '10px' }}>路徑: {pathname}</p>
-          <p style={{ fontSize: '12px', color: '#999' }}>如果一直停留在此，請重新整理頁面或回到首頁重試</p>
-          <Link href="/" style={{ marginTop: '20px', color: '#0071e3', textDecoration: 'underline', display: 'inline-block' }}>← 返回首頁</Link>
+          <p style={{ fontSize: '12px', color: '#999' }}>{language === 'ja' ? 'ここに留まり続ける場合は、ページを更新するか、ホームページに戻ってもう一度やり直してください' : '如果一直停留在此，請重新整理頁面或回到首頁重試'}</p>
+          <Link href="/" style={{ marginTop: '20px', color: '#0071e3', textDecoration: 'underline', display: 'inline-block' }}>← {t('backToHome', language)}</Link>
         </div>
       </div>
     )
@@ -104,12 +107,12 @@ function CoursePageContent() {
             cursor: 'pointer',
             fontSize: 'clamp(14px, 4vw, 18px)',
             fontWeight: 600,
-          }}>← 返回</button>
+          }}>← {language === 'ja' ? '戻る' : '返回'}</button>
           <span style={{
             color: '#333',
             fontSize: 'clamp(12px, 4vw, 18px)',
             fontWeight: 500,
-          }}>{week === 0 ? '課前準備' : `第 ${week} 週`} | {pageIdx + 1}/{total}</span>
+          }}>{week === 0 ? t('coursePreparation', language) : `${t('week', language)} ${week} ${t('weekSuffix', language)}`} | {pageIdx + 1}/{total}</span>
         </div>
 
         <section style={{
@@ -190,7 +193,7 @@ function CoursePageContent() {
               fontWeight: 600,
             }}
           >
-            ← 上一頁
+            ← {language === 'ja' ? '前のページ' : '上一頁'}
           </button>
           <span style={{
             fontSize: 'clamp(14px, 3vw, 18px)',
@@ -211,7 +214,7 @@ function CoursePageContent() {
               fontWeight: 600,
             }}
           >
-            下一頁 →
+            {language === 'ja' ? '次のページ' : '下一頁'} →
           </button>
         </div>
 
@@ -238,8 +241,8 @@ function CoursePageContent() {
   // 課程列表視圖
   return (
     <div style={{ padding: '40px', background: '#f5f5f7', color: '#000000', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <Link href="/">← 返回首頁</Link>
-      <h1 style={{ fontSize: 'clamp(32px, 8vw, 44px)', marginTop: '40px', marginBottom: '40px' }}>{week === 0 ? '課前準備' : `第 ${week} 週`} ({courses.length})</h1>
+      <Link href="/">← {t('backToHome', language)}</Link>
+      <h1 style={{ fontSize: 'clamp(32px, 8vw, 44px)', marginTop: '40px', marginBottom: '40px' }}>{week === 0 ? t('coursePreparation', language) : `${t('week', language)} ${week} ${t('weekSuffix', language)}`} ({courses.length})</h1>
 
       <div style={{ flex: 1 }}>
         {courses.map(c => (
