@@ -75,15 +75,13 @@ export function LanguageSelector() {
   }
 
   return (
-    <div className="language-selector flex gap-2 items-center">
-      <label className="text-sm font-medium">言語 / Language:</label>
-
-      <div className="flex gap-1">
+    <div className="language-selector">
+      <div className="flex gap-2 bg-gray-100 rounded-lg p-1 inline-flex">
         <button
-          className={`px-3 py-1 rounded text-sm transition-colors ${
+          className={`min-w-24 px-4 py-2 rounded-md font-medium text-sm transition-all ${
             language === 'en'
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+              ? 'bg-blue-600 text-white shadow-sm'
+              : 'bg-transparent text-gray-700 hover:bg-gray-200'
           }`}
           onClick={() => handleLanguageChange('en')}
           disabled={loading}
@@ -93,10 +91,10 @@ export function LanguageSelector() {
         </button>
 
         <button
-          className={`px-3 py-1 rounded text-sm transition-colors ${
+          className={`min-w-24 px-4 py-2 rounded-md font-medium text-sm transition-all ${
             language === 'ja'
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+              ? 'bg-blue-600 text-white shadow-sm'
+              : 'bg-transparent text-gray-700 hover:bg-gray-200'
           }`}
           onClick={() => handleLanguageChange('ja')}
           disabled={loading}
