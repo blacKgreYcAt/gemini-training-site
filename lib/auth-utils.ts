@@ -60,10 +60,11 @@ export function onAuthStateChange(callback: (user: AuthUser | null) => void) {
         url: process.env.NEXT_PUBLIC_SUPABASE_URL ? '✅' : '❌',
         key: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ? '✅' : '❌'
       })
-      // 初始化完成但用戶為 null（未認證）
       callback(null)
       return { unsubscribe: () => {} }
     }
+
+    console.log('✅ Supabase 環境變數已設置，正在連接...')
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       console.log('🔄 Auth state changed:', { event, user: session?.user?.email })
@@ -77,10 +78,10 @@ export function onAuthStateChange(callback: (user: AuthUser | null) => void) {
         callback(null)
       }
     })
+    console.log('✅ Supabase onAuthStateChange 監聽器已設置')
     return subscription
   } catch (error) {
     console.error('❌ Supabase 連接失敗:', error)
-    // 初始化完成但用戶為 null（未認證）
     callback(null)
     return { unsubscribe: () => {} }
   }
