@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/lib/auth-context";
+import { LanguageProvider } from "@/lib/language-context";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { UserMenu } from "@/components/UserMenu";
 
@@ -28,7 +29,8 @@ export default function RootLayout({
   return (
     <html lang="zh-TW" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body style={{ background: '#f5f5f7', color: '#000000', margin: 0, padding: 0 }}>
-        <AuthProvider>
+        <LanguageProvider>
+          <AuthProvider>
           <header style={{
             background: 'white',
             borderBottom: '1px solid #e5e5e7',
@@ -45,6 +47,7 @@ export default function RootLayout({
           </header>
           {children}
         </AuthProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

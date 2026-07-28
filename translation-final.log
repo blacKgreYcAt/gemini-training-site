@@ -52,3 +52,27 @@
 [32m[SUCCESS] ✓ 已翻譯: 3-3[0m
 [INFO] 翻譯題庫 13/18: 4-1
 [32m[SUCCESS] ✓ 已翻譯: 4-1[0m
+[INFO] 翻譯題庫 14/18: adv-1-1
+[32m[SUCCESS] ✓ 已翻譯: adv-1-1[0m
+[INFO] 翻譯題庫 15/18: adv-2-1
+[32m[SUCCESS] ✓ 已翻譯: adv-2-1[0m
+[INFO] 翻譯題庫 16/18: adv-3-1
+[32m[SUCCESS] ✓ 已翻譯: adv-3-1[0m
+[INFO] 翻譯題庫 17/18: adv-4-1
+[32m[SUCCESS] ✓ 已翻譯: adv-4-1[0m
+[INFO] 翻譯題庫 18/18: adv-5-1
+[32m[SUCCESS] ✓ 已翻譯: adv-5-1[0m
+[32m[SUCCESS] 題庫翻譯完成！成功: 18, 失敗: 0[0m
+[INFO] 結果已保存到: C:\Users\imaus\SynologyDrive\公司Claude Code開發專案\Gemini 課程網站\course_quizzes_ja.json
+[INFO] 
+[INFO] ═══════════════════════════════════════
+[32m[SUCCESS] 翻譯工作完成！[0m
+[INFO] ═══════════════════════════════════════
+[INFO] 課程: 8 成功, 0 失敗
+[INFO] 題庫: 18 成功, 0 失敗
+[INFO] 
+[INFO] 生成檔案:
+[INFO]   - all_courses_ja.json (日文課程)
+[INFO]   - course_quizzes_ja.json (日文題庫)
+[INFO] 
+[INFO] 下一步: 將檔案導入 Supabase

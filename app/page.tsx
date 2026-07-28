@@ -5,13 +5,19 @@ import Link from 'next/link'
 import { courseData } from '@/lib/course-data'
 import { ProtectedRoute } from '@/components/ProtectedRoute'
 import { Navbar } from '@/components/Navbar'
+import { useLanguage } from '@/lib/language-context'
+import { getCourses, t } from '@/lib/translations'
 
 function HomeContent() {
-  // 強制 Vercel 重新部署 - v3
+  const { language } = useLanguage()
+
+  // 根據語言選擇課程數據
+  const courses = getCourses(language)
+
   // 按週次組織課程
   const coursesByWeek = [0, 1, 2, 3, 4].map(week => ({
     week,
-    courses: courseData.filter(c => c.week === week)
+    courses: courses.filter((c: any) => c.week === week)
   }))
 
   // 進階應用課程
@@ -46,16 +52,16 @@ function HomeContent() {
         <div className="container">
           <div className="hero-content">
             <h1 style={{ fontSize: '96px', lineHeight: 1.2, color: '#000000' }}>
-              大豐貿易集團<br />
-              <span className="hero-accent">AI 企業協作課程</span>
+              {language === 'ja' ? 'ダフォン貿易グループ' : '大豐貿易集團'}<br />
+              <span className="hero-accent">{t('title', language)}</span>
             </h1>
             <p>
-              四週實體密集課程，掌握 Gemini 六大神器。
+              {t('subtitle1', language)}
               <br />
-              從傳統辦公流程到 AI 驅動決策，完整蛻變。
+              {t('subtitle2', language)}
               <br />
               <br />
-              各地分公司同仁，亦可透過卡牌自學功能，進行無界限的網路學習，參與AI課程。
+              {t('subtitle3', language)}
             </p>
           </div>
         </div>
@@ -64,7 +70,7 @@ function HomeContent() {
       {/* Cases */}
       <section className="cases" id="cases">
         <div className="container">
-          <h2>課程設計</h2>
+          <h2>{t('courseDesign', language)}</h2>
 
           {/* 響應式網格 - 桌面 4 列、平板 2 列、手機 1 列 */}
           <div style={{
@@ -78,10 +84,10 @@ function HomeContent() {
                 {/* 週表頭 */}
                 <div style={{ marginBottom: '30px', paddingBottom: '20px', borderBottom: '3px solid #0071e3' }}>
                   <h3 style={{ fontSize: '24px', fontWeight: 900, color: '#0071e3', margin: '0', textTransform: 'uppercase' }}>
-                    {week === 0 ? '課前準備' : `第 ${week} 週`}
+                    {week === 0 ? t('coursePreparation', language) : `${t('week', language)} ${week} ${t('weekSuffix', language)}`}
                   </h3>
                   <p style={{ fontSize: '14px', color: '#999', margin: '8px 0 0 0' }}>
-                    {courses.length} 個課程
+                    {courses.length} {t('coursesCount', language)}
                   </p>
                 </div>
 
