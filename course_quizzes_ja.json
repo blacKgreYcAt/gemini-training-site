@@ -1,0 +1,1000 @@
+[
+  {
+    "course_id": "0-1",
+    "course_title": "Geminiの登録とマルチデバイス設定",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Gemini 3.6 Flash（2026年7月リリース）の主な強みは何か。",
+        "options": [
+          "A) 出力Tokenが17%削減され、より低価格に設定されている",
+          "B) ビデオ生成のみをサポートしている",
+          "C) すべての旧バージョンを代替する",
+          "D) エージェントプランニングをサポートしていない"
+        ],
+        "correct_answer": "A",
+        "explanation": "Gemini 3.6 Flashは、Token効率の向上（出力Tokenを17%削減）、より低価格な価格設定、およびコード生成やエージェントプランニング機能の強化を提供している。"
+      },
+      {
+        "id": "Q2",
+        "type": "true_false",
+        "question": "Gemini 3.5 Flash-Liteは、高コストかつ低レイテンシーのメインエージェントモデルである。",
+        "options": [],
+        "correct_answer": "False",
+        "explanation": "Gemini 3.5 Flash-Liteは、メインエージェントではなく、低レイテンシーでコスト効率の高い**サブエージェントのオプション**である。"
+      },
+      {
+        "id": "Q3",
+        "type": "scenario",
+        "question": "Googleが管理する安全なサンドボックス環境内で動作する自律型エージェントを構築する必要がある。2026年のどの新機能を使用すべきか。",
+        "options": [],
+        "correct_answer": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）（パブリックプレビュー）",
+        "explanation": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）を使用することで、開発者は、Googleが管理する安全で隔離されたLinuxサンドボックス環境内で動作する、ステートフルな自律型エージェントを構築・デプロイできる。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "Gemini 3.6 Flashの知識カットオフ日はいつか。",
+        "options": [
+          "A) 2024年12月",
+          "B) 2025年1月",
+          "C) 2026年3月",
+          "D) 2026年7月"
+        ],
+        "correct_answer": "C",
+        "explanation": "Gemini 3.6 Flashは、知識カットオフ日を2025年1月から2026年3月に更新し、より新しい情報を提供している。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Geminiのサンプリングパラメータであるtemperature、top_p、およびtop_kは、2026年に非推奨となった。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "2026年のアップデートにおいて、temperature、top_p、およびtop_kのサンプリングパラメータは非推奨となり、新しいパラメータ設定の使用が推奨されている。"
+      }
+    ]
+  },
+  {
+    "course_id": "0-2",
+    "course_title": "Gemini 3.5 Pro vs Ultra と新しい Gemini 3.6 Flash",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Gemini 3.6 Flashにおける、3.5 Flashからの主な改善点は何か？",
+        "options": [
+          "A) Token効率が17%向上し、より低価格に",
+          "B) ビデオ生成のみに対応",
+          "C) エージェントをサポートしない",
+          "D) より多くの計算リソースが必要"
+        ],
+        "correct_answer": "A",
+        "explanation": "Gemini 3.6 Flashは、改善されたToken効率（出力Tokenが17%減少）、より低価格な料金設定、および強化されたコード/エージェントのプランニング機能を提供する。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "迅速かつ低コストなビデオ生成（3〜10秒）を必要とするアプリケーションには、どのモデルが最も適しているか？",
+        "options": [],
+        "correct_answer": "Gemini Omni Flash（6月リリース）",
+        "explanation": "Gemini Omni Flashは高速なビデオ生成をサポートしており、3〜10秒の720pビデオを生成できるため、迅速かつ低コストな選択肢となる。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Gemini Omni Flashは、カスタムの動的ビデオワークフローをサポートするネイティブマルチモーダルモデルである。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "Gemini Omni Flashは2026年6月に公開プレビューが開始されたネイティブマルチモーダルモデルであり、カスタムの動的ビデオワークフローの初の作成をサポートする。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "Google AI Proサブスクリプション（2026年）の月額料金はいくらか？",
+        "options": [
+          "A) 月額10ドル",
+          "B) 月額20ドル",
+          "C) 月額50ドル",
+          "D) 月額100ドル"
+        ],
+        "correct_answer": "B",
+        "explanation": "Google AI Proの料金は月額20ドルであり、無料プランと月額100ドルのUltraプランの間に位置する。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Gemini 2.0 Flashと旧バージョンのImagen/Veoは、2026年時点でも引き続き利用可能である。",
+        "options": [],
+        "correct_answer": "False",
+        "explanation": "これらの旧モデルは2026年に廃止されるため、ユーザーはGemini 3.5 FlashやGemini 3.6 Flashなどの新しい安定版バージョンに移行する必要がある。"
+      }
+    ]
+  },
+  {
+    "course_id": "0-3",
+    "course_title": "Computer Use Tool（デスクトップ、モバイル、ブラウザ環境にわたるコンピュータ操作の自動化）とManaged Agents（Google が管理するセキュアな Linux サンドボックス環境）",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "GeminiのComputer Use Tool（デスクトップ、モバイル、ブラウザ環境にわたるコンピュータ操作の自動化）（6月リリース）は、どの環境をサポートしているか？",
+        "options": [
+          "A) ブラウザのみ",
+          "B) ブラウザ、モバイル、デスクトップ環境",
+          "C) デスクトップのみ",
+          "D) モバイルデバイスのみ"
+        ],
+        "correct_answer": "B",
+        "explanation": "Computer Use Tool（デスクトップ、モバイル、ブラウザ環境にわたるコンピュータ操作の自動化）は、ブラウザ、モバイル、デスクトップ環境をネイティブにサポートしており、シンプルな操作と意図のサポートを提供する。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "Googleが管理する環境で、24時間年中無休で動作する自律型エージェントをデプロイしたい。最適なソリューションは何か？",
+        "options": [],
+        "correct_answer": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）（パブリックプレビュー）",
+        "explanation": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）を使用すると、Googleが管理するLinuxサンドボックス環境に、長期実行に適した自律型でステートフルなエージェントをデプロイできる。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Gemini 3.5 Live Translateは、70以上の言語を自動検出し、話し手の自然な語調を維持することができる。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "Gemini 3.5 Live Translateは、70以上の言語を自動検出し、元の自然な語調を維持することで、翻訳のレイテンシーを排除する新しい音声モデルである。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "Gemini 3.5 Flashのコンピュータ操作（Computer Use）能力は、2026年に何%に向上したか？",
+        "options": [
+          "A) 65%",
+          "B) 75%",
+          "C) 83%",
+          "D) 95%"
+        ],
+        "correct_answer": "C",
+        "explanation": "Gemini 3.5 Flashのコンピュータ操作能力は78.4%から83%に向上し、OSWorld-Verifiedベンチマークにおいて、より優れたパフォーマンスを示した。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Gemini Spark（macOS）は、Google Workspaceにおける日常的なタスクを自動化できる。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "Gemini Sparkは2026年6月にmacOSで利用可能になり、個人向けAIエージェントとして、ファイルの整理やGoogle Workspaceのワークフローを自動化する。"
+      }
+    ]
+  },
+  {
+    "course_id": "1-1",
+    "course_title": "2026年AI新時代：Geminiの進化",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "2026年にGoogleがリリースした、3つの新しいGeminiモデルはどれか。",
+        "options": [
+          "A) 3.5 Flash, 3.6 Flash, Ultra",
+          "B) 3.6 Flash, 3.5 Flash-Lite, Omni Flash",
+          "C) Flash, Pro, Ultra",
+          "D) 2.0 Flash, 3.0 Flash, 4.0 Flash"
+        ],
+        "correct_answer": "B",
+        "explanation": "2026年7月にリリースされた主要な3つのモデルは、Gemini 3.6 Flash、3.5 Flash-Lite、およびGemini Omni Flashである。"
+      },
+      {
+        "id": "Q2",
+        "type": "true_false",
+        "question": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）は、隔離されたGoogleの管理環境内で実行できるため、企業の自動化において重要である。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）は、安全で隔離されたGoogle管理のLinuxサンドボックス環境で動作するため、エンタープライズレベルの自動化とセキュリティ要件に最適である。"
+      },
+      {
+        "id": "Q3",
+        "type": "scenario",
+        "question": "ある企業が、デスクトップ、モバイル、ブラウザ環境にわたるタスクを自動化できるシステムを必要としている。2026年のどの新機能を使用すべきか。",
+        "options": [],
+        "correct_answer": "Computer Use Tool（デスクトップ、モバイル、ブラウザ環境にわたるコンピュータ操作の自動化）とManaged Agents（Google が管理するセキュアな Linux サンドボックス環境）の組み合わせ",
+        "explanation": "Computer Use Tool（デスクトップ、モバイル、ブラウザ環境にわたるコンピュータ操作の自動化）は複数の環境（デスクトップ、モバイル、ブラウザ）をサポートし、Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）は管理された実行環境を提供する。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "NotebookLMは2026年のアップグレードによって、どのような機能が追加されたか。",
+        "options": [
+          "A) ビデオ生成",
+          "B) 高度な推論とコード実行",
+          "C) 音声翻訳",
+          "D) 画像編集"
+        ],
+        "correct_answer": "B",
+        "explanation": "NotebookLMは高度な推論とコード実行機能がアップグレードされ、構造化されたリサーチワークフローをサポートする。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Gemini Omni Flashは、テキストからビデオへの生成のみに対応している。",
+        "options": [],
+        "correct_answer": "False",
+        "explanation": "Gemini Omni Flashは、テキストまたは静止画からビデオへの生成をサポートしており、より柔軟である。"
+      }
+    ]
+  },
+  {
+    "course_id": "1-2",
+    "course_title": "2026年の6大画期的ツール（更新版）",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Gemini Omni Flashのビデオ生成機能の仕様はどのようなものか。",
+        "options": [
+          "A) 1〜3秒、480p",
+          "B) 3〜10秒、720p",
+          "C) 10〜30秒、1080p",
+          "D) 30〜60秒、4K"
+        ],
+        "correct_answer": "B",
+        "explanation": "Gemini Omni Flashは3〜10秒、720p解像度のビデオを生成可能であり、高速かつ効率的なビデオ生成を提供する。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "自身のWorkspaceにおいて、ドキュメントの整理や日常タスクを自動化したい。どのツールが最も適しているか。",
+        "options": [],
+        "correct_answer": "Gemini Spark（macOSパーソナルエージェント）",
+        "explanation": "Gemini Sparkは、2026年に新しくリリースされたmacOS用の個人向けAIエージェントであり、Google Workspaceのワークフローを自動化できる。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Gemini Live Translateは、70以上の言語で同時にリアルタイム翻訳を行うことができる。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "Gemini Live Translateは、70以上の言語を自動で検出して翻訳し、自然な語調を維持するため、多言語での会話に適している。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "新型Google Homeスピーカー（2026）の主な特徴は何か。",
+        "options": [
+          "A) 音声コマンドのみをサポートする",
+          "B) 自然な話し言葉を理解し、複数のリクエストを同時に処理できる",
+          "C) 特殊なプログラミングが必要である",
+          "D) Geminiをサポートしていない"
+        ],
+        "correct_answer": "B",
+        "explanation": "新しいGoogle HomeスピーカーはGeminiを内蔵しており、厳格なコマンドを必要とせずに自然な話し言葉を理解し、複数のリクエストを同時に処理できる。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Canvas（ドキュメントとコードの作成・編集スペース）は、2026年にGemini 3.6 Flashによる効率的なドキュメント分析をサポートする。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "Gemini 3.6 Flashは、ドキュメント分析から複数ステップのプロジェクトに至る日常タスク向けに設計されており、Canvas（ドキュメントとコード of 作成・編集スペース）と統合されている。"
+      }
+    ]
+  },
+  {
+    "course_id": "1-3",
+    "course_title": "2026年の講義振り返り：新ツールの実践的活用",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "scenario",
+        "question": "クライアントはコストを抑えながら、マーケティング動画を迅速に生成したいと考えている。どの2026年モデルを使用すべきか。",
+        "options": [],
+        "correct_answer": "Gemini Omni Flash（3〜10秒の動画、720p）",
+        "explanation": "Omni Flashは最も費用対効果の高い選択肢であり、高品質な短尺動画を迅速に生成できる。"
+      },
+      {
+        "id": "Q2",
+        "type": "true_false",
+        "question": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）は開発環境でのみ使用可能であり、本番環境へのデプロイには適していない。",
+        "options": [],
+        "correct_answer": "False",
+        "explanation": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）は本番環境向けに設計されており、Googleが管理するサンドボックス内で安全な自律エージェントのデプロイを提供する。"
+      },
+      {
+        "id": "Q3",
+        "type": "multiple_choice",
+        "question": "Geminiモデルを選択する際、2026年のベストプラクティスは何か。",
+        "options": [
+          "A) 常に最も高価なモデルを使用する",
+          "B) タスクに応じてGemini 3.6 Flash、3.5 Flash-Lite、またはOmni Flashを選択する",
+          "C) 旧バージョンのみを使用する",
+          "D) すべてのタスクにProモデルを使用する"
+        ],
+        "correct_answer": "B",
+        "explanation": "2026年のベストプラクティスは、具体的なタスクに応じて適切なモデルを選択することである。Gemini 3.6 Flashは一般的なタスク、3.5 Flash-Liteはコスト最適化、Omni Flashは動画にそれぞれ使用する。"
+      },
+      {
+        "id": "Q4",
+        "type": "true_false",
+        "question": "Google AI Ultraサブスクリプション（月額100ドル）には、Deep Research（複雑なトピックの自動調査機能）やVeo（ビデオ生成機能）などのすべての高度な機能が含まれている。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "Google AI Ultraは最上位のサブスクリプションプランであり、すべての高度な機能と最大のコンテキストウィンドウを提供する。"
+      },
+      {
+        "id": "Q5",
+        "type": "scenario",
+        "question": "チームで複雑な多言語の会話を行い、即座に翻訳する必要がある。2026年のどの新機能を使用すべきか。",
+        "options": [],
+        "correct_answer": "Gemini Live Translate（70以上の言語を自動検出し、トーンを維持）",
+        "explanation": "Live Translateは、翻訳のレイテンシーなしで、自然なトーンを維持したリアルタイムかつ自動の多言語翻訳を提供する。"
+      }
+    ]
+  },
+  {
+    "course_id": "2-1",
+    "course_title": "プロンプトエンジニアリング（2026年版）",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "2026年のGeminiモデルを使用する際、非推奨となったサンプリングパラメータはどれか。",
+        "options": [
+          "A) max_tokens",
+          "B) temperature, top_p, top_k",
+          "C) model_name",
+          "D) system_prompt"
+        ],
+        "correct_answer": "B",
+        "explanation": "2026年において、temperature、top_p、top_kのサンプリングパラメータは非推奨となっており、新しいパラメータ設定を使用する必要がある。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "Gemini 3.6 Flashの効率性に適合するようにプロンプトを最適化したい。何に注力すべきか。",
+        "options": [],
+        "correct_answer": "非推奨のサンプリングパラメータを避け、新しいパラメータシステムを使用すること。",
+        "explanation": "Gemini 3.6 FlashのToken（テキスト処理の基本単位）効率に適応するためには、非推奨となったtemperatureなどではなく、新しいパラメータ設定を使用する必要がある。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Gemini 3.6 Flashはコードプランニング能力に優れているため、エージェントワークフローに適している。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "Gemini 3.6 Flashはコードおよびエージェントプランニング能力が強化されており、複雑なエージェントワークフローの構築に非常に適している。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "Managed Agent（Google が管理するセキュアな Linux サンドボックス環境）のプロンプトを構築する際、何を強調すべきか。",
+        "options": [
+          "A) ビジュアルデザイン",
+          "B) 明確な目標、制約、および利用可能なツール",
+          "C) ユーザーインターフェース",
+          "D) ハードウェア要件"
+        ],
+        "correct_answer": "B",
+        "explanation": "Managed Agent（Google が管理するセキュアな Linux サンドボックス環境）のプロンプトでは、目標、制約、および利用可能なツールやアクションを明確に定義する必要がある。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "異なるGeminiモデル（Gemini 3.6 Flash、3.5 Flash-Lite、Omni Flash）では、それぞれ異なるプロンプトの最適化が必要になる場合がある。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "各モデルには異なる強み（効率、コスト、ビデオ生成など）があり、プロンプトはモデルの特性に合わせて最適化する必要がある。"
+      }
+    ]
+  },
+  {
+    "course_id": "2-2",
+    "course_title": "コンテンツ生成とManaged Agents（Google が管理するセキュアな Linux サンドボックス環境）",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Gemini Omni Flashを使用してビデオコンテンツを生成する際の、最適なユースケースは何か。",
+        "options": [
+          "A) 2時間の映画を制作する",
+          "B) 3〜10秒のマーケティング向けクリップを迅速に生成する",
+          "C) ロスレスの4Kビデオを生成する",
+          "D) プロフェッショナルなビデオ素材を編集する"
+        ],
+        "correct_answer": "B",
+        "explanation": "Gemini Omni Flashは、ソーシャルメディアやマーケティング向けの短尺ビデオ（3〜10秒、720p）を迅速に生成するのに最適である。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "大量のコンテンツバリエーションを生成し、品質を自動評価する必要がある。ツールをどのように組み合わせるべきか。",
+        "options": [],
+        "correct_answer": "Gemini 3.6 Flashを使用したコンテンツ生成 + Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）による自動評価",
+        "explanation": "Gemini 3.6 Flashの高い効率性は大量生成に適しており、Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）によって評価とフィルタリングのプロセスを自動化できる。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Gemini 3.5 Flash-Liteは、複雑なワークフローにおける効率的なサブタスクプロセッサとしての使用に適している。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "Gemini 3.5 Flash-Liteは、低レイテンシーでコスト効率の高いサブエージェントであり、ワークフロー内の特定のサブタスクを処理するのに最適である。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "AIコンテンツを生成した後のベストプラクティスは何か。",
+        "options": [
+          "A) 直接公開する",
+          "B) 人の手でレビューおよび修正を行う",
+          "C) Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）を使用して自動検証を行う",
+          "D) BとCの組み合わせ"
+        ],
+        "correct_answer": "D",
+        "explanation": "ベストプラクティスは、Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）による自動検証と人の手によるレビューを組み合わせることで、品質と正確性を確保することである。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Gemini 3.6 Flashのトークン効率の向上により、コスト効率と品質の面で最適な選択肢となっている。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "Gemini 3.6 Flashは、高い出力品質を維持しながら、トークン効率を17%向上させ、より低価格な料金設定を実現している。"
+      }
+    ]
+  },
+  {
+    "course_id": "2-3",
+    "course_title": "Deep Research（複雑なトピックの自動調査機能）と自律エージェント",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）は、どのようなユースケースに最も適しているか。",
+        "options": [
+          "A) 簡易的なテキストクエリ",
+          "B) 長期的な実行や、複数ステップにわたる自律タスクを必要とする場合",
+          "C) 計算処理のみ",
+          "D) 画像生成"
+        ],
+        "correct_answer": "B",
+        "explanation": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）は、長期、自律的、かつステートフルなタスク実行向けに設計されており、Googleが管理する安全なホスト環境で実行される。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "エージェントに毎日自動で市場データを収集させ、トレンドを分析し、レポートを作成させたい。どのシステム構成が最も適しているか。",
+        "options": [],
+        "correct_answer": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境） + Computer Use Tool（デスクトップ、モバイル、ブラウザ環境にわたるコンピュータ操作の自動化） + Gemini 3.6 Flash",
+        "explanation": "これら3つを組み合わせる。Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）がインフラストラクチャを提供し、Computer Use Tool（デスクトップ、モバイル、ブラウザ環境にわたるコンピュータ操作の自動化）が環境とのインタラクションを可能にし、Gemini 3.6 Flashが効率的な推論を提供する。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）は隔離されたLinuxサンドボックス内で実行されるため、インターネットにアクセスすることはできない。",
+        "options": [],
+        "correct_answer": "False",
+        "explanation": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）は隔離された環境で実行されるが、提供されるツールやAPIを介して外部リソースにアクセスすることができる。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "リサーチワークフローを構築する際、コードの実行に最も役立つツールはどれか。",
+        "options": [
+          "A) Canvas（ドキュメントとコードの作成・編集スペース）",
+          "B) NotebookLM（2026年アップグレード版）",
+          "C) Spark",
+          "D) Live Translate"
+        ],
+        "correct_answer": "B",
+        "explanation": "NotebookLMの2026年アップグレード版には、高度な推論とコード実行機能が含まれており、構造化されたリサーチワークフローに特に適している。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Gemini 3.6 Flashの知識カットオフ日（2026年3月）は、ほとんどの現在のビジネスユースケースをカバーするのに十分である。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "2026年3月の知識カットオフ日は比較的最新であり、ほとんどのリアルタイムなビジネス要件を満たすのに十分である。さらに新しい情報が必要な場合は、Computer Use Tool（デスクトップ、モバイル、ブラウザ環境にわたるコンピュータ操作の自動化）を組み合わせてWebスクレイピングを行うことができる。"
+      }
+    ]
+  },
+  {
+    "course_id": "3-1",
+    "course_title": "画像と動画の生成（2026年のマルチモーダル時代）",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Gemini Omni Flashと従来のVeoの主な違いは何か。",
+        "options": [
+          "A) Omni Flashの方が高速で、3〜10秒の動画に対応している",
+          "B) 違いはない",
+          "C) Omni Flashはテキストのみを生成する",
+          "D) Veoは現在も使用されている"
+        ],
+        "correct_answer": "A",
+        "explanation": "Gemini Omni Flashは2026年の最新バージョンであり、より高速で、3〜10秒の720p動画生成に対応している。なお、旧バージョンのVeoは提供を終了している。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "ソーシャルメディア用の短い動画ライブラリ（各5秒）を生成する必要がある。どのモデルと手法を使用すべきか。",
+        "options": [],
+        "correct_answer": "Gemini Omni Flashを使用し、Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）でバッチ生成する",
+        "explanation": "Omni Flashは5秒の動画生成に最適であり、Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）を使用することでバッチ生成プロセスを自動化し、コストと時間を削減できる。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Nano Banana 2 Lite（2026年）は、Googleで最も高速かつ最もコスト効率に優れた画像モデルである。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "Nano Banana 2 Liteは2026年にリリースされ、GoogleのこれまでのGemini画像モデルの中で最も高速かつコスト効率に優れている。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "マルチモーダルなワークフローにおけるOmni Flashの利点は何か。",
+        "options": [
+          "A) テキストのみに対応している",
+          "B) ネイティブマルチモーダルであり、テキストまたは画像からの動画生成に対応している",
+          "C) バッチ処理に対応していない",
+          "D) 外部ツールが必要である"
+        ],
+        "correct_answer": "B",
+        "explanation": "Omni Flashはネイティブマルチモーダルモデルであり、テキストまたは静止画から動的な動画を生成できるため、真のマルチモーダルワークフローを実現する。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Omni Flashの動画出力は、常に最大4K解像度である。",
+        "options": [],
+        "correct_answer": "False",
+        "explanation": "Omni Flashが生成する動画は720pであり、4Kではない。これは、速度とコスト効率の最適なバランスである。"
+      }
+    ]
+  },
+  {
+    "course_id": "3-2",
+    "course_title": "Computer Use とクロス環境オートメーション",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Gemini 3.5 Flash の Computer Use（デスクトップ、モバイル、ブラウザ環境にわたるコンピュータ操作 of 自動化）能力が、OSWorld-Verified で 83% に達したのはいつか。",
+        "options": [
+          "A) 2025年",
+          "B) 2026年1月",
+          "C) 2026年6月",
+          "D) 2026年7月"
+        ],
+        "correct_answer": "C",
+        "explanation": "Gemini 3.5 Flash は、2026年6月のパブリックプレビューにおいて、Computer Use 能力の基準値である 83% に達した。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "デスクトップ、モバイル、ブラウザのタスクを自動化できるエンタープライズソリューションを構築する必要がある。アーキテクチャはどのように設計すべきか。",
+        "options": [],
+        "correct_answer": "Computer Use Tool（デスクトップ、モバイル、ブラウザ環境にわたるコンピュータ操作の自動化）（マルチ環境対応）+ Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）（マネージド実行）+ Gemini 3.5 Flash（推論）",
+        "explanation": "この組み合わせは、完全なクロス環境オートメーションを提供する。ツールが環境とのインタラクションを提供し、Agents がセキュアなインフラストラクチャを提供し、Flash が高効率な推論を提供する。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Computer Use Tool（デスクトップ、モバイル、ブラウザ環境にわたるコンピュータ操作の自動化）は、簡素化された操作とインテントのサポートを備えており、統合が容易である。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "2026年版の Computer Use Tool は、簡素化された操作インターフェースとネイティブなインテントサポートを備えて設計されており、統合の複雑さを大幅に軽減する。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "Gemini Spark（macOS）は主に何に使用されるか。",
+        "options": [
+          "A) ビデオ編集",
+          "B) Google Workspace の自動化とファイル整理",
+          "C) 画像生成",
+          "D) コードのコンパイル"
+        ],
+        "correct_answer": "B",
+        "explanation": "Gemini Spark は、Google Workspace のタスク自動化とローカルファイルの整理に特化した個人向け AI エージェントである。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Computer Use Tool（デスクトップ、モバイル、ブラウザ環境にわたるコンピュータ操作の自動化）の簡素化された操作により、非技術系のユーザーでもプログラミングが可能になる。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "操作の簡素化とインテントのサポートによりプログラミングの難易度が下がり、技術的な背景を持たないユーザーでも自動化ワークフローを構築できるようになる。"
+      }
+    ]
+  },
+  {
+    "course_id": "3-3",
+    "course_title": "多言語対応と国際化（Live Translate 2026）",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Gemini Live Translateは最大で何言語に対応しているか？",
+        "options": [
+          "A) 20言語",
+          "B) 35言語",
+          "C) 70以上の言語",
+          "D) 無制限"
+        ],
+        "correct_answer": "C",
+        "explanation": "Gemini Live Translateは70以上の言語を自動検出して翻訳でき、競合製品を大きく上回っている。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "グローバルチームが複数の言語を使用してリアルタイム会議を行っている。体験を最適化するためにどのツールを使用すべきか？",
+        "options": [],
+        "correct_answer": "Gemini Live Translate（自動検出、多言語、トーンの維持）",
+        "explanation": "Live Translateは多言語会議のニーズを完璧に解決する。翻訳遅延（レイテンシー）がなく、自然なトーンを維持し、言語を自動検出する。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Live Translateは、話し手の元のトーンや表現を変化させる。",
+        "options": [],
+        "correct_answer": "False",
+        "explanation": "Live Translateは、コンテンツの翻訳のみを行い、話し手の自然なトーンや表現力を維持するように設計されている。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "Live Translateの主なメリットは何か？",
+        "options": [
+          "A) 無制限の言語に対応",
+          "B) 自動言語検出、低レイテンシー、トーンの維持",
+          "C) テキストのみに対応",
+          "D) 手動での言語選択が必要"
+        ],
+        "correct_answer": "B",
+        "explanation": "Live Translateの主なメリットは、自動検出（手動設定が不要）、低レイテンシー（顕著な遅延がない）、自然なトーン（コミュニケーションの質を維持）の3点である。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Live Translateは、Gemini Liveのリアルタイム音声会話機能と統合して、真の多言語インタラクションを実現できる。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "Live TranslateはGemini Liveとシームレスに統合されており、真の多言語リアルタイム会話をサポートし、言語の壁を取り除く。"
+      }
+    ]
+  },
+  {
+    "course_id": "4-1",
+    "course_title": "2026年ワークフロー統合のベストプラクティス",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "2026年において Gemini ツールを統合するための最適なユースケースはどれか。",
+        "options": [
+          "A) 各ツールを単独で使用する",
+          "B) 組み合わせ：Computer Use Tool（デスクトップ、モバイル、ブラウザ環境にわたるコンピュータ操作 of 自動化） + Managed Agents（Google が管理するセキュアな Linux サンドボックス環境） + Gemini 3.6/3.5 Flash",
+          "C) 無料版のみを使用する",
+          "D) 旧バージョンに依存する"
+        ],
+        "correct_answer": "B",
+        "explanation": "2026年のベストプラクティスは、Computer Use Tool（デスクトップ、モバイル、ブラウザ環境にわたるコンピュータ操作の自動化）（環境との相互作用）、Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）（インフラストラクチャ）、および Gemini モデル（推論）を組み合わせて使用することである。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "中規模企業がエンタープライズ向けの自動化プラットフォームを構築したいと考えている。何を優先して投資すべきか。",
+        "options": [],
+        "correct_answer": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境） + Google AI Pro サブスクリプション（月額 20 ドル） + 社内トレーニング",
+        "explanation": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）はエンタープライズレベルのインフラストラクチャを提供し、Pro サブスクリプションは十分な機能を提供し、社内トレーニングは導入と成功を確実にする。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Google AI Pro（月額 20 ドル）のコストパフォーマンスは、無料版の複数アカウントを使用するよりも優れている。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "Pro サブスクリプションは、より高い API クォータ、優先サポート、および多くの機能を提供するため、通常、複数の無料アカウントを管理するよりもコスト効率が高い。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "Gemini の自動化を導入する際のリスク管理のベストプラクティスは何か。",
+        "options": [
+          "A) リスクを無視して迅速にデプロイする",
+          "B) Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）の環境内で小規模なテストを行い、段階的に拡大する",
+          "C) 本番環境のみでテストする",
+          "D) テストを一切行わない"
+        ],
+        "correct_answer": "B",
+        "explanation": "ベストプラクティスは、Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）の隔離された環境を最大限に活用して安全なテストを実施し、その後、段階的にデプロイ規模を拡大することである。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "2026年のチームトレーニングでは、非推奨となったサンプリングパラメータではなく、新しいパラメータシステムをカバーすべきである。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "temperature、top_p、top_k は非推奨となったため、チームトレーニングは新しいパラメータ設定とベストプラクティスに焦点を当てるべきである。"
+      }
+    ]
+  },
+  {
+    "course_id": "adv-1-1",
+    "course_title": "高度なプロンプトエンジニアリングとManaged Agents（Google が管理するセキュアな Linux サンドボックス環境）",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）用のプロンプトを設計する際、最も重要な要素は何か？",
+        "options": [
+          "A) 華やかな言葉遣い",
+          "B) 明確な目標、利用可能なツール、制約事項、および失敗からの回復戦略",
+          "C) 可能な限り長いこと",
+          "D) 日本語のみであること"
+        ],
+        "correct_answer": "B",
+        "explanation": "効果的なエージェントプロンプトには、明確な目標、利用可能なツールのリスト、操作上の制約、および失敗処理のロジックが含まれている必要がある。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "エージェントのテスト時に無限ループに陥っていることが判明した。プロンプトでこれを防ぐにはどうすればよいか？",
+        "options": [],
+        "correct_answer": "最大反復回数の制限の追加、チェックポイントによる検証、失敗条件の定義",
+        "explanation": "高度なプロンプトには、無限の実行を防ぐために、明確な終了条件、反復制限、およびチェックポイントを含めるべきである。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Gemini 3.6 Flashの強化されたコードプランニング機能は、複雑なエージェントのワークフローに特に適している。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "Gemini 3.6 Flashのコードおよびエージェントプランニング機能の向上により、複雑な自律型エージェントを構築するための最適な選択肢となっている。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）でComputer Use Tool（デスクトップ、モバイル、ブラウザ環境にわたるコンピュータ操作の自動化）を使用する際、プロンプトでは何を強調すべきか？",
+        "options": [
+          "A) 視覚的な美しさ",
+          "B) 環境状態の認識、インタラクションの順序、代替案",
+          "C) コードの文法",
+          "D) ユーザーインターフェース"
+        ],
+        "correct_answer": "B",
+        "explanation": "プロンプトは、エージェントが環境状態を理解し、インタラクションの順序を計画し、代替案を準備するのを支援するものである必要がある。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "高度なプロンプトエンジニアリングは、モデルの選択（3.6 と 3.5 Flash）とは無関係である。",
+        "options": [],
+        "correct_answer": "False",
+        "explanation": "モデルによって強みが異なるため、プロンプトはモデルの特性（効率、コスト、能力）に基づいて最適化されるべきである。"
+      }
+    ]
+  },
+  {
+    "course_id": "adv-2-1",
+    "course_title": "マルチモーダルアプリケーションとOmni Flashワークフロー",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "マルチモーダルアプリケーションにGemini Omni Flashを統合する最適な方法は何であるか。",
+        "options": [
+          "A) テキストのみに使用する",
+          "B) Canvas（ドキュメントとコードの作成・編集スペース）と組み合わせてビデオ編集のフィードバックループを実行する",
+          "C) 画像のみに使用する",
+          "D) 単独で使用する"
+        ],
+        "correct_answer": "B",
+        "explanation": "Omni FlashとCanvas（ドキュメントとコードの作成・編集スペース）の組み合わせは、強力なマルチモーダルワークフローを作成する。Omni Flashがビデオを生成し、Canvas（ドキュメントとコードの作成・編集スペース）が協調的な編集と反復プロセスを提供する。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "チームが多言語のマーケティングビデオを作成したいと考えている。どのツールを組み合わせるべきであるか。",
+        "options": [],
+        "correct_answer": "Gemini Omni Flash（ビデオ）+ Live Translate（多言語）+ Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）（自動化）",
+        "explanation": "3つのツールの組み合わせ：Omni Flashが基本ビデオを生成し、Live Translateが音声を翻訳し、Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）がプロセス全体を自動化する。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Omni Flashは、テキストと画像の入力を同時に処理して1つのビデオを生成することをサポートしている。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "Omni Flashのネイティブなマルチモーダル特性により、テキストによる説明や画像アセットなどの混合入力を1つのビデオに組み合わせることができる。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "複雑なマルチモーダルワークフローにおけるManaged Agents（Google が管理するセキュアな Linux サンドボックス環境）の役割は何であるか。",
+        "options": [
+          "A) Omni Flashを代替する",
+          "B) 各ツールの実行を調整し、状態管理とエラー処理を行う",
+          "C) 計算のみを行う",
+          "D) 関連する役割はない"
+        ],
+        "correct_answer": "B",
+        "explanation": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）はコーディネーターとして機能し、Omni Flash、Live Translate、その他のツールの実行フロー、状態、およびエラーからの回復を管理する。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Nano Banana 2 Liteは、Omni Flashワークフローにおいて画像の前処理または最適化ツールとして使用できる。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "最も効率的な画像モデルであるNano Banana 2 Liteは、画像の前処理やビデオ生成用の入力の最適化に使用できる。"
+      }
+    ]
+  },
+  {
+    "course_id": "adv-3-1",
+    "course_title": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）とカスタム統合",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）にカスタムツールを統合する際のベストプラクティスは何か。",
+        "options": [
+          "A) プロンプト内に直接コードを記述する",
+          "B) 明確なツール定義と API 仕様の宣言による統合",
+          "C) カスタムツールはサポートされていない",
+          "D) デフォルトのツールのみを使用する"
+        ],
+        "correct_answer": "B",
+        "explanation": "ベストプラクティスは、明確なツール定義（名前、パラメータ、戻り値）と API 仕様を用いてカスタムツールを宣言することである。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "エージェントを社内システム（CRM、ERP）と統合したい。アーキテクチャはどのように設計すべきか。",
+        "options": [],
+        "correct_answer": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）（オーケストレーション）+ Computer Use Tool（デスクトップ、モバイル、ブラウザ環境にわたるコンピュータ操作の自動化）（UI 操作）+ カスタム API ツール（直接統合）",
+        "explanation": "ハイブリッド方式：明確に定義された API ツールを介してシステムを直接統合し、Computer Use Tool（デスクトップ、モバイル、ブラウザ環境にわたるコンピュータ操作の自動化）を介して UI 操作を行う。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）のサンドボックス環境は、カスタム依存関係のインストールと実行をサポートしている。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "開発者は Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）のサンドボックス内で、必要な依存関係やカスタム実行環境をインストールできる。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "エージェントツールを設計する際、セキュリティ上の重要な考慮事項は何か。",
+        "options": [
+          "A) セキュリティを無視する",
+          "B) 権限検証、入力検証、ログ記録、タイムアウト設定",
+          "C) 技術的なセキュリティのみ",
+          "D) 実現不可能である"
+        ],
+        "correct_answer": "B",
+        "explanation": "重要なセキュリティ管理策：エージェントの権限検証、入力の検証とクレンジング、すべての操作のログ記録、実行タイムアウトの設定。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Gemini 3.6 Flash の高い効率性は、頻繁に呼び出されるカスタムツールの統合に特に適している。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "Gemini 3.6 Flash の Token（テキスト処理の基本単位）効率向上（-17%）と高速なレスポンス時間は、頻繁にツールを呼び出す際の最適な選択肢となる。"
+      }
+    ]
+  },
+  {
+    "course_id": "adv-4-1",
+    "course_title": "自律型エージェントのアーキテクチャとベストプラクティス",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "エンタープライズ向けの自律型エージェントのアーキテクチャを設計する際、2026年において最も重要なコンポーネントは何か。",
+        "options": [
+          "A) モデルのみ",
+          "B) Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）インフラ + 推論エンジン + ツール層 + モニタリング",
+          "C) 単純なAPIコール",
+          "D) アーキテクチャなし"
+        ],
+        "correct_answer": "B",
+        "explanation": "エンタープライズ向けエージェントにはレイヤードアーキテクチャが必要である。Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）がインフラを提供し、Geminiが推論を担い、ツール層がインタラクションを提供し、モニタリングが信頼性を確保する。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "エージェントが本番環境で予測不可能な動作を示した。どのようなモニタリングを実施すべきか。",
+        "options": [],
+        "correct_answer": "ロギング、意思決定トレース、成功率・失敗率の監視、異常アラート",
+        "explanation": "包括的なモニタリングには、詳細な実行ログ、意思決定パスの可視化、パフォーマンス指標、異常検知、およびアラートが含まれる。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）の隔離環境は十分なセキュリティを担保しているため、追加の保護対策は不要である。",
+        "options": [],
+        "correct_answer": "False",
+        "explanation": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）は基本的な隔離を提供するが、企業は依然としてアクセス制御、監査ログ、レート制限などの追加の保護対策を実施する必要がある。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "Gemini 3.6 Flashと3.5 Flash-Liteは、エージェントアーキテクチャにおいてそれぞれどのような役割に適しているか。",
+        "options": [
+          "A) 完全に同一",
+          "B) Gemini 3.6 Flashをメインの推論に、3.5 Flash-Liteをサブタスクに使用する",
+          "C) 3.5 Flash-Liteはデモにのみ使用する",
+          "D) 違いはない"
+        ],
+        "correct_answer": "B",
+        "explanation": "最適なアーキテクチャ：Gemini 3.6 Flashを複雑な推論とメインの意思決定に使用し、3.5 Flash-Liteを効率的なサブタスク処理に使用する。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Computer Use Tool（デスクトップ、モバイル、ブラウザ環境にわたるコンピュータ操作の自動化）の能力（83%）は、エージェントがすべてのデスクトップタスクを完全に自動化できることを意味する。",
+        "options": [],
+        "correct_answer": "False",
+        "explanation": "83%という数値はベンチマークにおける成功率を意味しており、実際のアプリケーションでは依然として人間の監視と介入メカニズムが必要である。"
+      }
+    ]
+  },
+  {
+    "course_id": "adv-5-1",
+    "course_title": "2026年ケーススタディおよび実装ガイド",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "scenario",
+        "question": "ある企業がGeminiを用いた自動化を導入し、生産性が60%向上した。この企業が使用した可能性が最も高い組み合わせはどれか。",
+        "options": [],
+        "correct_answer": "Managed Agents（Google が管理するセキュアな Linux サンドボックス環境） + Gemini 3.6 Flash + Computer Use Tool（デスクトップ、モバイル、ブラウザ環境にわたるコンピュータ操作の自動化）",
+        "explanation": "この組み合わせは、エージェントの協調、効率的な推論、および複数環境にまたがる実行により、最も高い自動化効率を提供する。"
+      },
+      {
+        "id": "Q2",
+        "type": "true_false",
+        "question": "Gemini 3.6 Flashの17%のToken（テキスト処理の基本単位）効率向上は、大幅なコスト削減とレイテンシー低減をもたらす。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "17%の効率向上はコストを削減するだけでなく、APIの往復時間と応答レイテンシーも削減するため、二重のメリットがある。"
+      },
+      {
+        "id": "Q3",
+        "type": "multiple_choice",
+        "question": "2026年にGeminiの導入に成功した企業が、最も重視した要因は何か。",
+        "options": [
+          "A) 最も高価なモデルの選択",
+          "B) 適切なモデル選択、ツールの組み合わせ、および継続的なモニタリング",
+          "C) トレーニング不要の運用",
+          "D) 即座の全面的な展開"
+        ],
+        "correct_answer": "B",
+        "explanation": "成功の鍵は、タスクに適したモデルを選択し、効果的なツール連携を設計し、継続的なモニタリングと最適化を実行することである。"
+      },
+      {
+        "id": "Q4",
+        "type": "true_false",
+        "question": "月額100ドルのGoogle AI Ultraサブスクリプションの利用は、小規模チームにとって最も費用対効果が高い選択肢である。",
+        "options": [],
+        "correct_answer": "False",
+        "explanation": "小規模チームは通常、AI Pro（月額20ドル）から開始すべきであり、高度な機能（Deep Research（複雑なトピックの自動調査機能）の無制限利用など）が必要になった場合にのみUltraにアップグレードするのが最適である。"
+      },
+      {
+        "id": "Q5",
+        "type": "scenario",
+        "question": "自社のAutoMLプラットフォームが成功を収めた後、グローバル市場への展開を決定した。どのような機能を追加すべきか。",
+        "options": [],
+        "correct_answer": "Gemini Live Translate（70以上の言語に対応） + Managed Agents（Google が管理するセキュアな Linux サンドボックス環境）（リージョン展開）",
+        "explanation": "グローバル展開には、多言語に対応するLive Translateと、各地域に独立したインスタンスをデプロイできるManaged Agents（Google が管理するセキュアな Linux サンドボックス環境）が必要である。"
+      }
+    ]
+  }
+]

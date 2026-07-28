@@ -1,0 +1,78 @@
+[INFO] ═══════════════════════════════════════
+[INFO] Gemini 課程翻譯 - 日本語版本
+[INFO] ═══════════════════════════════════════
+[INFO] 
+[32m[SUCCESS] API Key 已確認[0m
+[INFO] 
+[INFO] 開始翻譯課程內容...
+[INFO] 翻譯課程 1/8: 0-1 - Gemini Registration and Multi-Device Setup
+[32m[SUCCESS] ✓ 已翻譯: 0-1[0m
+[INFO] 翻譯課程 2/8: 0-2 - Gemini 3.1 Pro vs Ultra Subscription Plan Comparison
+[32m[SUCCESS] ✓ 已翻譯: 0-2[0m
+[INFO] 翻譯課程 3/8: 1-1 - Course Kickoff and AI Trends
+[32m[SUCCESS] ✓ 已翻譯: 1-1[0m
+[INFO] 翻譯課程 4/8: 1-2 - Gemini 3.6 Flash: The New Efficiency King
+[32m[SUCCESS] ✓ 已翻譯: 1-2[0m
+[INFO] 翻譯課程 5/8: 2-1 - Managed Agents: Autonomous Task Execution
+[32m[SUCCESS] ✓ 已翻譯: 2-1[0m
+[INFO] 已處理 5 門課程，等待...
+[INFO] 翻譯課程 6/8: 2-2 - Computer Use Tool: Desktop Automation
+[32m[SUCCESS] ✓ 已翻譯: 2-2[0m
+[INFO] 翻譯課程 7/8: 3-1 - Deep Research, Veo, Imagen 3: Advanced Content Generation
+[32m[SUCCESS] ✓ 已翻譯: 3-1[0m
+[INFO] 翻譯課程 8/8: 3-2 - Canvas, Context Caching, and Cost Optimization
+[32m[SUCCESS] ✓ 已翻譯: 3-2[0m
+[32m[SUCCESS] 課程翻譯完成！成功: 8, 失敗: 0[0m
+[INFO] 結果已保存到: C:\Users\imaus\SynologyDrive\公司Claude Code開發專案\Gemini 課程網站\all_courses_ja.json
+[INFO] 
+[INFO] 開始翻譯題庫...
+[INFO] 翻譯題庫 1/18: 0-1
+[32m[SUCCESS] ✓ 已翻譯: 0-1[0m
+[INFO] 翻譯題庫 2/18: 0-2
+[32m[SUCCESS] ✓ 已翻譯: 0-2[0m
+[INFO] 翻譯題庫 3/18: 0-3
+[32m[SUCCESS] ✓ 已翻譯: 0-3[0m
+[INFO] 翻譯題庫 4/18: 1-1
+[32m[SUCCESS] ✓ 已翻譯: 1-1[0m
+[INFO] 翻譯題庫 5/18: 1-2
+[32m[SUCCESS] ✓ 已翻譯: 1-2[0m
+[INFO] 翻譯題庫 6/18: 1-3
+[32m[SUCCESS] ✓ 已翻譯: 1-3[0m
+[INFO] 翻譯題庫 7/18: 2-1
+[32m[SUCCESS] ✓ 已翻譯: 2-1[0m
+[INFO] 翻譯題庫 8/18: 2-2
+[32m[SUCCESS] ✓ 已翻譯: 2-2[0m
+[INFO] 翻譯題庫 9/18: 2-3
+[32m[SUCCESS] ✓ 已翻譯: 2-3[0m
+[INFO] 翻譯題庫 10/18: 3-1
+[32m[SUCCESS] ✓ 已翻譯: 3-1[0m
+[INFO] 翻譯題庫 11/18: 3-2
+[32m[SUCCESS] ✓ 已翻譯: 3-2[0m
+[INFO] 翻譯題庫 12/18: 3-3
+[32m[SUCCESS] ✓ 已翻譯: 3-3[0m
+[INFO] 翻譯題庫 13/18: 4-1
+[32m[SUCCESS] ✓ 已翻譯: 4-1[0m
+[INFO] 翻譯題庫 14/18: adv-1-1
+[32m[SUCCESS] ✓ 已翻譯: adv-1-1[0m
+[INFO] 翻譯題庫 15/18: adv-2-1
+[32m[SUCCESS] ✓ 已翻譯: adv-2-1[0m
+[INFO] 翻譯題庫 16/18: adv-3-1
+[32m[SUCCESS] ✓ 已翻譯: adv-3-1[0m
+[INFO] 翻譯題庫 17/18: adv-4-1
+[32m[SUCCESS] ✓ 已翻譯: adv-4-1[0m
+[INFO] 翻譯題庫 18/18: adv-5-1
+[32m[SUCCESS] ✓ 已翻譯: adv-5-1[0m
+[32m[SUCCESS] 題庫翻譯完成！成功: 18, 失敗: 0[0m
+[INFO] 結果已保存到: C:\Users\imaus\SynologyDrive\公司Claude Code開發專案\Gemini 課程網站\course_quizzes_ja.json
+[INFO] 
+[INFO] ═══════════════════════════════════════
+[32m[SUCCESS] 翻譯工作完成！[0m
+[INFO] ═══════════════════════════════════════
+[INFO] 課程: 8 成功, 0 失敗
+[INFO] 題庫: 18 成功, 0 失敗
+[INFO] 
+[INFO] 生成檔案:
+[INFO]   - all_courses_ja.json (日文課程)
+[INFO]   - course_quizzes_ja.json (日文題庫)
+[INFO] 
+[INFO] 下一步: 將檔案導入 Supabase
