@@ -178,6 +178,76 @@ A: localStorage持久化存儲,不會因刷新而丟失。只有用戶手動清�
 **Q: 卡牌完成數顯示10/55,但進度0%?**  
 A: UI標記(completedCards)和進度系統(cardsProgress.flipped)是分開的。需要同時翻開卡牌並調用updateCardsProgress()。
 
+### Phase 3: 多語言系統 & 語言選擇修復 (2026-07-28)
+
+**目標**: 添加日文支持 + 修復語言選擇按鈕
+
+#### 問題 #1: 語言選擇按鈕返回 500 錯誤
+```
+症狀: 點擊語言按鈕時，POST /api/user-language-preference 返回 500
+根本原因: Supabase RLS 政策阻止未認證用戶操作
+```
+
+#### 修復步驟:
+
+**1. API 路由修復** (app/api/user-language-preference/route.ts)
+```typescript
+// ✅ 使用服務角色密鑰繞過 RLS
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_ROLE_KEY  // ⭐ 服務角色密鑰
+);
+
+// ✅ 改進的錯誤處理
+if (error) {
+  console.error('❌ Supabase error:', {
+    code: error.code,
+    message: error.message,
+    details: error.details,
+  });
+  throw new Error(`Supabase error: ${error.message}`);
+}
+```
+
+**2. 前端邏輯修復** (components/LanguageSelector.tsx)
+```typescript
+// ✅ 未登錄用戶: 只保存到 localStorage
+if (!user) {
+  console.log('ℹ️ User not logged in. Language preference saved to localStorage only.');
+} else {
+  // ✅ 已登錄用戶: 嘗試保存到 Supabase
+  const session = await getSession();
+  if (session?.access_token) {
+    headers['Authorization'] = `Bearer ${session.access_token}`;
+  }
+  // 發送 API 請求...
+}
+```
+
+#### 部署信息
+
+| 項目 | Commit | 日期 | 內容 |
+|------|--------|------|------|
+| 公司網站 | 82bf199 | 2026-07-28 | 修復語言選擇按鈕的 500 錯誤 |
+
+#### 測試結果 ✅
+
+**本地開發環境**:
+- ✅ 語言按鈕點擊正常
+- ✅ localStorage 正確保存語言偏好
+- ✅ 未登錄用戶無 API 調用（預期行為）
+
+**生產環境 (Vercel)**:
+- ✅ 語言選擇功能完全運作
+- ✅ localStorage 中成功保存語言偏好
+- ✅ 沒有 500 錯誤
+
+#### 待解決問題
+
+1. **Card 背景圖片** - SVG 文件在生產環境中不顯示
+   - 37 個 SVG 文件已提交到 Git
+   - 需要調查 Vercel 的靜態文件服務配置
+
 ---
 
-**最後更新**: 2024-07-08 | **狀態**: ✅ 生產就緒
+**最後更新**: 2026-07-28 | **狀態**: ✅ 語言選擇修復完成，生產環境驗證通過
