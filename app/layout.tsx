@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/lib/auth-context";
 import { LanguageSelector } from "@/components/LanguageSelector";
+import { UserMenu } from "@/components/UserMenu";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,7 +38,10 @@ export default function RootLayout({
             alignItems: 'center'
           }}>
             <h1 style={{ margin: 0, fontSize: '1.2rem' }}>Gemini 課程</h1>
-            <LanguageSelector />
+            <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+              <LanguageSelector />
+              <UserMenu />
+            </div>
           </header>
           {children}
         </AuthProvider>
