@@ -6,6 +6,7 @@
 
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/lib/auth-context';
+import { getSession } from '@/lib/auth-utils';
 
 type Language = 'zh' | 'ja';
 
@@ -49,23 +50,50 @@ export function LanguageSelector() {
   async function handleLanguageChange(newLanguage: Language) {
     setLanguage(newLanguage);
 
-    // 保存到 localStorage
+    // 保存到 localStorage（總是會做）
     localStorage.setItem('preferred_language', newLanguage);
 
     // 如果用戶已登錄，保存到 Supabase
     if (user) {
       try {
-        await fetch('/api/user-language-preference', {
+        const headers: Record<string, string> = {
+          'Content-Type': 'application/json',
+        };
+
+        // 獲取認證會話並添加到頭部
+        try {
+          const session = await getSession();
+          if (session?.access_token) {
+            headers['Authorization'] = `Bearer ${session.access_token}`;
+            console.log('✅ Auth token acquired for user:', user.id);
+          }
+        } catch (e) {
+          console.warn('⚠️ Failed to get auth token:', e);
+        }
+
+        console.log('🔴 API CALL: /api/user-language-preference with userId:', user.id);
+        const response = await fetch('/api/user-language-preference', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers,
           body: JSON.stringify({
             userId: user.id,
             preferredLanguage: newLanguage,
           }),
         });
+
+        if (!response.ok) {
+          console.error('❌ API error:', response.status, response.statusText);
+          const error = await response.json().catch(() => ({}));
+          console.error('Error details:', error);
+        } else {
+          const data = await response.json();
+          console.log('✅ Language preference saved to Supabase:', newLanguage, data);
+        }
       } catch (error) {
-        console.error('Failed to save language preference:', error);
+        console.error('Failed to save language preference to Supabase:', error);
       }
+    } else {
+      console.log('ℹ️ User not logged in. Language preference saved to localStorage only.');
     }
 
     // 發送自定義事件以通知其他組件

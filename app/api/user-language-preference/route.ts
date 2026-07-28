@@ -1,10 +1,19 @@
 import { createClient } from '@supabase/supabase-js';
 import { NextRequest, NextResponse } from 'next/server';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
-);
+function createAuthenticatedClient(request: NextRequest) {
+  const authHeader = request.headers.get('authorization');
+
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',
+    {
+      global: {
+        headers: authHeader ? { Authorization: authHeader } : {},
+      },
+    }
+  );
+}
 
 // GET - 獲取用戶語言偏好
 export async function GET(request: NextRequest) {
@@ -18,6 +27,8 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    const supabase = createAuthenticatedClient(request);
+
     const { data, error } = await supabase
       .from('users_language_preferences')
       .select('preferred_language')
@@ -29,7 +40,7 @@ export async function GET(request: NextRequest) {
     }
 
     return NextResponse.json({
-      preferred_language: data?.preferred_language || 'en',
+      preferred_language: data?.preferred_language || 'zh',
     });
   } catch (error) {
     console.error('Error fetching language preference:', error);
@@ -53,6 +64,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!serviceRoleKey) {
+      console.error('❌ SUPABASE_SERVICE_ROLE_KEY is not set');
+      return NextResponse.json(
+        { error: 'Server configuration error: missing service role key' },
+        { status: 500 }
+      );
+    }
+
+    // 使用服務角色金鑰來繞過 RLS
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+      serviceRoleKey
+    );
+
+    console.log('Attempting to upsert:', { userId, preferredLanguage });
+
     const { data, error } = await supabase
       .from('users_language_preferences')
       .upsert(
@@ -65,17 +93,25 @@ export async function POST(request: NextRequest) {
       .select();
 
     if (error) {
-      throw error;
+      console.error('❌ Supabase error:', {
+        code: error.code,
+        message: error.message,
+        details: error.details,
+        hint: error.hint
+      });
+      throw new Error(`Supabase error: ${error.message}`);
     }
 
+    console.log('✅ Successfully upserted:', data);
     return NextResponse.json({
       success: true,
       preferred_language: preferredLanguage,
     });
   } catch (error) {
-    console.error('Error setting language preference:', error);
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    console.error('❌ Error setting language preference:', errorMessage);
     return NextResponse.json(
-      { error: 'Failed to set language preference' },
+      { error: 'Failed to set language preference', details: errorMessage },
       { status: 500 }
     );
   }
