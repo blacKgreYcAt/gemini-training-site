@@ -104,13 +104,21 @@ export function LanguageSelector() {
 
   return (
     <div className="language-selector">
-      <div className="flex gap-2 bg-gray-100 rounded-lg p-1 inline-flex">
+      <div style={{ display: 'inline-flex', gap: '8px', backgroundColor: '#f3f4f6', borderRadius: '8px', padding: '4px' }}>
         <button
-          className={`min-w-24 px-4 py-2 rounded-md font-medium text-sm transition-all ${
-            language === 'zh'
-              ? 'bg-blue-600 text-white shadow-sm'
-              : 'bg-transparent text-gray-700 hover:bg-gray-200'
-          }`}
+          style={{
+            minWidth: '96px',
+            padding: '8px 16px',
+            borderRadius: '6px',
+            fontWeight: '500',
+            fontSize: '14px',
+            transition: 'all 0.2s',
+            backgroundColor: language === 'zh' ? '#2563eb' : 'transparent',
+            color: language === 'zh' ? 'white' : '#374151',
+            border: 'none',
+            cursor: 'pointer',
+            boxShadow: language === 'zh' ? '0 1px 2px 0 rgba(0, 0, 0, 0.05)' : 'none'
+          }}
           onClick={() => handleLanguageChange('zh')}
           disabled={loading}
           aria-label="中文"
@@ -119,11 +127,19 @@ export function LanguageSelector() {
         </button>
 
         <button
-          className={`min-w-24 px-4 py-2 rounded-md font-medium text-sm transition-all ${
-            language === 'ja'
-              ? 'bg-blue-600 text-white shadow-sm'
-              : 'bg-transparent text-gray-700 hover:bg-gray-200'
-          }`}
+          style={{
+            minWidth: '96px',
+            padding: '8px 16px',
+            borderRadius: '6px',
+            fontWeight: '500',
+            fontSize: '14px',
+            transition: 'all 0.2s',
+            backgroundColor: language === 'ja' ? '#2563eb' : 'transparent',
+            color: language === 'ja' ? 'white' : '#374151',
+            border: 'none',
+            cursor: 'pointer',
+            boxShadow: language === 'ja' ? '0 1px 2px 0 rgba(0, 0, 0, 0.05)' : 'none'
+          }}
           onClick={() => handleLanguageChange('ja')}
           disabled={loading}
           aria-label="日本語"
