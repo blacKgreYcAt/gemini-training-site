@@ -2,7 +2,15 @@
   "permissions": {
     "allow": [
       "Bash(npm --version)",
-      "Bash(npm create:*)"
+      "Bash(npm create:*)",
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit -m '🔀 合併遠端代碼 + 2026年7月題庫升級 *)",
+      "Bash(git push *)",
+      "Bash(git commit *)",
+      "WebSearch",
+      "WebFetch(domain:gemini.google)",
+      "Bash(git commit -m '📊 項目狀態更新: 完成 2026年7月升級，準備日本語版本開發 *)"
     ]
   }
 }
