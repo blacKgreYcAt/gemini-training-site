@@ -7,6 +7,8 @@ import { updateQuizProgress } from '@/lib/progress-utils';
 import type { QuizQuestion } from '@/lib/quiz-data';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import { Navbar } from '@/components/Navbar';
+import { useLanguage } from '@/lib/language-context';
+import { t } from '@/lib/translations';
 
 const SECTIONS = [
   { id: 1, name: '基礎認識 - Gemini 功能與訂閱', range: '問題 1-20' },
@@ -18,6 +20,7 @@ const SECTIONS = [
 ];
 
 function QuizPageContent() {
+  const { language } = useLanguage();
   const [selectedSection, setSelectedSection] = useState<number | null>(null);
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -90,10 +93,10 @@ function QuizPageContent() {
       <div style={styles.container}>
         <div style={styles.header}>
           <Link href="/" style={styles.backLink}>
-            ← 返回課程列表
+            ← {t('backToHome', language)}
           </Link>
-          <h1 style={styles.title}>🎓 Gemini 企業協作能力自測題庫</h1>
-          <p style={styles.subtitle}>完成測驗，檢視您的學習成果</p>
+          <h1 style={styles.title}>🎓 {t('quizTitle', language)}</h1>
+          <p style={styles.subtitle}>{language === 'ja' ? 'クイズを完成させ、学習成果を確認してください' : '完成測驗，檢視您的學習成果'}</p>
         </div>
 
         <div style={styles.sectionsGrid}>
@@ -103,10 +106,10 @@ function QuizPageContent() {
               style={styles.sectionCard}
               onClick={() => handleStartQuiz(section.id)}
             >
-              <div style={styles.sectionNumber}>第 {section.id} 部分</div>
+              <div style={styles.sectionNumber}>{language === 'ja' ? `第 ${section.id} パート` : `第 ${section.id} 部分`}</div>
               <h3 style={styles.sectionTitle}>{section.name}</h3>
               <p style={styles.sectionRange}>{section.range}</p>
-              <p style={styles.startButton}>開始測驗 →</p>
+              <p style={styles.startButton}>{language === 'ja' ? 'クイズ開始 →' : '開始測驗 →'}</p>
             </div>
           ))}
         </div>
@@ -136,7 +139,7 @@ function QuizPageContent() {
         <div style={styles.quizHeader}>
           <div style={styles.quizNav}>
             <button style={styles.backButton} onClick={handleBackToSections}>
-              ← 返回章節選擇
+              ← {language === 'ja' ? 'セクション選択に戻る' : '返回章節選擇'}
             </button>
             <div style={styles.progressInfo}>
               第 {currentQuestionIdx + 1} / {currentQuestions.length} 題
@@ -183,17 +186,17 @@ function QuizPageContent() {
             <div style={styles.answerBox}>
               <div style={styles.answerResult}>
                 {selectedAnswer === currentQuestion.correctAnswer ? (
-                  <span style={styles.resultCorrect}>✓ 正確！</span>
+                  <span style={styles.resultCorrect}>✓ {language === 'ja' ? '正解！' : '正確！'}</span>
                 ) : (
-                  <span style={styles.resultIncorrect}>✗ 錯誤</span>
+                  <span style={styles.resultIncorrect}>✗ {language === 'ja' ? '不正解' : '錯誤'}</span>
                 )}
               </div>
               <div style={styles.explanation}>
-                <p style={styles.explanationTitle}>解析：</p>
+                <p style={styles.explanationTitle}>{language === 'ja' ? '解説：' : '解析：'}</p>
                 <p style={styles.explanationText}>{currentQuestion.explanation}</p>
                 {selectedAnswer !== currentQuestion.correctAnswer && (
                   <p style={styles.correctAnswerText}>
-                    正確答案：{currentQuestion.correctAnswer}
+                    {language === 'ja' ? '正解：' : '正確答案：'}{currentQuestion.correctAnswer}
                   </p>
                 )}
               </div>
@@ -203,14 +206,14 @@ function QuizPageContent() {
                 onClick={handleNextQuestion}
               >
                 {currentQuestionIdx === currentQuestions.length - 1
-                  ? '完成測驗 →'
-                  : '下一題 →'}
+                  ? (language === 'ja' ? 'クイズ完了 →' : '完成測驗 →')
+                  : (language === 'ja' ? '次の問題 →' : '下一題 →')}
               </button>
             </div>
           )}
 
           <div style={styles.scoreInfo}>
-            目前得分：{score} / {totalAnswered}
+            {language === 'ja' ? '現在のスコア' : '目前得分'}：{score} / {totalAnswered}
           </div>
         </div>
       </div>
