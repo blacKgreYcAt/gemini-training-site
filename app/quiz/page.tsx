@@ -227,7 +227,7 @@ function QuizPageContent() {
   return (
     <div style={styles.container}>
       <div style={styles.completeBox}>
-        <h1 style={styles.completeTitle}>🎉 測驗完成！</h1>
+        <h1 style={styles.completeTitle}>{language === 'ja' ? '🎉 クイズ完了！' : '🎉 測驗完成！'}</h1>
 
         <div style={styles.scoreCard}>
           <div style={styles.finalScore}>{score} / {currentQuestions.length}</div>
@@ -236,10 +236,10 @@ function QuizPageContent() {
         </div>
 
         <div style={styles.feedback}>
-          {percentage >= 90 && <p>🌟 太棒了！您已掌握本章節的核心概念！</p>}
-          {percentage >= 70 && percentage < 90 && <p>✨ 很好！您對本章節有良好的理解，建議複習弱點單元。</p>}
-          {percentage >= 50 && percentage < 70 && <p>📚 不錯的進度！建議多次複習以加深理解。</p>}
-          {percentage < 50 && <p>💪 加油！建議回顧課程講義並重新測驗。</p>}
+          {percentage >= 90 && <p>{language === 'ja' ? '🌟 素晴らしい！このセクションの核心概念を習得しました！' : '🌟 太棒了！您已掌握本章節的核心概念！'}</p>}
+          {percentage >= 70 && percentage < 90 && <p>{language === 'ja' ? '✨ 素晴らしい！このセクションに関する良好な理解があります。弱点の単元を復習することをお勧めします。' : '✨ 很好！您對本章節有良好的理解，建議複習弱點單元。'}</p>}
+          {percentage >= 50 && percentage < 70 && <p>{language === 'ja' ? '📚 良い進捗です！理解を深めるために、何度も復習することをお勧めします。' : '📚 不錯的進度！建議多次複習以加深理解。'}</p>}
+          {percentage < 50 && <p>{language === 'ja' ? '💪 頑張ってください！コース講義を確認し、クイズを再度実施することをお勧めします。' : '💪 加油！建議回顧課程講義並重新測驗。'}</p>}
         </div>
 
         <div style={styles.buttonGroup}>
@@ -247,18 +247,18 @@ function QuizPageContent() {
             style={styles.retryButton}
             onClick={() => handleStartQuiz(selectedSection!)}
           >
-            重新測驗本章節
+            {language === 'ja' ? 'このセクションを再度実施' : '重新測驗本章節'}
           </button>
           <button
             style={styles.homeButton}
             onClick={handleBackToSections}
           >
-            選擇其他章節
+            {language === 'ja' ? '他のセクションを選択' : '選擇其他章節'}
           </button>
         </div>
 
         <Link href="/" style={styles.returnLink}>
-          返回課程列表 →
+          {t('backToHome', language)} →
         </Link>
       </div>
     </div>
