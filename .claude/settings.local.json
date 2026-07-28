@@ -22,7 +22,27 @@
       "Bash(awk '{print $9, \"\\(\" $5 \"\\)\"}')",
       "Bash(xargs ls -lh)",
       "Bash(git commit -m 'feat: 完成第 4A-4B 階段 - 前端集成與 API 路由 *)",
-      "Bash(git reset *)"
+      "Bash(git reset *)",
+      "Bash(export NEXT_PUBLIC_GEMINI_API_KEY=\"AQ.Ab8RN6K9ozEpvkoPtOfxH5tkXt60zcrIeHuR-gRGeXIl8PgdXw\")",
+      "Bash(tee translation-execution.log)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(git commit -m '✨ 完成日本語翻譯 - Gemini API 自動化翻譯 *)",
+      "Bash(git commit -m '🚀 部署準備完成 - 立即可部署至生產環境 *)",
+      "Bash(git commit -m '📋 Vercel 部署清單 - 立即可執行 *)",
+      "PowerShell(cd \"C:\\\\Users\\\\imaus\\\\SynologyDrive\\\\公司Claude Code開發專案\\\\Gemini 課程網站\"; powershell -ExecutionPolicy Bypass -File deploy.ps1 2>&1 | Select-Object -First 100)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://gemini-training-site.vercel.app)",
+      "Bash(git commit -m ' *)",
+      "Bash(git commit --allow-empty -m '🔄 觸發 Vercel 重新部署 - 確保 SVG 資源正確部署 *)",
+      "Bash(git commit --allow-empty -m '🔄 觸發強制重新部署 - 修復語言選擇器和 SVG 資源加載 *)",
+      "Bash(npm uninstall *)",
+      "Bash(gh api *)",
+      "Bash(git commit -m 'Restore custom CSS styles and RWD while keeping Tailwind directives *)",
+      "Bash(git commit -m 'Add UserMenu component to restore user logout button *)",
+      "Bash(git commit -m 'Implement internationalization \\(i18n\\) for Chinese/Japanese *)",
+      "Bash(git restore *)",
+      "Bash(grep -E \"\\\\.json$\")",
+      "Bash(git commit -m 'Fix JSX syntax and update import paths for i18n *)"
     ]
   }
 }
