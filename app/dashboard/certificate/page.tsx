@@ -11,8 +11,10 @@ import {
   type CertificateData
 } from '@/lib/certificate-utils'
 import { getProgress, checkCertificateEligibility } from '@/lib/progress-utils'
+import { ProtectedRoute } from '@/components/ProtectedRoute'
+import { Navbar } from '@/components/Navbar'
 
-export default function CertificatePage() {
+function CertificatePageContent() {
   const [progress, setProgress] = useState<any>(null)
   const [userName, setUserName] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
@@ -367,6 +369,15 @@ function ProgressItem({
         }} />
       </div>
     </div>
+  )
+}
+
+export default function CertificatePage() {
+  return (
+    <ProtectedRoute>
+      <Navbar />
+      <CertificatePageContent />
+    </ProtectedRoute>
   )
 }
 

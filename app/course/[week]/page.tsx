@@ -6,8 +6,10 @@ import { updateSlidesProgress } from '@/lib/progress-utils'
 import { useState, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { usePathname } from 'next/navigation'
+import { ProtectedRoute } from '@/components/ProtectedRoute'
+import { Navbar } from '@/components/Navbar'
 
-export default function CoursePage() {
+function CoursePageContent() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const [week, setWeek] = useState<number | null>(null)
@@ -270,5 +272,14 @@ export default function CoursePage() {
         </p>
       </div>
     </div>
+  )
+}
+
+export default function CoursePage() {
+  return (
+    <ProtectedRoute>
+      <Navbar />
+      <CoursePageContent />
+    </ProtectedRoute>
   )
 }

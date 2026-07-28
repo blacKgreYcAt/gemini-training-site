@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { quizData, getQuestionsBySection } from '@/lib/quiz-data';
 import { updateQuizProgress } from '@/lib/progress-utils';
 import type { QuizQuestion } from '@/lib/quiz-data';
+import { ProtectedRoute } from '@/components/ProtectedRoute';
+import { Navbar } from '@/components/Navbar';
 
 const SECTIONS = [
   { id: 1, name: '基礎認識 - Gemini 功能與訂閱', range: '問題 1-20' },
@@ -15,7 +17,7 @@ const SECTIONS = [
   { id: 6, name: '進階應用 - 倫理、決策、企業應用', range: '問題 81-100' }
 ];
 
-export default function QuizPage() {
+function QuizPageContent() {
   const [selectedSection, setSelectedSection] = useState<number | null>(null);
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -257,6 +259,15 @@ export default function QuizPage() {
         </Link>
       </div>
     </div>
+  );
+}
+
+export default function QuizPage() {
+  return (
+    <ProtectedRoute>
+      <Navbar />
+      <QuizPageContent />
+    </ProtectedRoute>
   );
 }
 

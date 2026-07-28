@@ -4,8 +4,10 @@ import Link from 'next/link'
 import { cardsData } from '@/lib/cards-data'
 import { updateCardsProgress } from '@/lib/progress-utils'
 import { useState, useEffect } from 'react'
+import { ProtectedRoute } from '@/components/ProtectedRoute'
+import { Navbar } from '@/components/Navbar'
 
-export default function CardsPage() {
+function CardsPageContent() {
   const [currentCardIdx, setCurrentCardIdx] = useState(0)
   const [isFlipped, setIsFlipped] = useState(false)
   const [selectedWeek, setSelectedWeek] = useState<number | null>(null)
@@ -471,5 +473,14 @@ export default function CardsPage() {
         </p>
       </div>
     </div>
+  )
+}
+
+export default function CardsPage() {
+  return (
+    <ProtectedRoute>
+      <Navbar />
+      <CardsPageContent />
+    </ProtectedRoute>
   )
 }

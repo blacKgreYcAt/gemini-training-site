@@ -3,8 +3,10 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { getProgress } from '@/lib/progress-utils'
+import { ProtectedRoute } from '@/components/ProtectedRoute'
+import { Navbar } from '@/components/Navbar'
 
-export default function ProgressPage() {
+function ProgressPageContent() {
   const [progress, setProgress] = useState<any>(null)
 
   useEffect(() => {
@@ -144,6 +146,15 @@ export default function ProgressPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function ProgressPage() {
+  return (
+    <ProtectedRoute>
+      <Navbar />
+      <ProgressPageContent />
+    </ProtectedRoute>
   )
 }
 
