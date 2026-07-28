@@ -33,10 +33,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     );
   };
 
-  if (!isLoaded) {
-    return <>{children}</>;
-  }
-
   return (
     <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage }}>
       {children}
