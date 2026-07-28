@@ -3,8 +3,10 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { signIn, signUp } from '@/lib/auth-utils'
+import { useLanguage } from '@/lib/language-context'
 
 export default function AuthPage() {
+  const { language } = useLanguage()
   const [isSignUp, setIsSignUp] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -21,7 +23,7 @@ export default function AuthPage() {
     try {
       if (isSignUp) {
         await signUp(email, password, name)
-        alert('註冊成功！請登入')
+        alert(language === 'ja' ? '登録が完了しました。ログインしてください' : '註冊成功！請登入')
         setIsSignUp(false)
         setEmail('')
         setPassword('')
@@ -31,7 +33,7 @@ export default function AuthPage() {
         router.push('/')
       }
     } catch (err: any) {
-      setError(err.message || '發生錯誤')
+      setError(err.message || (language === 'ja' ? 'エラーが発生しました' : '發生錯誤'))
     } finally {
       setLoading(false)
     }
