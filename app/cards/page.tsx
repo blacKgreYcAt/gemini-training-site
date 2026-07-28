@@ -6,8 +6,11 @@ import { updateCardsProgress } from '@/lib/progress-utils'
 import { useState, useEffect } from 'react'
 import { ProtectedRoute } from '@/components/ProtectedRoute'
 import { Navbar } from '@/components/Navbar'
+import { useLanguage } from '@/lib/language-context'
+import { t } from '@/lib/translations'
 
 function CardsPageContent() {
+  const { language } = useLanguage()
   const [currentCardIdx, setCurrentCardIdx] = useState(0)
   const [isFlipped, setIsFlipped] = useState(false)
   const [selectedWeek, setSelectedWeek] = useState<number | null>(null)
@@ -84,9 +87,9 @@ function CardsPageContent() {
         gap: '12px',
       }}>
         <Link href="/" style={{ background: 'none', border: 'none', color: '#0071e3', cursor: 'pointer', fontSize: '18px', fontWeight: 600, textDecoration: 'none' }}>
-          ← 返回首頁
+          {t('backToHome', language)}
         </Link>
-        <h1 style={{ fontSize: 'clamp(20px, 6vw, 28px)', fontWeight: 700, margin: 0 }}>卡牌自學</h1>
+        <h1 style={{ fontSize: 'clamp(20px, 6vw, 28px)', fontWeight: 700, margin: 0 }}>{t('cardSelfStudy', language)}</h1>
         <div style={{ width: '100px' }}></div>
       </div>
 
@@ -99,7 +102,7 @@ function CardsPageContent() {
         {/* Search */}
         <input
           type="text"
-          placeholder="搜尋卡片..."
+          placeholder={t('searchPlaceholder', language)}
           value={searchQuery}
           onChange={(e) => {
             setSearchQuery(e.target.value)
@@ -132,7 +135,7 @@ function CardsPageContent() {
               borderRadius: '6px',
             }}
           >
-            全部 ({cardsData.length})
+            {t('all', language)} ({cardsData.length})
           </button>
           {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(week => {
             const weekCount = cardsData.filter(c => c.week === week).length
@@ -150,7 +153,7 @@ function CardsPageContent() {
                   borderRadius: '6px',
                 }}
               >
-                {week === 0 ? '課前準備' : `第 ${week} 週`} ({weekCount})
+                {week === 0 ? t('coursePreparation', language) : `${t('week', language)} ${week} ${t('weekSuffix', language)}`} ({weekCount})
               </button>
             )
           })}
@@ -158,8 +161,8 @@ function CardsPageContent() {
 
         {/* Stats */}
         <div style={{ display: 'flex', gap: '30px', fontSize: '14px', color: '#666' }}>
-          <span>已完成: {completedCards.size} / {cardsData.length}</span>
-          <span>目前卡片: {currentCardIdx + 1} / {filteredCards.length}</span>
+          <span>{t('completed', language)}: {completedCards.size} / {cardsData.length}</span>
+          <span>{t('currentCard', language)}: {currentCardIdx + 1} / {filteredCards.length}</span>
         </div>
       </div>
 
@@ -174,7 +177,7 @@ function CardsPageContent() {
       }}>
         {filteredCards.length === 0 ? (
           <div style={{ textAlign: 'center', color: '#999' }}>
-            <p style={{ fontSize: '20px', marginBottom: '20px' }}>找不到相符的卡片</p>
+            <p style={{ fontSize: '20px', marginBottom: '20px' }}>{t('noCardsFound', language)}</p>
             <button
               onClick={() => {
                 setSearchQuery('')
@@ -192,7 +195,7 @@ function CardsPageContent() {
                 borderRadius: '6px',
               }}
             >
-              重置篩選
+              {t('resetFilters', language)}
             </button>
           </div>
         ) : (
