@@ -21,9 +21,12 @@ export default function CertificatePage() {
   const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null)
 
   useEffect(() => {
-    const prog = getProgress()
-    setProgress(prog)
-    setUserName(prog.userName || '')
+    const loadProgress = async () => {
+      const prog = await getProgress()
+      setProgress(prog)
+      setUserName(prog.userName || '')
+    }
+    loadProgress()
   }, [])
 
   const isCertificateEligible = () => {
