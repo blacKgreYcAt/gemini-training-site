@@ -1,0 +1,9 @@
+[INFO] ═══════════════════════════════════════
+[INFO] Gemini 課程翻譯 - 日本語版本
+[INFO] ═══════════════════════════════════════
+[INFO] 
+[32m[SUCCESS] API Key 已確認[0m
+[INFO] 
+[INFO] 開始翻譯課程內容...
+[31m[ERROR] 課程翻譯失敗: Courses file not found: C:\Users\imaus\SynologyDrive\公司Claude Code開發專案\Gemini 課程網站\all_courses_corrected.json[0m
+[31m[ERROR] 翻譯過程失敗: Courses file not found: C:\Users\imaus\SynologyDrive\公司Claude Code開發專案\Gemini 課程網站\all_courses_corrected.json[0m

@@ -6,7 +6,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { default: fetch } = require('node-fetch');
+// Node.js 18+ 內建 fetch，無需額外依賴
 
 // 配置
 const CONFIG = {

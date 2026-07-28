@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/lib/auth-context";
+import { LanguageSelector } from "@/components/LanguageSelector";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +27,20 @@ export default function RootLayout({
   return (
     <html lang="zh-TW" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body style={{ background: '#f5f5f7', color: '#000000', margin: 0, padding: 0 }}>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <header style={{
+            background: 'white',
+            borderBottom: '1px solid #e5e5e7',
+            padding: '1rem 2rem',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+          }}>
+            <h1 style={{ margin: 0, fontSize: '1.2rem' }}>Gemini 課程</h1>
+            <LanguageSelector />
+          </header>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

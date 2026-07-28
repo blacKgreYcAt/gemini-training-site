@@ -10,7 +10,19 @@
       "Bash(git commit *)",
       "WebSearch",
       "WebFetch(domain:gemini.google)",
-      "Bash(git commit -m '📊 項目狀態更新: 完成 2026年7月升級，準備日本語版本開發 *)"
+      "Bash(git commit -m '📊 項目狀態更新: 完成 2026年7月升級，準備日本語版本開發 *)",
+      "Bash(git rm *)",
+      "Bash(npm list *)",
+      "Bash(node scripts/translate-to-japanese.js)",
+      "Bash(tee translation-progress.log)",
+      "Bash(export NEXT_PUBLIC_GEMINI_API_KEY=*)",
+      "Bash(grep -E \"\\\\.\\(js|ts|tsx|json\\)$\")",
+      "Bash(node scripts/export-course-data.js)",
+      "Bash(tee translation-final.log)",
+      "Bash(awk '{print $9, \"\\(\" $5 \"\\)\"}')",
+      "Bash(xargs ls -lh)",
+      "Bash(git commit -m 'feat: 完成第 4A-4B 階段 - 前端集成與 API 路由 *)",
+      "Bash(git reset *)"
     ]
   }
 }
