@@ -1,0 +1,944 @@
+[
+  {
+    "course_id": "0-1",
+    "course_title": "Gemini Registration and Multi-Device Setup",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Gemini 3.6 Flash（2026年7月發布）的主要優勢是什麼？",
+        "options": [
+          "A) 輸出令牌減少17%，定價更低",
+          "B) 只支持視頻生成",
+          "C) 替代所有舊版本",
+          "D) 不支持代理規劃"
+        ],
+        "correct_answer": "A",
+        "explanation": "Gemini 3.6 Flash提供改進的令牌效率（輸出令牌減少17%）、更低的定價，以及增強的代碼/代理規劃能力。"
+      },
+      {
+        "id": "Q2",
+        "type": "true_false",
+        "question": "Gemini 3.5 Flash-Lite是一個高成本、低延遲的主代理模型。",
+        "correct_answer": "False",
+        "explanation": "Gemini 3.5 Flash-Lite是低延遲、高成本效益的**子代理選項**，而不是主代理。"
+      },
+      {
+        "id": "Q3",
+        "type": "scenario",
+        "question": "您需要構建一個在Google託管的安全沙箱中運行的自主代理。使用哪個2026年新功能？",
+        "correct_answer": "Managed Agents（公開預覽）",
+        "explanation": "Managed Agents讓開發者構建和部署在安全、隔離的Google託管Linux沙箱環境中運行的自主、有狀態的代理。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "Gemini 3.6 Flash的知識截斷日期是什麼？",
+        "options": [
+          "A) 2024年12月",
+          "B) 2025年1月",
+          "C) 2026年3月",
+          "D) 2026年7月"
+        ],
+        "correct_answer": "C",
+        "explanation": "Gemini 3.6 Flash將知識截斷日期從2025年1月更新至2026年3月，提供更新的信息。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Gemini的採樣參數temperature、top_p和top_k在2026年已被棄用。",
+        "correct_answer": "True",
+        "explanation": "在2026年的更新中，temperature、top_p和top_k採樣參數已被棄用，建議使用新的參數設置。"
+      }
+    ]
+  },
+  {
+    "course_id": "0-2",
+    "course_title": "Gemini 3.5 Pro vs Ultra和新的3.6 Flash",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Gemini 3.6 Flash相比3.5 Flash的主要改進是什麼？",
+        "options": [
+          "A) 令牌效率提高17%，定價更低",
+          "B) 只能生成視頻",
+          "C) 不支持代理",
+          "D) 需要更多計算資源"
+        ],
+        "correct_answer": "A",
+        "explanation": "Gemini 3.6 Flash提供改進的令牌效率（輸出令牌減少17%）、更低的定價點，以及增強的代碼/代理規劃。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "您的應用需要快速、低成本的視頻生成（3-10秒）。哪個模型最合適？",
+        "correct_answer": "Gemini Omni Flash（6月發布）",
+        "explanation": "Gemini Omni Flash支持高速視頻生成，可生成3-10秒的720p視頻，是快速、低成本的選擇。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Gemini Omni Flash是一個原生多模態模型，支持自定義動態視頻工作流。",
+        "correct_answer": "True",
+        "explanation": "Gemini Omni Flash於2026年6月進入公開預覽，是原生多模態模型，支持首次創建自定義動態視頻工作流。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "Google AI Pro訂閱（2026）的月費是多少？",
+        "options": [
+          "A) $10/月",
+          "B) $20/月",
+          "C) $50/月",
+          "D) $100/月"
+        ],
+        "correct_answer": "B",
+        "explanation": "Google AI Pro的月費是$20/月，介於免費層和$100/月的Ultra層之間。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Gemini 2.0 Flash和舊版Imagen/Veo在2026年仍可用。",
+        "correct_answer": "False",
+        "explanation": "這些較舊的模型在2026年被停用，用戶需要遷移到新的穩定版本，如3.5 Flash或3.6 Flash。"
+      }
+    ]
+  },
+  {
+    "course_id": "0-3",
+    "course_title": "計算機使用工具和Managed Agents",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Gemini的計算機使用工具（6月發布）支持哪些環境？",
+        "options": [
+          "A) 只有瀏覽器",
+          "B) 瀏覽器、行動和桌面環境",
+          "C) 只有桌面",
+          "D) 只有行動設備"
+        ],
+        "correct_answer": "B",
+        "explanation": "計算機使用工具內置支持瀏覽器、行動和桌面環境，擁有簡化的操作和意圖支持。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "您想在Google託管環境中部署一個7天24小時運行的自主代理。最佳解決方案是什麼？",
+        "correct_answer": "Managed Agents（公開預覽）",
+        "explanation": "Managed Agents允許在Google託管的Linux沙箱中部署自主、有狀態的代理，適合長期運行。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Gemini 3.5 Live Translate可自動檢測70多種語言並保持說話者的自然語調。",
+        "correct_answer": "True",
+        "explanation": "Gemini 3.5 Live Translate是一個新的音頻模型，可自動檢測70+語言且保持原始自然語調，消除翻譯延遲。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "Gemini 3.5 Flash的計算機使用能力在2026年提升到多少？",
+        "options": [
+          "A) 65%",
+          "B) 75%",
+          "C) 83%",
+          "D) 95%"
+        ],
+        "correct_answer": "C",
+        "explanation": "Gemini 3.5 Flash的計算機使用能力從78.4%提升到83%，在OSWorld-Verified基準測試中表現更好。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Gemini Spark（macOS）可以自動化Google Workspace中的日常任務。",
+        "correct_answer": "True",
+        "explanation": "Gemini Spark於2026年6月在macOS上可用，作為個人AI代理，可自動化文件組織和Workspace工作流。"
+      }
+    ]
+  },
+  {
+    "course_id": "1-1",
+    "course_title": "2026年AI新時代：Gemini的進化",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "2026年Google推出了哪三個新的Gemini模型？",
+        "options": [
+          "A) 3.5 Flash, 3.6 Flash, Ultra",
+          "B) 3.6 Flash, 3.5 Flash-Lite, Omni Flash",
+          "C) Flash, Pro, Ultra",
+          "D) 2.0 Flash, 3.0 Flash, 4.0 Flash"
+        ],
+        "correct_answer": "B",
+        "explanation": "2026年7月推出的三個主要模型是Gemini 3.6 Flash、3.5 Flash-Lite和Gemini Omni Flash。"
+      },
+      {
+        "id": "Q2",
+        "type": "true_false",
+        "question": "Managed Agents可以在隔離的Google託管環境中運行，這對企業自動化很重要。",
+        "correct_answer": "True",
+        "explanation": "Managed Agents在安全、隔離的Google託管Linux沙箱環境中運行，非常適合企業級自動化和安全要求。"
+      },
+      {
+        "id": "Q3",
+        "type": "scenario",
+        "question": "公司需要一個能跨桌面、行動、瀏覽器自動化任務的系統。使用什麼2026年新功能？",
+        "correct_answer": "Computer Use Tool + Managed Agents的組合",
+        "explanation": "Computer Use Tool支持多環境（桌面、行動、瀏覽器），而Managed Agents提供託管執行環境。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "NotebookLM在2026年升級添加了什麼能力？",
+        "options": [
+          "A) 視頻生成",
+          "B) 高級推理和代碼運行",
+          "C) 語音翻譯",
+          "D) 圖像編輯"
+        ],
+        "correct_answer": "B",
+        "explanation": "NotebookLM升級了高級推理和代碼運行功能，支持結構化研究工作流。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Gemini Omni Flash只能進行文本到視頻的生成。",
+        "correct_answer": "False",
+        "explanation": "Gemini Omni Flash支持文本或靜止圖像到視頻的生成，更加靈活。"
+      }
+    ]
+  },
+  {
+    "course_id": "1-2",
+    "course_title": "2026年六大神奇工具（更新版）",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Gemini Omni Flash的視頻生成能力是什麼規格？",
+        "options": [
+          "A) 1-3秒，480p",
+          "B) 3-10秒，720p",
+          "C) 10-30秒，1080p",
+          "D) 30-60秒，4K"
+        ],
+        "correct_answer": "B",
+        "explanation": "Gemini Omni Flash可生成3-10秒、720p解析度的視頻，提供快速、高效的視頻生成。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "您想在自己的Workspace中自動化文件組織和日常任務。哪個工具最合適？",
+        "correct_answer": "Gemini Spark（macOS個人代理）",
+        "explanation": "Gemini Spark是2026年新推出的macOS上的個人AI代理，可自動化Google Workspace工作流。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Gemini Live Translate可以同時進行70多種語言的實時轉譯。",
+        "correct_answer": "True",
+        "explanation": "Gemini Live Translate可自動檢測並轉譯70+語言，保持自然語調，適合多語言對話。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "Google Home新型揚聲器（2026）的主要特點是什麼？",
+        "options": [
+          "A) 只支持語音命令",
+          "B) 理解自然語音，可同時處理多個請求",
+          "C) 需要特殊編程",
+          "D) 不支持Gemini"
+        ],
+        "correct_answer": "B",
+        "explanation": "新Google Home揚聲器內置Gemini，能理解自然語音而無需嚴格命令，支持同時處理多個請求。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Canvas工具在2026年支持Gemini 3.6 Flash的高效率文件分析。",
+        "correct_answer": "True",
+        "explanation": "Gemini 3.6 Flash設計用於從文件分析到多步驟項目的日常任務，與Canvas工具集成。"
+      }
+    ]
+  },
+  {
+    "course_id": "1-3",
+    "course_title": "2026年課堂反思：實際應用新工具",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "scenario",
+        "question": "客戶想要快速生成營銷視頻，同時控制成本。應該使用哪個2026年模型？",
+        "correct_answer": "Gemini Omni Flash（3-10秒視頻，720p）",
+        "explanation": "Omni Flash是最成本效益高的選擇，可快速生成高質量短視頻。"
+      },
+      {
+        "id": "Q2",
+        "type": "true_false",
+        "question": "Managed Agents只能在開發環境中使用，不適合生產部署。",
+        "correct_answer": "False",
+        "explanation": "Managed Agents設計用於生產環境，在Google託管的沙箱中提供安全的自主代理部署。"
+      },
+      {
+        "id": "Q3",
+        "type": "multiple_choice",
+        "question": "在選擇Gemini模型時，2026年的最佳實踐是什麼？",
+        "options": [
+          "A) 始終使用最昂貴的模型",
+          "B) 根據任務選擇3.6 Flash、3.5 Flash-Lite或Omni Flash",
+          "C) 只使用舊版本",
+          "D) 所有任務都用Pro模型"
+        ],
+        "correct_answer": "B",
+        "explanation": "2026年最佳實踐是根據具體任務選擇合適的模型：3.6 Flash用於通用任務，3.5 Flash-Lite用於成本優化，Omni Flash用於視頻。"
+      },
+      {
+        "id": "Q4",
+        "type": "true_false",
+        "question": "Google AI Ultra訂閱（$100/月）包括所有高級功能如Deep Research和Veo。",
+        "correct_answer": "True",
+        "explanation": "Google AI Ultra是最高級訂閱層，提供所有高級功能和最大的上下文窗口。"
+      },
+      {
+        "id": "Q5",
+        "type": "scenario",
+        "question": "您的團隊需要進行複雜的多語言對話並立即翻譯。使用哪個2026年新功能？",
+        "correct_answer": "Gemini Live Translate（自動檢測70+語言，保持語調）",
+        "explanation": "Live Translate提供實時、自動的多語言翻譯，無翻譯延遲，保持自然語調。"
+      }
+    ]
+  },
+  {
+    "course_id": "2-1",
+    "course_title": "提示詞工程（2026年版本）",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "使用2026年Gemini模型時，已棄用的採樣參數是什麼？",
+        "options": [
+          "A) max_tokens",
+          "B) temperature, top_p, top_k",
+          "C) model_name",
+          "D) system_prompt"
+        ],
+        "correct_answer": "B",
+        "explanation": "在2026年，temperature、top_p和top_k採樣參數已被棄用，應使用新的參數設置。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "您想優化提示詞以與Gemini 3.6 Flash的高效率相容。應該關注什麼？",
+        "correct_answer": "使用新的參數系統，避免棄用的採樣參數",
+        "explanation": "為了與3.6 Flash的令牌效率相適配，應使用新的參數設置而非棄用的temperature等。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Gemini 3.6 Flash的代碼規劃能力使其更適合代理工作流。",
+        "correct_answer": "True",
+        "explanation": "Gemini 3.6 Flash有增強的代碼/代理規劃能力，非常適合構建複雜的代理工作流。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "構建Managed Agent的提示詞時，應該強調什麼？",
+        "options": [
+          "A) 視覺設計",
+          "B) 清晰的目標、約束和可用工具",
+          "C) 用戶界面",
+          "D) 硬件要求"
+        ],
+        "correct_answer": "B",
+        "explanation": "Managed Agent的提示詞應清楚定義目標、約束和可用的工具/操作。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "不同的Gemini模型（3.6 Flash、3.5 Flash-Lite、Omni Flash）可能需要不同的提示詞優化。",
+        "correct_answer": "True",
+        "explanation": "每個模型有不同的優勢（效率、成本、視頻生成），提示詞應根據模型特性優化。"
+      }
+    ]
+  },
+  {
+    "course_id": "2-2",
+    "course_title": "內容生成與Managed Agents",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "使用Gemini Omni Flash生成視頻內容的最佳應用場景是什麼？",
+        "options": [
+          "A) 製作2小時的電影",
+          "B) 快速生成3-10秒的營銷片段",
+          "C) 生成無損4K視頻",
+          "D) 編輯專業視頻素材"
+        ],
+        "correct_answer": "B",
+        "explanation": "Omni Flash最適合快速生成短形式視頻（3-10秒，720p），用於社交媒體和營銷。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "需要生成大量內容變體並自動評估質量。應該如何結合工具？",
+        "correct_answer": "使用Gemini 3.6 Flash生成內容 + Managed Agents進行自動評估",
+        "explanation": "3.6 Flash的高效率適合大量生成，Managed Agents可自動化評估和篩選過程。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Gemini 3.5 Flash-Lite適合作為複雜工作流中的高效子任務處理器。",
+        "correct_answer": "True",
+        "explanation": "Flash-Lite是低延遲、高成本效益的子代理，完美用於處理工作流中的特定子任務。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "生成AI內容後的最佳實踐是什麼？",
+        "options": [
+          "A) 直接發佈",
+          "B) 人工審核和修改",
+          "C) 使用Managed Agents進行自動驗證",
+          "D) B和C的組合"
+        ],
+        "correct_answer": "D",
+        "explanation": "最佳實踐是結合Managed Agents自動驗證和人工審核，確保質量和準確性。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Gemini 3.6 Flash的令牌效率改進使其成本效益和質量的最佳選擇。",
+        "correct_answer": "True",
+        "explanation": "3.6 Flash提供17%的令牌效率提升和更低定價，同時保持高質量輸出。"
+      }
+    ]
+  },
+  {
+    "course_id": "2-3",
+    "course_title": "深度研究與自主代理",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Managed Agents最適合哪種使用場景？",
+        "options": [
+          "A) 簡單的文本查詢",
+          "B) 需要長期執行、跨多個步驟的自主任務",
+          "C) 只進行計算",
+          "D) 生成圖像"
+        ],
+        "correct_answer": "B",
+        "explanation": "Managed Agents設計用於長期、自主、有狀態的任務執行，在安全的Google託管環境中運行。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "您想讓一個代理每天自動收集市場數據、分析趨勢並生成報告。哪個系統最合適？",
+        "correct_answer": "Managed Agents + Computer Use Tool + Gemini 3.6 Flash",
+        "explanation": "組合使用三者：Managed Agents提供基礎設施，Computer Use Tool提供環境交互，3.6 Flash提供高效推理。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Managed Agents運行在隔離的Linux沙箱中，無法訪問互聯網。",
+        "correct_answer": "False",
+        "explanation": "Managed Agents在隔離環境中運行但可以通過提供的工具和API訪問外部資源。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "構建研究工作流時，哪個工具對程式碼執行最有幫助？",
+        "options": [
+          "A) Canvas",
+          "B) NotebookLM（2026年升級版）",
+          "C) Spark",
+          "D) Live Translate"
+        ],
+        "correct_answer": "B",
+        "explanation": "NotebookLM 2026升級版包括高級推理和代碼運行，特別適合結構化研究工作流。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Gemini 3.6 Flash的知識截斷（2026年3月）足以涵蓋大多數當前業務用例。",
+        "correct_answer": "True",
+        "explanation": "2026年3月的知識截斷相對最新，足以滿足大多數實時業務需求。如需更新信息，可結合Computer Use Tool爬取。"
+      }
+    ]
+  },
+  {
+    "course_id": "3-1",
+    "course_title": "圖像與視頻生成（2026年多模態時代）",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Gemini Omni Flash和傳統Veo的主要區別是什麼？",
+        "options": [
+          "A) Omni Flash更快，支持3-10秒視頻",
+          "B) 沒有區別",
+          "C) Omni Flash只生成文本",
+          "D) Veo仍在使用"
+        ],
+        "correct_answer": "A",
+        "explanation": "Gemini Omni Flash是2026年的最新版本，速度更快，支持3-10秒720p視頻生成，而舊版Veo已停用。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "需要生成社交媒體短視頻庫（每個5秒）。應該使用哪個模型和頻率？",
+        "correct_answer": "Gemini Omni Flash，使用Managed Agents批量生成",
+        "explanation": "Omni Flash完美支持5秒視頻，Managed Agents可自動化批量生成流程，降低成本和時間。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Nano Banana 2 Lite（2026年）是Google最快、最成本效益的圖像模型。",
+        "correct_answer": "True",
+        "explanation": "Nano Banana 2 Lite在2026年推出，是Google迄今為止最快和最成本效益的Gemini圖像模型。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "在多模態工作流中，Omni Flash的優勢是什麼？",
+        "options": [
+          "A) 只支持文本",
+          "B) 原生多模態，支持文本或圖像生成視頻",
+          "C) 不支持批量操作",
+          "D) 需要外部工具"
+        ],
+        "correct_answer": "B",
+        "explanation": "Omni Flash是原生多模態模型，可從文本或靜止圖像生成動態視頻，實現真正的多模態工作流。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Omni Flash的視頻輸出總是高達4K解析度。",
+        "correct_answer": "False",
+        "explanation": "Omni Flash生成720p的視頻，不是4K。這是速度和成本效率的最優平衡。"
+      }
+    ]
+  },
+  {
+    "course_id": "3-2",
+    "course_title": "計算機使用與跨環境自動化",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Gemini 3.5 Flash的計算機使用能力在何時達到83%（OSWorld-Verified）？",
+        "options": [
+          "A) 2025年",
+          "B) 2026年1月",
+          "C) 2026年6月",
+          "D) 2026年7月"
+        ],
+        "correct_answer": "C",
+        "explanation": "Gemini 3.5 Flash在2026年6月的公開預覽中達到了83%的計算機使用能力基準。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "需要構建一個可自動化桌面、行動、瀏覽器任務的企業解決方案。架構應該如何設計？",
+        "correct_answer": "Computer Use Tool（多環境支持）+ Managed Agents（託管執行）+ Gemini 3.5 Flash（推理）",
+        "explanation": "這個組合提供完整的跨環境自動化：工具提供環境交互，Agents提供安全基礎設施，Flash提供高效推理。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "計算機使用工具具有簡化的操作和意圖支持，使其易於集成。",
+        "correct_answer": "True",
+        "explanation": "2026年版本的計算機使用工具設計有簡化的操作接口和本地意圖支持，大大降低集成複雜性。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "Gemini Spark（macOS）主要用於什麼？",
+        "options": [
+          "A) 視頻編輯",
+          "B) 自動化Google Workspace和文件組織",
+          "C) 圖像生成",
+          "D) 代碼編譯"
+        ],
+        "correct_answer": "B",
+        "explanation": "Gemini Spark是個人AI代理，專門用於自動化Google Workspace任務和本地文件組織。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "計算機使用工具的簡化操作使其可以被非技術用戶編程。",
+        "correct_answer": "True",
+        "explanation": "簡化的操作和意圖支持降低了編程難度，使非技術背景的用戶也能配置自動化工作流。"
+      }
+    ]
+  },
+  {
+    "course_id": "3-3",
+    "course_title": "多語言與國際化（Live Translate 2026）",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Gemini Live Translate最多支持多少種語言？",
+        "options": [
+          "A) 20種",
+          "B) 35種",
+          "C) 70多種",
+          "D) 無限"
+        ],
+        "correct_answer": "C",
+        "explanation": "Gemini Live Translate可自動檢測和轉譯70多種語言，大幅超越競爭對手。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "全球團隊使用多種語言進行即時會議。應該使用什麼工具優化體驗？",
+        "correct_answer": "Gemini Live Translate（自動檢測、多語言、保持語調）",
+        "explanation": "Live Translate完美解決多語言會議需求，無翻譯延遲，保持自然語調，自動語言檢測。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Live Translate會改變說話者的原始語調或表情。",
+        "correct_answer": "False",
+        "explanation": "Live Translate的設計目標是保持說話者的自然語調和表現力，只進行內容翻譯。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "Live Translate的主要優勢是什麼？",
+        "options": [
+          "A) 支持無限語言",
+          "B) 自動語言檢測、低延遲、保持語調",
+          "C) 只支持文本",
+          "D) 需要手動語言選擇"
+        ],
+        "correct_answer": "B",
+        "explanation": "Live Translate的核心優勢是三重：自動檢測（無手動配置）、低延遲（無明顯滯後）、自然語調（保持溝通質量）。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Live Translate可以與Gemini Live實時對話功能集成進行真正的多語言交互。",
+        "correct_answer": "True",
+        "explanation": "Live Translate與Gemini Live完美集成，支持真正的多語言實時對話，消除語言障礙。"
+      }
+    ]
+  },
+  {
+    "course_id": "4-1",
+    "course_title": "2026年工作流集成最佳實踐",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "在2026年整合Gemini工具的最優秀案例是什麼？",
+        "options": [
+          "A) 單獨使用每個工具",
+          "B) 組合：Computer Use + Managed Agents + Gemini 3.6/3.5 Flash",
+          "C) 只使用免費版本",
+          "D) 依賴舊版本"
+        ],
+        "correct_answer": "B",
+        "explanation": "2026年最佳實踐是將Computer Use Tool（環境交互）、Managed Agents（基礎設施）和Gemini模型（推理）組合使用。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "中型公司想要構建企業級自動化平台。應該優先投資什麼？",
+        "correct_answer": "Managed Agents + Google AI Pro訂閱（$20/月）+ 內部培訓",
+        "explanation": "Managed Agents提供企業級基礎設施，Pro訂閱提供足夠的功能，內部培訓確保採用和成功。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Google AI Pro（$20/月）的成本和收益比優於使用免費版本多個賬戶。",
+        "correct_answer": "True",
+        "explanation": "Pro訂閱提供更高的API配額、優先支持和更多功能，通常比管理多個免費賬戶更劃算。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "實施Gemini自動化時的風險管理最佳實踐是什麼？",
+        "options": [
+          "A) 忽視風險，快速部署",
+          "B) 在Managed Agents沙箱中小規模測試，逐步擴大",
+          "C) 只在生產環境測試",
+          "D) 不進行任何測試"
+        ],
+        "correct_answer": "B",
+        "explanation": "最佳實踐是充分利用Managed Agents的隔離環境進行安全測試，然後逐步擴大部署規模。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "2026年團隊培訓應涵蓋新參數系統而不是棄用的採樣參數。",
+        "correct_answer": "True",
+        "explanation": "由於temperature、top_p、top_k已棄用，團隊培訓應專注於新的參數設置和最佳實踐。"
+      }
+    ]
+  },
+  {
+    "course_id": "adv-1-1",
+    "course_title": "高級提示詞工程與Managed Agents",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "為Managed Agents設計提示詞時，最重要的元素是什麼？",
+        "options": [
+          "A) 華麗的語言",
+          "B) 清晰的目標、可用工具、約束和失敗恢復策略",
+          "C) 儘可能長",
+          "D) 只有中文"
+        ],
+        "correct_answer": "B",
+        "explanation": "高效的Agent提示詞必須包含：明確的目標、可用工具清單、操作約束和失敗處理邏輯。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "Agent測試時發現它進入無限循環。如何在提示詞中防止？",
+        "correct_answer": "添加最大迭代次數限制、檢查點驗證、失敗條件定義",
+        "explanation": "高級提示詞應包含明確的終止條件、迭代限制和檢查點，防止無限執行。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Gemini 3.6 Flash的增強代碼規劃能力使其特別適合複雜Agent工作流。",
+        "correct_answer": "True",
+        "explanation": "3.6 Flash的代碼/代理規劃能力改進使其成為構建複雜自主Agent的最佳選擇。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "在Managed Agents中使用Computer Use Tool時，提示詞應該強調什麼？",
+        "options": [
+          "A) 視覺美學",
+          "B) 環境狀態感知、交互順序、備選方案",
+          "C) 代碼語法",
+          "D) 用戶界面"
+        ],
+        "correct_answer": "B",
+        "explanation": "提示詞應幫助Agent理解環境狀態、規劃交互序列和準備備選方案。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "高級提示詞工程與模型選擇（3.6 vs 3.5 Flash）無關。",
+        "correct_answer": "False",
+        "explanation": "不同模型的優勢不同，提示詞應根據模型特性（效率、成本、能力）針對優化。"
+      }
+    ]
+  },
+  {
+    "course_id": "adv-2-1",
+    "course_title": "多模態應用與Omni Flash工作流",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "在多模態應用中整合Gemini Omni Flash的最佳方式是什麼？",
+        "options": [
+          "A) 只用於文本",
+          "B) 結合Canvas進行視頻編輯反饋循環",
+          "C) 僅用於圖像",
+          "D) 單獨使用"
+        ],
+        "correct_answer": "B",
+        "explanation": "Omni Flash與Canvas的組合創造強大的多模態工作流：Omni Flash生成視頻，Canvas提供協作編輯和迭代。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "團隊想要創建多語言營銷視頻。應該組合哪些工具？",
+        "correct_answer": "Gemini Omni Flash（視頻）+ Live Translate（多語言）+ Managed Agents（自動化）",
+        "explanation": "三工具組合：Omni Flash生成基礎視頻，Live Translate轉譯音頻，Managed Agents自動化整個流程。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Omni Flash支持同時處理文本和圖像輸入生成單一視頻。",
+        "correct_answer": "True",
+        "explanation": "Omni Flash的原生多模態特性允許混合輸入：文本描述、圖像資源等組合成一個視頻。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "在複雜多模態工作流中，Managed Agents的角色是什麼？",
+        "options": [
+          "A) 替代Omni Flash",
+          "B) 協調各工具執行，管理狀態和錯誤處理",
+          "C) 只進行計算",
+          "D) 無相關作用"
+        ],
+        "correct_answer": "B",
+        "explanation": "Managed Agents充當協調者，管理Omni Flash、Live Translate和其他工具的執行流程、狀態和錯誤恢復。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Nano Banana 2 Lite可以作為Omni Flash工作流中的圖像預處理或優化工具。",
+        "correct_answer": "True",
+        "explanation": "Nano Banana 2 Lite作為最高效的圖像模型，可用於預處理圖像或優化視頻生成的輸入。"
+      }
+    ]
+  },
+  {
+    "course_id": "adv-3-1",
+    "course_title": "Managed Agents與自定義集成",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "在Managed Agents中集成自定義工具的最佳實踐是什麼？",
+        "options": [
+          "A) 直接在提示詞中編寫代碼",
+          "B) 通過明確的工具定義和API spec聲明",
+          "C) 不支持自定義工具",
+          "D) 只使用預設工具"
+        ],
+        "correct_answer": "B",
+        "explanation": "最佳實踐是通過清晰的工具定義（名稱、參數、返回值）和API規範來聲明自定義工具。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "想要Agent與公司內部系統（CRM、ERP）集成。架構應該如何設計？",
+        "correct_answer": "Managed Agents（協調）+ Computer Use Tool（訪問UI）+ 自定義API工具（直接集成）",
+        "explanation": "混合方式：通過明確定義的API工具進行直接系統集成，通過Computer Use Tool進行UI交互。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Managed Agents的沙箱環境支持自定義依賴項安裝和執行。",
+        "correct_answer": "True",
+        "explanation": "開發者可在Managed Agents沙箱中安裝必要的依賴項和自定義運行環境。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "在設計Agent工具時，什麼是關鍵的安全考慮？",
+        "options": [
+          "A) 忽視安全",
+          "B) 權限驗證、輸入驗證、日誌記錄、超時設置",
+          "C) 只有技術安全",
+          "D) 無法實現"
+        ],
+        "correct_answer": "B",
+        "explanation": "關鍵安全控制：驗證Agent的權限、清理輸入、記錄所有操作、設定執行超時。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Gemini 3.6 Flash的高效率使其特別適合頻繁調用的自定義工具集成。",
+        "correct_answer": "True",
+        "explanation": "3.6 Flash的令牌效率（-17%）和快速響應時間使其成為頻繁調用工具的最優選擇。"
+      }
+    ]
+  },
+  {
+    "course_id": "adv-4-1",
+    "course_title": "自主Agent架構與最佳實踐",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "設計企業級自主Agent的架構時，2026年最重要的組件是什麼？",
+        "options": [
+          "A) 只有模型",
+          "B) Managed Agents基礎設施 + 推理引擎 + 工具層 + 監控",
+          "C) 簡單的API調用",
+          "D) 沒有架構"
+        ],
+        "correct_answer": "B",
+        "explanation": "企業級Agent需要分層架構：Managed Agents提供基礎設施、Gemini提供推理、工具層提供交互、監控確保可靠性。"
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "Agent在生產中出現不可預測的行為。應該實施什麼監控？",
+        "correct_answer": "日誌記錄、決策追蹤、成功/失敗率監控、異常告警",
+        "explanation": "全面監控包括：詳細的執行日誌、決策路徑可視化、性能指標、異常檢測和告警。"
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Managed Agents的隔離環境提供了足夠的安全保障，無需額外的防護措施。",
+        "correct_answer": "False",
+        "explanation": "雖然Managed Agents提供基礎隔離，但企業仍需實施訪問控制、審計日誌、速率限制等額外防護。"
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "Gemini 3.6 Flash和3.5 Flash-Lite在Agent架構中分別適合什麼角色？",
+        "options": [
+          "A) 完全相同",
+          "B) 3.6用於主推理，3.5 Lite用於子任務",
+          "C) 3.5 Lite只用於演示",
+          "D) 沒有區別"
+        ],
+        "correct_answer": "B",
+        "explanation": "最優架構：3.6 Flash用於複雜推理和主決策，3.5 Flash-Lite用於高效的子任務處理。"
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "計算機使用能力（83%）表示Agent可以完美自動化所有桌面任務。",
+        "correct_answer": "False",
+        "explanation": "83%意味著在測試基準上的成功率，實際應用中仍需人工監督和干預機制。"
+      }
+    ]
+  },
+  {
+    "course_id": "adv-5-1",
+    "course_title": "2026年案例研究與實現指南",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "scenario",
+        "question": "公司實施Gemini自動化後，生產率提高了60%。他們最可能使用了什麼組合？",
+        "correct_answer": "Managed Agents + Gemini 3.6 Flash + Computer Use Tool",
+        "explanation": "這個組合提供最高的自動化效率：Agent協調、高效推理、跨環境執行。"
+      },
+      {
+        "id": "Q2",
+        "type": "true_false",
+        "question": "Gemini 3.6 Flash的17%令牌效率提升轉化為顯著的成本節省和延遲減少。",
+        "correct_answer": "True",
+        "explanation": "17%的效率提升不僅減少成本，也減少了API往返和響應延遲，雙重收益。"
+      },
+      {
+        "id": "Q3",
+        "type": "multiple_choice",
+        "question": "2026年成功實現Gemini的企業最強調的因素是什麼？",
+        "options": [
+          "A) 選最昂貴的模型",
+          "B) 正確的模型選擇、工具組合和持續監控",
+          "C) 不需要培訓",
+          "D) 立即全面部署"
+        ],
+        "correct_answer": "B",
+        "explanation": "成功的關鍵是：根據任務選擇合適的模型組合、設計有效的工具集成、實施持續的監控和優化。"
+      },
+      {
+        "id": "Q4",
+        "type": "true_false",
+        "question": "使用Google AI Ultra訂閱（$100/月）對小型團隊來說是成本效益最優選擇。",
+        "correct_answer": "False",
+        "explanation": "小型團隊通常應從AI Pro（$20/月）開始，只在需要進階功能（Deep Research無限次等）時升級到Ultra。"
+      },
+      {
+        "id": "Q5",
+        "type": "scenario",
+        "question": "您的AutoML平台成功後，決定擴展到全球市場。應該添加什麼功能？",
+        "correct_answer": "Gemini Live Translate（70+語言）+ Managed Agents（區域部署）",
+        "explanation": "全球擴展需要：Live Translate支持多語言，Managed Agents支持在各地區部署獨立實例。"
+      }
+    ]
+  }
+]

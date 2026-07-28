@@ -1,0 +1,944 @@
+[
+  {
+    "course_id": "0-1",
+    "course_title": "Gemini Registration and Multi-Device Setup",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Which Gemini setup is recommended for corporate use with sensitive data?",
+        "options": [
+          "A) Personal Gmail",
+          "B) Google Gemini Advanced",
+          "C) Google Workspace Enterprise",
+          "D) Free tier"
+        ],
+        "correct_answer": "C",
+        "explanation": "Google Workspace Enterprise ensures data privacy - your data is never used to train models."
+      },
+      {
+        "id": "Q2",
+        "type": "true_false",
+        "question": "Gemini Live supports multi-language conversations in real-time with interruption capability.",
+        "correct_answer": "True",
+        "explanation": "Gemini Live 2025 features ultra-low latency, interruptibility, and native multi-language support."
+      },
+      {
+        "id": "Q3",
+        "type": "scenario",
+        "question": "Your team needs to analyze 2 million tokens of data. Which Gemini model should you use?",
+        "correct_answer": "Gemini 3.5 Pro has 2M tokens, Ultra has 4M+",
+        "explanation": "Choose Pro for standard tasks (2M tokens), Ultra for complex reasoning with larger context (4M+)."
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "What is the main benefit of Context Caching in Gemini API?",
+        "options": [
+          "A) Increases token limit",
+          "B) Reduces cost by 90% and latency by 80%",
+          "C) Enables video generation",
+          "D) Improves accuracy"
+        ],
+        "correct_answer": "B",
+        "explanation": "Context Caching stores large datasets in memory, drastically reducing costs and response time."
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Veo video generation supports maximum duration of 10 seconds only.",
+        "correct_answer": "False",
+        "explanation": "Veo supports 60+ seconds (1+ minute) of video generation at 1080p Full HD."
+      }
+    ]
+  },
+  {
+    "course_id": "0-2",
+    "course_title": "Gemini 3.5 Pro vs Ultra",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "What is the key difference in reasoning capability between Pro and Ultra?",
+        "options": [
+          "A) Pro is faster",
+          "B) Ultra has superior reasoning and agentic capabilities",
+          "C) Pro is cheaper",
+          "D) No difference"
+        ],
+        "correct_answer": "B",
+        "explanation": "Ultra is designed for complex reasoning, autonomous workflows, and massive-scale orchestration."
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "Your company needs to analyze 500 academic papers, cross-reference them, and produce a synthesis report. Which tier?",
+        "correct_answer": "Gemini 3.6 Ultra with Deep Research",
+        "explanation": "Deep Research with unlimited queries is only on Ultra; Pro has 5/month."
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Gemini Pro and Ultra both support video generation with Veo 3.1.",
+        "correct_answer": "True",
+        "explanation": "Both tiers support Veo, but Ultra can generate 4K video while Pro is limited to 1080p."
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "Which Gemini tier is best for high-volume daily tasks like email triage?",
+        "options": [
+          "A) Ultra only",
+          "B) Pro with Context Caching",
+          "C) Free tier",
+          "D) Advanced only"
+        ],
+        "correct_answer": "B",
+        "explanation": "Pro with Context Caching is cost-efficient for high-volume, repetitive tasks."
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Gemini Ultra supports building unlimited custom Gems while Pro is limited to 5.",
+        "correct_answer": "True",
+        "explanation": "Ultra: unlimited custom Gems, Pro: 5 custom Gems."
+      }
+    ]
+  },
+  {
+    "course_id": "0-3",
+    "course_title": "Migrating Conversations",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "What format should you export chat history from legacy AI platforms for Gemini migration?",
+        "options": [
+          "A) PDF only",
+          "B) JSON, CSV, or HTML",
+          "C) Images only",
+          "D) Text files"
+        ],
+        "correct_answer": "B",
+        "explanation": "Gemini accepts JSON, CSV, and HTML exports for multi-modal parsing and synthesis."
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "You have 1.5M tokens of legacy chat history. How should you load it into Gemini efficiently?",
+        "correct_answer": "Use Context Caching to cache the entire dataset",
+        "explanation": "Context Caching stores massive datasets once and references them instantly on subsequent queries."
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Migrated conversations in Gemini can be accessed with multi-modal queries including images and video.",
+        "correct_answer": "True",
+        "explanation": "Gemini's multi-modal engine can parse and analyze migrated chat histories with embedded media."
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "What security consideration is most important when migrating corporate chat history?",
+        "options": [
+          "A) File size",
+          "B) PII redaction before upload",
+          "C) Compression",
+          "D) Cloud storage"
+        ],
+        "correct_answer": "B",
+        "explanation": "Always redact sensitive data (PII, API keys) before uploading to any cloud service."
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Gemini Live can be used to have voice conversations about your migrated chat history.",
+        "correct_answer": "True",
+        "explanation": "Gemini Live allows real-time voice interactions with your migrated and cached data."
+      }
+    ]
+  },
+  {
+    "course_id": "1-1",
+    "course_title": "Course Kick-off and AI Trends",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "What is the primary shift in manager responsibilities with AI tools like Gemini?",
+        "options": [
+          "A) More task execution",
+          "B) From execution to synthesis and decision-making",
+          "C) Less strategic thinking",
+          "D) More manual work"
+        ],
+        "correct_answer": "B",
+        "explanation": "Managers evolve to orchestrate AI, focusing on strategic decisions rather than manual execution."
+      },
+      {
+        "id": "Q2",
+        "type": "true_false",
+        "question": "Deep Research can autonomously plan research paths, evaluate sources, and produce synthesis reports.",
+        "correct_answer": "True",
+        "explanation": "Deep Research is an agentic workflow that plans, executes, and synthesizes complex research independently."
+      },
+      {
+        "id": "Q3",
+        "type": "scenario",
+        "question": "You need a competitive market analysis in 1 hour. How would you use Gemini?",
+        "correct_answer": "Use Deep Research to autonomously analyze market data across multiple sources",
+        "explanation": "Deep Research automates the research process, delivering synthesis reports in minutes."
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "Which Gemini feature is best for preparing for high-stakes negotiations?",
+        "options": [
+          "A) Canvas",
+          "B) Image generation",
+          "C) Gemini Live role-play",
+          "D) Video generation"
+        ],
+        "correct_answer": "C",
+        "explanation": "Gemini Live allows real-time conversation practice and role-playing for negotiation prep."
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Veo 3.1 can generate cinematic videos from simple text prompts for marketing materials.",
+        "correct_answer": "True",
+        "explanation": "Veo generates 60+ second, high-quality videos from text descriptions."
+      }
+    ]
+  },
+  {
+    "course_id": "1-2",
+    "course_title": "Six Magic Tools",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Which tool is specifically designed for collaborative, real-time document editing?",
+        "options": [
+          "A) Deep Research",
+          "B) Canvas",
+          "C) Veo",
+          "D) Gemini Live"
+        ],
+        "correct_answer": "B",
+        "explanation": "Canvas enables real-time collaborative editing of documents with AI."
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "You need professional images for a product launch presentation. Which tool?",
+        "correct_answer": "Imagen 3 (image generation)",
+        "explanation": "Imagen 3 generates professional, copyright-free images for marketing materials."
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Deep Research and Canvas are mutually exclusive - you can't use them together.",
+        "correct_answer": "False",
+        "explanation": "You can use Deep Research to gather information, then refine it in Canvas."
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "Which tool generates original background music for videos?",
+        "options": [
+          "A) Canvas",
+          "B) Veo",
+          "C) Lyria 3",
+          "D) Imagen"
+        ],
+        "correct_answer": "C",
+        "explanation": "Lyria 3 generates 30-second copyright-free music with mood and style customization."
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Learning Mode uses Socratic questioning to guide understanding without direct answers.",
+        "correct_answer": "True",
+        "explanation": "Learning Mode provides guided learning through questions rather than immediate answers."
+      }
+    ]
+  },
+  {
+    "course_id": "1-3",
+    "course_title": "Classroom Reflection",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "scenario",
+        "question": "Your HR department needs to create safety training videos rapidly. Which tools would you combine?",
+        "correct_answer": "Gemini for content + Veo for video generation + Lyria for audio",
+        "explanation": "Use Gemini to draft scripts, Veo to generate video, and Lyria for background audio."
+      },
+      {
+        "id": "Q2",
+        "type": "true_false",
+        "question": "Context Caching can reduce API costs by up to 90% for repeated queries on cached data.",
+        "correct_answer": "True",
+        "explanation": "Context Caching stores data once and references it instantly, reducing token costs dramatically."
+      },
+      {
+        "id": "Q3",
+        "type": "multiple_choice",
+        "question": "What is the most important factor when implementing AI in a team?",
+        "options": [
+          "A) Technology",
+          "B) Human oversight and clear governance",
+          "C) Cost",
+          "D) Speed"
+        ],
+        "correct_answer": "B",
+        "explanation": "Human-in-the-loop oversight ensures AI outputs are accurate, ethical, and aligned with goals."
+      },
+      {
+        "id": "Q4",
+        "type": "true_false",
+        "question": "All AI-generated content requires human review before publishing.",
+        "correct_answer": "True",
+        "explanation": "Human review ensures accuracy, brand alignment, and prevents AI errors from reaching customers."
+      },
+      {
+        "id": "Q5",
+        "type": "scenario",
+        "question": "Your team generated 100 marketing variations with Gemini. How should you proceed?",
+        "correct_answer": "Have humans evaluate and select the best 5-10 for A/B testing",
+        "explanation": "Use AI to generate at scale, then apply human judgment for final selection."
+      }
+    ]
+  },
+  {
+    "course_id": "2-1",
+    "course_title": "Prompt Engineering",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "What is the ROPE framework?",
+        "options": [
+          "A) Role, Objective, Parameters, Execute",
+          "B) Research, Organize, Plan, Execute",
+          "C) Read, Observe, Process, Evaluate",
+          "D) Retrieve, Output, Parse, Encode"
+        ],
+        "correct_answer": "A",
+        "explanation": "ROPE = Role (who), Objective (what), Parameters (constraints), Execute (how to output)."
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "Your prompt isn't producing useful results. What should you do?",
+        "correct_answer": "Provide more specific context, clearer constraints, and expected output format",
+        "explanation": "Better prompts yield better results - add background, specificity, and formatting requirements."
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Generic prompts produce generic results.",
+        "correct_answer": "True",
+        "explanation": "Specific, well-structured prompts produce targeted, high-quality outputs."
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "How many times should you iterate on a prompt?",
+        "options": [
+          "A) Never - first try counts",
+          "B) Once",
+          "C) 2-3 times until satisfied",
+          "D) Until perfect"
+        ],
+        "correct_answer": "C",
+        "explanation": "Iterative refinement (2-3 rounds) typically produces optimal results."
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "You should always test prompts with similar inputs to verify consistency.",
+        "correct_answer": "True",
+        "explanation": "Testing confirms your prompt works reliably across different scenarios."
+      }
+    ]
+  },
+  {
+    "course_id": "2-2",
+    "course_title": "Content Generation",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "What is the typical workflow for using Gemini to generate content?",
+        "options": [
+          "A) AI generates - publish immediately",
+          "B) AI generates - human reviews - optimize - publish",
+          "C) Brainstorm - AI drafts - human edits",
+          "D) Both B and C"
+        ],
+        "correct_answer": "D",
+        "explanation": "Effective content generation includes both review and iteration cycles."
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "You need 50 product descriptions in 1 hour. How would you approach this?",
+        "correct_answer": "Use Gemini to generate all 50, then have humans review and select the best",
+        "explanation": "AI generates at scale; humans ensure quality and brand consistency."
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Canvas is better than plain chat for iterative content refinement.",
+        "correct_answer": "True",
+        "explanation": "Canvas provides side-by-side editing, making refinements easier and faster."
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "When should you use AI-generated content as-is?",
+        "options": [
+          "A) Always",
+          "B) For internal use only",
+          "C) After human verification",
+          "D) Never"
+        ],
+        "correct_answer": "C",
+        "explanation": "AI output requires human verification for accuracy, tone, and brand alignment."
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "You can generate and publish marketing copy directly from Gemini without human review.",
+        "correct_answer": "False",
+        "explanation": "All customer-facing content requires human review to ensure quality and accuracy."
+      }
+    ]
+  },
+  {
+    "course_id": "2-3",
+    "course_title": "Deep Research",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "How long does a typical Deep Research query take?",
+        "options": [
+          "A) 30 seconds",
+          "B) 5 minutes",
+          "C) 30 minutes",
+          "D) Several hours"
+        ],
+        "correct_answer": "B",
+        "explanation": "Deep Research typically completes comprehensive analysis in 5-15 minutes."
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "You need market analysis of 3 competitors by tomorrow. Would Deep Research help?",
+        "correct_answer": "Yes - Deep Research can analyze all 3 competitors' information overnight",
+        "explanation": "Deep Research automates competitive intelligence, saving days of manual research."
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Deep Research only works with text - it can't analyze images or videos.",
+        "correct_answer": "False",
+        "explanation": "Deep Research's multi-modal capabilities let it analyze various content types."
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "What should you do with Deep Research findings before using them for decisions?",
+        "options": [
+          "A) Use immediately",
+          "B) Verify key facts with original sources",
+          "C) Only use if from reputable sites",
+          "D) Always trust AI summaries"
+        ],
+        "correct_answer": "B",
+        "explanation": "Always verify critical findings - AI can make mistakes, especially with recent/changing data."
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Deep Research is available on Gemini Pro (limited) and Ultra (unlimited).",
+        "correct_answer": "True",
+        "explanation": "Pro: 5 Deep Research queries/month; Ultra: unlimited Deep Research."
+      }
+    ]
+  },
+  {
+    "course_id": "3-1",
+    "course_title": "Image and Design",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "Which model generates images in Gemini?",
+        "options": [
+          "A) Veo",
+          "B) Canvas",
+          "C) Imagen 3",
+          "D) Lyria"
+        ],
+        "correct_answer": "C",
+        "explanation": "Imagen 3 is Gemini's image generation engine."
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "You need 20 product photos for an e-commerce site. Should you use Imagen?",
+        "correct_answer": "Yes, but verify they match your brand aesthetic and review for quality",
+        "explanation": "AI-generated images are fast and affordable; human review ensures consistency."
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Images generated by Imagen 3 are free from copyright concerns.",
+        "correct_answer": "True",
+        "explanation": "AI-generated images have no copyright issues since they're generated, not sourced."
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "What's the most important factor for good image generation prompts?",
+        "options": [
+          "A) Length",
+          "B) Specificity and visual details",
+          "C) Including artist names",
+          "D) Asking nicely"
+        ],
+        "correct_answer": "B",
+        "explanation": "Detailed prompts (colors, style, composition) produce better images than generic ones."
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "You can generate product images at different angles with separate Imagen prompts.",
+        "correct_answer": "True",
+        "explanation": "Multiple prompts with different angles and perspectives create comprehensive product visuals."
+      }
+    ]
+  },
+  {
+    "course_id": "3-2",
+    "course_title": "Video and Audio",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "What is the maximum duration for Veo video generation?",
+        "options": [
+          "A) 10 seconds",
+          "B) 30 seconds",
+          "C) 60+ seconds",
+          "D) No limit"
+        ],
+        "correct_answer": "C",
+        "explanation": "Veo generates videos of 60+ seconds (1+ minute) at 1080p Full HD."
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "You need a 15-second product demo video. Can Veo do it?",
+        "correct_answer": "Yes - Veo can generate a 15-second video from a text description",
+        "explanation": "Veo generates any duration up to 60+ seconds, making it perfect for short videos."
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Lyria generates music; Veo generates videos.",
+        "correct_answer": "True",
+        "explanation": "Lyria 3 = 30-second music generation; Veo = video generation."
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "What aspect ratios does Veo support?",
+        "options": [
+          "A) Only 16:9",
+          "B) 16:9 and 1:1",
+          "C) 16:9, 1:1, and 9:16",
+          "D) All common ratios"
+        ],
+        "correct_answer": "C",
+        "explanation": "Veo supports landscape (16:9), square (1:1), and portrait (9:16) formats."
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Professional video production agencies have completely replaced human videographers with Veo.",
+        "correct_answer": "False",
+        "explanation": "Veo is a tool that augments human creativity, not replaces professional videographers entirely."
+      }
+    ]
+  },
+  {
+    "course_id": "3-3",
+    "course_title": "Data Analysis",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "How should you provide data to Gemini for analysis?",
+        "options": [
+          "A) As text only",
+          "B) CSV, images, or PDFs",
+          "C) Describe it verbally",
+          "D) Email spreadsheets"
+        ],
+        "correct_answer": "B",
+        "explanation": "Gemini accepts multiple formats for data analysis."
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "You have a 500-row spreadsheet. Should you upload it to Gemini?",
+        "correct_answer": "Yes - Gemini can analyze spreadsheets up to 2M tokens",
+        "explanation": "Gemini's 2M token context window handles large datasets easily."
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Gemini's data analysis is only for internal use, not for reporting to executives.",
+        "correct_answer": "False",
+        "explanation": "After human review, Gemini-analyzed data is excellent for executive reporting."
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "What should you always verify when using Gemini for financial analysis?",
+        "options": [
+          "A) Nothing - trust the AI",
+          "B) Key numbers and methodology",
+          "C) AI's sense of humor",
+          "D) Your password"
+        ],
+        "correct_answer": "B",
+        "explanation": "Always verify calculations and methodology for financial/critical data."
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Gemini can create Excel formulas and generate visualizations of data.",
+        "correct_answer": "True",
+        "explanation": "Gemini can write formulas and describe visualization strategies."
+      }
+    ]
+  },
+  {
+    "course_id": "4-1",
+    "course_title": "Workflow Integration",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "What is the first step in integrating Gemini into team workflows?",
+        "options": [
+          "A) Buy licenses immediately",
+          "B) Identify high-pain tasks and pilot with power users",
+          "C) Mandate AI use for everything",
+          "D) Wait for competitors"
+        ],
+        "correct_answer": "B",
+        "explanation": "Effective integration starts with targeted pilots on high-impact pain points."
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "Your team spends 10 hours/week on report drafting. How would you approach AI integration?",
+        "correct_answer": "Pilot Gemini for report drafting with 2-3 power users for 2 weeks",
+        "explanation": "Start small: identify the high-impact task, pilot with engaged users, measure impact."
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "All team members should adopt AI tools simultaneously.",
+        "correct_answer": "False",
+        "explanation": "Phased adoption (champions first, then broader rollout) is more successful."
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "How should you measure Gemini integration success?",
+        "options": [
+          "A) Time saved per task",
+          "B) Quality of outputs",
+          "C) User adoption rate",
+          "D) All of the above"
+        ],
+        "correct_answer": "D",
+        "explanation": "Success includes speed, quality, adoption, and business impact."
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Once Gemini is integrated, no changes are needed.",
+        "correct_answer": "False",
+        "explanation": "Continuous optimization and feedback loops improve integration over time."
+      }
+    ]
+  },
+  {
+    "course_id": "adv-1-1",
+    "course_title": "Advanced Prompts",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "What does ROPE stand for in advanced prompting?",
+        "options": [
+          "A) Role, Objective, Parameters, Execute",
+          "B) Research, Operate, Process, Evaluate",
+          "C) Refine, Optimize, Perfect, Execute",
+          "D) Reuse, Organize, Plan, Expand"
+        ],
+        "correct_answer": "A",
+        "explanation": "ROPE is the gold standard framework for advanced prompt engineering."
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "A basic prompt returns mediocre results. How would you improve it using ROPE?",
+        "correct_answer": "Rewrite using ROPE: define clear role, specific objective, constraints, output format",
+        "explanation": "ROPE structures prompts for maximum clarity and output quality."
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Advanced prompting requires extensive AI expertise to master.",
+        "correct_answer": "False",
+        "explanation": "ROPE framework makes advanced prompting accessible to anyone."
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "How many iterations does an advanced prompt typically need?",
+        "options": [
+          "A) 0 - perfect first try",
+          "B) 1-2",
+          "C) 3-5 for complex tasks",
+          "D) 10+"
+        ],
+        "correct_answer": "C",
+        "explanation": "Complex prompts benefit from iterative refinement - typically 3-5 rounds."
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "You should test advanced prompts with varied inputs to verify robustness.",
+        "correct_answer": "True",
+        "explanation": "Testing confirms prompts work consistently across different scenarios and edge cases."
+      }
+    ]
+  },
+  {
+    "course_id": "adv-2-1",
+    "course_title": "Multimodal Apps",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "What does 'multimodal' mean in Gemini context?",
+        "options": [
+          "A) Multiple languages only",
+          "B) Multiple output formats",
+          "C) Processing text, images, audio, video simultaneously",
+          "D) Multiple user accounts"
+        ],
+        "correct_answer": "C",
+        "explanation": "Multimodal = text, images, audio, video all processed together as one context."
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "You want to analyze a meeting: video recording + transcript + slides. Can Gemini help?",
+        "correct_answer": "Yes - upload all three; Gemini analyzes them together",
+        "explanation": "Gemini's multimodal engine processes all content types in one analysis."
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Gemini Live can process video from your device camera in real-time.",
+        "correct_answer": "True",
+        "explanation": "Gemini Live supports real-time camera/screen feeds for live analysis."
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "What's the benefit of multimodal analysis vs. analyzing each format separately?",
+        "options": [
+          "A) No difference",
+          "B) Faster processing",
+          "C) Deeper context understanding and cross-format insights",
+          "D) Cheaper"
+        ],
+        "correct_answer": "C",
+        "explanation": "Multimodal analysis reveals connections between different content types."
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Multimodal processing is only available in Gemini Ultra.",
+        "correct_answer": "False",
+        "explanation": "Both Pro and Ultra support multimodal processing."
+      }
+    ]
+  },
+  {
+    "course_id": "adv-3-1",
+    "course_title": "Custom Gems",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "What is a Gem in Gemini?",
+        "options": [
+          "A) Paid premium feature",
+          "B) Custom AI assistant with specific instructions",
+          "C) Jewelry metaphor for AI",
+          "D) Video tutorial"
+        ],
+        "correct_answer": "B",
+        "explanation": "Gems are customized AI assistants configured for specific workflows or roles."
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "Your HR team needs consistent tone and format for rejection emails. Solution?",
+        "correct_answer": "Create an HR Gem with system instructions for tone, structure, and compliance",
+        "explanation": "Gems enforce consistency across team outputs by pre-configuring the AI."
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Pro tier allows unlimited custom Gems.",
+        "correct_answer": "False",
+        "explanation": "Pro: 5 Gems; Ultra: unlimited Gems."
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "How do you share a Gem with your team?",
+        "options": [
+          "A) Email the configuration",
+          "B) Generate shareable Gem link",
+          "C) Manual setup for each user",
+          "D) Can't share Gems"
+        ],
+        "correct_answer": "B",
+        "explanation": "Gems create shareable links for team collaboration."
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Each Gem should serve multiple purposes to maximize utility.",
+        "correct_answer": "False",
+        "explanation": "Focused Gems (one purpose) work better than multi-purpose ones."
+      }
+    ]
+  },
+  {
+    "course_id": "adv-4-1",
+    "course_title": "Agentic AI",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "multiple_choice",
+        "question": "What defines 'agentic' AI behavior?",
+        "options": [
+          "A) Autonomous goal-oriented action",
+          "B) Following explicit instructions exactly",
+          "C) Generating text only",
+          "D) Requiring human approval for each step"
+        ],
+        "correct_answer": "A",
+        "explanation": "Agentic AI autonomously plans and executes multi-step tasks toward goals."
+      },
+      {
+        "id": "Q2",
+        "type": "scenario",
+        "question": "You need to automate a complex research task. Is Deep Research agentic?",
+        "correct_answer": "Yes - Deep Research plans, executes, and synthesizes autonomously",
+        "explanation": "Deep Research exhibits agentic behavior: autonomous planning and execution."
+      },
+      {
+        "id": "Q3",
+        "type": "true_false",
+        "question": "Agentic AI should always be fully autonomous with no human oversight.",
+        "correct_answer": "False",
+        "explanation": "Best practice: agentic AI with human-in-the-loop verification for critical decisions."
+      },
+      {
+        "id": "Q4",
+        "type": "multiple_choice",
+        "question": "What's a key risk of agentic AI?",
+        "options": [
+          "A) Too slow",
+          "B) Goal misalignment or unintended actions",
+          "C) Requires expensive hardware",
+          "D) Only works on text"
+        ],
+        "correct_answer": "B",
+        "explanation": "Clear goal definition and human oversight prevent misalignment."
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Agentic workflows require extensive custom coding.",
+        "correct_answer": "False",
+        "explanation": "Modern Gemini features like Deep Research provide agentic capabilities with simple prompts."
+      }
+    ]
+  },
+  {
+    "course_id": "adv-5-1",
+    "course_title": "Case Studies",
+    "questions": [
+      {
+        "id": "Q1",
+        "type": "scenario",
+        "question": "A company reduced report generation time from 40 hours to 2 hours using Gemini. What enabled this?",
+        "correct_answer": "Automated content generation + Canvas for refinement + Context Caching for speed",
+        "explanation": "This represents typical productivity gains from smart Gemini integration."
+      },
+      {
+        "id": "Q2",
+        "type": "true_false",
+        "question": "AI success requires large capital investment.",
+        "correct_answer": "False",
+        "explanation": "Many teams achieve ROI with existing Gemini tiers and smart workflows."
+      },
+      {
+        "id": "Q3",
+        "type": "multiple_choice",
+        "question": "What's the most common failure mode in AI adoption?",
+        "options": [
+          "A) No budget",
+          "B) Poor prompting or lack of human review",
+          "C) Technology limitations",
+          "D) Employees refusing to use it"
+        ],
+        "correct_answer": "B",
+        "explanation": "Success hinges on process design and human oversight, not just technology."
+      },
+      {
+        "id": "Q4",
+        "type": "scenario",
+        "question": "A team pilots Gemini with 3 early adopters before broad rollout. Why?",
+        "correct_answer": "Build expertise, refine workflows, create advocates, measure impact before scaling",
+        "explanation": "Phased adoption is the most successful implementation pattern."
+      },
+      {
+        "id": "Q5",
+        "type": "true_false",
+        "question": "Successful AI integration requires cultural change, not just tool adoption.",
+        "correct_answer": "True",
+        "explanation": "Mindset shifts (treating AI as augmentation, not replacement) matter most."
+      }
+    ]
+  }
+]
