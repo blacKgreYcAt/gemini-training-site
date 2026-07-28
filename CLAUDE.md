@@ -270,4 +270,97 @@ if (!user) {
 
 ---
 
-**最後更新**: 2026-07-28 | **狀態**: ✅ 所有主要問題已修復
+### Phase 4: 多語言國際化系統 (2026-07-29)
+
+**目標**: 實現完整的中文/日文語言切換系統
+
+#### 問題 #1: LanguageProvider 上下文錯誤
+```
+症狀: "useLanguage must be used within LanguageProvider" 錯誤
+根本原因: LanguageProvider 在初始化時返回 children 而不包裝上下文
+解決方案: 移除早期返回，始終提供上下文
+```
+
+**修復** (lib/language-context.tsx):
+```typescript
+// ❌ 之前: 初始化時不提供上下文
+if (!isLoaded) {
+  return <>{children}</>;  // 上下文缺失!
+}
+
+// ✅ 之後: 始終提供上下文
+return (
+  <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage }}>
+    {children}
+  </LanguageContext.Provider>
+);
+```
+
+#### 系統架構
+
+**核心組件**:
+1. **LanguageContext** (lib/language-context.tsx)
+   - 全局語言狀態管理
+   - localStorage 持久化
+   - 自定義事件分派
+
+2. **Translations** (lib/translations.ts)
+   - 30+ UI 文本條目
+   - 中文 (zh) 和日文 (ja) 支持
+   - t() 翻譯函數
+
+3. **LanguageSelector** (components/LanguageSelector.tsx)
+   - 中文/日本語 按鈕
+   - 實時語言切換
+   - 狀態視覺反饋
+
+**導航流程**:
+```
+layout.tsx (LanguageProvider 包裹)
+  ↓
+app/page.tsx (useLanguage + t())
+  ↓
+app/cards/page.tsx (useLanguage + t())
+  ↓
+app/quiz/page.tsx (待更新)
+  ↓
+app/course/[week]/page.tsx (待更新)
+```
+
+#### 測試結果 ✅
+
+**開發環境**:
+- ✅ 語言按鈕功能正常
+- ✅ localStorage 正確保存偏好
+- ✅ 語言偏好在頁面刷新後保留
+- ✅ 無上下文錯誤
+- ✅ app/page.tsx 完全支持語言切換
+- ✅ app/cards/page.tsx 部分更新（主要 UI 文本）
+
+**Commits**:
+| Commit | 內容 |
+|--------|------|
+| e0236f1 | 實現 i18n 基礎設施並修復 LanguageProvider 上下文 |
+| c62e6c7 | 為卡牌頁面添加 i18n 支持 |
+
+#### 待完成項目
+
+1. **更新剩餘頁面** (優先級: 高)
+   - [ ] app/quiz/page.tsx - 更新 100+ 題庫文本
+   - [ ] app/course/[week]/page.tsx - 更新課程導航文本
+   - [ ] app/dashboard/progress/page.tsx - 更新進度頁面
+   - [ ] app/dashboard/certificate/page.tsx - 更新證書頁面
+
+2. **部署和驗證** (優先級: 中)
+   - [ ] 部署到 Vercel
+   - [ ] 端到端測試 (登入 → 語言切換 → 查看內容)
+   - [ ] 性能檢查
+
+3. **擴展功能** (優先級: 低)
+   - [ ] 添加更多語言支持
+   - [ ] 日文課程內容翻譯
+   - [ ] 本地化日期/時間格式
+
+---
+
+**最後更新**: 2026-07-29 | **狀態**: 🔄 進行中 (i18n 基礎完成，頁面更新中)
