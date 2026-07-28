@@ -53,7 +53,7 @@ export async function getSession() {
 }
 
 export function onAuthStateChange(callback: (user: AuthUser | null) => void) {
-  return supabase.auth.onAuthStateChange(async (event, session) => {
+  const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
     if (session?.user) {
       callback({
         id: session.user.id,
@@ -64,4 +64,5 @@ export function onAuthStateChange(callback: (user: AuthUser | null) => void) {
       callback(null)
     }
   })
+  return subscription
 }

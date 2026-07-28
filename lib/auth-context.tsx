@@ -24,13 +24,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const { data: subscription } = onAuthStateChange((authUser) => {
+    const subscription = onAuthStateChange((authUser) => {
       setUser(authUser)
       setLoading(false)
     })
 
     return () => {
-      subscription?.subscription.unsubscribe()
+      subscription?.unsubscribe()
     }
   }, [])
 
