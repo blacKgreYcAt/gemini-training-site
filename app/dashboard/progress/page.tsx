@@ -5,8 +5,11 @@ import Link from 'next/link'
 import { getProgress } from '@/lib/progress-utils'
 import { ProtectedRoute } from '@/components/ProtectedRoute'
 import { Navbar } from '@/components/Navbar'
+import { useLanguage } from '@/lib/language-context'
+import { t } from '@/lib/translations'
 
 function ProgressPageContent() {
+  const { language } = useLanguage()
   const [progress, setProgress] = useState<any>(null)
 
   useEffect(() => {
@@ -17,7 +20,7 @@ function ProgressPageContent() {
   if (!progress) {
     return (
       <div style={{ padding: '40px', textAlign: 'center', background: '#f5f5f7', minHeight: '100vh' }}>
-        <p>加載中...</p>
+        <p>{language === 'ja' ? '読み込み中...' : '加載中...'}</p>
       </div>
     )
   }
@@ -27,8 +30,8 @@ function ProgressPageContent() {
   return (
     <div style={{ padding: '40px', background: '#f5f5f7', minHeight: '100vh' }}>
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-        <h1 style={{ marginBottom: '10px' }}>📊 我的學習進度</h1>
-        <p style={{ color: '#666', marginBottom: '40px' }}>追踪你的課程完成進度</p>
+        <h1 style={{ marginBottom: '10px' }}>📊 {language === 'ja' ? '私の学習進度' : '我的學習進度'}</h1>
+        <p style={{ color: '#666', marginBottom: '40px' }}>{language === 'ja' ? 'コースの完了進度を追跡' : '追踪你的課程完成進度'}</p>
 
         {/* 整體進度卡片 */}
         <div style={{
@@ -38,35 +41,35 @@ function ProgressPageContent() {
           marginBottom: '40px',
           boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
         }}>
-          <h2 style={{ marginBottom: '30px' }}>📈 整體進度</h2>
+          <h2 style={{ marginBottom: '30px' }}>📈 {language === 'ja' ? '全体の進度' : '整體進度'}</h2>
 
           <ProgressItem
-            label="投影片進度"
+            label={language === 'ja' ? 'スライド進度' : '投影片進度'}
             icon="📽️"
             completed={stats.slidesCompletionRate === 100}
             percentage={stats.slidesCompletionRate || 0}
           />
 
           <ProgressItem
-            label="卡牌自學"
+            label={language === 'ja' ? 'カード学習' : '卡牌自學'}
             icon="🎴"
             completed={stats.cardsCompletionRate === 100}
             percentage={stats.cardsCompletionRate || 0}
           />
 
           <ProgressItem
-            label="題庫完成"
+            label={language === 'ja' ? 'クイズ完了' : '題庫完成'}
             icon="📝"
             completed={stats.quizCompletionRate === 100}
             percentage={stats.quizCompletionRate || 0}
           />
 
           <ProgressItem
-            label="測驗成績"
+            label={language === 'ja' ? 'テストスコア' : '測驗成績'}
             icon="✅"
             completed={stats.quizAccuracy >= 80}
             percentage={stats.quizAccuracy || 0}
-            required="≥80% 可領證書"
+            required={language === 'ja' ? '≥80% で証書取得' : '≥80% 可領證書'}
           />
         </div>
 
@@ -78,21 +81,21 @@ function ProgressPageContent() {
           marginBottom: '40px',
           border: stats.certificateEarned ? '2px solid #10b981' : '2px solid #ddd'
         }}>
-          <h2 style={{ marginBottom: '20px' }}>🏆 證書狀態</h2>
+          <h2 style={{ marginBottom: '20px' }}>🏆 {language === 'ja' ? '証書ステータス' : '證書狀態'}</h2>
 
           {stats.certificateEarned ? (
             <div style={{ textAlign: 'center' }}>
               <p style={{ fontSize: '18px', color: '#10b981', fontWeight: 600, marginBottom: '20px' }}>
-                ✅ 已獲得結業證書！
+                ✅ {language === 'ja' ? '修了証書を取得しました！' : '已獲得結業證書！'}
               </p>
               {stats.certificateGeneratedAt && (
                 <p style={{ color: '#666', marginBottom: '20px' }}>
-                  於 {new Date(stats.certificateGeneratedAt).toLocaleDateString('zh-TW')} 生成
+                  {language === 'ja' ? '生成日：' : '於 '}{new Date(stats.certificateGeneratedAt).toLocaleDateString(language === 'ja' ? 'ja-JP' : 'zh-TW')}{language === 'ja' ? '' : ' 生成'}
                 </p>
               )}
               {stats.certificateNumber && (
                 <p style={{ color: '#666', marginBottom: '20px', fontFamily: 'monospace' }}>
-                  編號：{stats.certificateNumber}
+                  {language === 'ja' ? '番号：' : '編號：'}{stats.certificateNumber}
                 </p>
               )}
               <Link href="/dashboard/certificate">
@@ -105,24 +108,24 @@ function ProgressPageContent() {
                   cursor: 'pointer',
                   fontWeight: 600
                 }}>
-                  查看 / 重新下載證書
+                  {language === 'ja' ? '証書を表示 / 再ダウンロード' : '查看 / 重新下載證書'}
                 </button>
               </Link>
             </div>
           ) : (
             <div>
               <p style={{ color: '#666', marginBottom: '20px' }}>
-                完成所有課程要求後，即可獲得証書。
+                {language === 'ja' ? 'すべてのコース要件を完了した後、証書を取得できます。' : '完成所有課程要求後，即可獲得証書。'}
               </p>
               <div style={{ background: '#f0f0f0', padding: '15px', borderRadius: '8px', marginBottom: '20px' }}>
                 <p style={{ fontSize: '14px', color: '#666', margin: 0 }}>
-                  還需完成：
+                  {language === 'ja' ? '完了が必要：' : '還需完成：'}
                 </p>
                 <ul style={{ margin: '10px 0 0 20px', fontSize: '14px', color: '#666' }}>
-                  {stats.slidesCompletionRate < 100 && <li>投影片進度：{(100 - stats.slidesCompletionRate).toFixed(0)}%</li>}
-                  {stats.cardsCompletionRate < 100 && <li>卡牌自學：{(100 - stats.cardsCompletionRate).toFixed(0)}%</li>}
-                  {stats.quizCompletionRate < 100 && <li>題庫完成：{(100 - stats.quizCompletionRate).toFixed(0)}%</li>}
-                  {stats.quizAccuracy < 80 && <li>測驗成績：需達 80% 或以上</li>}
+                  {stats.slidesCompletionRate < 100 && <li>{language === 'ja' ? 'スライド進度' : '投影片進度'}：{(100 - stats.slidesCompletionRate).toFixed(0)}%</li>}
+                  {stats.cardsCompletionRate < 100 && <li>{language === 'ja' ? 'カード学習' : '卡牌自學'}：{(100 - stats.cardsCompletionRate).toFixed(0)}%</li>}
+                  {stats.quizCompletionRate < 100 && <li>{language === 'ja' ? 'クイズ完了' : '題庫完成'}：{(100 - stats.quizCompletionRate).toFixed(0)}%</li>}
+                  {stats.quizAccuracy < 80 && <li>{language === 'ja' ? 'テストスコア：80% 以上が必要' : '測驗成績：需達 80% 或以上'}</li>}
                 </ul>
               </div>
             </div>
