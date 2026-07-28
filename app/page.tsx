@@ -3,8 +3,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { courseData } from '@/lib/course-data'
+import { ProtectedRoute } from '@/components/ProtectedRoute'
+import { Navbar } from '@/components/Navbar'
 
-export default function Home() {
+function HomeContent() {
   // 強制 Vercel 重新部署 - v3
   // 按週次組織課程
   const coursesByWeek = [0, 1, 2, 3, 4].map(week => ({
@@ -230,5 +232,14 @@ export default function Home() {
         </div>
       </footer>
     </div>
+  )
+}
+
+export default function Home() {
+  return (
+    <ProtectedRoute>
+      <Navbar />
+      <HomeContent />
+    </ProtectedRoute>
   )
 }
