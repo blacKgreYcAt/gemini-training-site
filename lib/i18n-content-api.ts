@@ -4,7 +4,7 @@
 
 import { createClient } from '@supabase/supabase-js';
 
-type Language = 'en' | 'ja';
+type Language = 'zh' | 'ja';
 
 // 初始化 Supabase
 const supabase = createClient(
@@ -34,7 +34,7 @@ export interface CourseContent {
  */
 export async function getCourseContent(
   courseId: string,
-  language: Language = 'en'
+  language: Language = 'zh'
 ): Promise<CourseContent | null> {
   try {
     const { data, error } = await supabase
@@ -61,7 +61,7 @@ export async function getCourseContent(
  */
 export async function getCoursesByWeek(
   week: number,
-  language: Language = 'en'
+  language: Language = 'zh'
 ): Promise<CourseContent[]> {
   try {
     const { data, error } = await supabase
@@ -87,7 +87,7 @@ export async function getCoursesByWeek(
  * 獲取所有課程（用於課程列表）
  */
 export async function getAllCourses(
-  language: Language = 'en'
+  language: Language = 'zh'
 ): Promise<CourseContent[]> {
   try {
     const { data, error } = await supabase
@@ -130,7 +130,7 @@ export interface Quiz {
  */
 export async function getCourseQuizzes(
   courseId: string,
-  language: Language = 'en'
+  language: Language = 'zh'
 ): Promise<Quiz[]> {
   try {
     const { data, error } = await supabase
@@ -155,7 +155,7 @@ export async function getCourseQuizzes(
  * 獲取所有題庫
  */
 export async function getAllQuizzes(
-  language: Language = 'en'
+  language: Language = 'zh'
 ): Promise<Quiz[]> {
   try {
     const { data, error } = await supabase
@@ -195,7 +195,7 @@ export interface UserProgress {
 export async function getUserProgress(
   userId: string,
   courseId: string,
-  language: Language = 'en'
+  language: Language = 'zh'
 ): Promise<UserProgress | null> {
   try {
     const { data, error } = await supabase
@@ -274,13 +274,13 @@ export async function getUserLanguagePreference(
 
     if (error) {
       console.warn('Could not fetch language preference, using default:', error);
-      return 'en';
+      return 'zh';
     }
 
-    return (data?.preferred_language || 'en') as Language;
+    return (data?.preferred_language || 'zh') as Language;
   } catch (error) {
     console.error('Error in getUserLanguagePreference:', error);
-    return 'en';
+    return 'zh';
   }
 }
 

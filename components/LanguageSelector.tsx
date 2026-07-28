@@ -1,5 +1,5 @@
 // =====================================================
-// 語言選擇器組件 - 支持英文/日文切換
+// 語言選擇器組件 - 支持中文/日文切換
 // =====================================================
 
 'use client';
@@ -7,11 +7,11 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/lib/auth-context';
 
-type Language = 'en' | 'ja';
+type Language = 'zh' | 'ja';
 
 export function LanguageSelector() {
   const { user } = useAuth();
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>('zh');
   const [loading, setLoading] = useState(true);
 
   // 初始化 - 讀取用戶語言偏好
@@ -79,15 +79,15 @@ export function LanguageSelector() {
       <div className="flex gap-2 bg-gray-100 rounded-lg p-1 inline-flex">
         <button
           className={`min-w-24 px-4 py-2 rounded-md font-medium text-sm transition-all ${
-            language === 'en'
+            language === 'zh'
               ? 'bg-blue-600 text-white shadow-sm'
               : 'bg-transparent text-gray-700 hover:bg-gray-200'
           }`}
-          onClick={() => handleLanguageChange('en')}
+          onClick={() => handleLanguageChange('zh')}
           disabled={loading}
-          aria-label="English"
+          aria-label="中文"
         >
-          English
+          中文
         </button>
 
         <button
