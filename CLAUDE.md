@@ -361,6 +361,42 @@ app/course/[week]/page.tsx (待更新)
    - [ ] 日文課程內容翻譯
    - [ ] 本地化日期/時間格式
 
+#### 完成的頁面翻譯
+
+| 頁面 | 文件路徑 | 狀態 | 翻譯項目 |
+|------|---------|------|---------|
+| 首頁 | app/page.tsx | ✅ 完成 | 標題、副標題、課程卡片、按鈕 |
+| 卡牌自學 | app/cards/page.tsx | ✅ 完成 | 搜尋、篩選、統計、按鈕 |
+| 題庫 | app/quiz/page.tsx | ✅ 完成 | 標題、題目、答案反饋、得分 |
+| 課程頁面 | app/course/[week]/page.tsx | ✅ 完成 | 導航、頁碼、前後按鈕 |
+| 進度儀表板 | app/dashboard/progress/page.tsx | ✅ 完成 | 標題、進度項目、證書狀態 |
+| 證書頁面 | app/dashboard/certificate/page.tsx | ✅ 完成 | 標題、要求、提示 |
+| 認證頁面 | app/auth/page.tsx | ✅ 完成 | 登入、註冊、錯誤提示 |
+
+#### 完整的 Commits 清單
+
+```
+51552ee - Add i18n support to auth page
+a99a972 - Add i18n support to certificate page
+7636bd3 - Add i18n support to progress dashboard
+06de790 - Add i18n support to course page
+35a3f51 - Complete i18n support for quiz page
+d355941 - Add i18n support to quiz page (partial)
+c62e6c7 - Add i18n support to cards page
+d2847d9 - Document i18n implementation (Phase 4)
+e0236f1 - Implement i18n infrastructure and fix LanguageProvider context
+```
+
+#### 測試檢查表 ✅
+
+- ✅ 語言按鈕功能正常 (中文/日本語)
+- ✅ localStorage 正確保存語言偏好
+- ✅ 語言偏好在頁面刷新後保留
+- ✅ 無上下文錯誤
+- ✅ 所有主要頁面已翻譯
+- ✅ 內聯日文翻譯完成
+- ✅ 開發服務器運行正常 (200 狀態)
+
 ---
 
-**最後更新**: 2026-07-29 | **狀態**: 🔄 進行中 (i18n 基礎完成，頁面更新中)
+**最後更新**: 2026-07-29 17:28 | **狀態**: ✅ 完成 (i18n 系統全部實現)
