@@ -13,8 +13,11 @@ import {
 import { getProgress, checkCertificateEligibility } from '@/lib/progress-utils'
 import { ProtectedRoute } from '@/components/ProtectedRoute'
 import { Navbar } from '@/components/Navbar'
+import { useLanguage } from '@/lib/language-context'
+import { t } from '@/lib/translations'
 
 function CertificatePageContent() {
+  const { language } = useLanguage()
   const [progress, setProgress] = useState<any>(null)
   const [userName, setUserName] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
@@ -38,7 +41,7 @@ function CertificatePageContent() {
 
   const handleGenerateCertificate = async () => {
     if (!userName.trim()) {
-      alert('請輸入你的姓名')
+      alert(language === 'ja' ? 'あなたの名前を入力してください' : '請輸入你的姓名')
       return
     }
 
@@ -74,8 +77,8 @@ function CertificatePageContent() {
       setCanvas(generatedCanvas)
       setCertificateGenerated(true)
     } catch (error) {
-      console.error('證書生成失敗:', error)
-      alert('證書生成失敗，請重試')
+      console.error(language === 'ja' ? '証書生成失敗:' : '證書生成失敗:', error)
+      alert(language === 'ja' ? '証書生成に失敗しました。もう一度試してください' : '證書生成失敗，請重試')
     } finally {
       setIsGenerating(false)
     }
@@ -84,7 +87,7 @@ function CertificatePageContent() {
   if (!progress) {
     return (
       <div style={{ padding: '40px', textAlign: 'center', background: '#f5f5f7', minHeight: '100vh' }}>
-        <p>加載中...</p>
+        <p>{language === 'ja' ? '読み込み中...' : '加載中...'}</p>
       </div>
     )
   }
@@ -101,29 +104,29 @@ function CertificatePageContent() {
           borderRadius: '20px',
           border: '2px solid #0071e3'
         }}>
-          <h1 style={{ textAlign: 'center', marginBottom: '30px' }}>🎯 完成課程以獲得證書</h1>
+          <h1 style={{ textAlign: 'center', marginBottom: '30px' }}>🎯 {language === 'ja' ? 'コースを完了して証書を取得' : '完成課程以獲得證書'}</h1>
 
           <p style={{ marginBottom: '30px', color: '#666' }}>
-            您需要完成以下所有要求才能獲得結業證書：
+            {language === 'ja' ? 'すべての要件を満たしてから修了証書を取得してください：' : '您需要完成以下所有要求才能獲得結業證書：'}
           </p>
 
           <ProgressItem
-            label="投影片進度"
+            label={language === 'ja' ? 'スライド進度' : '投影片進度'}
             completed={stats.slidesCompletionRate === 100}
             percentage={stats.slidesCompletionRate || 0}
           />
           <ProgressItem
-            label="卡牌自學"
+            label={language === 'ja' ? 'カード学習' : '卡牌自學'}
             completed={stats.cardsCompletionRate === 100}
             percentage={stats.cardsCompletionRate || 0}
           />
           <ProgressItem
-            label="題庫完成"
+            label={language === 'ja' ? 'クイズ完了' : '題庫完成'}
             completed={stats.quizCompletionRate === 100}
             percentage={stats.quizCompletionRate || 0}
           />
           <ProgressItem
-            label="測驗成績"
+            label={language === 'ja' ? 'テストスコア' : '測驗成績'}
             completed={stats.quizAccuracy >= 80}
             percentage={stats.quizAccuracy || 0}
             required="≥80%"
@@ -141,7 +144,7 @@ function CertificatePageContent() {
               cursor: 'pointer',
               fontWeight: 600
             }}>
-              查看詳細進度 →
+              {language === 'ja' ? '詳細な進度を確認 →' : '查看詳細進度 →'}
             </button>
           </Link>
         </div>
@@ -162,7 +165,7 @@ function CertificatePageContent() {
           textAlign: 'center',
           boxShadow: '0 10px 30px rgba(16, 185, 129, 0.15)'
         }}>
-          <h1 style={{ marginBottom: '20px', color: '#10b981' }}>🏆 恭喜完成課程！</h1>
+          <h1 style={{ marginBottom: '20px', color: '#10b981' }}>🏆 {language === 'ja' ? 'コース完了おめでとう！' : '恭喜完成課程！'}</h1>
 
           <div style={{
             background: '#f0fdf4',
@@ -171,7 +174,7 @@ function CertificatePageContent() {
             marginBottom: '30px'
           }}>
             <p style={{ fontSize: '16px', color: '#047857', margin: 0, lineHeight: '1.6' }}>
-              您已成功完成「Gemini 企業協作課程」的所有課程內容、卡牌自學和題庫測驗。
+              {language === 'ja' ? '「Gemini企業協働コース」のすべてのコース内容、カード学習、およびクイズテストを完了しました。' : '您已成功完成「Gemini 企業協作課程」的所有課程內容、卡牌自學和題庫測驗。'}
               <br />
               <br />
               現在就生成你的專屬證書吧！
