@@ -8,6 +8,7 @@ export interface CertificateData {
   certificateNumber: string;
   quizAccuracy: number;
   totalLearningHours: number;
+  language?: 'zh' | 'ja';
 }
 
 /**
@@ -87,6 +88,20 @@ export async function generateCertificateCanvas(
       throw new Error('無法獲取 Canvas 上下文');
     }
 
+    const language = data.language || 'zh';
+    const isJapanese = language === 'ja';
+
+    // 多語言文本定義
+    const texts = {
+      titleMain: isJapanese ? '修了証書' : '證書',
+      titleSub: isJapanese ? 'Gemini企業協働コース修了証書' : 'Gemini 企業協作課程結業証書',
+      introText: isJapanese ? 'ここに証する' : '茲証明',
+      courseText: isJapanese ? '「Gemini全方位マスターコース」の全課程を修了した' : '已完成「Gemini 全方位實戰大師課」的所有課程',
+      completionDate: isJapanese ? '修了日：' : '完成日期：',
+      certificateNo: isJapanese ? '修了証番号：' : '証書編號：',
+      organization: isJapanese ? '大豐貿易グループ' : '大豐貿易集團'
+    };
+
     // 設置画布尺寸（A4 横向 300dpi）
     canvas.width = 2400;
     canvas.height = 1600;
@@ -111,12 +126,12 @@ export async function generateCertificateCanvas(
     ctx.fillStyle = '#0071e3';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('證書', canvas.width / 2, 250);
+    ctx.fillText(texts.titleMain, canvas.width / 2, 250);
 
     // 5. 繪製副標題
     ctx.font = '50px -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei"';
     ctx.fillStyle = '#666666';
-    ctx.fillText('Gemini 企業協作課程結業証書', canvas.width / 2, 380);
+    ctx.fillText(texts.titleSub, canvas.width / 2, 380);
 
     // 6. 繪製分隔線
     ctx.strokeStyle = '#d4af37';
@@ -134,7 +149,7 @@ export async function generateCertificateCanvas(
     ctx.font = '50px -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei"';
     ctx.fillStyle = '#333333';
     ctx.textAlign = 'center';
-    ctx.fillText('茲証明', canvas.width / 2, contentStartY);
+    ctx.fillText(texts.introText, canvas.width / 2, contentStartY);
 
     // 姓名
     ctx.font = 'bold 80px -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei"';
@@ -144,14 +159,16 @@ export async function generateCertificateCanvas(
     // 完成文本
     ctx.font = '50px -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei"';
     ctx.fillStyle = '#333333';
-    ctx.fillText('已完成「Gemini 全方位實戰大師課」的所有課程', canvas.width / 2, contentStartY + lineHeight * 2);
+    ctx.fillText(texts.courseText, canvas.width / 2, contentStartY + lineHeight * 2);
 
     // 日期和編號
     ctx.font = '40px -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei"';
     ctx.fillStyle = '#666666';
-    const dateStr = data.completionDate.toLocaleDateString('zh-TW');
-    ctx.fillText(`完成日期：${dateStr}`, canvas.width / 2, contentStartY + lineHeight * 2.9);
-    ctx.fillText(`証書編號：${data.certificateNumber}`, canvas.width / 2, contentStartY + lineHeight * 3.6);
+    const dateStr = isJapanese
+      ? data.completionDate.toLocaleDateString('ja-JP')
+      : data.completionDate.toLocaleDateString('zh-TW');
+    ctx.fillText(`${texts.completionDate}${dateStr}`, canvas.width / 2, contentStartY + lineHeight * 2.9);
+    ctx.fillText(`${texts.certificateNo}${data.certificateNumber}`, canvas.width / 2, contentStartY + lineHeight * 3.6);
 
     // 8. 繪製簽名區域
     ctx.font = '35px -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei"';
@@ -159,7 +176,7 @@ export async function generateCertificateCanvas(
     ctx.textAlign = 'center';
 
     // 左邊簽名
-    ctx.fillText('大豐貿易集團', canvas.width / 4, 1380);
+    ctx.fillText(texts.organization, canvas.width / 4, 1380);
     ctx.strokeStyle = '#d4af37';
     ctx.lineWidth = 2;
     ctx.beginPath();
@@ -263,11 +280,13 @@ function drawCornerDecorations(
  */
 export function downloadCertificateAsPNG(
   canvas: HTMLCanvasElement,
-  fileName: string
+  fileName: string,
+  language: 'zh' | 'ja' = 'zh'
 ) {
   const link = document.createElement('a');
   link.href = canvas.toDataURL('image/png', 1.0);
-  link.download = `${fileName}-證書.png`;
+  const suffix = language === 'ja' ? '修了証書' : '證書';
+  link.download = `${fileName}-${suffix}.png`;
 
   document.body.appendChild(link);
   link.click();
@@ -279,7 +298,8 @@ export function downloadCertificateAsPNG(
  */
 export async function downloadCertificateAsPDF(
   canvas: HTMLCanvasElement,
-  fileName: string
+  fileName: string,
+  language: 'zh' | 'ja' = 'zh'
 ) {
   try {
     const { default: jsPDF } = await import('jspdf');
@@ -311,10 +331,11 @@ export async function downloadCertificateAsPDF(
     const y = (pageHeight - pdfHeight) / 2;
 
     pdf.addImage(imgData, 'PNG', x, y, pdfWidth, pdfHeight);
-    pdf.save(`${fileName}-證書.pdf`);
+    const suffix = language === 'ja' ? '修了証書' : '證書';
+    pdf.save(`${fileName}-${suffix}.pdf`);
   } catch (error) {
-    console.error('PDF 生成失敗:', error);
-    alert('PDF 生成失敗，請嘗試下載 PNG 格式');
+    console.error(language === 'ja' ? 'PDF生成失敗:' : 'PDF 生成失敗:', error);
+    alert(language === 'ja' ? 'PDF生成失敗しました。PNG形式のダウンロードを試してください' : 'PDF 生成失敗，請嘗試下載 PNG 格式');
   }
 }
 

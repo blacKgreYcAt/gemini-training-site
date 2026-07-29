@@ -54,7 +54,8 @@ function CertificatePageContent() {
         completionDate: new Date(),
         certificateNumber: certNumber,
         quizAccuracy: progress.statistics.quizAccuracy,
-        totalLearningHours: progress.statistics.totalLearningHours
+        totalLearningHours: progress.statistics.totalLearningHours,
+        language: language as 'zh' | 'ja'
       }
 
       const generatedCanvas = await generateCertificateCanvas(certData)
@@ -276,16 +277,16 @@ function CertificatePageContent() {
           />
 
           <ActionButton
-            onClick={() => canvas && downloadCertificateAsPNG(canvas, userName)}
+            onClick={() => canvas && downloadCertificateAsPNG(canvas, userName, language as 'zh' | 'ja')}
             icon="🖼️"
-            label="下載 PNG"
+            label={language === 'ja' ? 'PNG をダウンロード' : '下載 PNG'}
             color="#10b981"
           />
 
           <ActionButton
-            onClick={() => canvas && downloadCertificateAsPDF(canvas, userName)}
+            onClick={() => canvas && downloadCertificateAsPDF(canvas, userName, language as 'zh' | 'ja')}
             icon="📄"
-            label="下載 PDF"
+            label={language === 'ja' ? 'PDF をダウンロード' : '下載 PDF'}
             color="#d4af37"
           />
 
