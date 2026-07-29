@@ -108,6 +108,7 @@ async function fetchProgressFromSupabase(userId: string): Promise<UserProgress |
 
 /**
  * 保存進度到Supabase
+ * 跨平台進度同步：支持在不同設備間（電腦、手機）同步學習進度
  */
 async function saveProgressToSupabase(userId: string, progress: UserProgress): Promise<boolean> {
   try {
@@ -117,10 +118,16 @@ async function saveProgressToSupabase(userId: string, progress: UserProgress): P
       updated_at: new Date().toISOString()
     })
 
-    if (error) throw error
+    if (error) {
+      console.warn('⚠️ Supabase 進度同步失敗:', error.message)
+      console.info('💡 如果是表不存在，請在 Supabase SQL 編輯器運行 supabase/migrations/create_progress_table.sql')
+      return false
+    }
+    console.debug('✅ 進度已同步到 Supabase')
     return true
-  } catch (error) {
-    console.error('保存Supabase進度失敗:', error)
+  } catch (error: any) {
+    console.warn('⚠️ Supabase 連接失敗:', error.message)
+    console.info('💡 將使用 localStorage 備用方案保存進度')
     return false
   }
 }

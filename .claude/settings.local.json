@@ -43,7 +43,24 @@
       "Bash(git restore *)",
       "Bash(grep -E \"\\\\.json$\")",
       "Bash(git commit -m 'Fix JSX syntax and update import paths for i18n *)",
-      "Bash(git commit -m 'Fix: Restore translations imports and enable certificate generation *)"
+      "Bash(git commit -m 'Fix: Restore translations imports and enable certificate generation *)",
+      "mcp__claude-in-chrome__tabs_context_mcp",
+      "mcp__claude-in-chrome__navigate",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(curl -X POST http://localhost:3000/api/auth-test -H 'Content-Type: application/json' -d '{\"email\":\"benjaminchu@tfg.com.tw\",\"password\":\"123456\"}')",
+      "Bash(curl -s http://localhost:3000/auth)",
+      "Bash(killall npm *)",
+      "Bash(killall node *)",
+      "Bash(git log *)",
+      "Bash(xargs grep -l \"signInWithPassword\\\\|signUp\")",
+      "Bash(bash \"C:\\\\Users\\\\imaus\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-imaus-SynologyDrive---Claude-Code-----Gemini-----\\\\f97aaa9c-96dd-4bc7-af37-02fc2b39d1a9\\\\scratchpad\\\\test-auth.sh\")",
+      "Bash(curl -X POST https://rclldgdkksjkgksydmbx.supabase.co/auth/v1/token?grant_type=password -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJjbGxkZ2Rra3Nqa2drc3lkbWJ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUxOTMzNzMsImV4cCI6MjEwMDc2OTM3M30.rw1Dnh6b42lr51w6dSeIRJmftIUEm7hEJnJlHHrhibU' -H 'Content-Type: application/json' -d '{\"email\":\"benjaminchu@tfg.com.tw\",\"password\":\"123456\"}' --silent)",
+      "Bash(timeout 20 npm run dev)",
+      "Bash(curl -s http://localhost:3000/auth --connect-timeout 5)",
+      "Bash(timeout 5 curl -I http://localhost:3000)",
+      "Bash(taskkill /PID 22744 /F)",
+      "PowerShell(Get-Process node -ErrorAction SilentlyContinue)",
+      "PowerShell(Stop-Process -Force -ErrorAction SilentlyContinue)"
     ]
   }
 }

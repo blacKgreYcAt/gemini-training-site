@@ -93,7 +93,6 @@ export const translations = {
 
     // Progress & Certificate
     myProgress: '我的進度',
-    certificate: '領取證書',
   },
   ja: {
     // Navigation & Auth
@@ -102,7 +101,6 @@ export const translations = {
     cards: 'カード学習',
     quiz: 'クイズ',
     progress: '進捗状況',
-    certificate: '修了証書',
     login: 'ログイン',
     signup: '登録',
     logout: 'ログアウト',

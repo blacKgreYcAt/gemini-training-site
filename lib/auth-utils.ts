@@ -7,6 +7,8 @@ export interface AuthUser {
 }
 
 export async function signUp(email: string, password: string, name: string) {
+  console.log('📝 Attempting sign up with:', { email, name, password: '***' })
+
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -15,17 +17,37 @@ export async function signUp(email: string, password: string, name: string) {
     }
   })
 
-  if (error) throw error
+  if (error) {
+    console.error('❌ Sign up error:', {
+      status: error.status,
+      message: error.message,
+      name: error.name
+    })
+    throw new Error(error.message || 'Registration failed')
+  }
+
+  console.log('✅ Sign up successful:', data.user?.email)
   return data
 }
 
 export async function signIn(email: string, password: string) {
+  console.log('🔐 Attempting sign in with:', { email, password: '***' })
+
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password
   })
 
-  if (error) throw error
+  if (error) {
+    console.error('❌ Sign in error:', {
+      status: error.status,
+      message: error.message,
+      name: error.name
+    })
+    throw new Error(error.message || 'Login failed')
+  }
+
+  console.log('✅ Sign in successful:', data.user?.email)
   return data
 }
 
