@@ -2,12 +2,15 @@
 
 import { useAuth } from '@/lib/auth-context'
 import { signOut } from '@/lib/auth-utils'
+import { useLanguage } from '@/lib/language-context'
+import { t } from '@/lib/translations'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 export function Navbar() {
   const { user } = useAuth()
+  const { language, setLanguage } = useLanguage()
   const router = useRouter()
   const [showMenu, setShowMenu] = useState(false)
 
@@ -28,35 +31,79 @@ export function Navbar() {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      height: '60px'
+      height: '60px',
+      flexWrap: 'wrap'
     }}>
+      {/* Logo - Clickable to return home */}
       <Link href="/" style={{ textDecoration: 'none' }}>
         <div style={{
           fontSize: '18px',
           fontWeight: '600',
           color: '#0071e3',
-          cursor: 'pointer'
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px'
         }}>
-          🎓 Gemini 課程
+          🎓 {language === 'ja' ? 'Gemini コース' : 'Gemini 課程'}
         </div>
       </Link>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-        <nav style={{ display: 'flex', gap: '20px' }}>
-          <Link href="/" style={{ textDecoration: 'none', color: '#666', fontWeight: '500' }}>
-            首頁
+      {/* Navigation Items & Language Selector */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '30px' }}>
+        {/* Navigation Menu */}
+        <nav style={{ display: 'flex', gap: '25px' }}>
+          <Link href="/" style={{ textDecoration: 'none', color: '#666', fontWeight: '500', fontSize: '14px' }}>
+            {t('home', language)}
           </Link>
-          <Link href="/cards" style={{ textDecoration: 'none', color: '#666', fontWeight: '500' }}>
-            卡牌
+          <Link href="/cards" style={{ textDecoration: 'none', color: '#666', fontWeight: '500', fontSize: '14px' }}>
+            {t('cards', language)}
           </Link>
-          <Link href="/quiz" style={{ textDecoration: 'none', color: '#666', fontWeight: '500' }}>
-            題庫
+          <Link href="/quiz" style={{ textDecoration: 'none', color: '#666', fontWeight: '500', fontSize: '14px' }}>
+            {t('quiz', language)}
           </Link>
-          <Link href="/dashboard/progress" style={{ textDecoration: 'none', color: '#666', fontWeight: '500' }}>
-            進度
+          <Link href="/dashboard/progress" style={{ textDecoration: 'none', color: '#666', fontWeight: '500', fontSize: '14px' }}>
+            {t('progress', language)}
           </Link>
         </nav>
 
+        {/* Language Selector */}
+        <div style={{ display: 'flex', gap: '8px', borderLeft: '1px solid #e5e7eb', paddingLeft: '20px' }}>
+          <button
+            onClick={() => setLanguage('zh')}
+            style={{
+              padding: '6px 12px',
+              background: language === 'zh' ? '#0071e3' : '#f0f0f0',
+              color: language === 'zh' ? 'white' : '#666',
+              border: 'none',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              fontWeight: '500',
+              fontSize: '12px',
+              transition: 'all 0.2s'
+            }}
+          >
+            中文
+          </button>
+          <button
+            onClick={() => setLanguage('ja')}
+            style={{
+              padding: '6px 12px',
+              background: language === 'ja' ? '#0071e3' : '#f0f0f0',
+              color: language === 'ja' ? 'white' : '#666',
+              border: 'none',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              fontWeight: '500',
+              fontSize: '12px',
+              transition: 'all 0.2s'
+            }}
+          >
+            日本語
+          </button>
+        </div>
+
+        {/* User Menu */}
         {user && (
           <div style={{ position: 'relative' }}>
             <button
@@ -68,7 +115,8 @@ export function Navbar() {
                 borderRadius: '8px',
                 padding: '8px 16px',
                 cursor: 'pointer',
-                fontWeight: '500'
+                fontWeight: '500',
+                fontSize: '14px'
               }}
             >
               👤 {user.name || user.email.split('@')[0]}
@@ -108,7 +156,7 @@ export function Navbar() {
                     fontSize: '14px'
                   }}
                 >
-                  登出
+                  {t('logout', language)}
                 </button>
               </div>
             )}
