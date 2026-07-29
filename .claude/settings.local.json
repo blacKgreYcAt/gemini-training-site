@@ -76,15 +76,7 @@
       "mcp__265c5217-5d53-48a6-86d8-346a5d4e501b__get_project",
       "mcp__265c5217-5d53-48a6-86d8-346a5d4e501b__get_deployment",
       "Bash(node scripts/translate-courses-to-japanese.js)",
-      "Bash(node check-models.js)",
-      "Bash(node -e \"const data = require\\('./all_courses_ja.json'\\); console.log\\('課程數:', data.length\\); console.log\\('第一個課程:', JSON.stringify\\(data[0], null, 2\\).substring\\(0, 500\\)\\);\")",
-      "Bash(node -e \"const data = require\\('./all_courses_ja.json'\\); console.log\\('課程總數:', data.length\\); data.forEach\\(c => console.log\\(\\\\`\\\\${c.id}: \\\\${c.title} - \\\\${c.pages.length} 頁\\\\`\\)\\);\")",
-      "Bash(node -e \"const ja = require\\('./all_courses_ja.json'\\); console.log\\('✅ Japanese courses loaded:'\\); console.log\\('- Total courses: ' + ja.length\\); console.log\\('- Courses with pages:'\\); ja.forEach\\(c => { if \\(c.pages.length > 0\\) console.log\\('  ' + c.id + ': ' + c.title + ' \\(' + c.pages.length + ' pages\\)'\\); }\\);\")",
-      "Bash(grep -E '[\\\\u4e00-\\\\u9fff]{2,}' app/quiz/page.tsx)",
-      "Bash(grep -v \"^[[:space:]]*\\\\*\\\\|^[[:space:]]*//\")",
-      "Bash(grep -E \"[\\\\u4e00-\\\\u9fff]{2,}\" app/course/\\\\[week\\\\]/page.tsx)",
-      "Bash(grep -v \"^[[:space:]]*\\\\*\\\\|^[[:space:]]//\")",
-      "Bash(grep -E \"[\\\\u4e00-\\\\u9fff]{2,}\" app/dashboard/progress/page.tsx)"
+      "Bash(node check-models.js)"
     ]
   }
 }

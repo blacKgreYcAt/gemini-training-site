@@ -103,7 +103,7 @@ function HomeContent() {
                       >
                         <div>
                           <div style={{ fontSize: '14px', textTransform: 'uppercase', color: '#0071e3', marginBottom: '12px', letterSpacing: '1px', fontWeight: 700 }}>
-                            模組 {course.module}
+                            {t('module', language)} {course.module}
                           </div>
                           <h4 style={{ fontSize: '22px', fontWeight: 900, marginBottom: '12px', color: '#000000', lineHeight: 1.3 }}>
                             {course.title}
@@ -114,10 +114,10 @@ function HomeContent() {
                         </div>
                         <div style={{ marginTop: '15px', paddingTop: '15px', borderTop: '1px solid #d0d0d0' }}>
                           <p style={{ fontSize: '14px', color: '#666', margin: '0 0 8px 0' }}>
-                            ⏱️ {course.duration_minutes} 分鐘
+                            ⏱️ {course.duration_minutes} {language === 'ja' ? '分間' : '分鐘'}
                           </p>
                           <p style={{ fontSize: '14px', color: '#0071e3', fontWeight: 700, margin: '0' }}>
-                            📑 查看詳情 →
+                            📑 {t('viewDetails', language)} →
                           </p>
                         </div>
                       </div>
@@ -215,9 +215,9 @@ function HomeContent() {
       <footer>
         <div className="container">
           <p style={{ fontSize: 'clamp(12px, 3vw, 14px)', lineHeight: 1.6 }}>
-            © 2026 大豐貿易集團 • AI 企業協作課程 •{' '}
+            © 2026 {t('companyName', language)} • {t('title', language)} •{' '}
             <a href="mailto:benjaminchu@tfg.com.tw" style={{ color: '#0071e3', textDecoration: 'none', fontWeight: 600 }}>
-              我要提問
+              {language === 'ja' ? 'ご質問がある場合' : '我要提問'}
             </a>
           </p>
         </div>

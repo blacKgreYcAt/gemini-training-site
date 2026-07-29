@@ -39,6 +39,7 @@ export const translations = {
 
     // Home Page
     companyName: '大豐貿易集團',
+    module: '模組',
     title: '大豐貿易集團 AI 企業協作課程',
     subtitle1: '四週實體密集課程，掌握 Gemini 六大神器。',
     subtitle2: '從傳統辦公流程到 AI 驅動決策，完整蛻變。',
@@ -184,6 +185,7 @@ export const translations = {
 
     // Home Page
     companyName: 'ダフォン貿易グループ',
+    module: 'モジュール',
     title: 'ダフォン貿易グループ AI企業協働コース',
     subtitle1: '4週間の集中実体講座で、Geminiの6つの機能をマスター。',
     subtitle2: '従来のオフィスプロセスからAI駆動の意思決定へ、完全な変革。',
