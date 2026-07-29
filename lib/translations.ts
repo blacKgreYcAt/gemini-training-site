@@ -1,5 +1,5 @@
 // 中文課程數據
-import chineseCourses from '../all_courses_corrected.json';
+import { courseData as chineseCourses } from './course-data';
 import japaneseCourses from '../all_courses_ja.json';
 import chineseQuizzes from '../course_quizzes.json';
 import japaneseQuizzes from '../course_quizzes_ja.json';
