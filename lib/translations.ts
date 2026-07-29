@@ -115,6 +115,15 @@ export const translations = {
     quizTip: '題庫：完整作答所有題目，系統自動計算成績',
     autoSaveTip: '進度會自動保存，可随時返回查看',
     loading: '加載中...',
+
+    // Certificate Page
+    certificateCongratulations: '恭喜完成課程！',
+    certificateCompletionMessage: '你已完成「Gemini企業協作課程」的所有課程內容、卡牌自學及測驗。',
+    certificateGeneratePrompt: '現在就生成你的專屬證書吧！',
+    certificateNameLabel: '請輸入您的姓名（用於證書）：',
+    certificateGenerateButton: '生成我的證書',
+    certificateGenerating: '⏳ 生成中...',
+    certificateEligibilityRequired: '還未完成所有要求。請完成所有課程。',
   },
   ja: {
     // Navigation & Auth
@@ -207,6 +216,15 @@ export const translations = {
     quizTip: 'クイズ：すべての問題に完全に回答、システムが自動的に成績を計算',
     autoSaveTip: '進度は自動的に保存され、いつでも確認できます',
     loading: '読み込み中...',
+
+    // Certificate Page
+    certificateCongratulations: 'コース完了おめでとう！',
+    certificateCompletionMessage: 'あなたは「Gemini企業協働コース」のすべてのコース内容、カード学習、およびクイズテストを完了しました。',
+    certificateGeneratePrompt: '現在、あなたの専属修了証書を生成してください！',
+    certificateNameLabel: '証書に使用するあなたの名前を入力してください：',
+    certificateGenerateButton: '✨ 修了証書を生成する',
+    certificateGenerating: '⏳ 生成中...',
+    certificateEligibilityRequired: '修了要件を満たしていません。すべてのコースを完了してください。',
   },
 };
 

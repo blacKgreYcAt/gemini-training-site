@@ -181,10 +181,10 @@ function CertificatePageContent() {
             marginBottom: '30px'
           }}>
             <p style={{ fontSize: '16px', color: '#047857', margin: 0, lineHeight: '1.6' }}>
-              {language === 'ja' ? '「Gemini企業協働コース」のすべてのコース内容、カード学習、およびクイズテストを完了しました。' : '您已成功完成「Gemini 企業協作課程」的所有課程內容、卡牌自學和題庫測驗。'}
+              {t('certificateCompletionMessage', language)}
               <br />
               <br />
-              現在就生成你的專屬證書吧！
+              {t('certificateGeneratePrompt', language)}
             </p>
           </div>
 
@@ -196,7 +196,7 @@ function CertificatePageContent() {
               color: '#333',
               textAlign: 'left'
             }}>
-              請輸入您的姓名（用於證書）：
+              {t('certificateNameLabel', language)}
             </label>
             <input
               type="text"
@@ -233,7 +233,7 @@ function CertificatePageContent() {
               transition: 'background 0.2s'
             }}
           >
-            {isGenerating ? '⏳ 生成中...' : '✨ 生成我的證書'}
+            {isGenerating ? t('certificateGenerating', language) : t('certificateGenerateButton', language)}
           </button>
         </div>
       </div>
