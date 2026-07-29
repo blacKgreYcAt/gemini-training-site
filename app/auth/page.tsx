@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { signIn, signUp } from '@/lib/auth-utils'
 import { useLanguage } from '@/lib/language-context'
+import { t } from '@/lib/translations'
 
 export default function AuthPage() {
   const { language } = useLanguage()
@@ -72,7 +73,7 @@ export default function AuthPage() {
           marginBottom: '30px',
           fontSize: '14px'
         }}>
-          {isSignUp ? '建立新帳號' : '登入您的帳號'}
+          {isSignUp ? (language === 'ja' ? '新しいアカウントを作成' : '建立新帳號') : (language === 'ja' ? 'アカウントにログイン' : '登入您的帳號')}
         </p>
 
         {error && (
@@ -98,13 +99,13 @@ export default function AuthPage() {
                 color: '#333',
                 fontSize: '14px'
               }}>
-                姓名
+                {language === 'ja' ? '名前' : '姓名'}
               </label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="例如：陳小明"
+                placeholder={language === 'ja' ? '例：山田太郎' : '例如：陳小明'}
                 required
                 style={{
                   width: '100%',
@@ -127,7 +128,7 @@ export default function AuthPage() {
               color: '#333',
               fontSize: '14px'
             }}>
-              電子郵件
+              {language === 'ja' ? 'メールアドレス' : '電子郵件'}
             </label>
             <input
               type="email"
@@ -155,13 +156,13 @@ export default function AuthPage() {
               color: '#333',
               fontSize: '14px'
             }}>
-              密碼
+              {language === 'ja' ? 'パスワード' : '密碼'}
             </label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="至少 6 個字符"
+              placeholder={language === 'ja' ? '最低 6 文字' : '至少 6 個字符'}
               required
               minLength={6}
               style={{
@@ -192,7 +193,7 @@ export default function AuthPage() {
               transition: 'background 0.2s'
             }}
           >
-            {loading ? '處理中...' : isSignUp ? '建立帳號' : '登入'}
+            {loading ? (language === 'ja' ? '処理中...' : '處理中...') : isSignUp ? (language === 'ja' ? 'アカウント作成' : '建立帳號') : (language === 'ja' ? 'ログイン' : '登入')}
           </button>
         </form>
 
@@ -202,7 +203,7 @@ export default function AuthPage() {
           borderTop: '2px solid #e5e7eb'
         }}>
           <p style={{ color: '#666', fontSize: '14px', marginBottom: '10px' }}>
-            {isSignUp ? '已有帳號？' : '還沒有帳號？'}
+            {isSignUp ? (language === 'ja' ? 'アカウントをお持ちですか？' : '已有帳號？') : (language === 'ja' ? 'アカウントをお持ちでないですか？' : '還沒有帳號？')}
           </p>
           <button
             type="button"
@@ -220,7 +221,7 @@ export default function AuthPage() {
               textDecoration: 'underline'
             }}
           >
-            {isSignUp ? '登入' : '註冊'}
+            {isSignUp ? (language === 'ja' ? 'ログイン' : '登入') : (language === 'ja' ? '登録' : '註冊')}
           </button>
         </div>
       </div>
