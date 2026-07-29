@@ -24,7 +24,7 @@ export default function AuthPage() {
     try {
       if (isSignUp) {
         await signUp(email, password, name)
-        alert(language === 'ja' ? '登録が完了しました。ログインしてください' : '註冊成功！請登入')
+        alert(t('authSignUpSuccess', language))
         setIsSignUp(false)
         setEmail('')
         setPassword('')
@@ -34,7 +34,7 @@ export default function AuthPage() {
         router.push('/')
       }
     } catch (err: any) {
-      setError(err.message || (language === 'ja' ? 'エラーが発生しました' : '發生錯誤'))
+      setError(err.message || t('authError', language))
     } finally {
       setLoading(false)
     }
@@ -73,7 +73,7 @@ export default function AuthPage() {
           marginBottom: '30px',
           fontSize: '14px'
         }}>
-          {isSignUp ? (language === 'ja' ? '新しいアカウントを作成' : '建立新帳號') : (language === 'ja' ? 'アカウントにログイン' : '登入您的帳號')}
+          {isSignUp ? t('authCreateAccount', language) : t('authLogin', language)}
         </p>
 
         {error && (
@@ -99,13 +99,13 @@ export default function AuthPage() {
                 color: '#333',
                 fontSize: '14px'
               }}>
-                {language === 'ja' ? '名前' : '姓名'}
+                {t('authNameLabel', language)}
               </label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder={language === 'ja' ? '例：山田太郎' : '例如：陳小明'}
+                placeholder={t('authNamePlaceholder', language)}
                 required
                 style={{
                   width: '100%',
@@ -128,7 +128,7 @@ export default function AuthPage() {
               color: '#333',
               fontSize: '14px'
             }}>
-              {language === 'ja' ? 'メールアドレス' : '電子郵件'}
+              {t('authEmailLabel', language)}
             </label>
             <input
               type="email"
@@ -156,13 +156,13 @@ export default function AuthPage() {
               color: '#333',
               fontSize: '14px'
             }}>
-              {language === 'ja' ? 'パスワード' : '密碼'}
+              {t('authPasswordLabel', language)}
             </label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder={language === 'ja' ? '最低 6 文字' : '至少 6 個字符'}
+              placeholder={t('authPasswordPlaceholder', language)}
               required
               minLength={6}
               style={{
@@ -193,7 +193,7 @@ export default function AuthPage() {
               transition: 'background 0.2s'
             }}
           >
-            {loading ? (language === 'ja' ? '処理中...' : '處理中...') : isSignUp ? (language === 'ja' ? 'アカウント作成' : '建立帳號') : (language === 'ja' ? 'ログイン' : '登入')}
+            {loading ? t('authProcessing', language) : isSignUp ? t('authCreateButton', language) : t('authLoginButton', language)}
           </button>
         </form>
 
@@ -203,7 +203,7 @@ export default function AuthPage() {
           borderTop: '2px solid #e5e7eb'
         }}>
           <p style={{ color: '#666', fontSize: '14px', marginBottom: '10px' }}>
-            {isSignUp ? (language === 'ja' ? 'アカウントをお持ちですか？' : '已有帳號？') : (language === 'ja' ? 'アカウントをお持ちでないですか？' : '還沒有帳號？')}
+            {isSignUp ? t('authHaveAccount', language) : t('authNoAccount', language)}
           </p>
           <button
             type="button"
@@ -221,7 +221,7 @@ export default function AuthPage() {
               textDecoration: 'underline'
             }}
           >
-            {isSignUp ? (language === 'ja' ? 'ログイン' : '登入') : (language === 'ja' ? '登録' : '註冊')}
+            {isSignUp ? t('authSwitchToLogin', language) : t('authSwitchToSignUp', language)}
           </button>
         </div>
       </div>

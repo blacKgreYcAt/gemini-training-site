@@ -38,6 +38,7 @@ export const translations = {
     loggedIn: '已登入',
 
     // Home Page
+    companyName: '大豐貿易集團',
     title: '大豐貿易集團 AI 企業協作課程',
     subtitle1: '四週實體密集課程，掌握 Gemini 六大神器。',
     subtitle2: '從傳統辦公流程到 AI 驅動決策，完整蛻變。',
@@ -116,6 +117,28 @@ export const translations = {
     autoSaveTip: '進度會自動保存，可随時返回查看',
     loading: '加載中...',
 
+    // Quiz Sections (新增)
+    section1: '基礎認識 - Gemini 功能與訂閱',
+    section1Range: '問題 1-20',
+    section2: '文本應用 - 內容生成、研究、分析',
+    section2Range: '問題 21-35',
+    section3: '圖像應用 - 圖像分析、生成、設計',
+    section3Range: '問題 36-50',
+    section4: '視頻與音頻 - Veo、音樂、語音',
+    section4Range: '問題 51-65',
+    section5: '語音應用 - Live、實時對話、語音分析',
+    section5Range: '問題 66-80',
+    section6: '進階應用 - 倫理、決策、企業應用',
+    section6Range: '問題 81-100',
+
+    // Grade (新增)
+    gradeAPlus: 'A+ (優秀)',
+    gradeA: 'A (很好)',
+    gradeB: 'B (良好)',
+    gradeC: 'C (及格)',
+    gradeD: 'D (需加強)',
+    requiredScoreProgress: '需達 80% 或以上',
+
     // Certificate Page
     certificateCongratulations: '恭喜完成課程！',
     certificateCompletionMessage: '你已完成「Gemini企業協作課程」的所有課程內容、卡牌自學及測驗。',
@@ -124,6 +147,27 @@ export const translations = {
     certificateGenerateButton: '生成我的證書',
     certificateGenerating: '⏳ 生成中...',
     certificateEligibilityRequired: '還未完成所有要求。請完成所有課程。',
+
+    // Certificate Page (新增)
+    certificateEligibilityAlert: '還未完成所有要求。請完成所有課程。',
+    certificateNameInputPrompt: '請輸入你的姓名',
+    certificateGenerationError: '證書生成失敗，請重試',
+    certificateLoadingMessage: '加載中...',
+    certificateIncompleteTitle: '完成課程以獲得證書',
+    certificateRequirements: '您需要完成以下所有要求才能獲得結業證書：',
+    certificateSlidesLabel: '投影片進度',
+    certificateCardsLabel: '卡牌自學',
+    certificateQuizLabel: '題庫完成',
+    certificateScoreLabel: '測驗成績',
+    certificateViewProgressButton: '查看詳細進度 →',
+    certificateCongratulationsTitle: '恭喜完成課程！',
+    certificatePNGButton: '下載 PNG',
+    certificatePDFButton: '下載 PDF',
+    certificateCertificateInfoTitle: '證書信息',
+    certificateName: '姓名',
+    certificateCompletionDate: '完成日期',
+    certificateCertificateNumber: '証書編號',
+    certificateTestScore: '測驗成績',
   },
   ja: {
     // Navigation & Auth
@@ -139,6 +183,7 @@ export const translations = {
     loggedIn: 'ログイン済み',
 
     // Home Page
+    companyName: 'ダフォン貿易グループ',
     title: 'ダフォン貿易グループ AI企業協働コース',
     subtitle1: '4週間の集中実体講座で、Geminiの6つの機能をマスター。',
     subtitle2: '従来のオフィスプロセスからAI駆動の意思決定へ、完全な変革。',
@@ -217,6 +262,28 @@ export const translations = {
     autoSaveTip: '進度は自動的に保存され、いつでも確認できます',
     loading: '読み込み中...',
 
+    // Quiz Sections (新增)
+    section1: '基本理解 - Gemini の機能とサブスクリプション',
+    section1Range: '問題 1-20',
+    section2: 'テキスト応用 - コンテンツ生成、研究、分析',
+    section2Range: '問題 21-35',
+    section3: '画像応用 - 画像分析、生成、デザイン',
+    section3Range: '問題 36-50',
+    section4: 'ビデオとオーディオ - Veo、音楽、音声',
+    section4Range: '問題 51-65',
+    section5: '音声応用 - Live、リアルタイム対話、音声分析',
+    section5Range: '問題 66-80',
+    section6: '高度な応用 - 倫理、意思決定、エンタープライズ応用',
+    section6Range: '問題 81-100',
+
+    // Grade (新增)
+    gradeAPlus: 'A+ (優秀)',
+    gradeA: 'A (素晴らしい)',
+    gradeB: 'B (良好)',
+    gradeC: 'C (合格)',
+    gradeD: 'D (改善が必要)',
+    requiredScoreProgress: '80% 以上が必要',
+
     // Certificate Page
     certificateCongratulations: 'コース完了おめでとう！',
     certificateCompletionMessage: 'あなたは「Gemini企業協働コース」のすべてのコース内容、カード学習、およびクイズテストを完了しました。',
@@ -225,6 +292,77 @@ export const translations = {
     certificateGenerateButton: '✨ 修了証書を生成する',
     certificateGenerating: '⏳ 生成中...',
     certificateEligibilityRequired: '修了要件を満たしていません。すべてのコースを完了してください。',
+
+    // Certificate Page (新增)
+    certificateEligibilityAlert: '修了要件を満たしていません。すべてのコースを完了してください。',
+    certificateNameInputPrompt: 'あなたの名前を入力してください',
+    certificateGenerationError: '証書生成に失敗しました。もう一度試してください',
+    certificateLoadingMessage: '読み込み中...',
+    certificateIncompleteTitle: 'コースを完了して証書を取得',
+    certificateRequirements: 'すべての要件を満たしてから修了証書を取得してください：',
+    certificateSlidesLabel: 'スライド進度',
+    certificateCardsLabel: 'カード学習',
+    certificateQuizLabel: 'クイズ完了',
+    certificateScoreLabel: 'テストスコア',
+    certificateViewProgressButton: '詳細な進度を確認 →',
+    certificateCongratulationsTitle: 'コース完了おめでとう！',
+    certificatePNGButton: 'PNG をダウンロード',
+    certificatePDFButton: 'PDF をダウンロード',
+    certificateCertificateInfoTitle: '証書情報',
+    certificateName: '名前',
+    certificateCompletionDate: '修了日',
+    certificateCertificateNumber: '証書番号',
+    certificateTestScore: 'テストスコア',
+
+    // Auth Page (新增)
+    authSignUpSuccess: '登録が完了しました。ログインしてください',
+    authError: 'エラーが発生しました',
+    authCreateAccount: '新しいアカウントを作成',
+    authLogin: 'アカウントにログイン',
+    authNameLabel: '名前',
+    authNamePlaceholder: '例：山田太郎',
+    authEmailLabel: 'メールアドレス',
+    authPasswordLabel: 'パスワード',
+    authPasswordPlaceholder: '最低 6 文字',
+    authProcessing: '処理中...',
+    authCreateButton: 'アカウント作成',
+    authLoginButton: 'ログイン',
+    authHaveAccount: 'アカウントをお持ちですか？',
+    authNoAccount: 'アカウントをお持ちでないですか？',
+    authSwitchToLogin: 'ログイン',
+    authSwitchToSignUp: '登録',
+
+    // Cards Page (新增)
+    cardWeek: '第',
+    cardOf: '週',
+    cardNumber: 'カード',
+    previousPage: '前のページ',
+    nextPage: '次のページ',
+
+    // Auth Page (新增)
+    authSignUpSuccess: '註冊成功！請登入',
+    authError: '發生錯誤',
+    authCreateAccount: '建立新帳號',
+    authLogin: '登入您的帳號',
+    authNameLabel: '姓名',
+    authNamePlaceholder: '例如：陳小明',
+    authEmailLabel: '電子郵件',
+    authPasswordLabel: '密碼',
+    authPasswordPlaceholder: '至少 6 個字符',
+    authProcessing: '處理中...',
+    authCreateButton: '建立帳號',
+    authLoginButton: '登入',
+    authHaveAccount: '已有帳號？',
+    authNoAccount: '還沒有帳號？',
+    authSwitchToLogin: '登入',
+    authSwitchToSignUp: '註冊',
+
+    // Cards Page (新增)
+    cardWeek: '第',
+    cardOf: '週',
+    cardNumber: '卡牌',
+    previousPage: '上一頁',
+    nextPage: '下一頁',
   },
 };
 

@@ -126,7 +126,7 @@ function ProgressPageContent() {
                   {stats.slidesCompletionRate < 100 && <li>{t('slidesProgress', language)}：{(100 - stats.slidesCompletionRate).toFixed(0)}%</li>}
                   {stats.cardsCompletionRate < 100 && <li>{t('cardLearning', language)}：{(100 - stats.cardsCompletionRate).toFixed(0)}%</li>}
                   {stats.quizCompletionRate < 100 && <li>{t('quizCompleted', language)}：{(100 - stats.quizCompletionRate).toFixed(0)}%</li>}
-                  {stats.quizAccuracy < 80 && <li>{t('testScore', language)}：{language === 'ja' ? '80% 以上が必要' : '需達 80% 或以上'}</li>}
+                  {stats.quizAccuracy < 80 && <li>{t('testScore', language)}：{t('requiredScoreProgress', language)}</li>}
                 </ul>
               </div>
             </div>

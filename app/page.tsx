@@ -35,7 +35,7 @@ function HomeContent() {
         <div className="container">
           <div className="hero-content">
             <h1 style={{ fontSize: '96px', lineHeight: 1.2, color: '#000000' }}>
-              {language === 'ja' ? 'ダフォン貿易グループ' : '大豐貿易集團'}<br />
+              {t('companyName', language)}<br />
               <span className="hero-accent">{t('title', language)}</span>
             </h1>
             <p>

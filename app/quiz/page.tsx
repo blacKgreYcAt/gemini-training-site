@@ -10,13 +10,14 @@ import { Navbar } from '@/components/Navbar';
 import { useLanguage } from '@/lib/language-context';
 import { t } from '@/lib/translations';
 
-const SECTIONS = [
-  { id: 1, name: '基礎認識 - Gemini 功能與訂閱', range: '問題 1-20' },
-  { id: 2, name: '文本應用 - 內容生成、研究、分析', range: '問題 21-35' },
-  { id: 3, name: '圖像應用 - 圖像分析、生成、設計', range: '問題 36-50' },
-  { id: 4, name: '視頻與音頻 - Veo、音樂、語音', range: '問題 51-65' },
-  { id: 5, name: '語音應用 - Live、實時對話、語音分析', range: '問題 66-80' },
-  { id: 6, name: '進階應用 - 倫理、決策、企業應用', range: '問題 81-100' }
+// 創建根據語言動態返回 SECTIONS 的函數
+const getSections = (language: string) => [
+  { id: 1, name: language === 'ja' ? t('section1', language) : t('section1', language), range: language === 'ja' ? t('section1Range', language) : t('section1Range', language) },
+  { id: 2, name: language === 'ja' ? t('section2', language) : t('section2', language), range: language === 'ja' ? t('section2Range', language) : t('section2Range', language) },
+  { id: 3, name: language === 'ja' ? t('section3', language) : t('section3', language), range: language === 'ja' ? t('section3Range', language) : t('section3Range', language) },
+  { id: 4, name: language === 'ja' ? t('section4', language) : t('section4', language), range: language === 'ja' ? t('section4Range', language) : t('section4Range', language) },
+  { id: 5, name: language === 'ja' ? t('section5', language) : t('section5', language), range: language === 'ja' ? t('section5Range', language) : t('section5Range', language) },
+  { id: 6, name: language === 'ja' ? t('section6', language) : t('section6', language), range: language === 'ja' ? t('section6Range', language) : t('section6Range', language) }
 ];
 
 function QuizPageContent() {
@@ -29,6 +30,7 @@ function QuizPageContent() {
   const [totalAnswered, setTotalAnswered] = useState(0);
   const [quizComplete, setQuizComplete] = useState(false);
 
+  const SECTIONS = getSections(language);
   const currentQuestions = selectedSection ? getQuestionsBySection(selectedSection) : [];
   const currentQuestion = currentQuestions[currentQuestionIdx];
 
@@ -80,11 +82,11 @@ function QuizPageContent() {
   // 計算成績
   const calculateGrade = (points: number, total: number) => {
     const percentage = (points / total) * 100;
-    if (percentage >= 93.3) return 'A+ (優秀)';
-    if (percentage >= 80) return 'A (很好)';
-    if (percentage >= 66.7) return 'B (良好)';
-    if (percentage >= 50) return 'C (及格)';
-    return 'D (需加強)';
+    if (percentage >= 93.3) return t('gradeAPlus', language);
+    if (percentage >= 80) return t('gradeA', language);
+    if (percentage >= 66.7) return t('gradeB', language);
+    if (percentage >= 50) return t('gradeC', language);
+    return t('gradeD', language);
   };
 
   // 主頁面 - 選擇題庫章節
@@ -115,13 +117,9 @@ function QuizPageContent() {
         </div>
 
         <div style={styles.infoBox}>
-          <h3 style={styles.infoTitle}>📝 使用說明</h3>
+          <h3 style={styles.infoTitle}>📝 {language === 'ja' ? '使用方法' : '使用說明'}</h3>
           <ul style={styles.infoList}>
-            <li>共 100 題題庫，分為 6 個章節</li>
-            <li>基礎認識章節包含 20 道題目</li>
-            <li>各應用章節（文本、圖像、視頻、語音）各包含 15 道題目</li>
-            <li>進階應用章節包含 20 道題目</li>
-            <li>{language === 'ja' ? t('quizInstruction1', language).replace('クイズ', 'クイズ').replace('答え', '答え') : t('quizInstruction1', language)}</li>
+            <li>{t('quizInstruction1', language)}</li>
             <li>{t('quizInstruction2', language)}</li>
             <li>{t('quizInstruction3', language)}</li>
           </ul>
@@ -142,7 +140,7 @@ function QuizPageContent() {
               ← {t('backToSections', language)}
             </button>
             <div style={styles.progressInfo}>
-              第 {currentQuestionIdx + 1} / {currentQuestions.length} 題
+              {language === 'ja' ? `第 ${currentQuestionIdx + 1} / ${currentQuestions.length} 問題` : `第 ${currentQuestionIdx + 1} / ${currentQuestions.length} 題`}
             </div>
           </div>
 
@@ -157,7 +155,7 @@ function QuizPageContent() {
         </div>
 
         <div style={styles.questionBox}>
-          <div style={styles.questionNumber}>問題 {currentQuestion.id}</div>
+          <div style={styles.questionNumber}>{language === 'ja' ? '問題' : '問題'} {currentQuestion.id}</div>
           <h2 style={styles.questionText}>{currentQuestion.question}</h2>
 
           <div style={styles.optionsContainer}>
@@ -192,7 +190,7 @@ function QuizPageContent() {
                 )}
               </div>
               <div style={styles.explanation}>
-                <p style={styles.explanationTitle}>{language === 'ja' ? '解説：' : '解析：'}</p>
+                <p style={styles.explanationTitle}>{language === 'ja' ? '解説:' : '解析:'}</p>
                 <p style={styles.explanationText}>{currentQuestion.explanation}</p>
                 {selectedAnswer !== currentQuestion.correctAnswer && (
                   <p style={styles.correctAnswerText}>
@@ -213,7 +211,7 @@ function QuizPageContent() {
           )}
 
           <div style={styles.scoreInfo}>
-            {language === 'ja' ? '現在のスコア' : '目前得分'}：{score} / {totalAnswered}
+            {language === 'ja' ? '現在のスコア' : '目前得分'}: {score} / {totalAnswered}
           </div>
         </div>
       </div>
@@ -236,10 +234,10 @@ function QuizPageContent() {
         </div>
 
         <div style={styles.feedback}>
-          {percentage >= 90 && <p>{language === 'ja' ? '🌟 素晴らしい！このセクションの核心概念を習得しました！' : '🌟 太棒了！您已掌握本章節的核心概念！'}</p>}
-          {percentage >= 70 && percentage < 90 && <p>{language === 'ja' ? '✨ 素晴らしい！このセクションに関する良好な理解があります。弱点の単元を復習することをお勧めします。' : '✨ 很好！您對本章節有良好的理解，建議複習弱點單元。'}</p>}
-          {percentage >= 50 && percentage < 70 && <p>{language === 'ja' ? '📚 良い進捗です！理解を深めるために、何度も復習することをお勧めします。' : '📚 不錯的進度！建議多次複習以加深理解。'}</p>}
-          {percentage < 50 && <p>{language === 'ja' ? '💪 頑張ってください！コース講義を確認し、クイズを再度実施することをお勧めします。' : '💪 加油！建議回顧課程講義並重新測驗。'}</p>}
+          {percentage >= 90 && <p>{language === 'ja' ? '🌟 完璧です！このセクションの中核概念を習得しました！' : '🌟 太棒了！您已掌握本章節的核心概念！'}</p>}
+          {percentage >= 70 && percentage < 90 && <p>{language === 'ja' ? '✨ 良好です！このセクションについてはかなり理解しており、弱点箇所の復習をお勧めします。' : '✨ 很好！您對本章節有良好的理解，建議複習弱點單元。'}</p>}
+          {percentage >= 50 && percentage < 70 && <p>{language === 'ja' ? '📚 進捗があります！理解を深めるために、繰り返し復習することをお勧めします。' : '📚 不錯的進度！建議多次複習以加深理解。'}</p>}
+          {percentage < 50 && <p>{language === 'ja' ? '💪 もう少しです！コース内容を再度確認し、もう一度クイズに挑戦することをお勧めします。' : '💪 加油！建議回顧課程講義並重新測驗。'}</p>}
         </div>
 
         <div style={styles.buttonGroup}>

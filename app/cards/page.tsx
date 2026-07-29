@@ -301,7 +301,7 @@ function CardsPageContent() {
                     textShadow: '0 2px 4px rgba(0,0,0,0.5)',
                     whiteSpace: 'nowrap',
                   }}>
-                    {language === 'ja' ? `第 ${currentCard.week} 週 | カード ${currentCard.number}` : `第 ${currentCard.week} 週 | 卡牌 ${currentCard.number}`}
+                    {`${t('cardWeek', language)} ${currentCard.week} ${t('cardOf', language)} | ${t('cardNumber', language)} ${currentCard.number}`}
                   </span>
                   <button
                     onClick={(e) => {

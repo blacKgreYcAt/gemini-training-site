@@ -90,9 +90,9 @@ function CoursePageContent() {
     return (
       <div style={{ padding: '40px', color: '#000000', background: '#f5f5f7', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
         <div style={{ textAlign: 'center' }}>
-          <p style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '20px' }}>{language === 'ja' ? '読み込み中...' : '加載中...'}</p>
+          <p style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '20px' }}>{t('loading', language)}</p>
           <p style={{ fontSize: '14px', color: '#666', marginBottom: '10px' }}>路徑: {pathname}</p>
-          <p style={{ fontSize: '12px', color: '#999' }}>{language === 'ja' ? 'ここに留まり続ける場合は、ページを更新するか、ホームページに戻ってもう一度やり直してください' : '如果一直停留在此，請重新整理頁面或回到首頁重試'}</p>
+          <p style={{ fontSize: '12px', color: '#999' }}>{language === 'ja' ? 'ここに留まり続ける場合は、ページを再読み込みするか、ホームに戻ってもう一度試してください' : '如果一直停留在此，請重新整理頁面或回到首頁重試'}</p>
           <Link href="/" style={{ marginTop: '20px', color: '#0071e3', textDecoration: 'underline', display: 'inline-block' }}>← {t('backToHome', language)}</Link>
         </div>
       </div>
@@ -125,7 +125,7 @@ function CoursePageContent() {
             cursor: 'pointer',
             fontSize: 'clamp(14px, 4vw, 18px)',
             fontWeight: 600,
-          }}>← {language === 'ja' ? '戻る' : '返回'}</button>
+          }}>← {t('backToHome', language)}</button>
           <span style={{
             color: '#333',
             fontSize: 'clamp(12px, 4vw, 18px)',
@@ -211,7 +211,7 @@ function CoursePageContent() {
               fontWeight: 600,
             }}
           >
-            ← {language === 'ja' ? '前のページ' : '上一頁'}
+            ← {t('previousPage', language)}
           </button>
           <span style={{
             fontSize: 'clamp(14px, 3vw, 18px)',
@@ -232,7 +232,7 @@ function CoursePageContent() {
               fontWeight: 600,
             }}
           >
-            {language === 'ja' ? '次のページ' : '下一頁'} →
+            {t('nextPage', language)} →
           </button>
         </div>
 
