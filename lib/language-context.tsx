@@ -13,8 +13,6 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>('zh');
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [renderKey, setRenderKey] = useState(0);
 
   useEffect(() => {
     // 从 localStorage 读取保存的语言偏好
@@ -22,7 +20,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     if (savedLanguage === 'ja' || savedLanguage === 'zh') {
       setLanguage(savedLanguage);
     }
-    setIsLoaded(true);
 
     // 监听存储变化事件（如果在其他标签页改变了语言）
     const handleStorageChange = (e: StorageEvent) => {
@@ -30,7 +27,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
         const newLang = e.newValue as Language;
         if (newLang === 'ja' || newLang === 'zh') {
           setLanguage(newLang);
-          setRenderKey(prev => prev + 1);
         }
       }
     };
@@ -42,8 +38,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);
     localStorage.setItem('preferred_language', lang);
-    // 强制重新渲染以应用新语言
-    setRenderKey(prev => prev + 1);
     // 触发自定义事件以通知其他组件
     window.dispatchEvent(
       new CustomEvent('languagechange', { detail: { language: lang } })
@@ -51,7 +45,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <LanguageContext.Provider key={renderKey} value={{ language, setLanguage: handleSetLanguage }}>
+    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage }}>
       {children}
     </LanguageContext.Provider>
   );

@@ -58,7 +58,7 @@ function CoursePageContent() {
   // 鍵盤控制事件 - 使用 selectedId 作為依賴，因為它決定了課程
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
-      if (!selectedId || !week) return
+      if (!selectedId || week === null) return
 
       const courses = allCourses.filter((c: any) => c.week === week)
       const course = courses.find((c: any) => c.id === selectedId)
