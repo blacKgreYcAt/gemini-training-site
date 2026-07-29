@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { courseData } from '@/lib/course-data'
+import { getCourses } from '@/lib/translations'
 import { updateSlidesProgress } from '@/lib/progress-utils'
 import { useState, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -37,13 +38,30 @@ function CoursePageContent() {
     }
   }, [pathname, searchParams])
 
+  // 根據語言選擇課程數據 - 如果日文版本缺少 pages，使用英文版本的 pages
+  const getCoursesWithFallback = () => {
+    if (language === 'ja') {
+      const jaCourses = getCourses('ja')
+      const enCourses = courseData
+      return jaCourses.map((jaCourse: any) => {
+        const enCourse = enCourses.find(c => c.id === jaCourse.id)
+        return {
+          ...jaCourse,
+          pages: jaCourse.pages && jaCourse.pages.length > 0 ? jaCourse.pages : enCourse?.pages || []
+        }
+      })
+    }
+    return courseData
+  }
+  const allCourses = getCoursesWithFallback()
+
   // 鍵盤控制事件 - 使用 selectedId 作為依賴，因為它決定了課程
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       if (!selectedId || !week) return
 
-      const courses = courseData.filter(c => c.week === week)
-      const course = courses.find(c => c.id === selectedId)
+      const courses = allCourses.filter((c: any) => c.week === week)
+      const course = courses.find((c: any) => c.id === selectedId)
       if (!course?.pages) return
 
       if (e.key === 'ArrowLeft') {
@@ -60,13 +78,13 @@ function CoursePageContent() {
   // 追踪幻燈片進度
   useEffect(() => {
     if (week !== null && selectedId) {
-      const courses = courseData.filter(c => c.week === week)
-      const course = courses.find(c => c.id === selectedId)
+      const courses = allCourses.filter((c: any) => c.week === week)
+      const course = courses.find((c: any) => c.id === selectedId)
       if (course?.pages) {
         updateSlidesProgress(selectedId, pageIdx, course.pages.length)
       }
     }
-  }, [week, selectedId, pageIdx])
+  }, [week, selectedId, pageIdx, allCourses])
 
   if (week === null) {
     return (
@@ -81,8 +99,8 @@ function CoursePageContent() {
     )
   }
 
-  const courses = courseData.filter(c => c.week === week)
-  const course = courses.find(c => c.id === selectedId)
+  const courses = allCourses.filter((c: any) => c.week === week)
+  const course = courses.find((c: any) => c.id === selectedId)
 
   // 投影片視圖
   if (course?.pages) {

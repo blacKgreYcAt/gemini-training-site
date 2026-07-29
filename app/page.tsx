@@ -41,11 +41,11 @@ function HomeContent() {
             />
           </div>
           <nav style={{ display: 'flex', gap: '40px', flexWrap: 'wrap' }}>
-            <a href="#cases" style={{ color: '#0071e3', fontWeight: 700 }}>實體課程</a>
-            <Link href="/cards" style={{ color: '#0071e3', fontWeight: 700, textDecoration: 'none' }}>卡牌自學</Link>
-            <Link href="/quiz" style={{ color: '#0071e3', fontWeight: 700, textDecoration: 'none' }}>題庫</Link>
-            <Link href="/dashboard/progress" style={{ color: '#0071e3', fontWeight: 700, textDecoration: 'none' }}>📊 我的進度</Link>
-            <Link href="/dashboard/certificate" style={{ color: '#10b981', fontWeight: 700, textDecoration: 'none' }}>🏆 領取證書</Link>
+            <a href="#cases" style={{ color: '#0071e3', fontWeight: 700 }}>{t('courses', language)}</a>
+            <Link href="/cards" style={{ color: '#0071e3', fontWeight: 700, textDecoration: 'none' }}>{t('cards', language)}</Link>
+            <Link href="/quiz" style={{ color: '#0071e3', fontWeight: 700, textDecoration: 'none' }}>{t('quiz', language)}</Link>
+            <Link href="/dashboard/progress" style={{ color: '#0071e3', fontWeight: 700, textDecoration: 'none' }}>📊 {t('progress', language)}</Link>
+            <Link href="/dashboard/certificate" style={{ color: '#10b981', fontWeight: 700, textDecoration: 'none' }}>🏆 {t('certificate', language)}</Link>
           </nav>
         </div>
       </header>
