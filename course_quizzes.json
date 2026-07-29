@@ -49,6 +49,22 @@
         "question": "Gemini的採樣參數temperature、top_p和top_k在2026年已被棄用。",
         "correct_answer": "True",
         "explanation": "在2026年的更新中，temperature、top_p和top_k採樣參數已被棄用，建議使用新的參數設置。"
+      },
+      {
+        "id": "Q6",
+        "type": "scenario",
+        "question": "一個電子商務平台需要在購物車中集成實時產品推薦引擎。使用 Gemini 3.6 Flash 的哪些優勢最適合此用例？",
+        "options": [],
+        "correct_answer": "Token效率提高17%，更低的定價",
+        "explanation": "Gemini 3.6 Flash 的改進的 Token 效率和更低的定價點使其成為實時推薦的理想選擇，能夠在降低成本的同時保持低延遲響應。"
+      },
+      {
+        "id": "Q7",
+        "type": "true_false",
+        "question": "企業可以使用 Managed Agents 在其私有數據中心中運行自主代理。",
+        "options": [],
+        "correct_answer": "False",
+        "explanation": "Managed Agents 在 Google 託管的隔離 Linux 沙箱環境中運行，不支持本地或私有數據中心部署。"
       }
     ]
   },
@@ -102,6 +118,14 @@
         "question": "Gemini 2.0 Flash和舊版Imagen/Veo在2026年仍可用。",
         "correct_answer": "False",
         "explanation": "這些較舊的模型在2026年被停用，用戶需要遷移到新的穩定版本，如3.5 Flash或3.6 Flash。"
+      },
+      {
+        "id": "Q6",
+        "type": "scenario",
+        "question": "您的團隊需要自動化跨瀏覽器、桌面和移動應用的用戶測試。哪種工具組合最有效？",
+        "options": [],
+        "correct_answer": "Computer Use Tool + Managed Agents",
+        "explanation": "Computer Use Tool 提供跨環境支持，而 Managed Agents 為自動化測試流程提供可靠的執行環境和狀態管理。"
       }
     ]
   },
@@ -155,6 +179,19 @@
         "question": "Gemini Spark（macOS）可以自動化Google Workspace中的日常任務。",
         "correct_answer": "True",
         "explanation": "Gemini Spark於2026年6月在macOS上可用，作為個人AI代理，可自動化文件組織和Workspace工作流。"
+      },
+      {
+        "id": "Q6",
+        "type": "multiple_choice",
+        "question": "使用 Gemini 3.5 Flash-Lite 作為子代理的主要優勢是什麼？",
+        "options": [
+          "A) 它可以替代主模型",
+          "B) 低延遲和成本效益適合執行子任務",
+          "C) 它支持所有複雜推理",
+          "D) 它不需要任何監控"
+        ],
+        "correct_answer": "B",
+        "explanation": "Gemini 3.5 Flash-Lite 作為低延遲、高效率的子代理，特別適合在多代理架構中執行特定的子任務。"
       }
     ]
   },
@@ -208,6 +245,14 @@
         "question": "Gemini Omni Flash只能進行文本到視頻的生成。",
         "correct_answer": "False",
         "explanation": "Gemini Omni Flash支持文本或靜止圖像到視頻的生成，更加靈活。"
+      },
+      {
+        "id": "Q6",
+        "type": "true_false",
+        "question": "Omni Flash 的 720p 輸出限制對於社交媒體營銷視頻來說是一個缺點。",
+        "options": [],
+        "correct_answer": "False",
+        "explanation": "對於社交媒體內容（TikTok、Instagram Reels），720p 實際上是最優選擇，提供完美的質量與成本平衡。"
       }
     ]
   },
@@ -261,6 +306,14 @@
         "question": "Canvas工具在2026年支持Gemini 3.6 Flash的高效率文件分析。",
         "correct_answer": "True",
         "explanation": "Gemini 3.6 Flash設計用於從文件分析到多步驟項目的日常任務，與Canvas工具集成。"
+      },
+      {
+        "id": "Q6",
+        "type": "scenario",
+        "question": "一個客戶服務中心需要同時處理中文、日文和英文客戶查詢。最適合的解決方案是什麼？",
+        "options": [],
+        "correct_answer": "Gemini Live Translate + 本地化模型",
+        "explanation": "Live Translate 可以自動檢測和翻譯 70 多種語言，同時保持自然語調，是多語言客服的理想解決方案。"
       }
     ]
   },
@@ -308,6 +361,19 @@
         "question": "您的團隊需要進行複雜的多語言對話並立即翻譯。使用哪個2026年新功能？",
         "correct_answer": "Gemini Live Translate（自動檢測70+語言，保持語調）",
         "explanation": "Live Translate提供實時、自動的多語言翻譯，無翻譯延遲，保持自然語調。"
+      },
+      {
+        "id": "Q6",
+        "type": "multiple_choice",
+        "question": "在構建企業自主代理時，成本優化的首選策略是什麼？",
+        "options": [
+          "A) 對所有任務都使用最強大的模型",
+          "B) 根據任務複雜性選擇合適的模型組合",
+          "C) 只使用最便宜的模型",
+          "D) 隨機選擇模型"
+        ],
+        "correct_answer": "B",
+        "explanation": "最佳實踐是為簡單任務使用 3.5 Flash-Lite，為複雜推理使用 3.6 Flash，為視頻使用 Omni Flash，實現成本與性能的最優平衡。"
       }
     ]
   },
@@ -361,6 +427,14 @@
         "question": "不同的Gemini模型（3.6 Flash、3.5 Flash-Lite、Omni Flash）可能需要不同的提示詞優化。",
         "correct_answer": "True",
         "explanation": "每個模型有不同的優勢（效率、成本、視頻生成），提示詞應根據模型特性優化。"
+      },
+      {
+        "id": "Q6",
+        "type": "true_false",
+        "question": "計算機操作工具現在支持簡化的操作接口，使非技術人員也能構建自動化工作流。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "2026 年版本的 Computer Use Tool 具有簡化的操作和原生意圖支持，降低了自動化的技術門檻。"
       }
     ]
   },
@@ -414,6 +488,14 @@
         "question": "Gemini 3.6 Flash的令牌效率改進使其成本效益和質量的最佳選擇。",
         "correct_answer": "True",
         "explanation": "3.6 Flash提供17%的令牌效率提升和更低定價，同時保持高質量輸出。"
+      },
+      {
+        "id": "Q6",
+        "type": "scenario",
+        "question": "您的應用需要每分鐘處理數百個推理請求。選擇 Gemini 3.6 Flash 的成本優勢是多少？",
+        "options": [],
+        "correct_answer": "输出 Token 成本降低 17%",
+        "explanation": "Gemini 3.6 Flash 的 17% Token 效率提升，加上更低的定價點，對於高吞吐量應用可實現顯著的成本節省。"
       }
     ]
   },
@@ -467,6 +549,14 @@
         "question": "Gemini 3.6 Flash的知識截斷（2026年3月）足以涵蓋大多數當前業務用例。",
         "correct_answer": "True",
         "explanation": "2026年3月的知識截斷相對最新，足以滿足大多數實時業務需求。如需更新信息，可結合Computer Use Tool爬取。"
+      },
+      {
+        "id": "Q6",
+        "type": "true_false",
+        "question": "NotebookLM 的 2026 升級版本包括高級推理和代碼執行功能，使其適合複雜的研究工作流程。",
+        "options": [],
+        "correct_answer": "True",
+        "explanation": "NotebookLM 的 2026 升級增加了高級推理和代碼執行能力，成為構建結構化研究工作流程的強大工具。"
       }
     ]
   },
