@@ -1,38 +1,49 @@
 import { createClient } from '@supabase/supabase-js';
 import { NextRequest, NextResponse } from 'next/server';
 
-function createAuthenticatedClient(request: NextRequest) {
-  const authHeader = request.headers.get('authorization');
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+const ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
-  return createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',
-    {
-      global: {
-        headers: authHeader ? { Authorization: authHeader } : {},
-      },
-    }
-  );
+const VALID_LANGUAGES = ['zh', 'ja'] as const;
+
+/**
+ * 驗證 Authorization header 中的 access token，回傳已驗證的 user id。
+ * 呼叫端絕不可信任 request body 中的 userId — 必須以此處回傳的 id 為準。
+ */
+async function getVerifiedUserId(request: NextRequest): Promise<string | null> {
+  const authHeader = request.headers.get('authorization');
+  if (!authHeader?.startsWith('Bearer ')) return null;
+
+  const token = authHeader.slice('Bearer '.length);
+  const supabase = createClient(SUPABASE_URL, ANON_KEY);
+
+  const { data, error } = await supabase.auth.getUser(token);
+  if (error || !data.user) return null;
+
+  return data.user.id;
 }
 
 // GET - 獲取用戶語言偏好
 export async function GET(request: NextRequest) {
   try {
-    const userId = request.nextUrl.searchParams.get('userId');
-
-    if (!userId) {
-      return NextResponse.json(
-        { error: 'userId is required' },
-        { status: 400 }
-      );
+    const verifiedUserId = await getVerifiedUserId(request);
+    if (!verifiedUserId) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const supabase = createAuthenticatedClient(request);
+    const requestedUserId = request.nextUrl.searchParams.get('userId');
+    if (requestedUserId && requestedUserId !== verifiedUserId) {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    }
+
+    const supabase = createClient(SUPABASE_URL, ANON_KEY, {
+      global: { headers: { Authorization: request.headers.get('authorization')! } },
+    });
 
     const { data, error } = await supabase
       .from('users_language_preferences')
       .select('preferred_language')
-      .eq('user_id', userId)
+      .eq('user_id', verifiedUserId)
       .single();
 
     if (error && error.code !== 'PGRST116') {
@@ -54,12 +65,22 @@ export async function GET(request: NextRequest) {
 // POST - 設置用戶語言偏好
 export async function POST(request: NextRequest) {
   try {
+    const verifiedUserId = await getVerifiedUserId(request);
+    if (!verifiedUserId) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const body = await request.json();
     const { userId, preferredLanguage } = body;
 
-    if (!userId || !preferredLanguage) {
+    // body 帶了 userId 就必須與 token 身分相符，否則視為越權
+    if (userId && userId !== verifiedUserId) {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    }
+
+    if (!VALID_LANGUAGES.includes(preferredLanguage)) {
       return NextResponse.json(
-        { error: 'userId and preferredLanguage are required' },
+        { error: `preferredLanguage must be one of: ${VALID_LANGUAGES.join(', ')}` },
         { status: 400 }
       );
     }
@@ -73,19 +94,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 使用服務角色金鑰來繞過 RLS
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-      serviceRoleKey
-    );
+    // 身分已驗證，此處才使用服務角色金鑰繞過 RLS
+    const supabase = createClient(SUPABASE_URL, serviceRoleKey);
 
-    console.log('Attempting to upsert:', { userId, preferredLanguage });
-
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('users_language_preferences')
       .upsert(
         {
-          user_id: userId,
+          user_id: verifiedUserId,
           preferred_language: preferredLanguage,
         },
         { onConflict: 'user_id' }
@@ -97,12 +113,11 @@ export async function POST(request: NextRequest) {
         code: error.code,
         message: error.message,
         details: error.details,
-        hint: error.hint
+        hint: error.hint,
       });
       throw new Error(`Supabase error: ${error.message}`);
     }
 
-    console.log('✅ Successfully upserted:', data);
     return NextResponse.json({
       success: true,
       preferred_language: preferredLanguage,
@@ -111,7 +126,7 @@ export async function POST(request: NextRequest) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     console.error('❌ Error setting language preference:', errorMessage);
     return NextResponse.json(
-      { error: 'Failed to set language preference', details: errorMessage },
+      { error: 'Failed to set language preference' },
       { status: 500 }
     );
   }

@@ -52,8 +52,13 @@ export const translations = {
     previousPage: '上一頁',
     nextPage: '下一頁',
     viewDetails: '查看詳情',
-    advancedTips: '⭐ 進階使用 Tips',
+    advancedTips: '進階使用 Tips',
     advancedDesc: '深入掌握 Gemini 高階功能，打造專屬 AI 助手',
+    advancedDesc2: '提升工作效率，成為 AI 時代的領航員',
+    advancedPrefix: '進階',
+    advancedApply: '進階應用',
+    minutes: '分鐘',
+    askQuestion: '我要提問',
 
     // Cards Page
     backToHome: '← 返回首頁',
@@ -223,8 +228,13 @@ export const translations = {
     previousPage: '前のページ',
     nextPage: '次のページ',
     viewDetails: '詳細を表示',
-    advancedTips: '⭐ 高度な使用ヒント',
-    advancedDesc: 'Geminiの高度な機能を習得して、カスタマイズされたAIアシスタントを構築します',
+    advancedTips: '高度な使用ヒント',
+    advancedDesc: 'Geminiの高度な機能を習得し、カスタマイズされたAIアシスタントを構築する',
+    advancedDesc2: '仕事の効率を向上させ、AI時代の先導者になる',
+    advancedPrefix: '高度',
+    advancedApply: '高度な応用',
+    minutes: '分間',
+    askQuestion: 'ご質問がある場合',
 
     // Cards Page
     backToHome: '← ホームに戻る',
