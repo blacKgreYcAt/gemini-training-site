@@ -96,7 +96,7 @@ function QuizPageContent() {
             ← {t('backToHome', language)}
           </Link>
           <h1 style={styles.title}>🎓 {t('quizTitle', language)}</h1>
-          <p style={styles.subtitle}>{language === 'ja' ? 'クイズを完成させ、学習成果を確認してください' : '完成測驗，檢視您的學習成果'}</p>
+          <p style={styles.subtitle}>{t('quizSubtitle', language)}</p>
         </div>
 
         <div style={styles.sectionsGrid}>
@@ -121,9 +121,9 @@ function QuizPageContent() {
             <li>基礎認識章節包含 20 道題目</li>
             <li>各應用章節（文本、圖像、視頻、語音）各包含 15 道題目</li>
             <li>進階應用章節包含 20 道題目</li>
-            <li>選擇您的答案後，系統會立即顯示正確答案和詳細解析</li>
-            <li>完成每個章節後，您將獲得成績評級</li>
-            <li>可隨時返回重新測試不同章節，挑戰自己的學習成果</li>
+            <li>{language === 'ja' ? t('quizInstruction1', language).replace('クイズ', 'クイズ').replace('答え', '答え') : t('quizInstruction1', language)}</li>
+            <li>{t('quizInstruction2', language)}</li>
+            <li>{t('quizInstruction3', language)}</li>
           </ul>
         </div>
       </div>
@@ -139,7 +139,7 @@ function QuizPageContent() {
         <div style={styles.quizHeader}>
           <div style={styles.quizNav}>
             <button style={styles.backButton} onClick={handleBackToSections}>
-              ← {language === 'ja' ? 'セクション選択に戻る' : '返回章節選擇'}
+              ← {t('backToSections', language)}
             </button>
             <div style={styles.progressInfo}>
               第 {currentQuestionIdx + 1} / {currentQuestions.length} 題
@@ -186,9 +186,9 @@ function QuizPageContent() {
             <div style={styles.answerBox}>
               <div style={styles.answerResult}>
                 {selectedAnswer === currentQuestion.correctAnswer ? (
-                  <span style={styles.resultCorrect}>✓ {language === 'ja' ? '正解！' : '正確！'}</span>
+                  <span style={styles.resultCorrect}>✓ {t('correctAnswer', language)}</span>
                 ) : (
-                  <span style={styles.resultIncorrect}>✗ {language === 'ja' ? '不正解' : '錯誤'}</span>
+                  <span style={styles.resultIncorrect}>✗ {t('incorrectAnswer', language)}</span>
                 )}
               </div>
               <div style={styles.explanation}>
@@ -196,7 +196,7 @@ function QuizPageContent() {
                 <p style={styles.explanationText}>{currentQuestion.explanation}</p>
                 {selectedAnswer !== currentQuestion.correctAnswer && (
                   <p style={styles.correctAnswerText}>
-                    {language === 'ja' ? '正解：' : '正確答案：'}{currentQuestion.correctAnswer}
+                    {t('correctAnswerLabel', language)}{currentQuestion.correctAnswer}
                   </p>
                 )}
               </div>
@@ -206,8 +206,8 @@ function QuizPageContent() {
                 onClick={handleNextQuestion}
               >
                 {currentQuestionIdx === currentQuestions.length - 1
-                  ? (language === 'ja' ? 'クイズ完了 →' : '完成測驗 →')
-                  : (language === 'ja' ? '次の問題 →' : '下一題 →')}
+                  ? t('completeQuiz', language)
+                  : t('nextQuestion', language)}
               </button>
             </div>
           )}

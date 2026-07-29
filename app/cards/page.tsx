@@ -301,7 +301,7 @@ function CardsPageContent() {
                     textShadow: '0 2px 4px rgba(0,0,0,0.5)',
                     whiteSpace: 'nowrap',
                   }}>
-                    第 {currentCard.week} 週 | 卡牌 {currentCard.number}
+                    {language === 'ja' ? `第 ${currentCard.week} 週 | カード ${currentCard.number}` : `第 ${currentCard.week} 週 | 卡牌 ${currentCard.number}`}
                   </span>
                   <button
                     onClick={(e) => {
@@ -321,7 +321,7 @@ function CardsPageContent() {
                       whiteSpace: 'nowrap',
                     }}
                   >
-                    {completedCards.has(currentCard.id) ? '✓ 已完成' : '未完成'}
+                    {completedCards.has(currentCard.id) ? t('cardCompleted', language) : t('cardNotCompleted', language)}
                   </button>
                 </div>
 
@@ -370,7 +370,7 @@ function CardsPageContent() {
                         fontWeight: 700,
                         letterSpacing: '0.5px',
                       }}>
-                        解答
+                        {t('cardAnswer', language)}
                       </div>
                       <div style={{ whiteSpace: 'pre-wrap', textAlign: 'left' }}>
                         {currentCard.back}
@@ -386,7 +386,7 @@ function CardsPageContent() {
                         fontWeight: 700,
                         letterSpacing: '0.5px',
                       }}>
-                        問題
+                        {t('cardQuestion', language)}
                       </div>
                       <div style={{ whiteSpace: 'pre-wrap', textAlign: 'left' }}>
                         {currentCard.front}
@@ -402,7 +402,7 @@ function CardsPageContent() {
                   textShadow: '0 2px 4px rgba(0,0,0,0.5)',
                   paddingTop: 'clamp(12px, 2vw, 16px)',
                 }}>
-                  {isFlipped ? '點擊翻回' : '點擊翻開'}
+                  {isFlipped ? t('cardFlipBack', language) : t('cardFlipFront', language)}
                 </div>
               </div>
             </div>
@@ -427,7 +427,7 @@ function CardsPageContent() {
                   borderRadius: '6px',
                 }}
               >
-                ← 上一張
+                {t('cardPrevious', language)}
               </button>
 
               <span style={{ fontSize: '16px', fontWeight: 500, color: '#333', minWidth: '80px', textAlign: 'center' }}>
@@ -452,14 +452,14 @@ function CardsPageContent() {
                   borderRadius: '6px',
                 }}
               >
-                下一張 →
+                {t('cardNext', language)}
               </button>
             </div>
 
             {/* Help Text */}
             <div style={{ marginTop: '30px', fontSize: '12px', color: '#999', textAlign: 'center' }}>
-              <p style={{ margin: '4px 0' }}>⌨️ 使用鍵盤：← → 導覽 | Space 翻卡</p>
-              <p style={{ margin: '4px 0' }}>🖱️ 點擊卡片可翻開解答</p>
+              <p style={{ margin: '4px 0' }}>{t('keyboardHint', language)}</p>
+              <p style={{ margin: '4px 0' }}>{t('clickHint', language)}</p>
             </div>
           </>
         )}
@@ -467,7 +467,7 @@ function CardsPageContent() {
 
       {/* Footer */}
       <div style={{ borderTop: '2px solid #0071e3', padding: 'clamp(16px, 5vw, 20px) clamp(16px, 8vw, 40px)', textAlign: 'center', color: '#666', fontSize: 'clamp(12px, 3vw, 14px)' }}>
-        <p style={{ margin: '0 0 12px 0' }}>💡 提示：點擊卡片翻開、使用 ← → 箭頭導覽或搜尋特定內容</p>
+        <p style={{ margin: '0 0 12px 0' }}>{t('tipsHint', language)}</p>
         <p style={{ margin: 0, lineHeight: 1.6 }}>
           © 2026 大豐貿易集團 • AI 企業協作課程 •{' '}
           <a href="mailto:benjaminchu@tfg.com.tw" style={{ color: '#0071e3', textDecoration: 'none', fontWeight: 600 }}>
