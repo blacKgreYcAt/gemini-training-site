@@ -11,13 +11,13 @@ import { useLanguage } from '@/lib/language-context';
 import { t } from '@/lib/translations';
 
 // 創建根據語言動態返回 SECTIONS 的函數
-const getSections = (language: string) => [
-  { id: 1, name: language === 'ja' ? t('section1', language) : t('section1', language), range: language === 'ja' ? t('section1Range', language) : t('section1Range', language) },
-  { id: 2, name: language === 'ja' ? t('section2', language) : t('section2', language), range: language === 'ja' ? t('section2Range', language) : t('section2Range', language) },
-  { id: 3, name: language === 'ja' ? t('section3', language) : t('section3', language), range: language === 'ja' ? t('section3Range', language) : t('section3Range', language) },
-  { id: 4, name: language === 'ja' ? t('section4', language) : t('section4', language), range: language === 'ja' ? t('section4Range', language) : t('section4Range', language) },
-  { id: 5, name: language === 'ja' ? t('section5', language) : t('section5', language), range: language === 'ja' ? t('section5Range', language) : t('section5Range', language) },
-  { id: 6, name: language === 'ja' ? t('section6', language) : t('section6', language), range: language === 'ja' ? t('section6Range', language) : t('section6Range', language) }
+const getSections = (language: 'zh' | 'ja') => [
+  { id: 1, name: t('section1', language), range: t('section1Range', language) },
+  { id: 2, name: t('section2', language), range: t('section2Range', language) },
+  { id: 3, name: t('section3', language), range: t('section3Range', language) },
+  { id: 4, name: t('section4', language), range: t('section4Range', language) },
+  { id: 5, name: t('section5', language), range: t('section5Range', language) },
+  { id: 6, name: t('section6', language), range: t('section6Range', language) }
 ];
 
 function QuizPageContent() {
