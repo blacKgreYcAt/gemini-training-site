@@ -42,7 +42,8 @@
       "Bash(git commit -m 'Implement internationalization \\(i18n\\) for Chinese/Japanese *)",
       "Bash(git restore *)",
       "Bash(grep -E \"\\\\.json$\")",
-      "Bash(git commit -m 'Fix JSX syntax and update import paths for i18n *)"
+      "Bash(git commit -m 'Fix JSX syntax and update import paths for i18n *)",
+      "Bash(git commit -m 'Fix: Restore translations imports and enable certificate generation *)"
     ]
   }
 }

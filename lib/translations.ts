@@ -1,16 +1,25 @@
+// 中文課程數據
+import chineseCourses from '../all_courses_corrected.json';
+import japaneseCourses from '../all_courses_ja.json';
+import chineseQuizzes from '../course_quizzes.json';
+import japaneseQuizzes from '../course_quizzes_ja.json';
+
 type Language = 'zh' | 'ja';
 
-// 臨時使用本地數據，日後可連接 Supabase 獲取翻譯
-import { courseData } from './course-data';
-
+// 課程翻譯
 export function getCourses(language: Language) {
-  // 暫時只返回中文數據，日文翻譯連接 Supabase
-  return courseData;
+  if (language === 'ja') {
+    return japaneseCourses;
+  }
+  return chineseCourses;
 }
 
+// 題庫翻譯
 export function getQuizzes(language: Language) {
-  // 暫時只返回中文數據，日文翻譯連接 Supabase
-  return [];
+  if (language === 'ja') {
+    return japaneseQuizzes;
+  }
+  return chineseQuizzes;
 }
 
 // 界面文本翻譯
