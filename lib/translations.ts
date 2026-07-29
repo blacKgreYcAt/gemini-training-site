@@ -69,6 +69,8 @@ export const translations = {
     advancedApply: '進階應用',
     minutes: '分鐘',
     askQuestion: '我要提問',
+    pages: '頁',
+    loadingHint: '如果一直停留在此，請重新整理頁面或回到首頁重試',
 
     // Cards Page
     backToHome: '← 返回首頁',
@@ -245,6 +247,8 @@ export const translations = {
     advancedApply: '高度な応用',
     minutes: '分間',
     askQuestion: 'ご質問がある場合',
+    pages: 'ページ',
+    loadingHint: 'ここに留まり続ける場合は、ページを再読み込みするか、ホームに戻ってもう一度試してください',
 
     // Cards Page
     backToHome: '← ホームに戻る',

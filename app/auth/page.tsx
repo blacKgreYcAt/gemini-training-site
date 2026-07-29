@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { signIn, signUp } from '@/lib/auth-utils'
 import { useLanguage } from '@/lib/language-context'
+import { LanguageSelector } from '@/components/LanguageSelector'
 import { t } from '@/lib/translations'
 
 export default function AuthPage() {
@@ -47,8 +48,13 @@ export default function AuthPage() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '20px'
+      padding: '20px',
+      position: 'relative'
     }}>
+      {/* 登入頁無 Navbar，需自備語言切換器 */}
+      <div style={{ position: 'absolute', top: '20px', right: '20px' }}>
+        <LanguageSelector />
+      </div>
       <div style={{
         background: 'white',
         borderRadius: '20px',

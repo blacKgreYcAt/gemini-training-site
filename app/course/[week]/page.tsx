@@ -91,7 +91,6 @@ function CoursePageContent() {
       <div style={{ padding: '40px', color: '#000000', background: '#f5f5f7', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
         <div style={{ textAlign: 'center' }}>
           <p style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '20px' }}>{t('loading', language)}</p>
-          <p style={{ fontSize: '14px', color: '#666', marginBottom: '10px' }}>路徑: {pathname}</p>
           <p style={{ fontSize: '12px', color: '#999' }}>{language === 'ja' ? 'ここに留まり続ける場合は、ページを再読み込みするか、ホームに戻ってもう一度試してください' : '如果一直停留在此，請重新整理頁面或回到首頁重試'}</p>
           <Link href="/" style={{ marginTop: '20px', color: '#0071e3', textDecoration: 'underline', display: 'inline-block' }}>← {t('backToHome', language)}</Link>
         </div>
@@ -246,9 +245,9 @@ function CoursePageContent() {
           marginTop: '40px',
         }}>
           <p style={{ margin: 0, lineHeight: 1.6 }}>
-            © 2026 大豐貿易集團 • AI 企業協作課程 •{' '}
+            © 2026 {t('companyName', language)} • {t('title', language)} •{' '}
             <a href="mailto:benjaminchu@tfg.com.tw" style={{ color: '#0071e3', textDecoration: 'none', fontWeight: 600 }}>
-              我要提問
+              {t('askQuestion', language)}
             </a>
           </p>
         </div>
@@ -271,7 +270,7 @@ function CoursePageContent() {
           >
             <h2 style={{ color: '#0071e3', marginBottom: '10px' }}>{c.title}</h2>
             <p>{c.description}</p>
-            <p style={{ color: '#999', marginTop: '10px' }}>⏱️ {c.duration_minutes} 分鐘 | 📑 {c.pages?.length || 0} 頁</p>
+            <p style={{ color: '#999', marginTop: '10px' }}>⏱️ {c.duration_minutes} {t('minutes', language)} | 📑 {c.pages?.length || 0} {t('pages', language)}</p>
           </div>
         ))}
       </div>
@@ -286,9 +285,9 @@ function CoursePageContent() {
         marginTop: '40px',
       }}>
         <p style={{ margin: 0, lineHeight: 1.6 }}>
-          © 2026 大豐貿易集團 • AI 企業協作課程 •{' '}
+          © 2026 {t('companyName', language)} • {t('title', language)} •{' '}
           <a href="mailto:benjaminchu@tfg.com.tw" style={{ color: '#0071e3', textDecoration: 'none', fontWeight: 600 }}>
-            我要提問
+            {t('askQuestion', language)}
           </a>
         </p>
       </div>
