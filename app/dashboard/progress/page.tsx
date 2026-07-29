@@ -156,7 +156,6 @@ function ProgressPageContent() {
 export default function ProgressPage() {
   return (
     <ProtectedRoute>
-      <Navbar />
       <ProgressPageContent />
     </ProtectedRoute>
   )
