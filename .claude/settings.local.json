@@ -60,7 +60,12 @@
       "Bash(timeout 5 curl -I http://localhost:3000)",
       "Bash(taskkill /PID 22744 /F)",
       "PowerShell(Get-Process node -ErrorAction SilentlyContinue)",
-      "PowerShell(Stop-Process -Force -ErrorAction SilentlyContinue)"
+      "PowerShell(Stop-Process -Force -ErrorAction SilentlyContinue)",
+      "Bash(NEXT_PUBLIC_GEMINI_API_KEY=\"AQ.Ab8RN6K9ozEpvkoPtOfxH5tkXt60zcrIeHuR-gRGeXIl8PgdXw\" node scripts/translate-with-gemini.mjs)",
+      "Bash(node scripts/generate-japanese-courses.mjs)",
+      "Bash(git commit -m 'feat: Add complete Japanese course translations *)",
+      "Bash(node scripts/translate-courses-full.mjs)",
+      "Bash(git commit -m 'feat: Add complete Japanese course translations with full content *)"
     ]
   }
 }

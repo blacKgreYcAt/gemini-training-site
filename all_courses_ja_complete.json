@@ -1,0 +1,74 @@
+[
+  {
+    "id": "0-1",
+    "week": 0,
+    "module": 1,
+    "title": "Geminiの登録とマルチデバイス設定",
+    "description": "受講前準備：アカウント設定とマルチプラットフォームログインガイド",
+    "duration_minutes": 45,
+    "pages": []
+  },
+  {
+    "id": "0-2",
+    "week": 0,
+    "module": 2,
+    "title": "Gemini 3.1 Pro と Ultra のサブスクリプションプラン比較",
+    "description": "異なるバージョンにおける機能の違いと最適なユースケースを理解する",
+    "duration_minutes": 45,
+    "pages": []
+  },
+  {
+    "id": "1-1",
+    "week": 1,
+    "module": 1,
+    "title": "コースキックオフとAIトレンド",
+    "description": "2026年のAIトレンドとGeminiの核となる価値提案",
+    "duration_minutes": 45,
+    "pages": []
+  },
+  {
+    "id": "1-2",
+    "week": 1,
+    "module": 2,
+    "title": "Gemini 3.6 Flash：効率性の新たな王者",
+    "description": "Gemini 3.6 Flashの特徴、Token効率、および実用的なアプリケーション",
+    "duration_minutes": 45,
+    "pages": []
+  },
+  {
+    "id": "2-1",
+    "week": 2,
+    "module": 1,
+    "title": "Managed Agents：自律的なタスク実行",
+    "description": "Google が管理するセキュアなサンドボックス環境における自律型エージェントの構築",
+    "duration_minutes": 45,
+    "pages": []
+  },
+  {
+    "id": "2-2",
+    "week": 2,
+    "module": 2,
+    "title": "Computer Use Tool：デスクトップ自動化",
+    "description": "AIによるデスクトップ、モバイル、ブラウザ操作の自動化",
+    "duration_minutes": 45,
+    "pages": []
+  },
+  {
+    "id": "3-1",
+    "week": 3,
+    "module": 1,
+    "title": "Deep Research、Veo、Imagen 3：高度なコンテンツ生成",
+    "description": "複雑なトピックに対する Deep Research、およびビデオと画像の生成について学ぶ",
+    "duration_minutes": 45,
+    "pages": []
+  },
+  {
+    "id": "3-2",
+    "week": 3,
+    "module": 2,
+    "title": "Canvas、Context Caching、およびコスト最適化",
+    "description": "本番環境における高度な機能とコスト最適化戦略",
+    "duration_minutes": 45,
+    "pages": []
+  }
+]
