@@ -20,7 +20,7 @@ function ProgressPageContent() {
   if (!progress) {
     return (
       <div style={{ padding: '40px', textAlign: 'center', background: '#f5f5f7', minHeight: '100vh' }}>
-        <p>{language === 'ja' ? '読み込み中...' : '加載中...'}</p>
+        <p>{t('loading', language)}</p>
       </div>
     )
   }
@@ -29,9 +29,10 @@ function ProgressPageContent() {
 
   return (
     <div style={{ padding: '40px', background: '#f5f5f7', minHeight: '100vh' }}>
-      <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-        <h1 style={{ marginBottom: '10px' }}>📊 {language === 'ja' ? '私の学習進度' : '我的學習進度'}</h1>
-        <p style={{ color: '#666', marginBottom: '40px' }}>{language === 'ja' ? 'コースの完了進度を追跡' : '追踪你的課程完成進度'}</p>
+      <Navbar />
+      <div style={{ maxWidth: '900px', margin: '0 auto', marginTop: '20px' }}>
+        <h1 style={{ marginBottom: '10px' }}>📊 {t('learningProgress', language)}</h1>
+        <p style={{ color: '#666', marginBottom: '40px' }}>{t('trackProgress', language)}</p>
 
         {/* 整體進度卡片 */}
         <div style={{
@@ -41,35 +42,35 @@ function ProgressPageContent() {
           marginBottom: '40px',
           boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
         }}>
-          <h2 style={{ marginBottom: '30px' }}>📈 {language === 'ja' ? '全体の進度' : '整體進度'}</h2>
+          <h2 style={{ marginBottom: '30px' }}>📈 {t('overallProgress', language)}</h2>
 
           <ProgressItem
-            label={language === 'ja' ? 'スライド進度' : '投影片進度'}
+            label={t('slidesProgress', language)}
             icon="📽️"
             completed={stats.slidesCompletionRate === 100}
             percentage={stats.slidesCompletionRate || 0}
           />
 
           <ProgressItem
-            label={language === 'ja' ? 'カード学習' : '卡牌自學'}
+            label={t('cardLearning', language)}
             icon="🎴"
             completed={stats.cardsCompletionRate === 100}
             percentage={stats.cardsCompletionRate || 0}
           />
 
           <ProgressItem
-            label={language === 'ja' ? 'クイズ完了' : '題庫完成'}
+            label={t('quizCompleted', language)}
             icon="📝"
             completed={stats.quizCompletionRate === 100}
             percentage={stats.quizCompletionRate || 0}
           />
 
           <ProgressItem
-            label={language === 'ja' ? 'テストスコア' : '測驗成績'}
+            label={t('testScore', language)}
             icon="✅"
             completed={stats.quizAccuracy >= 80}
             percentage={stats.quizAccuracy || 0}
-            required={language === 'ja' ? '≥80% で証書取得' : '≥80% 可領證書'}
+            required={t('requiredScore', language)}
           />
         </div>
 
@@ -81,21 +82,21 @@ function ProgressPageContent() {
           marginBottom: '40px',
           border: stats.certificateEarned ? '2px solid #10b981' : '2px solid #ddd'
         }}>
-          <h2 style={{ marginBottom: '20px' }}>🏆 {language === 'ja' ? '証書ステータス' : '證書狀態'}</h2>
+          <h2 style={{ marginBottom: '20px' }}>🏆 {t('certificateStatus', language)}</h2>
 
           {stats.certificateEarned ? (
             <div style={{ textAlign: 'center' }}>
               <p style={{ fontSize: '18px', color: '#10b981', fontWeight: 600, marginBottom: '20px' }}>
-                ✅ {language === 'ja' ? '修了証書を取得しました！' : '已獲得結業證書！'}
+                ✅ {t('certificateEarned', language)}
               </p>
               {stats.certificateGeneratedAt && (
                 <p style={{ color: '#666', marginBottom: '20px' }}>
-                  {language === 'ja' ? '生成日：' : '於 '}{new Date(stats.certificateGeneratedAt).toLocaleDateString(language === 'ja' ? 'ja-JP' : 'zh-TW')}{language === 'ja' ? '' : ' 生成'}
+                  {t('generatedAt', language)}{new Date(stats.certificateGeneratedAt).toLocaleDateString(language === 'ja' ? 'ja-JP' : 'zh-TW')}{t('generatedAtSuffix', language)}
                 </p>
               )}
               {stats.certificateNumber && (
                 <p style={{ color: '#666', marginBottom: '20px', fontFamily: 'monospace' }}>
-                  {language === 'ja' ? '番号：' : '編號：'}{stats.certificateNumber}
+                  {t('certificateNumber', language)}{stats.certificateNumber}
                 </p>
               )}
               <Link href="/dashboard/certificate">
@@ -108,24 +109,24 @@ function ProgressPageContent() {
                   cursor: 'pointer',
                   fontWeight: 600
                 }}>
-                  {language === 'ja' ? '証書を表示 / 再ダウンロード' : '查看 / 重新下載證書'}
+                  {t('viewDownloadCertificate', language)}
                 </button>
               </Link>
             </div>
           ) : (
             <div>
               <p style={{ color: '#666', marginBottom: '20px' }}>
-                {language === 'ja' ? 'すべてのコース要件を完了した後、証書を取得できます。' : '完成所有課程要求後，即可獲得証書。'}
+                {t('completeCourseRequirements', language)}
               </p>
               <div style={{ background: '#f0f0f0', padding: '15px', borderRadius: '8px', marginBottom: '20px' }}>
                 <p style={{ fontSize: '14px', color: '#666', margin: 0 }}>
-                  {language === 'ja' ? '完了が必要：' : '還需完成：'}
+                  {t('stillNeedComplete', language)}
                 </p>
                 <ul style={{ margin: '10px 0 0 20px', fontSize: '14px', color: '#666' }}>
-                  {stats.slidesCompletionRate < 100 && <li>{language === 'ja' ? 'スライド進度' : '投影片進度'}：{(100 - stats.slidesCompletionRate).toFixed(0)}%</li>}
-                  {stats.cardsCompletionRate < 100 && <li>{language === 'ja' ? 'カード学習' : '卡牌自學'}：{(100 - stats.cardsCompletionRate).toFixed(0)}%</li>}
-                  {stats.quizCompletionRate < 100 && <li>{language === 'ja' ? 'クイズ完了' : '題庫完成'}：{(100 - stats.quizCompletionRate).toFixed(0)}%</li>}
-                  {stats.quizAccuracy < 80 && <li>{language === 'ja' ? 'テストスコア：80% 以上が必要' : '測驗成績：需達 80% 或以上'}</li>}
+                  {stats.slidesCompletionRate < 100 && <li>{t('slidesProgress', language)}：{(100 - stats.slidesCompletionRate).toFixed(0)}%</li>}
+                  {stats.cardsCompletionRate < 100 && <li>{t('cardLearning', language)}：{(100 - stats.cardsCompletionRate).toFixed(0)}%</li>}
+                  {stats.quizCompletionRate < 100 && <li>{t('quizCompleted', language)}：{(100 - stats.quizCompletionRate).toFixed(0)}%</li>}
+                  {stats.quizAccuracy < 80 && <li>{t('testScore', language)}：{language === 'ja' ? '80% 以上が必要' : '需達 80% 或以上'}</li>}
                 </ul>
               </div>
             </div>
@@ -139,12 +140,12 @@ function ProgressPageContent() {
           borderRadius: '10px',
           borderLeft: '4px solid #9333ea'
         }}>
-          <p style={{ marginBottom: '10px', fontWeight: 600 }}>💡 提示：</p>
+          <p style={{ marginBottom: '10px', fontWeight: 600 }}>{t('tips', language)}</p>
           <ul style={{ margin: 0, paddingLeft: '20px', fontSize: '14px', color: '#666' }}>
-            <li>投影片：點擊課程後，逐頁瀏覽所有內容</li>
-            <li>卡牌：點擊卡牌翻開解答，系統會自動記錄</li>
-            <li>題庫：完整作答所有題目，系統自動計算成績</li>
-            <li>進度會自動保存，可随時返回查看</li>
+            <li>{t('slidesTip', language)}</li>
+            <li>{t('cardsTip', language)}</li>
+            <li>{t('quizTip', language)}</li>
+            <li>{t('autoSaveTip', language)}</li>
           </ul>
         </div>
       </div>
