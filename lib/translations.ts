@@ -334,15 +334,8 @@ export const translations = {
     authSwitchToLogin: 'ログイン',
     authSwitchToSignUp: '登録',
 
-    // Cards Page (新增)
-    cardWeek: '第',
-    cardOf: '週',
-    cardNumber: 'カード',
-    previousPage: '前のページ',
-    nextPage: '次のページ',
-
-    // Auth Page (新增)
-    authSignUpSuccess: '註冊成功！請登入',
+  },
+};
     authError: '發生錯誤',
     authCreateAccount: '建立新帳號',
     authLogin: '登入您的帳號',
@@ -358,13 +351,6 @@ export const translations = {
     authNoAccount: '還沒有帳號？',
     authSwitchToLogin: '登入',
     authSwitchToSignUp: '註冊',
-
-    // Cards Page (新增)
-    cardWeek: '第',
-    cardOf: '週',
-    cardNumber: '卡牌',
-    previousPage: '上一頁',
-    nextPage: '下一頁',
   },
 };
 
