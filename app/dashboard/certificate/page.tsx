@@ -40,6 +40,12 @@ function CertificatePageContent() {
   }
 
   const handleGenerateCertificate = async () => {
+    // 檢查資格
+    if (!isCertificateEligible()) {
+      alert(language === 'ja' ? '修了要件を満たしていません。すべてのコースを完了してください。' : '還未完成所有要求。請完成所有課程。')
+      return
+    }
+
     if (!userName.trim()) {
       alert(language === 'ja' ? 'あなたの名前を入力してください' : '請輸入你的姓名')
       return
