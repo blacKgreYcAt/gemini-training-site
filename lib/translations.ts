@@ -1,6 +1,8 @@
 // 中文課程數據
 import { courseData as chineseCourses } from './course-data';
 import japaneseCourses from '../all_courses_ja.json';
+import { cardsData as chineseCards } from './cards-data';
+import { cardsDataJa } from './cards-data-ja';
 import chineseQuizzes from '../course_quizzes.json';
 import japaneseQuizzes from '../course_quizzes_ja.json';
 
@@ -12,6 +14,14 @@ export function getCourses(language: Language) {
     return japaneseCourses;
   }
   return chineseCourses;
+}
+
+// 卡牌翻譯
+export function getCards(language: Language) {
+  if (language === 'ja') {
+    return cardsDataJa;
+  }
+  return chineseCards;
 }
 
 // 題庫翻譯

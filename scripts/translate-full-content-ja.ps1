@@ -3,7 +3,7 @@
 
 $ErrorActionPreference = "Continue"
 
-$ApiKey = "AQ.Ab8RN6K9ozEpvkoPtOfxH5tkXt60zcrIeHuR-gRGeXIl8PgdXw"
+$ApiKey = $env:GEMINI_API_KEY
 $ApiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$ApiKey"
 
 # 翻譯計數

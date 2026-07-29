@@ -11,7 +11,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const API_KEY = "AQ.Ab8RN6K9ozEpvkoPtOfxH5tkXt60zcrIeHuR-gRGeXIl8PgdXw";
+const API_KEY = process.env.GEMINI_API_KEY;
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
 // 翻譯映射（手動映射以加快速度 - 每個課程標題和描述）

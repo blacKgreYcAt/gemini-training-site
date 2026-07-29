@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // 一次性的 Node CommonJS 工具腳本，不套用應用程式的 TS/React 規則
+    "scripts/**",
   ]),
 ]);
 

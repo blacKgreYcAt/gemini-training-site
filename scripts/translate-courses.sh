@@ -3,7 +3,7 @@
 # 使用 Gemini API 翻譯課程為日文
 # 執行: bash scripts/translate-courses.sh
 
-API_KEY="AQ.Ab8RN6K9ozEpvkoPtOfxH5tkXt60zcrIeHuR-gRGeXIl8PgdXw"
+API_KEY="${GEMINI_API_KEY:?GEMINI_API_KEY not set}"
 API_URL="https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$API_KEY"
 
 # 翻譯函數

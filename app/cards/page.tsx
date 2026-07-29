@@ -1,16 +1,16 @@
 'use client'
 
 import Link from 'next/link'
-import { cardsData } from '@/lib/cards-data'
 import { updateCardsProgress } from '@/lib/progress-utils'
 import { useState, useEffect } from 'react'
 import { ProtectedRoute } from '@/components/ProtectedRoute'
 import { Navbar } from '@/components/Navbar'
 import { useLanguage } from '@/lib/language-context'
-import { t } from '@/lib/translations'
+import { getCards, t } from '@/lib/translations'
 
 function CardsPageContent() {
   const { language } = useLanguage()
+  const cardsData = getCards(language)
   const [currentCardIdx, setCurrentCardIdx] = useState(0)
   const [isFlipped, setIsFlipped] = useState(false)
   const [selectedWeek, setSelectedWeek] = useState<number | null>(null)
