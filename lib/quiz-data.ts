@@ -1447,7 +1447,7 @@ export const quizData: QuizQuestion[] = [
  * 根據章節 ID 獲取對應的問題組
  * 用於舊版 quiz 頁面的相容性
  */
-export function getQuestionsBySection(sectionId: number): QuizQuestion[] {
+export function getQuestionsBySection(sectionId: number, questions: QuizQuestion[] = quizData): QuizQuestion[] {
   const sectionMap: { [key: number]: { min: number; max: number } } = {
     1: { min: 1, max: 20 },      // 基礎認識 (20題)
     2: { min: 21, max: 35 },     // 文本應用 (15題)

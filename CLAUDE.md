@@ -399,4 +399,99 @@ e0236f1 - Implement i18n infrastructure and fix LanguageProvider context
 
 ---
 
-**最後更新**: 2026-07-29 17:28 | **狀態**: ✅ 完成 (i18n 系統全部實現)
+---
+
+### Phase 5: 全面稽核與修復 (2026-07-29)
+
+由 Opus 5 執行完整程式碼稽核，修復所有發現的問題。
+
+#### 🔴 安全性
+
+**1. 語言偏好 API 可被任意越權寫入**
+
+修復前，POST 以服務角色金鑰繞過 RLS，卻只從 request body 讀 `userId` 就直接
+upsert —— 任何人都能改寫任意使用者的紀錄。
+
+```typescript
+// ❌ 修復前：完全不驗證呼叫者身分
+const { userId, preferredLanguage } = body;
+const supabase = createClient(URL, serviceRoleKey);  // 繞過 RLS
+await supabase.from('users_language_preferences').upsert({ user_id: userId, ... });
+
+// ✅ 修復後：身分由 token 推導，body 的 userId 不可信任
+const verifiedUserId = await getVerifiedUserId(request);   // auth.getUser(token)
+if (!verifiedUserId) return 401;
+if (userId && userId !== verifiedUserId) return 403;
+if (!['zh','ja'].includes(preferredLanguage)) return 400;  // 值白名單
+await supabase.from(...).upsert({ user_id: verifiedUserId, ... });
+```
+
+**2. 移除 `/api/auth-test`**
+
+一個未認證、無速率限制的端點，POST 任意 email/password 即可從回應得知帳密
+是否正確 —— 等同對外開放的撞庫預言機。無任何程式引用，已刪除。
+
+**3. API 金鑰外洩**
+
+6 個翻譯腳本硬編碼了 Gemini API KEY，其中 4 個已推上公開倉庫。全部改為讀取
+`process.env.GEMINI_API_KEY`；`.claude/settings.local.json` 停止追蹤（它在
+.gitignore 內卻仍被 git 追蹤）。**外洩的金鑰已由使用者撤銷。**
+
+> ⚠️ 清除程式碼不等於清除 git 歷史。金鑰一旦推送就必須撤銷，改寫歷史無法補救已公開的事實。
+
+#### 🔴 使用者可見的破口
+
+| 問題 | 症狀 |
+|------|------|
+| zh 缺 16 個 `auth*` 鍵 | 中文登入頁顯示 `authLogin`、`authEmailLabel` 等原始鍵名 |
+| 缺 `cardWeek`/`cardOf`/`cardNumber` | 卡牌顯示 `cardWeek 0 cardOf \| cardNumber 1`（中日文皆是） |
+| `if (!week) return` | `week === 0` 為 falsy，課前準備三門課的鍵盤翻頁失效 |
+| `key={renderKey}` | 切語言時整棵 React 樹重掛，投影片/卡牌/測驗進度全部重置 |
+| layout 與 Navbar 重複 | 兩排 header、兩組語言按鈕 |
+| `<html lang="zh-TW">` 寫死 | 日文模式下螢幕閱讀器語言標記錯誤 |
+
+#### 🌐 內容本地化
+
+- **55 張卡牌**：新增 `lib/cards-data-ja.ts`。先前只翻譯外框 UI，卡牌內文全中文。
+- **100 題題庫**：新增 `lib/quiz-data-ja.ts`。
+
+> **重要**：`course_quizzes_ja.json` 雖有 100 題日文，但**不是**中文題庫的翻譯，
+> 而是另外生成的一套題（依課程分組，題目內容完全不同）。若直接採用，日文使用者
+> 會拿到不同的考題，且 `updateQuizProgress` 以題號為鍵，中日文進度無法對應 ——
+> 同一張證書會有兩種考核標準。因此改為翻譯 `lib/quiz-data.ts`，
+> **id / section / week / correctAnswer 全部沿用中文版**，只翻譯題目文字。
+
+- **雙資料源**：刪除 `lib/advanced-courses-ja.ts`。首頁讀它、內頁讀
+  `all_courses_ja.json`，導致 6 門進階課標題全部不一致（如「技術」vs「芸術」）。
+  首頁改用 `getCourses()`，單一資料源。
+
+#### 🔧 工具鏈
+
+`eslint-config-next` 被固定在 `^0.2.4`（另一個套件的版本線），`npm run lint`
+從未成功執行過。升級到 16 後暴露第二個問題：其內含的 `eslint-plugin-import`
+peer 上限為 `eslint@^9`，而專案裝了 10，導致 react plugin 崩潰。將 eslint
+降至 9.x 後兩者才能共存。
+
+lint 問題數 81 → 30。剩餘為既有品質項目（`any` 型別、`set-state-in-effect`、
+`<img>` vs `next/image`），修復屬重構且有回歸風險，未處理。
+
+#### 📦 清理
+
+移除 `/test/certificate-demo`（線上可直接存取的測試路由）、`app/debug.tsx`、
+4 個未引用的 lib 檔、5 個被取代的 `all_courses_*.json`，以及死函式
+`getQuizzes()` —— 它獨佔的兩個 JSON（112KB）原本被打包進每一個 client bundle。
+
+#### 稽核誤判修正
+
+稽核曾指「UI 有 6 個章節但資料只有 3 個」。實測後確認**並非如此**：
+`getQuestionsBySection` 依**題號區間**分章（1-20/21-35/…/81-100），6 章全部
+正常；資料中的 `section` 欄位只是殘留未使用。靜態分析看錯，瀏覽器實測才發現。
+
+#### 部署注意事項
+
+- `SUPABASE_SERVICE_ROLE_KEY` 為語言偏好 API 的硬性依賴，**必須設於 Vercel 環境變數**，缺少會回 500。
+- `SENDGRID_API_KEY`、`GEMINI_UPDATE_*`、`AUTO_DEPLOY_ENABLED` 在程式碼中無任何引用，屬未實作功能的殘留設定。
+
+---
+
+**最後更新**: 2026-07-29 | **狀態**: ✅ 全面稽核完成
