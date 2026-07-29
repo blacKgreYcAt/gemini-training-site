@@ -29,27 +29,6 @@ function HomeContent() {
   return (
     <div style={{ background: '#f5f5f7', color: '#000000' }}>
       <Navbar />
-      {/* Header */}
-      <header>
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-          <div className="logo">
-            <Image
-              src="/logo_banner.png"
-              alt="大豐集團"
-              width={200}
-              height={50}
-              style={{ height: '50px', width: 'auto' }}
-            />
-          </div>
-          <nav style={{ display: 'flex', gap: '40px', flexWrap: 'wrap' }}>
-            <a href="#cases" style={{ color: '#0071e3', fontWeight: 700 }}>{t('courses', language)}</a>
-            <Link href="/cards" style={{ color: '#0071e3', fontWeight: 700, textDecoration: 'none' }}>{t('cards', language)}</Link>
-            <Link href="/quiz" style={{ color: '#0071e3', fontWeight: 700, textDecoration: 'none' }}>{t('quiz', language)}</Link>
-            <Link href="/dashboard/progress" style={{ color: '#0071e3', fontWeight: 700, textDecoration: 'none' }}>📊 {t('progress', language)}</Link>
-            <Link href="/dashboard/certificate" style={{ color: '#10b981', fontWeight: 700, textDecoration: 'none' }}>🏆 {t('certificate', language)}</Link>
-          </nav>
-        </div>
-      </header>
 
       {/* Hero */}
       <section className="hero">
