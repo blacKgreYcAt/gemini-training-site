@@ -336,23 +336,6 @@ export const translations = {
 
   },
 };
-    authError: '發生錯誤',
-    authCreateAccount: '建立新帳號',
-    authLogin: '登入您的帳號',
-    authNameLabel: '姓名',
-    authNamePlaceholder: '例如：陳小明',
-    authEmailLabel: '電子郵件',
-    authPasswordLabel: '密碼',
-    authPasswordPlaceholder: '至少 6 個字符',
-    authProcessing: '處理中...',
-    authCreateButton: '建立帳號',
-    authLoginButton: '登入',
-    authHaveAccount: '已有帳號？',
-    authNoAccount: '還沒有帳號？',
-    authSwitchToLogin: '登入',
-    authSwitchToSignUp: '註冊',
-  },
-};
 
 export function t(key: string, language: Language): string {
   const lang = language === 'ja' ? 'ja' : 'zh';
