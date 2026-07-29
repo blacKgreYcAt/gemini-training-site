@@ -28,6 +28,7 @@ function HomeContent() {
 
   return (
     <div style={{ background: '#f5f5f7', color: '#000000' }}>
+      <Navbar />
       {/* Header */}
       <header>
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
@@ -249,7 +250,6 @@ function HomeContent() {
 export default function Home() {
   return (
     <ProtectedRoute>
-      <Navbar />
       <HomeContent />
     </ProtectedRoute>
   )
