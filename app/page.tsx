@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { courseData } from '@/lib/course-data'
+import { advancedCoursesJa } from '@/lib/advanced-courses-ja'
 import { ProtectedRoute } from '@/components/ProtectedRoute'
 import { Navbar } from '@/components/Navbar'
 import { useLanguage } from '@/lib/language-context'
@@ -20,8 +21,10 @@ function HomeContent() {
     courses: courses.filter((c: any) => c.week === week)
   }))
 
-  // 進階應用課程
-  const advancedCourses = courseData.filter(c => c.week >= 5 && c.week <= 10)
+  // 進階應用課程 - 根據語言選擇
+  const advancedCourses = language === 'ja'
+    ? advancedCoursesJa
+    : courseData.filter(c => c.week >= 5 && c.week <= 10)
 
   return (
     <div style={{ background: '#f5f5f7', color: '#000000' }}>
@@ -160,11 +163,13 @@ function HomeContent() {
               textAlign: 'center'
             }}>
               <h2 style={{ margin: '0 0 15px 0', fontSize: '40px', fontWeight: 900 }}>
-                ⭐ 進階使用 Tips
+                ⭐ {language === 'ja' ? '高度な使用ヒント' : '進階使用 Tips'}
               </h2>
               <p style={{ margin: '0', fontSize: '18px', opacity: 0.95, lineHeight: 1.6 }}>
-                深入掌握 Gemini 高階功能，打造專屬 AI 助手<br />
-                提升工作效率，成為 AI 時代的領航員
+                {language === 'ja'
+                  ? <>Geminiの高度な機能を習得し、カスタマイズされたAIアシスタントを構築する<br />仕事の効率を向上させ、AI時代の先導者になる</>
+                  : <>深入掌握 Gemini 高階功能，打造專屬 AI 助手<br />提升工作效率，成為 AI 時代的領航員</>
+                }
               </p>
             </div>
 
@@ -201,7 +206,7 @@ function HomeContent() {
                   >
                     <div>
                       <div style={{ fontSize: '14px', textTransform: 'uppercase', color: '#9333ea', marginBottom: '12px', letterSpacing: '1px', fontWeight: 700 }}>
-                        進階 {course.module}
+                        {language === 'ja' ? '高度' : '進階'} {course.module}
                       </div>
                       <h4 style={{ fontSize: '22px', fontWeight: 900, marginBottom: '12px', color: '#000000', lineHeight: 1.3 }}>
                         {course.title}
@@ -212,10 +217,10 @@ function HomeContent() {
                     </div>
                     <div style={{ marginTop: '15px', paddingTop: '15px', borderTop: '1px solid #d0d0d0' }}>
                       <p style={{ fontSize: '14px', color: '#666', margin: '0 0 8px 0' }}>
-                        ⏱️ {course.duration_minutes} 分鐘
+                        ⏱️ {course.duration_minutes} {language === 'ja' ? '分間' : '分鐘'}
                       </p>
                       <p style={{ fontSize: '14px', color: '#9333ea', fontWeight: 700, margin: '0' }}>
-                        📑 進階應用 →
+                        📑 {language === 'ja' ? '高度な応用' : '進階應用'} →
                       </p>
                     </div>
                   </div>
