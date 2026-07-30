@@ -44,3 +44,4 @@ next-env.d.ts
 # 翻譯腳本產生的暫存 log
 translation-*.log
 cards-translation.log
+*-translation.log
