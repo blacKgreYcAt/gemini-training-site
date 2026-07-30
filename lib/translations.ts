@@ -191,6 +191,10 @@ export const translations = {
     certificateCompletionDate: '完成日期',
     certificateCertificateNumber: '証書編號',
     certificateTestScore: '測驗成績',
+    certificateReadyTitle: '您的證書已準備好',
+    certificatePreviewLabel: '預覽',
+    certificateRegenerate: '重新生成',
+    certificatePreviewAlt: '證書預覽',
 
     // Auth Page
     authSignUpSuccess: '註冊成功，請登入',
@@ -372,6 +376,10 @@ export const translations = {
     certificateCompletionDate: '修了日',
     certificateCertificateNumber: '証書番号',
     certificateTestScore: 'テストスコア',
+    certificateReadyTitle: '証書の準備ができました',
+    certificatePreviewLabel: 'プレビュー',
+    certificateRegenerate: '再生成',
+    certificatePreviewAlt: '証書プレビュー',
 
     // Auth Page (新增)
     authSignUpSuccess: '登録が完了しました。ログインしてください',

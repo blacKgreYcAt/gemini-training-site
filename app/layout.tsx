@@ -27,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-TW" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body style={{ background: '#f5f5f7', color: '#000000', margin: 0, padding: 0 }}>
+      <body style={{ background: 'var(--tf-paper)', color: 'var(--tf-body)', margin: 0, padding: 0 }}>
         <LanguageProvider>
           <HtmlLangSync />
           <AuthProvider>

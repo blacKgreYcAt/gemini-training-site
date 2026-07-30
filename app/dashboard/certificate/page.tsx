@@ -93,94 +93,73 @@ function CertificatePageContent() {
 
   if (!progress) {
     return (
-      <div style={{ padding: '40px', textAlign: 'center', background: '#f5f5f7', minHeight: '100vh' }}>
-        <p>{t('certificateLoadingMessage', language)}</p>
-      </div>
+      <section className="tf-band-light" style={{ minHeight: '60vh' }}>
+        <div className="container" style={{ textAlign: 'center' }}>
+          <p>{t('certificateLoadingMessage', language)}</p>
+        </div>
+      </section>
     )
   }
 
+  // 尚未達成資格
   if (!isCertificateEligible()) {
     const stats = progress.statistics || {}
     return (
-      <div style={{ padding: '40px', background: '#f5f5f7', minHeight: '100vh' }}>
-        <div style={{
-          maxWidth: '600px',
-          margin: '0 auto',
-          background: 'white',
-          padding: '40px',
-          borderRadius: '20px',
-          border: '2px solid #0071e3'
-        }}>
-          <h1 style={{ textAlign: 'center', marginBottom: '30px' }}>🎯 {t('certificateIncompleteTitle', language)}</h1>
+      <section className="tf-band-light">
+        <div className="container" style={{ maxWidth: '680px' }}>
+          <span className="tf-eyebrow">{t('certificate', language)}</span>
+          <h1 style={{ fontSize: 'clamp(26px, 4.5vw, 40px)' }}>
+            {t('certificateIncompleteTitle', language)}
+          </h1>
 
-          <p style={{ marginBottom: '30px', color: '#666' }}>
-            {t('certificateRequirements', language)}
-          </p>
+          <div className="tf-card" style={{ marginTop: '32px' }}>
+            <p style={{ marginBottom: '10px' }}>{t('certificateRequirements', language)}</p>
 
-          <ProgressItem
-            label={t('certificateSlidesLabel', language)}
-            completed={stats.slidesCompletionRate === 100}
-            percentage={stats.slidesCompletionRate || 0}
-          />
-          <ProgressItem
-            label={t('certificateCardsLabel', language)}
-            completed={stats.cardsCompletionRate === 100}
-            percentage={stats.cardsCompletionRate || 0}
-          />
-          <ProgressItem
-            label={t('certificateQuizLabel', language)}
-            completed={stats.quizCompletionRate === 100}
-            percentage={stats.quizCompletionRate || 0}
-          />
-          <ProgressItem
-            label={t('certificateScoreLabel', language)}
-            completed={stats.quizAccuracy >= 80}
-            percentage={stats.quizAccuracy || 0}
-            required="≥80%"
-          />
+            <ProgressItem
+              label={t('certificateSlidesLabel', language)}
+              completed={stats.slidesCompletionRate === 100}
+              percentage={stats.slidesCompletionRate || 0}
+            />
+            <ProgressItem
+              label={t('certificateCardsLabel', language)}
+              completed={stats.cardsCompletionRate === 100}
+              percentage={stats.cardsCompletionRate || 0}
+            />
+            <ProgressItem
+              label={t('certificateQuizLabel', language)}
+              completed={stats.quizCompletionRate === 100}
+              percentage={stats.quizCompletionRate || 0}
+            />
+            <ProgressItem
+              label={t('certificateScoreLabel', language)}
+              completed={stats.quizAccuracy >= 80}
+              percentage={stats.quizAccuracy || 0}
+              required="≥80%"
+            />
 
-          <Link href="/dashboard/progress">
-            <button style={{
-              width: '100%',
-              padding: '12px',
-              marginTop: '30px',
-              background: '#0071e3',
-              color: 'white',
-              border: 'none',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              fontWeight: 600
-            }}>
+            <Link
+              href="/dashboard/progress"
+              className="tf-btn tf-btn-primary"
+              style={{ width: '100%', marginTop: '26px' }}
+            >
               {t('certificateViewProgressButton', language)}
-            </button>
-          </Link>
+            </Link>
+          </div>
         </div>
-      </div>
+      </section>
     )
   }
 
+  // 已達資格，尚未生成
   if (!certificateGenerated) {
     return (
-      <div style={{ padding: '40px', background: '#f5f5f7', minHeight: '100vh' }}>
-        <div style={{
-          maxWidth: '600px',
-          margin: '0 auto',
-          background: 'white',
-          padding: '40px',
-          borderRadius: '20px',
-          border: '3px solid #10b981',
-          textAlign: 'center',
-          boxShadow: '0 10px 30px rgba(16, 185, 129, 0.15)'
-        }}>
-          <h1 style={{ marginBottom: '20px', color: '#10b981' }}>🏆 {t('certificateCongratulationsTitle', language)}</h1>
-
-          <div style={{
-            background: '#f0fdf4',
-            padding: '20px',
-            borderRadius: '10px',
-            marginBottom: '30px'
-          }}>
-            <p style={{ fontSize: '16px', color: '#047857', margin: 0, lineHeight: '1.6' }}>
+      <section className="tf-band-light">
+        <div className="container" style={{ maxWidth: '620px' }}>
+          <div className="tf-card-navy" style={{ textAlign: 'center' }}>
+            <h2 style={{ marginBottom: '14px' }}>
+              {t('certificateCongratulationsTitle', language)}
+            </h2>
+            <p style={{ position: 'relative', zIndex: 1 }}>
               {t('certificateCompletionMessage', language)}
               <br />
               <br />
@@ -188,142 +167,125 @@ function CertificatePageContent() {
             </p>
           </div>
 
-          <div style={{ marginBottom: '30px' }}>
-            <label style={{
-              display: 'block',
-              marginBottom: '12px',
-              fontWeight: 600,
-              color: '#333',
-              textAlign: 'left'
-            }}>
-              {t('certificateNameLabel', language)}
-            </label>
-            <input
-              type="text"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-              placeholder="例如：陳小明"
-              onKeyPress={(e) => e.key === 'Enter' && handleGenerateCertificate()}
-              style={{
-                width: '100%',
-                padding: '14px',
-                borderRadius: '8px',
-                border: '2px solid #0071e3',
-                fontSize: '16px',
-                boxSizing: 'border-box',
-                fontFamily: 'inherit'
-              }}
-              autoFocus
-            />
-          </div>
+          <div className="tf-card" style={{ marginTop: '28px' }}>
+            <div className="tf-field-group">
+              <label className="tf-field-label" htmlFor="cert-name">
+                {t('certificateNameLabel', language)}
+              </label>
+              <input
+                id="cert-name"
+                className="tf-field"
+                type="text"
+                value={userName}
+                onChange={e => setUserName(e.target.value)}
+                placeholder={t('authNamePlaceholder', language)}
+                onKeyDown={e => e.key === 'Enter' && handleGenerateCertificate()}
+                autoFocus
+              />
+            </div>
 
-          <button
-            onClick={handleGenerateCertificate}
-            disabled={isGenerating || !userName.trim()}
-            style={{
-              width: '100%',
-              padding: '14px',
-              background: isGenerating || !userName.trim() ? '#ccc' : '#10b981',
-              color: 'white',
-              border: 'none',
-              borderRadius: '10px',
-              fontSize: '16px',
-              fontWeight: 600,
-              cursor: isGenerating || !userName.trim() ? 'not-allowed' : 'pointer',
-              transition: 'background 0.2s'
-            }}
-          >
-            {isGenerating ? t('certificateGenerating', language) : t('certificateGenerateButton', language)}
-          </button>
+            <button
+              onClick={handleGenerateCertificate}
+              disabled={isGenerating || !userName.trim()}
+              className="tf-btn tf-btn-primary"
+              style={{ width: '100%' }}
+            >
+              {isGenerating
+                ? t('certificateGenerating', language)
+                : t('certificateGenerateButton', language)}
+            </button>
+          </div>
         </div>
-      </div>
+      </section>
     )
   }
 
+  // 證書已生成
   return (
-    <div style={{ padding: '40px', background: '#f5f5f7', minHeight: '100vh' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <h1 style={{ textAlign: 'center', marginBottom: '40px', color: '#10b981' }}>
-          🏆 您的證書已準備好
+    <section className="tf-band-light">
+      <div className="container" style={{ maxWidth: '960px' }}>
+        <span className="tf-eyebrow">{t('certificate', language)}</span>
+        <h1 style={{ fontSize: 'clamp(26px, 4.5vw, 40px)' }}>
+          {t('certificateReadyTitle', language)}
         </h1>
 
         {canvas && (
-          <div style={{
-            marginBottom: '40px',
-            textAlign: 'center',
-            background: 'white',
-            padding: '30px',
-            borderRadius: '15px',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
-          }}>
+          <div className="tf-card" style={{ marginTop: '32px', textAlign: 'center' }}>
             <img
               src={canvas.toDataURL()}
-              alt="証書預覽"
+              alt={t('certificatePreviewAlt', language)}
               style={{
                 maxWidth: '100%',
-                maxHeight: '600px',
-                borderRadius: '10px',
-                boxShadow: '0 5px 15px rgba(0, 0, 0, 0.15)'
+                maxHeight: '560px',
+                borderRadius: 'var(--tf-radius)',
+                border: '1px solid var(--tf-line)',
               }}
             />
           </div>
         )}
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
-          gap: '15px',
-          marginBottom: '40px'
-        }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+            gap: '12px',
+            marginTop: '28px',
+          }}
+        >
           <ActionButton
             onClick={() => canvas && displayCertificatePreview(canvas)}
             icon="📋"
-            label="預覽"
-            color="#0071e3"
+            label={t('certificatePreviewLabel', language)}
+            variant="outline"
           />
-
           <ActionButton
-            onClick={() => canvas && downloadCertificateAsPNG(canvas, userName, language as 'zh' | 'ja')}
+            onClick={() =>
+              canvas && downloadCertificateAsPNG(canvas, userName, language as 'zh' | 'ja')
+            }
             icon="🖼️"
             label={t('certificatePNGButton', language)}
-            color="#10b981"
+            variant="primary"
           />
-
           <ActionButton
-            onClick={() => canvas && downloadCertificateAsPDF(canvas, userName, language as 'zh' | 'ja')}
+            onClick={() =>
+              canvas && downloadCertificateAsPDF(canvas, userName, language as 'zh' | 'ja')
+            }
             icon="📄"
             label={t('certificatePDFButton', language)}
-            color="#d4af37"
+            variant="primary"
           />
-
           <ActionButton
             onClick={() => {
               setCertificateGenerated(false)
               setUserName('')
             }}
             icon="↻"
-            label="重新生成"
-            color="#999"
+            label={t('certificateRegenerate', language)}
+            variant="outline"
           />
         </div>
 
         {certificateData && (
-          <div style={{
-            background: 'white',
-            padding: '30px',
-            borderRadius: '15px',
-            border: '2px solid #e5e7eb'
-          }}>
-            <h3 style={{ marginBottom: '20px', color: '#333' }}>📋 {t('certificateCertificateInfoTitle', language)}</h3>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: '20px'
-            }}>
+          <div className="tf-card" style={{ marginTop: '28px' }}>
+            <h3 style={{ marginBottom: '4px' }}>
+              {t('certificateCertificateInfoTitle', language)}
+            </h3>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
+                gap: '20px',
+                marginTop: '18px',
+                paddingTop: '18px',
+                borderTop: '1px solid var(--tf-line)',
+              }}
+            >
               <InfoItem label={t('certificateName', language)} value={certificateData.userName} />
               <InfoItem
                 label={t('certificateCompletionDate', language)}
-                value={certificateData.completionDate.toLocaleDateString(language === 'ja' ? 'ja-JP' : 'zh-TW')}
+                value={certificateData.completionDate.toLocaleDateString(
+                  language === 'ja' ? 'ja-JP' : 'zh-TW'
+                )}
               />
               <InfoItem
                 label={t('certificateCertificateNumber', language)}
@@ -338,7 +300,7 @@ function CertificatePageContent() {
           </div>
         )}
       </div>
-    </div>
+    </section>
   )
 }
 
@@ -346,7 +308,7 @@ function ProgressItem({
   label,
   completed,
   percentage,
-  required
+  required,
 }: {
   label: string
   completed: boolean
@@ -354,29 +316,33 @@ function ProgressItem({
   required?: string
 }) {
   return (
-    <div style={{ marginBottom: '20px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-        <span style={{ fontWeight: 600, color: '#333' }}>
-          {completed ? '✅' : '⏳'} {label}
+    <div style={{ padding: '16px 0', borderBottom: '1px solid var(--tf-line)' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'baseline',
+          gap: '14px',
+          marginBottom: '10px',
+        }}
+      >
+        <span style={{ fontWeight: 600, color: 'var(--tf-ink)', fontSize: '15px' }}>
+          <span aria-hidden="true">{completed ? '✅' : '⏳'}</span> {label}
         </span>
-        <span style={{ color: completed ? '#10b981' : '#999', fontWeight: 600 }}>
+        <span
+          className="tf-num"
+          style={{
+            fontWeight: 700,
+            fontSize: '15px',
+            flex: 'none',
+            color: completed ? 'var(--tf-green)' : 'var(--tf-muted)',
+          }}
+        >
           {percentage.toFixed(1)}% {required ? `(${required})` : ''}
         </span>
       </div>
-      <div style={{
-        width: '100%',
-        height: '10px',
-        background: '#e5e7eb',
-        borderRadius: '5px',
-        overflow: 'hidden'
-      }}>
-        <div style={{
-          width: `${Math.min(percentage, 100)}%`,
-          height: '100%',
-          background: completed ? '#10b981' : '#0071e3',
-          transition: 'width 0.3s ease',
-          borderRadius: '5px'
-        }} />
+      <div className={`tf-meter${completed ? ' is-complete' : ''}`}>
+        <span style={{ width: `${Math.min(percentage, 100)}%` }} />
       </div>
     </div>
   )
@@ -395,30 +361,22 @@ function ActionButton({
   onClick,
   icon,
   label,
-  color
+  variant,
 }: {
   onClick: () => void
   icon: string
   label: string
-  color: string
+  variant: 'primary' | 'outline'
 }) {
   return (
     <button
       onClick={onClick}
-      style={{
-        padding: '18px 16px',
-        background: color,
-        color: 'white',
-        border: 'none',
-        borderRadius: '10px',
-        fontSize: '13px',
-        fontWeight: 600,
-        cursor: 'pointer',
-        transition: 'transform 0.2s, box-shadow 0.2s',
-        boxShadow: `0 4px 12px ${color}40`
-      }}
+      className={`tf-btn tf-btn-${variant}`}
+      style={{ flexDirection: 'column', gap: '6px', padding: '16px 12px', fontSize: '13.5px' }}
     >
-      <div style={{ fontSize: '20px', marginBottom: '8px' }}>{icon}</div>
+      <span aria-hidden="true" style={{ fontSize: '19px' }}>
+        {icon}
+      </span>
       {label}
     </button>
   )
@@ -427,7 +385,7 @@ function ActionButton({
 function InfoItem({
   label,
   value,
-  monospace
+  monospace,
 }: {
   label: string
   value: string
@@ -435,15 +393,18 @@ function InfoItem({
 }) {
   return (
     <div>
-      <div style={{ fontSize: '12px', color: '#999', marginBottom: '5px', fontWeight: 600 }}>
+      <div className="tf-label" style={{ marginBottom: '4px' }}>
         {label}
       </div>
-      <div style={{
-        fontSize: '16px',
-        color: '#333',
-        fontWeight: 500,
-        fontFamily: monospace ? '"Courier New", monospace' : 'inherit'
-      }}>
+      <div
+        className={monospace ? 'tf-num' : undefined}
+        style={{
+          fontSize: '15.5px',
+          color: 'var(--tf-ink)',
+          fontWeight: 500,
+          fontFamily: monospace ? 'var(--tf-mono)' : 'inherit',
+        }}
+      >
         {value}
       </div>
     </div>

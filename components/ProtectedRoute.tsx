@@ -21,7 +21,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
         alignItems: 'center',
         justifyContent: 'center',
         minHeight: '100vh',
-        background: '#f5f5f7'
+        background: 'var(--tf-paper)'
       }}>
         <div style={{ textAlign: 'center' }}>
           <p style={{ fontSize: '18px', color: '#666' }}>加載中...</p>

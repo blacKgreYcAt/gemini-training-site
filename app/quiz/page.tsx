@@ -155,21 +155,29 @@ function QuizPageContent() {
         </div>
 
         <div style={styles.questionBox}>
-          <div style={styles.questionNumber}>{language === 'ja' ? '問題' : '問題'} {currentQuestion.id}</div>
+          <div style={styles.questionNumber}>問題 {currentQuestion.id}</div>
           <h2 style={styles.questionText}>{currentQuestion.question}</h2>
 
           <div style={styles.optionsContainer}>
-            {currentQuestion.options.map((option) => (
+            {currentQuestion.options.map((option) => {
+              // 只產生一個 border 宣告：混用 border 簡寫與 borderColor 長寫時，
+              // React 的樣式 diff 會清掉 border-style / border-width，邊框就消失
+              const marked = showAnswer && selectedAnswer === option.label
+              const isRight = option.label === currentQuestion.correctAnswer
+              const accent = marked
+                ? isRight
+                  ? { line: 'var(--tf-green)', fill: 'rgba(46, 139, 87, 0.10)' }
+                  : { line: 'var(--tf-red)', fill: 'rgba(237, 28, 36, 0.08)' }
+                : { line: 'var(--tf-line)', fill: 'var(--tf-white)' }
+
+              return (
               <button
                 key={option.label}
                 style={{
                   ...styles.optionButton,
-                  ...(selectedAnswer === option.label && showAnswer
-                    ? option.label === currentQuestion.correctAnswer
-                      ? styles.optionCorrect
-                      : styles.optionIncorrect
-                    : {}),
-                  ...(!showAnswer ? styles.optionClickable : {})
+                  border: `1px solid ${accent.line}`,
+                  backgroundColor: accent.fill,
+                  color: marked ? 'var(--tf-ink)' : styles.optionButton.color,
                 }}
                 onClick={() => !showAnswer && handleSelectAnswer(option.label)}
                 disabled={showAnswer}
@@ -177,7 +185,8 @@ function QuizPageContent() {
                 <div style={styles.optionLabel}>{option.label}</div>
                 <div style={styles.optionText}>{option.text}</div>
               </button>
-            ))}
+              )
+            })}
           </div>
 
           {showAnswer && (
@@ -272,308 +281,342 @@ export default function QuizPage() {
   );
 }
 
+// 全部走品牌 token，不再出現寫死的色值
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
-    maxWidth: '1200px',
+    maxWidth: '1000px',
     margin: '0 auto',
-    padding: '40px 20px',
-    fontFamily: 'system-ui, -apple-system, sans-serif',
+    padding: 'clamp(40px, 7vw, 80px) clamp(20px, 5vw, 48px)',
+    fontFamily: 'var(--tf-sans)',
   },
   header: {
-    marginBottom: '60px',
-    textAlign: 'center',
+    marginBottom: '48px',
   },
   backLink: {
     display: 'inline-block',
-    marginBottom: '20px',
-    color: '#0071e3',
+    marginBottom: '24px',
+    color: 'var(--tf-blue-500)',
     textDecoration: 'none',
-    fontSize: '18px',
-    fontWeight: '500',
+    fontSize: '15px',
+    fontWeight: 600,
   },
   title: {
-    fontSize: '64px',
-    fontWeight: 'bold',
-    color: '#000000',
-    margin: '20px 0 10px 0',
+    fontFamily: 'var(--tf-serif)',
+    fontSize: 'clamp(30px, 5vw, 48px)',
+    fontWeight: 500,
+    color: 'var(--tf-ink)',
+    margin: '0 0 8px 0',
+    lineHeight: 1.25,
   },
   subtitle: {
-    fontSize: '24px',
-    color: '#666',
-    margin: '0',
+    fontSize: '16px',
+    color: 'var(--tf-body)',
+    margin: 0,
   },
+
+  // 章節選擇
   sectionsGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '24px',
-    marginBottom: '60px',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(270px, 1fr))',
+    gap: '20px',
+    marginBottom: '48px',
   },
   sectionCard: {
-    padding: '32px',
-    border: '2px solid #000000',
+    padding: '26px',
+    border: '1px solid var(--tf-line)',
+    borderRadius: 'var(--tf-radius-lg)',
     cursor: 'pointer',
-    transition: 'all 0.3s ease',
-    backgroundColor: '#f5f5f5',
-  } as React.CSSProperties & { '&:hover'?: React.CSSProperties },
+    transition: 'box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease',
+    backgroundColor: 'var(--tf-white)',
+  },
   sectionNumber: {
-    fontSize: '14px',
-    fontWeight: 'bold',
-    color: '#0071e3',
-    marginBottom: '8px',
-    textTransform: 'uppercase',
-    letterSpacing: '2px',
+    fontSize: '12.5px',
+    fontWeight: 600,
+    color: 'var(--tf-blue-500)',
+    marginBottom: '6px',
+    letterSpacing: '0.08em',
   },
   sectionTitle: {
-    fontSize: '24px',
-    fontWeight: 'bold',
-    color: '#000000',
-    margin: '12px 0',
+    fontFamily: 'var(--tf-serif)',
+    fontSize: '20px',
+    fontWeight: 500,
+    color: 'var(--tf-ink)',
+    margin: '10px 0',
+    lineHeight: 1.45,
   },
   sectionRange: {
-    fontSize: '14px',
-    color: '#666',
-    margin: '8px 0 16px 0',
+    fontSize: '12.5px',
+    color: 'var(--tf-muted)',
+    margin: '6px 0 18px 0',
+    fontVariantNumeric: 'tabular-nums',
   },
   startButton: {
-    fontSize: '18px',
-    fontWeight: 'bold',
-    color: '#0071e3',
-    margin: '0',
+    fontSize: '14px',
+    fontWeight: 600,
+    color: 'var(--tf-blue-500)',
+    margin: 0,
   },
   infoBox: {
-    padding: '32px',
-    border: '2px solid #000000',
-    backgroundColor: '#f9f9f9',
+    padding: '28px',
+    border: '1px solid var(--tf-line)',
+    borderRadius: 'var(--tf-radius-lg)',
+    backgroundColor: 'var(--tf-white)',
   },
   infoTitle: {
-    fontSize: '24px',
-    fontWeight: 'bold',
-    margin: '0 0 16px 0',
+    fontFamily: 'var(--tf-serif)',
+    fontSize: '20px',
+    fontWeight: 500,
+    color: 'var(--tf-ink)',
+    margin: '0 0 14px 0',
   },
   infoList: {
-    fontSize: '18px',
-    lineHeight: '1.8',
-    margin: '0',
-    paddingLeft: '24px',
+    fontSize: '15px',
+    lineHeight: 1.9,
+    color: 'var(--tf-body)',
+    margin: 0,
+    paddingLeft: '22px',
   },
+
+  // 作答中
   quizHeader: {
-    marginBottom: '40px',
+    marginBottom: '32px',
   },
   quizNav: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: '20px',
+    gap: '16px',
+    flexWrap: 'wrap',
+    marginBottom: '16px',
   },
   backButton: {
-    padding: '12px 24px',
-    border: '2px solid #0071e3',
-    backgroundColor: 'transparent',
-    color: '#0071e3',
-    fontSize: '16px',
-    fontWeight: 'bold',
+    padding: '11px 22px',
+    border: '1px solid var(--tf-navy-700)',
+    borderRadius: '3px',
+    backgroundColor: 'var(--tf-white)',
+    color: 'var(--tf-navy-700)',
+    fontSize: '14px',
+    fontWeight: 600,
     cursor: 'pointer',
-    transition: 'all 0.3s ease',
+    fontFamily: 'var(--tf-sans)',
   },
   progressInfo: {
-    fontSize: '18px',
-    fontWeight: '600',
-    color: '#000000',
+    fontSize: '14px',
+    fontWeight: 600,
+    color: 'var(--tf-body)',
+    fontVariantNumeric: 'tabular-nums',
   },
   progressBar: {
     width: '100%',
     height: '8px',
-    backgroundColor: '#e0e0e0',
-    border: '1px solid #000000',
+    backgroundColor: 'var(--tf-blue-100)',
+    borderRadius: '999px',
     overflow: 'hidden',
   },
   progressFill: {
     height: '100%',
-    backgroundColor: '#0071e3',
-    transition: 'width 0.3s ease',
+    borderRadius: '999px',
+    background: 'linear-gradient(90deg, var(--tf-blue-500), var(--tf-blue-600))',
+    transition: 'width 0.4s ease',
   },
   questionBox: {
-    padding: '40px',
-    border: '2px solid #000000',
-    backgroundColor: '#fff',
+    padding: 'clamp(24px, 4vw, 40px)',
+    border: '1px solid var(--tf-line)',
+    borderRadius: 'var(--tf-radius-lg)',
+    backgroundColor: 'var(--tf-white)',
   },
   questionNumber: {
-    fontSize: '14px',
-    fontWeight: 'bold',
-    color: '#0071e3',
-    textTransform: 'uppercase',
-    marginBottom: '16px',
-    letterSpacing: '2px',
+    fontSize: '12.5px',
+    fontWeight: 600,
+    color: 'var(--tf-blue-500)',
+    letterSpacing: '0.08em',
+    marginBottom: '12px',
+    fontVariantNumeric: 'tabular-nums',
   },
   questionText: {
-    fontSize: '28px',
-    fontWeight: 'bold',
-    color: '#000000',
-    margin: '0 0 32px 0',
-    lineHeight: '1.4',
+    fontFamily: 'var(--tf-serif)',
+    fontSize: 'clamp(20px, 3vw, 27px)',
+    fontWeight: 500,
+    color: 'var(--tf-ink)',
+    margin: '0 0 28px 0',
+    lineHeight: 1.45,
   },
   optionsContainer: {
     display: 'grid',
-    gap: '16px',
-    marginBottom: '32px',
+    gap: '12px',
+    marginBottom: '28px',
   },
   optionButton: {
-    padding: '20px 24px',
-    border: '2px solid #000000',
-    backgroundColor: '#f5f5f5',
+    padding: '16px 20px',
+    border: '1px solid var(--tf-line)',
+    borderRadius: 'var(--tf-radius)',
+    backgroundColor: 'var(--tf-white)',
     textAlign: 'left',
-    fontSize: '18px',
+    fontSize: '15.5px',
+    color: 'var(--tf-body)',
     cursor: 'pointer',
-    transition: 'all 0.3s ease',
+    transition: 'border-color 0.2s ease, background-color 0.2s ease',
     display: 'flex',
-    gap: '16px',
-  },
-  optionClickable: {
-    cursor: 'pointer',
-  } as React.CSSProperties,
-  optionCorrect: {
-    backgroundColor: '#e8f5e9',
-    borderColor: '#4caf50',
-  },
-  optionIncorrect: {
-    backgroundColor: '#ffebee',
-    borderColor: '#f44336',
+    gap: '14px',
+    fontFamily: 'var(--tf-sans)',
   },
   optionLabel: {
-    fontWeight: 'bold',
-    fontSize: '20px',
-    minWidth: '40px',
-    color: '#0071e3',
+    fontWeight: 700,
+    fontSize: '15.5px',
+    minWidth: '24px',
+    color: 'var(--tf-blue-500)',
   },
   optionText: {
     flex: 1,
   },
+
+  // 答案回饋
   answerBox: {
-    padding: '32px',
-    border: '2px solid #000000',
-    backgroundColor: '#f9f9f9',
+    padding: 'clamp(20px, 3vw, 28px)',
+    border: '1px solid var(--tf-line)',
+    borderLeft: '3px solid var(--tf-blue-500)',
+    borderRadius: 'var(--tf-radius)',
+    backgroundColor: 'var(--tf-blue-050)',
   },
   answerResult: {
-    marginBottom: '20px',
+    marginBottom: '14px',
   },
   resultCorrect: {
-    fontSize: '24px',
-    fontWeight: 'bold',
-    color: '#4caf50',
+    fontSize: '18px',
+    fontWeight: 700,
+    color: 'var(--tf-green)',
   },
   resultIncorrect: {
-    fontSize: '24px',
-    fontWeight: 'bold',
-    color: '#f44336',
+    fontSize: '18px',
+    fontWeight: 700,
+    color: 'var(--tf-red)',
   },
   explanation: {
-    marginBottom: '24px',
+    marginBottom: '20px',
   },
   explanationTitle: {
-    fontSize: '18px',
-    fontWeight: 'bold',
-    margin: '0 0 12px 0',
-  },
-  explanationText: {
-    fontSize: '18px',
-    color: '#333',
-    margin: '0 0 12px 0',
-    lineHeight: '1.6',
-  },
-  correctAnswerText: {
-    fontSize: '18px',
-    color: '#f44336',
-    fontWeight: 'bold',
-    margin: '0',
-  },
-  nextButton: {
-    padding: '16px 32px',
-    border: '2px solid #0071e3',
-    backgroundColor: '#0071e3',
-    color: '#fff',
-    fontSize: '18px',
-    fontWeight: 'bold',
-    cursor: 'pointer',
-    transition: 'all 0.3s ease',
-  },
-  scoreInfo: {
-    marginTop: '24px',
-    fontSize: '18px',
-    fontWeight: '600',
-    color: '#0071e3',
-    textAlign: 'right',
-  },
-  completeBox: {
-    textAlign: 'center',
-    padding: '60px 40px',
-    border: '2px solid #000000',
-    backgroundColor: '#f5f5f5',
-  },
-  completeTitle: {
-    fontSize: '56px',
-    fontWeight: 'bold',
-    margin: '0 0 40px 0',
-  },
-  scoreCard: {
-    padding: '40px',
-    border: '2px solid #000000',
-    backgroundColor: '#fff',
-    marginBottom: '32px',
-  },
-  finalScore: {
-    fontSize: '72px',
-    fontWeight: 'bold',
-    color: '#0071e3',
-    margin: '0 0 16px 0',
-  },
-  gradeText: {
-    fontSize: '32px',
-    fontWeight: 'bold',
-    color: '#000000',
+    fontSize: '13.5px',
+    fontWeight: 600,
+    color: 'var(--tf-ink)',
+    letterSpacing: '0.04em',
     margin: '0 0 8px 0',
   },
+  explanationText: {
+    fontSize: '15.5px',
+    color: 'var(--tf-body)',
+    margin: '0 0 10px 0',
+    lineHeight: 1.85,
+  },
+  correctAnswerText: {
+    fontSize: '15px',
+    color: 'var(--tf-navy-700)',
+    fontWeight: 700,
+    margin: 0,
+  },
+  nextButton: {
+    padding: '13px 28px',
+    border: '1px solid var(--tf-navy-700)',
+    borderRadius: '3px',
+    backgroundColor: 'var(--tf-navy-700)',
+    color: 'var(--tf-white)',
+    fontSize: '15px',
+    fontWeight: 600,
+    cursor: 'pointer',
+    fontFamily: 'var(--tf-sans)',
+  },
+  scoreInfo: {
+    marginTop: '20px',
+    fontSize: '14px',
+    fontWeight: 600,
+    color: 'var(--tf-blue-500)',
+    textAlign: 'right',
+    fontVariantNumeric: 'tabular-nums',
+  },
+
+  // 完成畫面
+  completeBox: {
+    textAlign: 'center',
+    padding: 'clamp(36px, 6vw, 64px) clamp(20px, 4vw, 40px)',
+    border: '1px solid var(--tf-line)',
+    borderRadius: 'var(--tf-radius-lg)',
+    backgroundColor: 'var(--tf-white)',
+  },
+  completeTitle: {
+    fontFamily: 'var(--tf-serif)',
+    fontSize: 'clamp(28px, 5vw, 44px)',
+    fontWeight: 500,
+    color: 'var(--tf-ink)',
+    margin: '0 0 32px 0',
+  },
+  scoreCard: {
+    padding: 'clamp(28px, 4vw, 40px)',
+    border: '1px solid var(--tf-blue-200)',
+    borderRadius: 'var(--tf-radius-lg)',
+    backgroundColor: 'var(--tf-blue-050)',
+    marginBottom: '28px',
+  },
+  finalScore: {
+    fontFamily: 'var(--tf-serif)',
+    fontSize: 'clamp(48px, 9vw, 72px)',
+    fontWeight: 500,
+    color: 'var(--tf-navy-700)',
+    margin: '0 0 12px 0',
+    fontVariantNumeric: 'tabular-nums',
+    lineHeight: 1.1,
+  },
+  gradeText: {
+    fontFamily: 'var(--tf-serif)',
+    fontSize: 'clamp(22px, 3.5vw, 30px)',
+    fontWeight: 500,
+    color: 'var(--tf-ink)',
+    margin: '0 0 6px 0',
+  },
   percentageText: {
-    fontSize: '24px',
-    color: '#666',
+    fontSize: '16px',
+    color: 'var(--tf-body)',
+    fontVariantNumeric: 'tabular-nums',
   },
   feedback: {
-    fontSize: '20px',
-    color: '#333',
-    marginBottom: '40px',
-    lineHeight: '1.8',
+    fontSize: '16px',
+    color: 'var(--tf-body)',
+    marginBottom: '32px',
+    lineHeight: 1.85,
   },
   buttonGroup: {
     display: 'flex',
-    gap: '16px',
+    gap: '14px',
     justifyContent: 'center',
-    marginBottom: '32px',
+    flexWrap: 'wrap',
+    marginBottom: '24px',
   },
   retryButton: {
-    padding: '16px 32px',
-    border: '2px solid #0071e3',
-    backgroundColor: '#0071e3',
-    color: '#fff',
-    fontSize: '18px',
-    fontWeight: 'bold',
+    padding: '13px 28px',
+    border: '1px solid var(--tf-navy-700)',
+    borderRadius: '3px',
+    backgroundColor: 'var(--tf-navy-700)',
+    color: 'var(--tf-white)',
+    fontSize: '15px',
+    fontWeight: 600,
     cursor: 'pointer',
-    transition: 'all 0.3s ease',
+    fontFamily: 'var(--tf-sans)',
   },
   homeButton: {
-    padding: '16px 32px',
-    border: '2px solid #000000',
-    backgroundColor: 'transparent',
-    color: '#000000',
-    fontSize: '18px',
-    fontWeight: 'bold',
+    padding: '13px 28px',
+    border: '1px solid var(--tf-navy-700)',
+    borderRadius: '3px',
+    backgroundColor: 'var(--tf-white)',
+    color: 'var(--tf-navy-700)',
+    fontSize: '15px',
+    fontWeight: 600,
     cursor: 'pointer',
-    transition: 'all 0.3s ease',
+    fontFamily: 'var(--tf-sans)',
   },
   returnLink: {
     display: 'inline-block',
-    marginTop: '24px',
-    color: '#0071e3',
+    marginTop: '20px',
+    color: 'var(--tf-blue-500)',
     textDecoration: 'none',
-    fontSize: '18px',
-    fontWeight: '600',
+    fontSize: '15px',
+    fontWeight: 600,
   },
 };
