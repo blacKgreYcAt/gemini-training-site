@@ -71,6 +71,9 @@ export const translations = {
     askQuestion: '我要提問',
     pages: '頁',
     loadingHint: '如果一直停留在此，請重新整理頁面或回到首頁重試',
+    heroEyebrow: 'Gemini 企業協作 · 四週實體課程',
+    programName: 'AI 企業協作課程',
+    startLearning: '開始學習',
 
     // Cards Page
     backToHome: '← 返回首頁',
@@ -249,6 +252,9 @@ export const translations = {
     askQuestion: 'ご質問がある場合',
     pages: 'ページ',
     loadingHint: 'ここに留まり続ける場合は、ページを再読み込みするか、ホームに戻ってもう一度試してください',
+    heroEyebrow: 'Gemini 企業協働 · 4週間の実体講座',
+    programName: 'AI企業協働コース',
+    startLearning: '学習を開始',
 
     // Cards Page
     backToHome: '← ホームに戻る',

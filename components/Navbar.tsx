@@ -23,146 +23,167 @@ export function Navbar() {
     }
   }
 
+  const navItems = [
+    { href: '/', key: 'home' },
+    { href: '/cards', key: 'cards' },
+    { href: '/quiz', key: 'quiz' },
+    { href: '/dashboard/progress', key: 'progress' },
+  ]
+
   return (
-    <nav style={{
-      background: 'white',
-      boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
-      padding: '0 20px',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      height: '60px',
-      flexWrap: 'wrap'
-    }}>
-      {/* Logo - Clickable to return home */}
-      <Link href="/" style={{ textDecoration: 'none' }}>
-        <div style={{
-          fontSize: '18px',
-          fontWeight: '600',
-          color: '#0071e3',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px'
-        }}>
-          🎓 {language === 'ja' ? 'Gemini コース' : 'Gemini 課程'}
-        </div>
-      </Link>
-
-      {/* Navigation Items & Language Selector */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '30px' }}>
-        {/* Navigation Menu */}
-        <nav style={{ display: 'flex', gap: '25px' }}>
-          <Link href="/" style={{ textDecoration: 'none', color: '#666', fontWeight: '500', fontSize: '14px' }}>
-            {t('home', language)}
-          </Link>
-          <Link href="/cards" style={{ textDecoration: 'none', color: '#666', fontWeight: '500', fontSize: '14px' }}>
-            {t('cards', language)}
-          </Link>
-          <Link href="/quiz" style={{ textDecoration: 'none', color: '#666', fontWeight: '500', fontSize: '14px' }}>
-            {t('quiz', language)}
-          </Link>
-          <Link href="/dashboard/progress" style={{ textDecoration: 'none', color: '#666', fontWeight: '500', fontSize: '14px' }}>
-            {t('progress', language)}
-          </Link>
-        </nav>
-
-        {/* Language Selector */}
-        <div style={{ display: 'flex', gap: '8px', borderLeft: '1px solid #e5e7eb', paddingLeft: '20px' }}>
-          <button
-            onClick={() => setLanguage('zh')}
-            style={{
-              padding: '6px 12px',
-              background: language === 'zh' ? '#0071e3' : '#f0f0f0',
-              color: language === 'zh' ? 'white' : '#666',
-              border: 'none',
-              borderRadius: '6px',
-              cursor: 'pointer',
-              fontWeight: '500',
-              fontSize: '12px',
-              transition: 'all 0.2s'
-            }}
-          >
-            中文
-          </button>
-          <button
-            onClick={() => setLanguage('ja')}
-            style={{
-              padding: '6px 12px',
-              background: language === 'ja' ? '#0071e3' : '#f0f0f0',
-              color: language === 'ja' ? 'white' : '#666',
-              border: 'none',
-              borderRadius: '6px',
-              cursor: 'pointer',
-              fontWeight: '500',
-              fontSize: '12px',
-              transition: 'all 0.2s'
-            }}
-          >
-            日本語
-          </button>
-        </div>
-
-        {/* User Menu */}
-        {user && (
-          <div style={{ position: 'relative' }}>
+    <>
+      {/* 深藍工具列：語言切換與帳號，比照公司網站的頂欄 */}
+      <div style={{ background: 'var(--tf-navy-900)', color: 'rgba(255,255,255,0.9)' }}>
+        <div
+          className="container"
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+            gap: '18px',
+            minHeight: '42px',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px' }}>
             <button
-              onClick={() => setShowMenu(!showMenu)}
+              onClick={() => setLanguage('zh')}
               style={{
-                background: '#0071e3',
-                color: 'white',
+                background: 'none',
                 border: 'none',
-                borderRadius: '8px',
-                padding: '8px 16px',
                 cursor: 'pointer',
-                fontWeight: '500',
-                fontSize: '14px'
+                padding: '4px 2px',
+                letterSpacing: '0.08em',
+                fontWeight: language === 'zh' ? 700 : 400,
+                color: language === 'zh' ? '#ffffff' : 'rgba(255,255,255,0.6)',
               }}
             >
-              👤 {user.name || user.email.split('@')[0]}
+              中文
             </button>
+            <span aria-hidden="true" style={{ color: 'rgba(255,255,255,0.35)' }}>
+              |
+            </span>
+            <button
+              onClick={() => setLanguage('ja')}
+              style={{
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: '4px 2px',
+                letterSpacing: '0.08em',
+                fontWeight: language === 'ja' ? 700 : 400,
+                color: language === 'ja' ? '#ffffff' : 'rgba(255,255,255,0.6)',
+              }}
+            >
+              日本語
+            </button>
+          </div>
 
-            {showMenu && (
-              <div style={{
-                position: 'absolute',
-                right: 0,
-                top: '40px',
-                background: 'white',
-                border: '1px solid #e5e7eb',
-                borderRadius: '8px',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-                minWidth: '150px',
-                zIndex: 100
-              }}>
-                <div style={{
-                  padding: '12px 16px',
-                  borderBottom: '1px solid #e5e7eb',
-                  fontSize: '12px',
-                  color: '#666'
-                }}>
-                  {user.email}
-                </div>
-                <button
-                  onClick={handleLogout}
+          {user && (
+            <div style={{ position: 'relative' }}>
+              <button
+                onClick={() => setShowMenu(!showMenu)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontSize: '13px',
+                  color: 'rgba(255,255,255,0.9)',
+                  padding: '4px 2px',
+                }}
+              >
+                {user.name || user.email.split('@')[0]} ▾
+              </button>
+
+              {showMenu && (
+                <div
                   style={{
-                    width: '100%',
-                    padding: '12px 16px',
-                    background: 'none',
-                    border: 'none',
-                    textAlign: 'left',
-                    cursor: 'pointer',
-                    color: '#d32f2f',
-                    fontWeight: '500',
-                    fontSize: '14px'
+                    position: 'absolute',
+                    right: 0,
+                    top: '30px',
+                    background: 'var(--tf-white)',
+                    border: '1px solid var(--tf-line)',
+                    borderRadius: 'var(--tf-radius)',
+                    boxShadow: 'var(--tf-shadow-lift)',
+                    minWidth: '188px',
+                    zIndex: 200,
+                    overflow: 'hidden',
                   }}
                 >
-                  {t('logout', language)}
-                </button>
-              </div>
-            )}
-          </div>
-        )}
+                  <div
+                    className="tf-label"
+                    style={{ padding: '12px 16px', borderBottom: '1px solid var(--tf-line)' }}
+                  >
+                    {user.email}
+                  </div>
+                  <button
+                    onClick={handleLogout}
+                    style={{
+                      width: '100%',
+                      padding: '12px 16px',
+                      background: 'none',
+                      border: 'none',
+                      textAlign: 'left',
+                      cursor: 'pointer',
+                      color: 'var(--tf-red)',
+                      fontWeight: 600,
+                      fontSize: '14px',
+                    }}
+                  >
+                    {t('logout', language)}
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </div>
-    </nav>
+
+      {/* 主導覽：白底、細線分隔 */}
+      <nav
+        style={{
+          background: 'var(--tf-white)',
+          borderBottom: '1px solid var(--tf-line)',
+          position: 'sticky',
+          top: 0,
+          zIndex: 100,
+        }}
+      >
+        <div
+          className="container"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '24px',
+            minHeight: '64px',
+            flexWrap: 'wrap',
+          }}
+        >
+          <Link
+            href="/"
+            style={{
+              fontFamily: 'var(--tf-serif)',
+              fontSize: '19px',
+              color: 'var(--tf-ink)',
+              letterSpacing: '0.02em',
+            }}
+          >
+            {t('companyName', language)}
+          </Link>
+
+          <div style={{ display: 'flex', gap: 'clamp(16px, 3vw, 32px)', flexWrap: 'wrap' }}>
+            {navItems.map(item => (
+              <Link
+                key={item.href}
+                href={item.href}
+                style={{ color: 'var(--tf-body)', fontSize: '15px' }}
+              >
+                {t(item.key, language)}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </nav>
+    </>
   )
 }

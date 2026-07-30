@@ -6,215 +6,173 @@ import { Navbar } from '@/components/Navbar'
 import { useLanguage } from '@/lib/language-context'
 import { getCourses, t } from '@/lib/translations'
 
+function CourseCard({
+  course,
+  language,
+  prefixKey,
+  ctaKey,
+}: {
+  course: any
+  language: 'zh' | 'ja'
+  prefixKey: string
+  ctaKey: string
+}) {
+  return (
+    <Link
+      href={`/course/${course.week}?id=${course.id}`}
+      className="tf-card"
+      style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}
+    >
+      <span className="tf-label" style={{ color: 'var(--tf-blue-500)', letterSpacing: '0.08em' }}>
+        {t(prefixKey, language)} {course.module}
+      </span>
+      <h4 style={{ margin: 0 }}>{course.title}</h4>
+      <p style={{ fontSize: '15px', flex: 1 }}>{course.description}</p>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: '12px',
+          paddingTop: '14px',
+          borderTop: '1px solid var(--tf-line)',
+        }}
+      >
+        <span className="tf-label tf-num">
+          {course.duration_minutes} {t('minutes', language)}
+        </span>
+        <span style={{ fontSize: '14px', fontWeight: 600, color: 'var(--tf-blue-500)' }}>
+          {t(ctaKey, language)} →
+        </span>
+      </div>
+    </Link>
+  )
+}
+
 function HomeContent() {
   const { language } = useLanguage()
-
-  // 根據語言選擇課程數據
   const courses = getCourses(language)
 
-  // 按週次組織課程
   const coursesByWeek = [0, 1, 2, 3, 4].map(week => ({
     week,
-    courses: courses.filter((c: any) => c.week === week)
+    courses: courses.filter((c: any) => c.week === week),
   }))
 
-  // 進階應用課程 - 與課程內頁共用同一份資料源，避免標題漂移
+  // 進階課程與課程內頁共用同一份資料源，避免標題漂移
   const advancedCourses = courses.filter((c: any) => c.week >= 5 && c.week <= 10)
 
   return (
-    <div style={{ background: '#f5f5f7', color: '#000000' }}>
+    <>
       <Navbar />
 
-      {/* Hero */}
+      {/* Hero — 淺藍漸層 + 超大 logo 底圖 + 霧面玻璃卡 */}
       <section className="hero">
         <div className="container">
           <div className="hero-content">
-            <h1 style={{ fontSize: '96px', lineHeight: 1.2, color: '#000000' }}>
-              {t('companyName', language)}<br />
-              <span className="hero-accent">{t('title', language)}</span>
-            </h1>
+            <span className="tf-eyebrow">{t('heroEyebrow', language)}</span>
+            <h1>{t('companyName', language)}</h1>
+            <span className="hero-accent">{t('programName', language)}</span>
             <p>
               {t('subtitle1', language)}
-              <br />
               {t('subtitle2', language)}
-              <br />
-              <br />
-              {t('subtitle3', language)}
             </p>
+            <p style={{ marginTop: '12px' }}>{t('subtitle3', language)}</p>
+            <div className="hero-actions">
+              <Link href="/cards" className="tf-btn tf-btn-primary">
+                {t('startLearning', language)}
+              </Link>
+              <Link href="/dashboard/progress" className="tf-btn tf-btn-outline">
+                {t('progress', language)}
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Cases */}
-      <section className="cases" id="cases">
+      {/* 實體課程 — 淺藍色帶 */}
+      <section className="tf-band-light" id="courses">
         <div className="container">
+          <span className="tf-eyebrow">{t('courses', language)}</span>
           <h2>{t('courseDesign', language)}</h2>
 
-          {/* 響應式網格 - 桌面 4 列、平板 2 列、手機 1 列 */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '40px',
-            marginTop: '60px',
-          }}>
-            {coursesByWeek.map(({ week, courses }) => (
-              <div key={week} style={{ display: 'flex', flexDirection: 'column' }}>
-                {/* 週表頭 */}
-                <div style={{ marginBottom: '30px', paddingBottom: '20px', borderBottom: '3px solid #0071e3' }}>
-                  <h3 style={{ fontSize: '24px', fontWeight: 900, color: '#0071e3', margin: '0', textTransform: 'uppercase' }}>
-                    {week === 0 ? t('coursePreparation', language) : `${t('week', language)} ${week} ${t('weekSuffix', language)}`}
-                  </h3>
-                  <p style={{ fontSize: '14px', color: '#999', margin: '8px 0 0 0' }}>
-                    {courses.length} {t('coursesCount', language)}
-                  </p>
-                </div>
-
-                {/* 該週的課程卡片 */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px' }}>
-                  {courses.map((course) => (
-                    <Link key={course.id} href={`/course/${course.week}?id=${course.id}`}>
-                      <div
-                        style={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          justifyContent: 'space-between',
-                          padding: '25px',
-                          background: '#ffffff',
-                          border: '2px solid #0071e3',
-                          cursor: 'pointer',
-                          transition: 'all 0.3s ease',
-                          height: '380px',
-                        }}
-                        onMouseEnter={(e: React.MouseEvent<HTMLDivElement>) => {
-                          const el = e.currentTarget as HTMLDivElement;
-                          el.style.transform = 'translate(-5px, -5px)';
-                          el.style.boxShadow = '5px 5px 0 #0071e3';
-                        }}
-                        onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) => {
-                          const el = e.currentTarget as HTMLDivElement;
-                          el.style.transform = 'translate(0, 0)';
-                          el.style.boxShadow = 'none';
-                        }}
-                      >
-                        <div>
-                          <div style={{ fontSize: '14px', textTransform: 'uppercase', color: '#0071e3', marginBottom: '12px', letterSpacing: '1px', fontWeight: 700 }}>
-                            {t('module', language)} {course.module}
-                          </div>
-                          <h4 style={{ fontSize: '22px', fontWeight: 900, marginBottom: '12px', color: '#000000', lineHeight: 1.3 }}>
-                            {course.title}
-                          </h4>
-                          <p style={{ fontSize: '16px', color: '#333', marginBottom: '0', lineHeight: 1.4 }}>
-                            {course.description}
-                          </p>
-                        </div>
-                        <div style={{ marginTop: '15px', paddingTop: '15px', borderTop: '1px solid #d0d0d0' }}>
-                          <p style={{ fontSize: '14px', color: '#666', margin: '0 0 8px 0' }}>
-                            ⏱️ {course.duration_minutes} {t('minutes', language)}
-                          </p>
-                          <p style={{ fontSize: '14px', color: '#0071e3', fontWeight: 700, margin: '0' }}>
-                            📑 {t('viewDetails', language)} →
-                          </p>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 進階應用 Section */}
-      {advancedCourses.length > 0 && (
-        <section style={{ background: '#ffffff', padding: '80px 40px', borderTop: '3px dashed #d0d0d0', marginTop: '80px' }}>
-          <div className="container">
-            <div style={{
-              background: 'linear-gradient(135deg, #6d28d9, #d946ef)',
-              padding: '40px',
-              borderRadius: '30px',
-              color: 'white',
-              marginBottom: '60px',
-              textAlign: 'center'
-            }}>
-              <h2 style={{ margin: '0 0 15px 0', fontSize: '40px', fontWeight: 900 }}>
-                ⭐ {t('advancedTips', language)}
-              </h2>
-              <p style={{ margin: '0', fontSize: '18px', opacity: 0.95, lineHeight: 1.6 }}>
-                {t('advancedDesc', language)}<br />{t('advancedDesc2', language)}
-              </p>
-            </div>
-
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: '40px',
-            }}>
-              {advancedCourses.map((course) => (
-                <Link key={course.id} href={`/course/${course.week}?id=${course.id}`}>
+          {coursesByWeek.map(
+            ({ week, courses: weekCourses }) =>
+              weekCourses.length > 0 && (
+                <div key={week} style={{ marginTop: '52px' }}>
                   <div
                     style={{
                       display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between',
-                      padding: '25px',
-                      background: '#ffffff',
-                      border: '2px solid #9333ea',
-                      cursor: 'pointer',
-                      transition: 'all 0.3s ease',
-                      minHeight: '200px',
-                      borderRadius: '15px',
-                    }}
-                    onMouseEnter={(e: React.MouseEvent<HTMLDivElement>) => {
-                      const el = e.currentTarget as HTMLDivElement;
-                      el.style.transform = 'translate(-5px, -5px)';
-                      el.style.boxShadow = '5px 5px 0 #9333ea';
-                    }}
-                    onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) => {
-                      const el = e.currentTarget as HTMLDivElement;
-                      el.style.transform = 'translate(0, 0)';
-                      el.style.boxShadow = 'none';
+                      alignItems: 'baseline',
+                      gap: '14px',
+                      paddingBottom: '14px',
+                      borderBottom: '1px solid var(--tf-line)',
                     }}
                   >
-                    <div>
-                      <div style={{ fontSize: '14px', textTransform: 'uppercase', color: '#9333ea', marginBottom: '12px', letterSpacing: '1px', fontWeight: 700 }}>
-                        {t('advancedPrefix', language)} {course.module}
-                      </div>
-                      <h4 style={{ fontSize: '22px', fontWeight: 900, marginBottom: '12px', color: '#000000', lineHeight: 1.3 }}>
-                        {course.title}
-                      </h4>
-                      <p style={{ fontSize: '16px', color: '#333', marginBottom: '0', lineHeight: 1.4 }}>
-                        {course.description}
-                      </p>
-                    </div>
-                    <div style={{ marginTop: '15px', paddingTop: '15px', borderTop: '1px solid #d0d0d0' }}>
-                      <p style={{ fontSize: '14px', color: '#666', margin: '0 0 8px 0' }}>
-                        ⏱️ {course.duration_minutes} {t('minutes', language)}
-                      </p>
-                      <p style={{ fontSize: '14px', color: '#9333ea', fontWeight: 700, margin: '0' }}>
-                        📑 {t('advancedApply', language)} →
-                      </p>
-                    </div>
+                    <h3 style={{ margin: 0, color: 'var(--tf-navy-700)' }}>
+                      {week === 0
+                        ? t('coursePreparation', language)
+                        : `${t('week', language)} ${week} ${t('weekSuffix', language)}`}
+                    </h3>
+                    <span className="tf-label tf-num">
+                      {weekCourses.length} {t('coursesCount', language)}
+                    </span>
                   </div>
-                </Link>
+
+                  <div className="case-grid">
+                    {weekCourses.map((course: any) => (
+                      <CourseCard
+                        key={course.id}
+                        course={course}
+                        language={language}
+                        prefixKey="module"
+                        ctaKey="viewDetails"
+                      />
+                    ))}
+                  </div>
+                </div>
+              )
+          )}
+        </div>
+      </section>
+
+      {/* 進階應用 — 近白色帶 + 深藍重點卡 */}
+      {advancedCourses.length > 0 && (
+        <section className="tf-band-pale">
+          <div className="container">
+            <div className="tf-card-navy">
+              <span className="tf-eyebrow-bare" style={{ color: 'var(--tf-blue-200)' }}>
+                {t('advancedPrefix', language)}
+              </span>
+              <h2 style={{ marginBottom: '14px' }}>{t('advancedTips', language)}</h2>
+              <p>
+                {t('advancedDesc', language)}
+                <br />
+                {t('advancedDesc2', language)}
+              </p>
+            </div>
+
+            <div className="case-grid">
+              {advancedCourses.map((course: any) => (
+                <CourseCard
+                  key={course.id}
+                  course={course}
+                  language={language}
+                  prefixKey="advancedPrefix"
+                  ctaKey="advancedApply"
+                />
               ))}
             </div>
           </div>
         </section>
       )}
 
-      {/* Footer */}
       <footer>
         <div className="container">
-          <p style={{ fontSize: 'clamp(12px, 3vw, 14px)', lineHeight: 1.6 }}>
-            © 2026 {t('companyName', language)} • {t('title', language)} •{' '}
-            <a href="mailto:benjaminchu@tfg.com.tw" style={{ color: '#0071e3', textDecoration: 'none', fontWeight: 600 }}>
-              {t('askQuestion', language)}
-            </a>
-          </p>
+          © 2026 {t('companyName', language)} · {t('title', language)} ·{' '}
+          <a href="mailto:benjaminchu@tfg.com.tw">{t('askQuestion', language)}</a>
         </div>
       </footer>
-    </div>
+    </>
   )
 }
 
