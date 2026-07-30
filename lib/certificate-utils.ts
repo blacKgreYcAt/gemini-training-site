@@ -31,46 +31,6 @@ export function generateCertificateNumber(): string {
 /**
  * 格式化日期
  */
-function formatDateParts(date: Date): { year: string; month: string; day: string } {
-  return {
-    year: String(date.getFullYear()),
-    month: String(date.getMonth() + 1),
-    day: String(date.getDate())
-  };
-}
-
-/**
- * 高清晰度文字渲染函數
- */
-function drawTextSmooth(
-  ctx: CanvasRenderingContext2D,
-  text: string,
-  x: number,
-  y: number,
-  fontSize: number,
-  fontWeight: string = 'bold',
-  fillColor: string = '#d4af37'
-) {
-  ctx.imageSmoothingEnabled = true;
-  (ctx as any).imageSmoothingQuality = 'high';
-
-  ctx.font = `${fontWeight} ${fontSize}px -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "微軟正黑體", Arial, sans-serif`;
-
-  ctx.shadowColor = 'transparent';
-  ctx.shadowBlur = 0;
-  ctx.shadowOffsetX = 0;
-  ctx.shadowOffsetY = 0;
-
-  ctx.fillStyle = fillColor;
-  ctx.strokeStyle = 'transparent';
-  ctx.lineWidth = 0;
-
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-
-  ctx.fillText(text, x, y);
-}
-
 /**
  * 自創証書生成：完全用 Canvas 繪製，無需範本圖片
  */

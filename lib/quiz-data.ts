@@ -1462,5 +1462,5 @@ export function getQuestionsBySection(sectionId: number, questions: QuizQuestion
     return [];
   }
 
-  return quizData.filter(q => q.id >= range.min && q.id <= range.max);
+  return questions.filter(q => q.id >= range.min && q.id <= range.max);
 }
