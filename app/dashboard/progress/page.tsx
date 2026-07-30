@@ -13,8 +13,15 @@ function ProgressPageContent() {
   const [progress, setProgress] = useState<any>(null)
 
   useEffect(() => {
-    const prog = getProgress()
-    setProgress(prog)
+    // getProgress() 是 async —— 少了 await 會把 Promise 本身存進 state，
+    // progress.statistics 永遠是 undefined，導致每個百分比都顯示 0%。
+    let cancelled = false
+    getProgress().then((prog) => {
+      if (!cancelled) setProgress(prog)
+    })
+    return () => {
+      cancelled = true
+    }
   }, [])
 
   if (!progress) {

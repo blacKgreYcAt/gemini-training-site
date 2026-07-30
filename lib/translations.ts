@@ -3,8 +3,8 @@ import { courseData as chineseCourses } from './course-data';
 import japaneseCourses from '../all_courses_ja.json';
 import { cardsData as chineseCards } from './cards-data';
 import { cardsDataJa } from './cards-data-ja';
-import chineseQuizzes from '../course_quizzes.json';
-import japaneseQuizzes from '../course_quizzes_ja.json';
+import { quizData as chineseQuizData } from './quiz-data';
+import { quizDataJa } from './quiz-data-ja';
 
 type Language = 'zh' | 'ja';
 
@@ -24,12 +24,12 @@ export function getCards(language: Language) {
   return chineseCards;
 }
 
-// 題庫翻譯
-export function getQuizzes(language: Language) {
+// 題庫翻譯（中日文共用同一份題號，進度與證書門檻才會一致）
+export function getQuizData(language: Language) {
   if (language === 'ja') {
-    return japaneseQuizzes;
+    return quizDataJa;
   }
-  return chineseQuizzes;
+  return chineseQuizData;
 }
 
 // 界面文本翻譯

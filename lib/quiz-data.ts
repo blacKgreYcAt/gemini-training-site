@@ -96,12 +96,12 @@ export const quizData: QuizQuestion[] = [
     question: "Gemini 3.1 Ultra 和 Pro 的訂閱費用是什麼關係？",
     options: [
       { label: "A", text: "Ultra 比 Pro 便宜 50%" },
-      { label: "B", text: "價格相同，但 Ultra 功能無上限（Deep Research 無限、Gems 無限、4K 影片）" },
-      { label: "C", text: "Ultra 貴 10 倍" },
+      { label: "B", text: "價格相同，只是 Ultra 功能無上限" },
+      { label: "C", text: "Ultra 遠貴於 Pro，換算月費約為 12 倍" },
       { label: "D", text: "Ultra 完全免費" }
     ],
-    correctAnswer: "B",
-    explanation: "Gemini 3.1 Ultra 與 Pro 月費相同（約 20 USD），但 Ultra 提供無限次 Deep Research、無限 Gems、4K 影片等企業級功能。"
+    correctAnswer: "C",
+    explanation: "Gemini Pro 採年費制，NT$ 3,250 / 年（換算約 NT$ 271 / 月）；Gemini Ultra 採月費制，NT$ 3,300 / 月。兩者價格差距懸殊，Ultra 換算後約為 Pro 的 12 倍，並非同價。選擇時務必把成本差距納入考量。"
   },
   {
     id: 7,

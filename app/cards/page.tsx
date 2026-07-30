@@ -30,6 +30,17 @@ function CardsPageContent() {
     localStorage.setItem('completedCards', JSON.stringify(Array.from(completedCards)))
   }, [completedCards])
 
+
+  // 取得篩選後的卡片
+  const filteredCards = cardsData.filter(card => {
+    const matchWeek = selectedWeek === null || card.week === selectedWeek
+    const matchSearch = searchQuery === '' ||
+      card.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      card.front.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      card.back.toLowerCase().includes(searchQuery.toLowerCase())
+    return matchWeek && matchSearch
+  })
+
   // 鍵盤控制
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
@@ -41,23 +52,19 @@ function CardsPageContent() {
         setIsFlipped(false)
       } else if (e.key === ' ') {
         e.preventDefault()
-        setIsFlipped(!isFlipped)
+        const newFlipped = !isFlipped
+        setIsFlipped(newFlipped)
+        // 滑鼠點擊路徑會記錄進度，鍵盤路徑先前遺漏，
+        // 導致照著畫面提示用 Space 翻卡的人完全不被計入
+        if (newFlipped && filteredCards[currentCardIdx]) {
+          updateCardsProgress(filteredCards[currentCardIdx].id, true)
+        }
       }
     }
 
     window.addEventListener('keydown', handleKeyPress)
     return () => window.removeEventListener('keydown', handleKeyPress)
-  }, [isFlipped])
-
-  // 取得篩選後的卡片
-  const filteredCards = cardsData.filter(card => {
-    const matchWeek = selectedWeek === null || card.week === selectedWeek
-    const matchSearch = searchQuery === '' ||
-      card.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      card.front.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      card.back.toLowerCase().includes(searchQuery.toLowerCase())
-    return matchWeek && matchSearch
-  })
+  }, [isFlipped, currentCardIdx, filteredCards])
 
   const currentCard = filteredCards[currentCardIdx]
   const progress = (currentCardIdx + 1) / filteredCards.length

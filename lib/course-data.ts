@@ -66,11 +66,11 @@ export const courseData: Course[] = [
       },
       {
         title: "Gemini 3.1 Pro - 進階工作者必選",
-        content: "月費：約 20 USD / 月\n\n核心優勢：\n✓ 更強大的推理能力\n✓ Deep Research（研究助手）：5次/月\n✓ Veo 3.1 影片生成：3次/日（HD 720p）\n✓ 影像生成：Nano Banana Pro\n✓ 音樂生成：Lyria 3\n✓ 創建 Gems：5個自訂AI助手\n✓ 文件分析：5GB 儲存空間\n\n最適用於：\n- 內容創作者\n- 商業分析與研究\n- 中小企業主管\n- 自由工作者"
+        content: "年費：NT$ 3,250 / 年（換算約 NT$ 271 / 月）\n\n核心優勢：\n✓ 更強大的推理能力\n✓ Deep Research（研究助手）：5次/月\n✓ Veo 3.1 影片生成：3次/日（HD 720p）\n✓ 影像生成：Nano Banana Pro\n✓ 音樂生成：Lyria 3\n✓ 創建 Gems：5個自訂AI助手\n✓ 文件分析：5GB 儲存空間\n\n最適用於：\n- 內容創作者\n- 商業分析與研究\n- 中小企業主管\n- 自由工作者"
       },
       {
         title: "Gemini 3.1 Ultra - 企業決策者首選",
-        content: "月費：約 20 USD / 月（與 Pro 相同，但功能無上限）\n\n最強優勢：\n✓ 業界最聰明的模型（推理能力最強）\n✓ Deep Research：無限次\n✓ Veo 3.1 影片生成：5次/日（4K解析度）\n✓ Veo 3.1 新功能：\n  - 視頻延伸（自動連接片段）\n  - 畫框特定生成（指定首尾畫面）\n  - Reference images 引導\n✓ 影像生成：高級能力\n✓ Gems：無限創建與自訂\n✓ 文件分析：無限儲存\n✓ 優先生成隊列（不排隊等待）\n\n最適用於：\n- 企業決策層\n- 複雜研究分析\n- 內容規模化製作\n- 品牌與營銷決策"
+        content: "月費：NT$ 3,300 / 月（換算後約為 Pro 的 12 倍）\n\n最強優勢：\n✓ 業界最聰明的模型（推理能力最強）\n✓ Deep Research：無限次\n✓ Veo 3.1 影片生成：5次/日（4K解析度）\n✓ Veo 3.1 新功能：\n  - 視頻延伸（自動連接片段）\n  - 畫框特定生成（指定首尾畫面）\n  - Reference images 引導\n✓ 影像生成：高級能力\n✓ Gems：無限創建與自訂\n✓ 文件分析：無限儲存\n✓ 優先生成隊列（不排隊等待）\n\n最適用於：\n- 企業決策層\n- 複雜研究分析\n- 內容規模化製作\n- 品牌與營銷決策"
       },
       {
         title: "功能對比表",
@@ -640,7 +640,7 @@ export const courseData: Course[] = [
     pages: [
       {
         title: "模組 5：為什麼要用 Pro？",
-        content: "Gemini 3.1 Pro 不只是升級，而是工作方式的改變。\n\n免費版 vs Pro 的本質差異：\n\n免費版：AI 給你第一版本\nPro 版：AI 給你經過深度研究的專業報告\n\n時間成本對比：\n某個複雜決策分析\n免費版：你要花 3 小時自己研究\nPro版：10分鐘得到完整報告\n\n金錢成本對比：\n聘請外部顧問：5000-10000\nPro 訂閱（月費）：20 USD\n\n→ 投資報酬率遠高於預期"
+        content: "Gemini 3.1 Pro 不只是升級，而是工作方式的改變。\n\n免費版 vs Pro 的本質差異：\n\n免費版：AI 給你第一版本\nPro 版：AI 給你經過深度研究的專業報告\n\n時間成本對比：\n某個複雜決策分析\n免費版：你要花 3 小時自己研究\nPro版：10分鐘得到完整報告\n\n金錢成本對比：\n聘請外部顧問：5000-10000\nPro 訂閱：NT$ 3,250 / 年（約 NT$ 271 / 月）\n\n→ 投資報酬率遠高於預期"
       },
       {
         title: "Deep Research 完整工作流",

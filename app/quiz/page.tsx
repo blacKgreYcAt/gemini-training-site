@@ -2,13 +2,12 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { quizData, getQuestionsBySection } from '@/lib/quiz-data';
+import { getQuestionsBySection } from '@/lib/quiz-data';
 import { updateQuizProgress } from '@/lib/progress-utils';
-import type { QuizQuestion } from '@/lib/quiz-data';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
 import { Navbar } from '@/components/Navbar';
 import { useLanguage } from '@/lib/language-context';
-import { t } from '@/lib/translations';
+import { getQuizData, t } from '@/lib/translations';
 
 // 創建根據語言動態返回 SECTIONS 的函數
 const getSections = (language: 'zh' | 'ja') => [
@@ -31,7 +30,8 @@ function QuizPageContent() {
   const [quizComplete, setQuizComplete] = useState(false);
 
   const SECTIONS = getSections(language);
-  const currentQuestions = selectedSection ? getQuestionsBySection(selectedSection) : [];
+  const quizData = getQuizData(language);
+  const currentQuestions = selectedSection ? getQuestionsBySection(selectedSection, quizData) : [];
   const currentQuestion = currentQuestions[currentQuestionIdx];
 
   const handleStartQuiz = (sectionId: number) => {
