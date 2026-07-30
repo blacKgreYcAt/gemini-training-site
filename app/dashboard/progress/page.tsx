@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { getProgress } from '@/lib/progress-utils'
+import { checkCertificateEligibility, getProgress } from '@/lib/progress-utils'
 import { ProtectedRoute } from '@/components/ProtectedRoute'
 import { Navbar } from '@/components/Navbar'
 import { useLanguage } from '@/lib/language-context'
@@ -100,6 +100,9 @@ function ProgressPageContent() {
 
   const stats = progress.statistics || {}
   const earned = stats.certificateEarned
+  // 三種狀態，而非兩種：全部達標但尚未生成證書時，先前會落到「未取得」分支，
+  // 顯示一個空的「還需完成」清單，使用者符合資格卻沒有任何前進路徑。
+  const eligible = checkCertificateEligibility(progress)
 
   return (
     <>
@@ -173,6 +176,24 @@ function ProgressPageContent() {
                 style={{ marginTop: '22px', position: 'relative', zIndex: 1 }}
               >
                 {t('viewDownloadCertificate', language)}
+              </Link>
+            </div>
+          ) : eligible ? (
+            /* 全部達標但尚未生成 —— 直接引導去領證書，不要顯示空的待辦清單 */
+            <div className="tf-card-navy" style={{ marginTop: '28px', textAlign: 'center' }}>
+              <h3 style={{ marginBottom: '10px' }}>{t('certificateStatus', language)}</h3>
+              <p style={{ fontSize: '17px', position: 'relative', zIndex: 1 }}>
+                {t('certificateCongratulations', language)}
+              </p>
+              <p style={{ fontSize: '14px', marginTop: '6px', position: 'relative', zIndex: 1 }}>
+                {t('certificateGeneratePrompt', language)}
+              </p>
+              <Link
+                href="/dashboard/certificate"
+                className="tf-btn tf-btn-outline"
+                style={{ marginTop: '22px', position: 'relative', zIndex: 1 }}
+              >
+                {t('certificateGenerateButton', language)}
               </Link>
             </div>
           ) : (
