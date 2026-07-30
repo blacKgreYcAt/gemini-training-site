@@ -489,9 +489,60 @@ lint 問題數 81 → 30。剩餘為既有品質項目（`any` 型別、`set-sta
 
 #### 部署注意事項
 
-- `SUPABASE_SERVICE_ROLE_KEY` 為語言偏好 API 的硬性依賴，**必須設於 Vercel 環境變數**，缺少會回 500。
+- **已不再需要 `SUPABASE_SERVICE_ROLE_KEY`** —— 見下方 Phase 6。專案已無任何程式引用它，也不再有 API 路由。
 - `SENDGRID_API_KEY`、`GEMINI_UPDATE_*`、`AUTO_DEPLOY_ENABLED` 在程式碼中無任何引用，屬未實作功能的殘留設定。
 
 ---
 
 **最後更新**: 2026-07-29 | **狀態**: ✅ 全面稽核完成
+
+---
+
+### Phase 6: 語言偏好跳裝置同步 + 移除 service role key (2026-07-30)
+
+#### 背景
+
+稽核指出 `SUPABASE_SERVICE_ROLE_KEY` 是部署後最可能的失敗點。進一步檢查發現两件事：
+
+1. `/api/user-language-preference` **完全沒有呼叫端** —— CLAUDE.md Phase 3 記載前端會呼叫，但那段程式在後來的 i18n 改版中被移除，端點留下來了。
+2. 它是全站**唯一持有 service role key** 的地方。
+
+定位出當初為何需要高權限密鑰：原本的 POST 建立 Supabase client 時沒有把使用者的
+Authorization header 帶進去，`auth.uid()` 是 NULL，因此被 RLS 擋下。當時的處置是
+改用 service role key 繯過 RLS，而不是把 JWT 帶上 —— 一個漏傳的 header 演變成權限提升。
+
+#### 做法
+
+改成與進度同步（`progress-utils-sync.ts`）一致的模式：**前端帶著使用者自己的
+session 直接讀寫 Supabase，由 RLS 把關**。不經過 API 路由，也不需要任何高權限密鑰。
+
+| 項目 | 内容 |
+|------|------|
+| 新增 | `lib/language-preference.ts` —— 讀/寫遠端偏好，失敗時退回 localStorage |
+| 新增 | `supabase/migrations/create_language_preferences_table.sql` —— 表定義 + RLS + 語言白名單（可重複執行） |
+| 修改 | `lib/language-context.tsx` —— 登入後以帳號偏好為準；手動切換時背景寫回帳號 |
+| 刪除 | `app/api/user-language-preference/` —— 全站已無 API 路由 |
+
+localStorage 仍是即時來源（避免載入時語言閃動），Supabase 負責讓偏好跟著帳號跳裝置。
+
+#### 實測結果
+
+| 驗証項目 | 結果 |
+|---------|------|
+| 本地 `ja` + 帳號 `zh` → 載入後 | → `zh`（介面、`<html lang>` 同步） |
+| 本地 `zh` + 帳號 `ja` → 載入後 | → `ja` |
+| 匿名讀取整張表 | `200 []` —— RLS 過濾，讀不到他人資料 |
+| 匿名寫入 | `401 / 42501 row-level security policy` —— 資料庫層擋下 |
+| 專案引用 `SERVICE_ROLE` | 0 處 |
+
+#### 順手修正
+
+`create_progress_table.sql:60` 原為 `DROP TRIGGER IF NOT EXISTS`，不是合法 PostgreSQL
+語法（只有 `IF EXISTS`）—— 這份 migration 原本根本跑不起來。已修正。
+
+#### 部署影響
+
+- Vercel **不再需要** `SUPABASE_SERVICE_ROLE_KEY`，可從環境變數中移除。
+- 因為已無 API 路由，這個專案現在沒有任何 serverless 函式持有密鑰。
+- `users_language_preferences` 表與 RLS 已存在於現行資料庫，功能無須先跑 migration。
+  建議仍執行一次，以納入版本控制並加上語言值的 CHECK 約束。

@@ -57,7 +57,8 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-DROP TRIGGER IF NOT EXISTS update_user_progress_full_timestamp ON user_progress_full;
+-- 注意：PostgreSQL 只有 DROP TRIGGER IF EXISTS，先前寫成 IF NOT EXISTS 會直接語法錯誤
+DROP TRIGGER IF EXISTS update_user_progress_full_timestamp ON user_progress_full;
 CREATE TRIGGER update_user_progress_full_timestamp
   BEFORE UPDATE ON user_progress_full
   FOR EACH ROW
