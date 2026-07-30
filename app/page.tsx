@@ -168,7 +168,7 @@ function HomeContent() {
 
       <footer>
         <div className="container">
-          © 2026 {t('companyName', language)} · {t('title', language)} ·{' '}
+          © 2026 {t('companyName', language)} · {t('programName', language)} ·{' '}
           <a href="mailto:benjaminchu@tfg.com.tw">{t('askQuestion', language)}</a>
         </div>
       </footer>

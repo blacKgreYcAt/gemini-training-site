@@ -424,6 +424,32 @@ footer a {
   color: var(--tf-blue-200);
 }
 
+/* ---------- 篩選晶片 ---------- */
+.tf-chip {
+  padding: 8px 16px;
+  border: 1px solid var(--tf-blue-200);
+  border-radius: 999px;
+  background: var(--tf-white);
+  color: var(--tf-blue-500);
+  font-family: var(--tf-sans);
+  font-size: 13.5px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.tf-chip:hover {
+  border-color: var(--tf-blue-400);
+  background: var(--tf-blue-050);
+}
+
+.tf-chip[aria-pressed='true'] {
+  background: var(--tf-navy-700);
+  border-color: var(--tf-navy-700);
+  color: var(--tf-white);
+  font-weight: 600;
+}
+
 /* ---------- 表單 ---------- */
 .tf-field-group {
   display: flex;

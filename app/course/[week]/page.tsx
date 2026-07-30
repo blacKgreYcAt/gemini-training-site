@@ -88,13 +88,23 @@ function CoursePageContent() {
 
   if (week === null) {
     return (
-      <div style={{ padding: '40px', color: '#000000', background: '#f5f5f7', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-        <div style={{ textAlign: 'center' }}>
-          <p style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '20px' }}>{t('loading', language)}</p>
-          <p style={{ fontSize: '12px', color: '#999' }}>{language === 'ja' ? 'ここに留まり続ける場合は、ページを再読み込みするか、ホームに戻ってもう一度試してください' : '如果一直停留在此，請重新整理頁面或回到首頁重試'}</p>
-          <Link href="/" style={{ marginTop: '20px', color: '#0071e3', textDecoration: 'underline', display: 'inline-block' }}>← {t('backToHome', language)}</Link>
+      <section
+        className="tf-band-light"
+        style={{
+          minHeight: '70vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <div className="container" style={{ textAlign: 'center', maxWidth: '520px' }}>
+          <h3 style={{ marginBottom: '10px' }}>{t('loading', language)}</h3>
+          <p className="tf-label">{t('loadingHint', language)}</p>
+          <Link href="/" style={{ display: 'inline-block', marginTop: '20px', fontWeight: 600 }}>
+            ← {t('backToHome', language)}
+          </Link>
         </div>
-      </div>
+      </section>
     )
   }
 
@@ -106,192 +116,203 @@ function CoursePageContent() {
     const page = course.pages[pageIdx]
     const total = course.pages.length
 
+    const weekLabel =
+      week === 0
+        ? t('coursePreparation', language)
+        : `${t('week', language)} ${week} ${t('weekSuffix', language)}`
+
     return (
-      <div style={{ background: '#f5f5f7', color: '#000000', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-        <div style={{
-        borderBottom: '2px solid #0071e3',
-        padding: 'clamp(12px, 4vw, 20px) clamp(16px, 8vw, 40px)',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        flexWrap: 'wrap',
-        gap: '12px',
-      }}>
-          <button onClick={() => setSelectedId(null)} style={{
-            background: 'none',
-            border: 'none',
-            color: '#0071e3',
-            cursor: 'pointer',
-            fontSize: 'clamp(14px, 4vw, 18px)',
-            fontWeight: 600,
-          }}>← {t('backToHome', language)}</button>
-          <span style={{
-            color: '#333',
-            fontSize: 'clamp(12px, 4vw, 18px)',
-            fontWeight: 500,
-          }}>{week === 0 ? t('coursePreparation', language) : `${t('week', language)} ${week} ${t('weekSuffix', language)}`} | {pageIdx + 1}/{total}</span>
+      <>
+        {/* 投影片頂欄 */}
+        <div
+          style={{
+            background: 'var(--tf-white)',
+            borderBottom: '1px solid var(--tf-line)',
+            padding: '14px 0',
+          }}
+        >
+          <div
+            className="container"
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              gap: '14px',
+              flexWrap: 'wrap',
+            }}
+          >
+            <button
+              onClick={() => setSelectedId(null)}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: 'var(--tf-blue-500)',
+                cursor: 'pointer',
+                fontSize: '15px',
+                fontWeight: 600,
+                fontFamily: 'var(--tf-sans)',
+              }}
+            >
+              ← {t('backToHome', language)}
+            </button>
+            <span className="tf-label tf-num">
+              {weekLabel} · {pageIdx + 1}/{total}
+            </span>
+          </div>
         </div>
 
-        <section style={{
-          flex: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          padding: 'clamp(30px, 8vw, 60px) clamp(16px, 8vw, 40px)',
-        }}>
-          <div style={{
-            display: 'flex',
-            gap: 'clamp(30px, 8vw, 60px)',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '100%',
-            flexDirection: 'column',
-          }}>
-            <div style={{ flex: 1, width: '100%', display: 'flex', flexDirection: 'column', maxHeight: '100%', overflow: 'hidden' }}>
-              <h1 style={{
-                fontSize: 'clamp(24px, 6vw, 42px)',
-                color: '#000000',
-                marginBottom: 'clamp(12px, 3vw, 24px)',
-                textAlign: 'center',
-                fontWeight: 900,
-                flexShrink: 0,
-              }}>{page.title}</h1>
-              <div style={{
-                fontSize: 'clamp(14px, 3vw, 20px)',
-                color: '#000000',
-                lineHeight: 1.6,
-                whiteSpace: 'pre-wrap',
-                maxWidth: '100%',
-                textAlign: 'left',
-                fontWeight: 500,
-                flex: 1,
-                overflow: 'auto',
-                display: 'flex',
-                alignItems: 'flex-start',
-              }}>
-                <div style={{ width: '100%', paddingRight: '10px' }}>
-                  {page.content}
-                </div>
+        {/* 投影片本體 */}
+        <section className="tf-band-light" style={{ minHeight: '62vh' }}>
+          <div className="container" style={{ maxWidth: '900px' }}>
+            <div className="tf-card" style={{ padding: 'clamp(24px, 5vw, 48px)' }}>
+              <span className="tf-eyebrow-bare">{course.title}</span>
+              <h2 style={{ marginBottom: '24px' }}>{page.title}</h2>
+              <div
+                style={{
+                  whiteSpace: 'pre-wrap',
+                  fontSize: 'clamp(15px, 2vw, 17px)',
+                  lineHeight: 1.9,
+                  color: 'var(--tf-body)',
+                }}
+              >
+                {page.content}
               </div>
-            </div>
-            {selectedId === '1-2' && (
-              <div style={{ flex: 0.8, display: 'flex', justifyContent: 'center' }}>
+
+              {selectedId === '1-2' && (
                 <img
                   src="/images/gemini-features.png"
                   alt="Gemini Features"
-                  style={{ maxWidth: '100%', maxHeight: '500px', objectFit: 'contain' }}
+                  style={{
+                    display: 'block',
+                    maxWidth: '100%',
+                    margin: '32px auto 0',
+                    borderRadius: 'var(--tf-radius)',
+                    border: '1px solid var(--tf-line)',
+                  }}
                 />
-              </div>
-            )}
+              )}
+            </div>
+
+            {/* 翻頁控制 */}
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                gap: '14px',
+                marginTop: '28px',
+                flexWrap: 'wrap',
+              }}
+            >
+              <button
+                className="tf-btn tf-btn-outline"
+                onClick={() => setPageIdx(p => Math.max(0, p - 1))}
+                disabled={pageIdx === 0}
+              >
+                ← {t('previousPage', language)}
+              </button>
+              <span className="tf-label tf-num">
+                {pageIdx + 1} / {total}
+              </span>
+              <button
+                className="tf-btn tf-btn-primary"
+                onClick={() => setPageIdx(p => Math.min(total - 1, p + 1))}
+                disabled={pageIdx === total - 1}
+              >
+                {t('nextPage', language)} →
+              </button>
+            </div>
           </div>
         </section>
 
-        <div style={{
-          borderTop: '2px solid #0071e3',
-          padding: 'clamp(12px, 4vw, 20px) clamp(16px, 8vw, 40px)',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          gap: 'clamp(12px, 3vw, 20px)',
-          flexWrap: 'wrap',
-        }}>
-          <button
-            onClick={() => setPageIdx(p => Math.max(0, p - 1))}
-            disabled={pageIdx === 0}
-            style={{
-              padding: 'clamp(10px, 2vw, 12px) clamp(16px, 4vw, 24px)',
-              border: '2px solid #0071e3',
-              background: 'transparent',
-              color: '#0071e3',
-              cursor: pageIdx === 0 ? 'not-allowed' : 'pointer',
-              opacity: pageIdx === 0 ? 0.5 : 1,
-              fontSize: 'clamp(14px, 4vw, 18px)',
-              fontWeight: 600,
-            }}
-          >
-            ← {t('previousPage', language)}
-          </button>
-          <span style={{
-            fontSize: 'clamp(14px, 3vw, 18px)',
-            fontWeight: 500,
-            color: '#333',
-          }}>{pageIdx + 1}/{total}</span>
-          <button
-            onClick={() => setPageIdx(p => Math.min(total - 1, p + 1))}
-            disabled={pageIdx === total - 1}
-            style={{
-              padding: 'clamp(10px, 2vw, 12px) clamp(16px, 4vw, 24px)',
-              background: pageIdx === total - 1 ? '#d0d0d0' : '#0071e3',
-              color: pageIdx === total - 1 ? '#666' : '#ffffff',
-              border: 'none',
-              cursor: pageIdx === total - 1 ? 'not-allowed' : 'pointer',
-              opacity: pageIdx === total - 1 ? 0.5 : 1,
-              fontSize: 'clamp(14px, 4vw, 18px)',
-              fontWeight: 600,
-            }}
-          >
-            {t('nextPage', language)} →
-          </button>
-        </div>
-
-        {/* Footer */}
-        <div style={{
-          borderTop: '2px solid #0071e3',
-          padding: 'clamp(16px, 5vw, 20px) clamp(16px, 8vw, 40px)',
-          textAlign: 'center',
-          color: '#666',
-          fontSize: 'clamp(12px, 3vw, 14px)',
-          marginTop: '40px',
-        }}>
-          <p style={{ margin: 0, lineHeight: 1.6 }}>
-            © 2026 {t('companyName', language)} • {t('title', language)} •{' '}
-            <a href="mailto:benjaminchu@tfg.com.tw" style={{ color: '#0071e3', textDecoration: 'none', fontWeight: 600 }}>
-              {t('askQuestion', language)}
-            </a>
-          </p>
-        </div>
-      </div>
+        <footer>
+          <div className="container">
+            © 2026 {t('companyName', language)} · {t('programName', language)} ·{' '}
+            <a href="mailto:benjaminchu@tfg.com.tw">{t('askQuestion', language)}</a>
+          </div>
+        </footer>
+      </>
     )
   }
 
   // 課程列表視圖
   return (
-    <div style={{ padding: '40px', background: '#f5f5f7', color: '#000000', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <Link href="/">← {t('backToHome', language)}</Link>
-      <h1 style={{ fontSize: 'clamp(32px, 8vw, 44px)', marginTop: '40px', marginBottom: '40px' }}>{week === 0 ? t('coursePreparation', language) : `${t('week', language)} ${week} ${t('weekSuffix', language)}`} ({courses.length})</h1>
+    <>
+      <section className="tf-band-light">
+        <div className="container" style={{ maxWidth: '900px' }}>
+          <Link href="/" style={{ fontSize: '15px', fontWeight: 600 }}>
+            ← {t('backToHome', language)}
+          </Link>
 
-      <div style={{ flex: 1 }}>
-        {courses.map(c => (
-          <div
-            key={c.id}
-            onClick={() => { setSelectedId(c.id); setPageIdx(0); }}
-            style={{ marginBottom: '30px', padding: '25px', border: '2px solid #0071e3', background: '#ffffff', cursor: 'pointer' }}
-          >
-            <h2 style={{ color: '#0071e3', marginBottom: '10px' }}>{c.title}</h2>
-            <p>{c.description}</p>
-            <p style={{ color: '#999', marginTop: '10px' }}>⏱️ {c.duration_minutes} {t('minutes', language)} | 📑 {c.pages?.length || 0} {t('pages', language)}</p>
+          <div style={{ marginTop: '26px' }}>
+            <span className="tf-eyebrow">{t('courses', language)}</span>
+            <h1 style={{ fontSize: 'clamp(28px, 5vw, 44px)', marginBottom: '4px' }}>
+              {week === 0
+                ? t('coursePreparation', language)
+                : `${t('week', language)} ${week} ${t('weekSuffix', language)}`}
+            </h1>
+            <p className="tf-num">
+              {courses.length} {t('coursesCount', language)}
+            </p>
           </div>
-        ))}
-      </div>
 
-      {/* Footer */}
-      <div style={{
-        borderTop: '2px solid #0071e3',
-        padding: 'clamp(16px, 5vw, 20px) clamp(16px, 8vw, 40px)',
-        textAlign: 'center',
-        color: '#666',
-        fontSize: 'clamp(12px, 3vw, 14px)',
-        marginTop: '40px',
-      }}>
-        <p style={{ margin: 0, lineHeight: 1.6 }}>
-          © 2026 {t('companyName', language)} • {t('title', language)} •{' '}
-          <a href="mailto:benjaminchu@tfg.com.tw" style={{ color: '#0071e3', textDecoration: 'none', fontWeight: 600 }}>
-            {t('askQuestion', language)}
-          </a>
-        </p>
-      </div>
-    </div>
+          <ul className="tf-rule-list">
+            {courses.map((c: any) => (
+              <li key={c.id}>
+                <button
+                  onClick={() => {
+                    setSelectedId(c.id)
+                    setPageIdx(0)
+                  }}
+                  className="tf-rule-row"
+                  style={{
+                    width: '100%',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    textAlign: 'left',
+                    fontFamily: 'var(--tf-sans)',
+                    alignItems: 'flex-start',
+                  }}
+                >
+                  <span style={{ display: 'block', flex: 1 }}>
+                    <span
+                      style={{
+                        display: 'block',
+                        fontFamily: 'var(--tf-serif)',
+                        fontSize: '19px',
+                        color: 'var(--tf-ink)',
+                        marginBottom: '4px',
+                      }}
+                    >
+                      {c.title}
+                    </span>
+                    <span style={{ display: 'block', fontSize: '14.5px', color: 'var(--tf-body)' }}>
+                      {c.description}
+                    </span>
+                    <span
+                      className="tf-label tf-num"
+                      style={{ display: 'block', marginTop: '8px' }}
+                    >
+                      {c.duration_minutes} {t('minutes', language)} · {c.pages?.length || 0}{' '}
+                      {t('pages', language)}
+                    </span>
+                  </span>
+                  <span style={{ flex: 'none', fontWeight: 600 }}>→</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <footer>
+        <div className="container">
+          © 2026 {t('companyName', language)} · {t('programName', language)} ·{' '}
+          <a href="mailto:benjaminchu@tfg.com.tw">{t('askQuestion', language)}</a>
+        </div>
+      </footer>
+    </>
   )
 }
 
