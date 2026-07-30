@@ -4,6 +4,8 @@
  */
 
 import { supabase } from './supabase'
+import { cardsData } from './cards-data'
+import { quizData } from './quiz-data'
 
 export interface UserProgress {
   userName?: string
@@ -340,17 +342,29 @@ export function calculateCompletionRates(progress: UserProgress): void {
     progress.statistics.slidesCompletionRate = (completedSlides / slidesCourses.length) * 100
   }
 
-  const totalCards = 55
-  const flippedCards = Object.values(progress.cardsProgress).filter((c) => c.flipped).length
-  progress.statistics.cardsCompletionRate = (flippedCards / totalCards) * 100
+  // 總數由實際資料推導，並只採計仍然存在的 id。
+  // 先前總數寫死 55 / 100，且不論 id 是否還存在一律計入 —— 帳號裡若留有
+  // 舊版命名的紀錄（例如 card-1 這種已被 0-1 取代的 id），完成率會超過
+  // 100%，配上下方 === 100 的資格判斷，使用者會被永久擋在證書之外。
+  const validCardIds = new Set(cardsData.map((c) => c.id))
+  const flippedCards = Object.entries(progress.cardsProgress).filter(
+    ([id, c]) => c.flipped && validCardIds.has(id)
+  ).length
+  progress.statistics.cardsCompletionRate = validCardIds.size
+    ? Math.min((flippedCards / validCardIds.size) * 100, 100)
+    : 0
 
-  const totalQuestions = 100
-  const answeredQuestions = Object.values(progress.quizProgress).filter((q) => q.answered).length
-  progress.statistics.quizCompletionRate = (answeredQuestions / totalQuestions) * 100
+  const validQuizIds = new Set(quizData.map((q) => String(q.id)))
+  const answeredEntries = Object.entries(progress.quizProgress).filter(
+    ([id, q]) => q.answered && validQuizIds.has(String(id))
+  )
+  progress.statistics.quizCompletionRate = validQuizIds.size
+    ? Math.min((answeredEntries.length / validQuizIds.size) * 100, 100)
+    : 0
 
-  if (answeredQuestions > 0) {
-    const correctAnswers = Object.values(progress.quizProgress).filter((q) => q.isCorrect).length
-    progress.statistics.quizAccuracy = (correctAnswers / answeredQuestions) * 100
+  if (answeredEntries.length > 0) {
+    const correctAnswers = answeredEntries.filter(([, q]) => q.isCorrect).length
+    progress.statistics.quizAccuracy = (correctAnswers / answeredEntries.length) * 100
   }
 }
 
@@ -359,10 +373,12 @@ export function calculateCompletionRates(progress: UserProgress): void {
  */
 export function checkCertificateEligibility(progress: UserProgress): boolean {
   const stats = progress.statistics
+  // 一律用 >=：完成率若因任何原因超過 100（例如殘留舊 id 的紀錄），
+  // === 100 會把已達標的使用者永久擋在證書之外
   return (
-    stats.slidesCompletionRate === 100 &&
-    stats.cardsCompletionRate === 100 &&
-    stats.quizCompletionRate === 100 &&
+    stats.slidesCompletionRate >= 100 &&
+    stats.cardsCompletionRate >= 100 &&
+    stats.quizCompletionRate >= 100 &&
     stats.quizAccuracy >= 80
   )
 }
