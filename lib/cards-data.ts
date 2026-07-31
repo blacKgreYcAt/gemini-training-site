@@ -475,7 +475,7 @@ export const cardsData: Card[] = [
     number: 1,
     title: "Pro 版本的價值：專為企業決策",
     front: "為什麼主管應該升級到 Gemini Pro？",
-    back: "Gemini 三個版本的能力差異：\n\nFree：基礎對話、簡單分析\n適合：試用、簡單使用\n\nPro：深度分析、複雜推理、高級功能\n限制解除：\n✓ Deep Research（無限搜尋）\n✓ Gemini Live（語音對話）\n✓ 更大上下文窗口（理解更長文檔）\n✓ 優先級算力（回應更快）\n✓ 專屬功能（未來功能優先體驗）\n\nUltra：最強算力、企業級應用\n適合：關鍵決策、複雜分析\n\nPro 的投資回報率：\n每月投資約 NT$ 271（年費 NT$ 3,250）\n能省：\n• 1 份策略報告 = 8 小時工作時間 = 8000 TWD\n• 10 次 Deep Research = 5 小時人工研究 = 5000 TWD\n• 20 次 Gemini Live 對話 = 3 小時會議節省 = 3000 TWD\n\n一個月回報率 > 5000%\n企業主管必入手",
+    back: "Gemini 三個版本的能力差異：\n\nFree：基礎對話、簡單分析\n適合：試用、簡單使用\n\nPro：深度分析、複雜推理、高級功能\n限制解除：\n✓ Deep Research（額度大幅提升）\n✓ Gemini Live（語音對話）\n✓ 更大上下文窗口（理解更長文檔）\n✓ 優先級算力（回應更快）\n✓ 專屬功能（未來功能優先體驗）\n\nUltra：最強算力、企業級應用\n適合：關鍵決策、複雜分析\n\nPro 的投資回報率：\n每月投資 NT$ 650\n能省：\n• 1 份策略報告 ≈ 8 小時工作時間 ≈ 8,000 TWD\n• 省下的研究與會議時間，通常單月即可回本\n\n企業主管必入手",
     imagePrompt: "進階風格：三個版本的 Gemini 堆積成金字塔，Pro 版本閃耀著高級的光芒，象徵價值提升"
   },
   {

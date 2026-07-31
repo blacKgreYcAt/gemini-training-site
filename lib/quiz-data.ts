@@ -57,7 +57,7 @@ export const quizData: QuizQuestion[] = [
       { label: "D", text: "免費版和 Pro 版完全一樣，只是收費不同" }
     ],
     correctAnswer: "B",
-    explanation: "Gemini 3.1 Pro 包含企業級功能如 Deep Research、Veo 3.1 影片生成、無限 Gems、更強推理能力等。"
+    explanation: "Gemini 3.1 Pro 包含企業級功能如 Deep Research、Veo 3.1 影片生成、Gems 自訂 AI、更強推理能力等，實際額度依算力額度制，請見官方公告。"
   },
   {
     id: 4,
@@ -93,15 +93,15 @@ export const quizData: QuizQuestion[] = [
     id: 6,
     section: 1,
     week: 0,
-    question: "Gemini 3.1 Ultra 和 Pro 的訂閱費用是什麼關係？",
+    question: "關於 Gemini Pro 與 Ultra 的訂閱方案，以下敘述何者正確？",
     options: [
-      { label: "A", text: "Ultra 比 Pro 便宜 50%" },
-      { label: "B", text: "價格相同，只是 Ultra 功能無上限" },
-      { label: "C", text: "Ultra 遠貴於 Pro，換算月費約為 12 倍" },
-      { label: "D", text: "Ultra 完全免費" }
+      { label: "A", text: "Pro 與 Ultra 月費相同，只是功能額度不同" },
+      { label: "B", text: "Ultra 只有單一方案可選" },
+      { label: "C", text: "Pro 月費 NT$650，Ultra 分為兩個等級，月費分別為 NT$3,300 與 NT$6,500" },
+      { label: "D", text: "付費訂閱後，所有功能皆可無限次使用" }
     ],
     correctAnswer: "C",
-    explanation: "Gemini Pro 採年費制，NT$ 3,250 / 年（換算約 NT$ 271 / 月）；Gemini Ultra 採月費制，NT$ 3,300 / 月。兩者價格差距懸殊，Ultra 換算後約為 Pro 的 12 倍，並非同價。選擇時務必把成本差距納入考量。"
+    explanation: "Gemini Pro 月費為 NT$650；Ultra 提供兩個等級：5x 方案月費 NT$3,300（20TB 儲存），20x 方案月費 NT$6,500（30TB 儲存）。Google 自 2026 年起將多數功能額度改為「算力消耗制」，不再公布固定使用次數，訂閱前建議查閱官方最新公告確認實際額度。"
   },
   {
     id: 7,
@@ -111,11 +111,11 @@ export const quizData: QuizQuestion[] = [
     options: [
       { label: "A", text: "文字對話和圖像分析" },
       { label: "B", text: "Canvas 編輯器" },
-      { label: "C", text: "Veo 3.1 視頻生成（4K、視頻延伸、Reference images）和無限 Deep Research" },
+      { label: "C", text: "Veo 3.1 視頻生成的進階功能（4K、視頻延伸、Reference images）" },
       { label: "D", text: "學習模式" }
     ],
     correctAnswer: "C",
-    explanation: "Ultra 獨享 4K 影片生成、無限 Deep Research 次數、無限 Gems 創建和優先生成隊列等高級功能。"
+    explanation: "Ultra 獨享 4K 影片生成、視頻延伸、Reference images 引導等進階功能，並享有比 Pro 更高的 Deep Research、Gems 額度與優先生成隊列，實際額度依算力額度制，請見官方公告。"
   },
   {
     id: 8,
@@ -129,7 +129,7 @@ export const quizData: QuizQuestion[] = [
       { label: "D", text: "無法判斷" }
     ],
     correctAnswer: "B",
-    explanation: "Pro 版對於中小企業已足夠，提供 5 個 Gems、3 次/日 Veo 影片、5 次/月 Deep Research，ROI 極高。"
+    explanation: "Pro 版對於中小企業已足夠，提供 Deep Research、Veo 影片生成、自訂 Gems 等核心功能，月費 NT$650，ROI 極高。"
   },
   {
     id: 9,
@@ -149,15 +149,15 @@ export const quizData: QuizQuestion[] = [
     id: 10,
     section: 1,
     week: 0,
-    question: "如果你每月需要 10 份深度研究報告，應該選擇什麼？",
+    question: "如果你的工作每月需要大量使用 Deep Research，應該優先考慮什麼？",
     options: [
-      { label: "A", text: "免費版（0 次 Deep Research）" },
-      { label: "B", text: "Pro 版（5 次/月，不夠）" },
-      { label: "C", text: "Ultra 版（無限次，適合你的需求）" },
-      { label: "D", text: "都不適合" }
+      { label: "A", text: "免費版（不提供 Deep Research）" },
+      { label: "B", text: "Pro 版即可，額度已經足夠所有使用情境" },
+      { label: "C", text: "依實際用量選擇 Pro 或 Ultra，Ultra 提供更高的算力額度" },
+      { label: "D", text: "都不適合，Deep Research 需要另外付費" }
     ],
     correctAnswer: "C",
-    explanation: "每月 10 份研究超過 Pro 版的 5 次限制，只有 Ultra 的無限 Deep Research 才能滿足這個需求。"
+    explanation: "免費版不提供 Deep Research；Pro 與 Ultra 皆可使用，但 Google 自 2026 年起改採算力消耗制，Ultra 的額度倍數高於 Pro（5x 或 20x）。若研究需求量大，建議評估實際用量並依算力額度選擇合適方案，實際額度請見官方公告。"
   },
 
   // Q11-15: 實時功能和特性
@@ -1350,7 +1350,7 @@ export const quizData: QuizQuestion[] = [
     question: "什麼時候應該『升級』從 Pro 到 Ultra？",
     options: [
       { label: "A", text: "立即升級" },
-      { label: "B", text: "當你每月需要超過 5 份 Deep Research、超過 8 個 4K 視頻、或需要無限 Gems 時才升級（數據驅動決策）" },
+      { label: "B", text: "當你經常用完 Pro 的 Deep Research 或 Veo 額度、或需要更高的 Gems 上限與 4K 影片時才升級（依實際用量的數據驅動決策）" },
       { label: "C", text: "永遠不升級" },
       { label: "D", text: "無法確定" }
     ],
@@ -1375,15 +1375,15 @@ export const quizData: QuizQuestion[] = [
     id: 96,
     section: 3,
     week: 4,
-    question: "Gemini 3.1 Pro 和 Ultra 的『無限 Deep Research』意味著什麼商業價值？",
+    question: "Gemini Pro 和 Ultra 較高的 Deep Research 額度，能帶來什麼商業價值？",
     options: [
       { label: "A", text: "無實際價值" },
-      { label: "B", text: "可以每天做 10+ 份深度分析（新產品研究、市場監控、競品追蹤、風險評估），即時掌握市場動態，比競爭對手快一步" },
+      { label: "B", text: "可頻繁進行深度分析（新產品研究、市場監控、競品追蹤、風險評估），即時掌握市場動態，比競爭對手快一步" },
       { label: "C", text: "無區別" },
       { label: "D", text: "無法確定" }
     ],
     correctAnswer: "B",
-    explanation: "無限 Deep Research 的價值在於『持續監控』和『實時決策』，讓企業始終領先市場。"
+    explanation: "較高的 Deep Research 額度讓企業能更頻繁地進行深度分析，價值在於『持續監控』和『更快的決策速度』，實際額度依算力額度制，請見官方公告。"
   },
   {
     id: 97,

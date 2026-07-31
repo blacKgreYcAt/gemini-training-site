@@ -68,19 +68,19 @@ export const quizDataJa: QuizQuestion[] = [
       },
       {
         "label": "B",
-        "text": "Pro版では、Deep Research、Veo 3.1 動画生成、Gems カスタム AI、より強力な推論能力を提供します"
+        "text": "Pro 版では、Deep Research、Veo 3.1 動画生成、Gems カスタム AI、より強力な推論能力が利用可能です"
       },
       {
         "label": "C",
-        "text": "Pro 版ではテキスト対話は行えません"
+        "text": "Pro版ではテキスト対話ができません"
       },
       {
         "label": "D",
-        "text": "無料版とPro版は完全に同じですが、料金が異なるだけです。"
+        "text": "無料版とPro版は完全に同じで、料金だけが異なります。"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Gemini 3.1 Pro は、Deep Research、Veo 3.1 動画生成、無制限の Gems、より強力な推論能力などのエンタープライズ向け機能を備えています。"
+    "explanation": "Gemini 3.1 Pro は、Deep Research、Veo 3.1 動画生成、Gems カスタム AI、より強力な推論能力などのエンタープライズ向け機能を含んでおり、実際の利用枠はコンピューティングパワー制限に基づきます。公式発表をご確認ください。"
   },
   {
     "id": 4,
@@ -138,33 +138,33 @@ export const quizDataJa: QuizQuestion[] = [
     "id": 6,
     "section": 1,
     "week": 0,
-    "question": "Gemini 3.1 Ultra と Pro のサブスクリプション料金の関係はどうなっていますか？",
+    "question": "Gemini Pro と Ultra のサブスクリプションプランについて、以下の記述のうち正しいものはどれですか？",
     "options": [
       {
         "label": "A",
-        "text": "UltraはProより50%安い"
+        "text": "ProとUltraの月額料金は同じですが、機能の利用枠が異なるだけです。"
       },
       {
         "label": "B",
-        "text": "価格は同じ、ただ Ultra は機能無制限"
+        "text": "Ultraは単一のプランのみ選択可能です。"
       },
       {
         "label": "C",
-        "text": "Ultra は Pro より遥かに高く、月額換算で約 12 倍"
+        "text": "Pro 月額料金 NT$650、Ultra は2つのレベルに分かれ、月額料金はそれぞれ NT$3,300 と NT$6,500 です。"
       },
       {
         "label": "D",
-        "text": "Ultra 完全無料"
+        "text": "有料プランにご登録後、すべての機能が制限なしでご利用いただけます。"
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Gemini Proは年額制で、NT$ 3,250 / 年（換算すると約 NT$ 271 / 月）；Gemini Ultraは月額制で、NT$ 3,300 / 月。\n両者の価格差は非常に大きく、Ultraは換算するとProの約12倍であり、同価格ではありません。選択の際には必ずコストの差を考慮に入れてください。"
+    "explanation": "Gemini Pro の月額料金は NT$650；Ultra は2つのレベルを提供しています：5xプランは月額 NT$3,300（20TB ストレージ）、20xプランは月額 NT$6,500（30TB ストレージ）。Googleは2026年より多くの機能の利用枠を「計算リソース消費制」に変更し、固定の利用回数は公表しなくなります。定期購入の前に公式の最新の発表を確認して実際の利用枠を確認することをお勧めします。"
   },
   {
     "id": 7,
     "section": 1,
     "week": 0,
-    "question": "以下の機能のうち、Gemini 3.1 Ultra のみで利用できるものはどれですか？",
+    "question": "以下のどの機能が Gemini 3.1 Ultra だけに搭載されていますか？",
     "options": [
       {
         "label": "A",
@@ -176,7 +176,7 @@ export const quizDataJa: QuizQuestion[] = [
       },
       {
         "label": "C",
-        "text": "Veo 3.1 動画生成（4K、動画延長、Reference images）と無制限の Deep Research"
+        "text": "Veo 3.1 動画生成の高度な機能（4K、動画の延長、Reference images）"
       },
       {
         "label": "D",
@@ -184,17 +184,17 @@ export const quizDataJa: QuizQuestion[] = [
       }
     ],
     "correctAnswer": "C",
-    "explanation": "Ultra 限定の 4K 動画生成、無制限の Deep Research 回数、無制限の Gems 作成、優先生成キューなどの高度な機能。"
+    "explanation": "Ultra限定の4K動画生成、動画延長、Reference imagesガイドなどの高度な機能に加え、Proよりも高いDeep ResearchやGemsの利用枠、優先生成キューをご利用いただけます。実際の利用枠は計算リソース制限枠制に基づきます。詳細は公式アナウンスをご参照ください。"
   },
   {
     "id": 8,
     "section": 1,
     "week": 0,
-    "question": "中小企業の管理者にとって、通常どのサブスクリプションプランが最もお得ですか？",
+    "question": "中小企業の管理職にとって、どのサブスクリプションプランが通常最もお得ですか？",
     "options": [
       {
         "label": "A",
-        "text": "完全に無料版だけで十分である"
+        "text": "無料版だけで完全に十分です。"
       },
       {
         "label": "B",
@@ -202,15 +202,15 @@ export const quizDataJa: QuizQuestion[] = [
       },
       {
         "label": "C",
-        "text": "必ず Ultra にアップグレードする必要がある"
+        "text": "絶対にUltraにアップグレードすべき"
       },
       {
         "label": "D",
-        "text": "判断できない"
+        "text": "判断できません"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "Pro 版は中小企業にとってすでに十分であり、5つの Gems、3回/日の Veo 動画、5回/月の Deep Research を提供し、ROI が極めて高い。"
+    "explanation": "Pro版は中小企業にとって十分であり、Deep Research、Veo動画生成、カスタムGemsなどのコア機能を提供し、月額NT$650で、ROIは極めて高いです。"
   },
   {
     "id": 9,
@@ -242,27 +242,27 @@ export const quizDataJa: QuizQuestion[] = [
     "id": 10,
     "section": 1,
     "week": 0,
-    "question": "毎月 10 件の Deep Research レポートが必要な場合、どれを選択すべきですか？",
+    "question": "もしあなたの仕事で毎月大量に Deep Research を使用する場合、何を優先して考えるべきでしょうか？",
     "options": [
       {
         "label": "A",
-        "text": "無料版（Deep Research 0 回）"
+        "text": "無料版（Deep Research は提供されていません）"
       },
       {
         "label": "B",
-        "text": "Pro 版（月 5 回、不十分）"
+        "text": "Pro版で十分です。利用枠はすべての利用シーンで十分に足ります。"
       },
       {
         "label": "C",
-        "text": "Ultra 版（無制限、ニーズに最適）"
+        "text": "実際の使用量に応じて Pro または Ultra を選択。Ultra はより高いコンピューティング枠を提供します。"
       },
       {
         "label": "D",
-        "text": "いずれも適合しない"
+        "text": "どちらも適していません。Deep Researchは別途料金が必要です。"
       }
     ],
     "correctAnswer": "C",
-    "explanation": "毎月 10 件の調査は Pro 版の 5 回の制限を超えるため、Ultra の無制限の Deep Research のみがこのニーズを満たすことができます。"
+    "explanation": "無料版では Deep Research は提供されていません；Pro と Ultra はどちらも利用可能ですが、Google は 2026 年より計算リソース消費制を採用するため、Ultra のクレジット倍率は Pro より高くなります（5x または 20x）。研究ニーズが多い場合は、実際の使用量を評価し、計算リソースの利用枠に応じて適切なプランを選択することをお勧めします。実際の利用枠については公式発表をご確認ください。"
   },
   {
     "id": 11,
@@ -2426,27 +2426,27 @@ export const quizDataJa: QuizQuestion[] = [
     "id": 94,
     "section": 3,
     "week": 4,
-    "question": "Pro から Ultra に「アップグレード」すべきタイミングはいつですか？",
+    "question": "どのような時にProからUltraへ『アップグレード』すべきでしょうか？",
     "options": [
       {
         "label": "A",
-        "text": "今すぐアップグレードする"
+        "text": "今すぐアップグレード"
       },
       {
         "label": "B",
-        "text": "毎月 5 件を超える Deep Research、8 本を超える 4K 動画、または無制限の Gems が必要になった場合のみアップグレードする（データ駆動型の意思決定）"
+        "text": "Pro の Deep Research や Veo の制限を頻繁に使い切る、またはより高い Gems の上限や 4K 動画が必要な場合にのみアップグレードする（実際の使用量データに基づく意思決定）"
       },
       {
         "label": "C",
-        "text": "絶対にアップグレードしない"
+        "text": "永遠にアップグレードしない"
       },
       {
         "label": "D",
-        "text": "判断できない"
+        "text": "特定できません"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "アップグレードの意思決定は、盲目的に最上位バージョンを追い求めるのではなく、実際の使用ニーズと ROI に基づいて行うべきです。"
+    "explanation": "アップグレードの意思決定は、盲目的に最上位バージョンを追い求めるのではなく、実際の使用ニーズとROIに基づくべきです。"
   },
   {
     "id": 95,
@@ -2478,27 +2478,27 @@ export const quizDataJa: QuizQuestion[] = [
     "id": 96,
     "section": 3,
     "week": 4,
-    "question": "Gemini 3.1 Pro および Ultra の「無限 Deep Research」は、どのようなビジネス価値を意味しますか？",
+    "question": "Gemini Pro と Ultra のより高い Deep Research クォータは、どのようなビジネス価値をもたらしますか？",
     "options": [
       {
         "label": "A",
-        "text": "実質的な価値はない"
+        "text": "実際の価値なし"
       },
       {
         "label": "B",
-        "text": "毎日10件以上の詳細な分析（新製品研究、市場モニタリング、競合追跡、リスク評価）を行い、市場動向をリアルタイムに把握して競合他社より一歩先を行くことができる"
+        "text": "頻繁に深度分析（新製品研究、市場モニタリング、競合追跡、リスク評価）を行うことができ、市場動向をリアルタイムに把握し、競合他社より一歩先を行くことができます。"
       },
       {
         "label": "C",
-        "text": "違いはない"
+        "text": "区別なし"
       },
       {
         "label": "D",
-        "text": "判断できない"
+        "text": "確定できません"
       }
     ],
     "correctAnswer": "B",
-    "explanation": "「無限 Deep Research」の価値は「継続的なモニタリング」と「リアルタイムの意思決定」にあり、企業が常に市場をリードできるようにすることにあります。"
+    "explanation": "より高い Deep Research クォータにより、企業はより頻繁に詳細な分析を行うことができ、その価値は『継続的なモニタリング』と『より迅速な意思決定』にあります。実際のクォータは計算リソース枠制に基づきますので、公式アナウンスをご覧ください。"
   },
   {
     "id": 97,
