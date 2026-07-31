@@ -34,8 +34,8 @@ export default function AuthPage() {
         await signIn(email, password)
         router.push('/')
       }
-    } catch (err: any) {
-      setError(err.message || t('authError', language))
+    } catch (err) {
+      setError(err instanceof Error ? err.message : t('authError', language))
     } finally {
       setLoading(false)
     }

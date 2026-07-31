@@ -338,7 +338,7 @@ export function displayCertificatePreview(canvas: HTMLCanvasElement) {
   const displayCtx = displayCanvas.getContext('2d');
   if (displayCtx) {
     displayCtx.imageSmoothingEnabled = true;
-    (displayCtx as any).imageSmoothingQuality = 'high';
+    displayCtx.imageSmoothingQuality = 'high';
     displayCtx.drawImage(canvas, 0, 0, displayCanvas.width, displayCanvas.height);
   }
 

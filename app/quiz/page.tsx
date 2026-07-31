@@ -162,8 +162,11 @@ function QuizPageContent() {
             {currentQuestion.options.map((option) => {
               // 只產生一個 border 宣告：混用 border 簡寫與 borderColor 長寫時，
               // React 的樣式 diff 會清掉 border-style / border-width，邊框就消失
-              const marked = showAnswer && selectedAnswer === option.label
               const isRight = option.label === currentQuestion.correctAnswer
+              const isPicked = showAnswer && selectedAnswer === option.label
+              // 答錯時正解也要標綠，否則使用者只看到自己選的紅框，
+              // 得另外去讀下方解說文字才知道正確答案是哪一個
+              const marked = isPicked || (showAnswer && isRight)
               const accent = marked
                 ? isRight
                   ? { line: 'var(--tf-green)', fill: 'rgba(46, 139, 87, 0.10)' }

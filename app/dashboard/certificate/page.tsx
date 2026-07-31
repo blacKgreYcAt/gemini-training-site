@@ -10,7 +10,7 @@ import {
   displayCertificatePreview,
   type CertificateData
 } from '@/lib/certificate-utils'
-import { getProgress, checkCertificateEligibility } from '@/lib/progress-utils'
+import { getProgress, checkCertificateEligibility, type UserProgress } from '@/lib/progress-utils'
 import { ProtectedRoute } from '@/components/ProtectedRoute'
 import { Navbar } from '@/components/Navbar'
 import { useLanguage } from '@/lib/language-context'
@@ -18,7 +18,7 @@ import { t } from '@/lib/translations'
 
 function CertificatePageContent() {
   const { language } = useLanguage()
-  const [progress, setProgress] = useState<any>(null)
+  const [progress, setProgress] = useState<UserProgress | null>(null)
   const [userName, setUserName] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
   const [certificateGenerated, setCertificateGenerated] = useState(false)
@@ -103,7 +103,7 @@ function CertificatePageContent() {
 
   // 尚未達成資格
   if (!isCertificateEligible()) {
-    const stats = progress.statistics || {}
+    const stats = progress.statistics
     return (
       <section className="tf-band-light">
         <div className="container" style={{ maxWidth: '680px' }}>

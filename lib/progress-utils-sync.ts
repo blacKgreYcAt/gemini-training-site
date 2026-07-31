@@ -127,8 +127,8 @@ async function saveProgressToSupabase(userId: string, progress: UserProgress): P
     }
     console.debug('✅ 進度已同步到 Supabase')
     return true
-  } catch (error: any) {
-    console.warn('⚠️ Supabase 連接失敗:', error.message)
+  } catch (error) {
+    console.warn('⚠️ Supabase 連接失敗:', error instanceof Error ? error.message : error)
     console.info('💡 將使用 localStorage 備用方案保存進度')
     return false
   }

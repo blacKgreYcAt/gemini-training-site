@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { courseData } from '@/lib/course-data'
+import { courseData, type Course } from '@/lib/course-data'
 import { getCourses } from '@/lib/translations'
 import { updateSlidesProgress } from '@/lib/progress-utils'
 import { useState, useEffect } from 'react'
@@ -39,11 +39,11 @@ function CoursePageContent() {
   }, [pathname, searchParams])
 
   // 根據語言選擇課程數據 - 如果日文版本缺少 pages，使用英文版本的 pages
-  const getCoursesWithFallback = () => {
+  const getCoursesWithFallback = (): Course[] => {
     if (language === 'ja') {
       const jaCourses = getCourses('ja')
       const enCourses = courseData
-      return jaCourses.map((jaCourse: any) => {
+      return jaCourses.map((jaCourse) => {
         const enCourse = enCourses.find(c => c.id === jaCourse.id)
         return {
           ...jaCourse,
@@ -60,8 +60,8 @@ function CoursePageContent() {
     const handleKeyPress = (e: KeyboardEvent) => {
       if (!selectedId || week === null) return
 
-      const courses = allCourses.filter((c: any) => c.week === week)
-      const course = courses.find((c: any) => c.id === selectedId)
+      const courses = allCourses.filter((c) => c.week === week)
+      const course = courses.find((c) => c.id === selectedId)
       if (!course?.pages) return
 
       if (e.key === 'ArrowLeft') {
@@ -78,8 +78,8 @@ function CoursePageContent() {
   // 追踪幻燈片進度
   useEffect(() => {
     if (week !== null && selectedId) {
-      const courses = allCourses.filter((c: any) => c.week === week)
-      const course = courses.find((c: any) => c.id === selectedId)
+      const courses = allCourses.filter((c) => c.week === week)
+      const course = courses.find((c) => c.id === selectedId)
       if (course?.pages) {
         updateSlidesProgress(selectedId, pageIdx, course.pages.length)
       }
@@ -108,8 +108,8 @@ function CoursePageContent() {
     )
   }
 
-  const courses = allCourses.filter((c: any) => c.week === week)
-  const course = courses.find((c: any) => c.id === selectedId)
+  const courses = allCourses.filter((c) => c.week === week)
+  const course = courses.find((c) => c.id === selectedId)
 
   // 投影片視圖
   if (course?.pages) {
@@ -257,7 +257,7 @@ function CoursePageContent() {
           </div>
 
           <ul className="tf-rule-list">
-            {courses.map((c: any) => (
+            {courses.map((c) => (
               <li key={c.id}>
                 <button
                   onClick={() => {

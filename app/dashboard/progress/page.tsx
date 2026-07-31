@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { checkCertificateEligibility, getProgress } from '@/lib/progress-utils'
+import { checkCertificateEligibility, getProgress, type UserProgress } from '@/lib/progress-utils'
 import { ProtectedRoute } from '@/components/ProtectedRoute'
 import { Navbar } from '@/components/Navbar'
 import { useLanguage } from '@/lib/language-context'
@@ -73,7 +73,7 @@ function ProgressItem({
 
 function ProgressPageContent() {
   const { language } = useLanguage()
-  const [progress, setProgress] = useState<any>(null)
+  const [progress, setProgress] = useState<UserProgress | null>(null)
 
   useEffect(() => {
     // getProgress() 是 async —— 少了 await 會把 Promise 本身存進 state，
@@ -98,7 +98,7 @@ function ProgressPageContent() {
     )
   }
 
-  const stats = progress.statistics || {}
+  const stats = progress.statistics
   const earned = stats.certificateEarned
   // 三種狀態，而非兩種：全部達標但尚未生成證書時，先前會落到「未取得」分支，
   // 顯示一個空的「還需完成」清單，使用者符合資格卻沒有任何前進路徑。

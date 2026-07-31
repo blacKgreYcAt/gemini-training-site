@@ -1,15 +1,18 @@
 // 中文課程數據
-import { courseData as chineseCourses } from './course-data';
-import japaneseCourses from '../all_courses_ja.json';
-import { cardsData as chineseCards } from './cards-data';
+import { courseData as chineseCourses, Course } from './course-data';
+import japaneseCoursesJson from '../all_courses_ja.json';
+import { cardsData as chineseCards, Card } from './cards-data';
 import { cardsDataJa } from './cards-data-ja';
-import { quizData as chineseQuizData } from './quiz-data';
+import { quizData as chineseQuizData, QuizQuestion } from './quiz-data';
 import { quizDataJa } from './quiz-data-ja';
 
 type Language = 'zh' | 'ja';
 
+// JSON import 型別由結構推得，與 Course 介面欄位一致但不完全同一型別，這裡明確標注
+const japaneseCourses: Course[] = japaneseCoursesJson;
+
 // 課程翻譯
-export function getCourses(language: Language) {
+export function getCourses(language: Language): Course[] {
   if (language === 'ja') {
     return japaneseCourses;
   }
@@ -17,7 +20,7 @@ export function getCourses(language: Language) {
 }
 
 // 卡牌翻譯
-export function getCards(language: Language) {
+export function getCards(language: Language): Card[] {
   if (language === 'ja') {
     return cardsDataJa;
   }
@@ -25,7 +28,7 @@ export function getCards(language: Language) {
 }
 
 // 題庫翻譯（中日文共用同一份題號，進度與證書門檻才會一致）
-export function getQuizData(language: Language) {
+export function getQuizData(language: Language): QuizQuestion[] {
   if (language === 'ja') {
     return quizDataJa;
   }
@@ -408,5 +411,5 @@ export const translations = {
 
 export function t(key: string, language: Language): string {
   const lang = language === 'ja' ? 'ja' : 'zh';
-  return (translations[lang] as any)[key] || key;
+  return (translations[lang] as Record<string, string>)[key] || key;
 }

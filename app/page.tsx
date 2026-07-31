@@ -5,6 +5,7 @@ import { ProtectedRoute } from '@/components/ProtectedRoute'
 import { Navbar } from '@/components/Navbar'
 import { useLanguage } from '@/lib/language-context'
 import { getCourses, t } from '@/lib/translations'
+import type { Course } from '@/lib/course-data'
 
 function CourseCard({
   course,
@@ -12,7 +13,7 @@ function CourseCard({
   prefixKey,
   ctaKey,
 }: {
-  course: any
+  course: Course
   language: 'zh' | 'ja'
   prefixKey: string
   ctaKey: string
@@ -55,11 +56,11 @@ function HomeContent() {
 
   const coursesByWeek = [0, 1, 2, 3, 4].map(week => ({
     week,
-    courses: courses.filter((c: any) => c.week === week),
+    courses: courses.filter((c) => c.week === week),
   }))
 
   // 進階課程與課程內頁共用同一份資料源，避免標題漂移
-  const advancedCourses = courses.filter((c: any) => c.week >= 5 && c.week <= 10)
+  const advancedCourses = courses.filter((c) => c.week >= 5 && c.week <= 10)
 
   return (
     <>
@@ -119,7 +120,7 @@ function HomeContent() {
                   </div>
 
                   <div className="case-grid">
-                    {weekCourses.map((course: any) => (
+                    {weekCourses.map((course) => (
                       <CourseCard
                         key={course.id}
                         course={course}
@@ -152,7 +153,7 @@ function HomeContent() {
             </div>
 
             <div className="case-grid">
-              {advancedCourses.map((course: any) => (
+              {advancedCourses.map((course) => (
                 <CourseCard
                   key={course.id}
                   course={course}
