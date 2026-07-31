@@ -336,14 +336,16 @@ p {
   padding: clamp(60px, 11vw, 132px) 0 clamp(60px, 11vw, 120px);
 }
 
-/* logo 作為低對比裝飾，向右側出血 */
+/* logo 作為低對比裝飾。logo_TF-04.png 圖案下方帶有 "TAI FONG GROUP" 字樣，
+   若讓圖案出血到視窗外，字會被從中間切斷、看起來像排版壞掉，所以整張圖
+   維持在可視範圍內，不做出血裁切。 */
 .hero::before {
   content: "";
   position: absolute;
   top: 50%;
-  right: -8%;
+  right: 2%;
   transform: translateY(-50%);
-  width: min(760px, 68vw);
+  width: min(620px, 52vw);
   aspect-ratio: 1 / 1;
   background: url("/logo_TF-04.png") no-repeat center / contain;
   opacity: 0.42;
@@ -565,7 +567,6 @@ footer a {
 /* ---------- 響應式 ---------- */
 @media (max-width: 900px) {
   .hero::before {
-    right: -22%;
     opacity: 0.26;
   }
 
