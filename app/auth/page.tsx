@@ -2,17 +2,15 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { signIn, signUp } from '@/lib/auth-utils'
+import { signIn } from '@/lib/auth-utils'
 import { useLanguage } from '@/lib/language-context'
 import { LanguageSelector } from '@/components/LanguageSelector'
 import { t } from '@/lib/translations'
 
 export default function AuthPage() {
   const { language } = useLanguage()
-  const [isSignUp, setIsSignUp] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [name, setName] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const router = useRouter()
@@ -23,17 +21,8 @@ export default function AuthPage() {
     setLoading(true)
 
     try {
-      if (isSignUp) {
-        await signUp(email, password, name)
-        alert(t('authSignUpSuccess', language))
-        setIsSignUp(false)
-        setEmail('')
-        setPassword('')
-        setName('')
-      } else {
-        await signIn(email, password)
-        router.push('/')
-      }
+      await signIn(email, password)
+      router.push('/')
     } catch (err) {
       setError(err instanceof Error ? err.message : t('authError', language))
     } finally {
@@ -68,7 +57,7 @@ export default function AuthPage() {
         </span>
 
         <p style={{ marginBottom: '26px' }}>
-          {isSignUp ? t('authCreateAccount', language) : t('authLogin', language)}
+          {t('authLogin', language)}
         </p>
 
         {error && (
@@ -79,23 +68,6 @@ export default function AuthPage() {
         )}
 
         <form onSubmit={handleSubmit}>
-          {isSignUp && (
-            <div className="tf-field-group">
-              <label className="tf-field-label" htmlFor="auth-name">
-                {t('authNameLabel', language)}
-              </label>
-              <input
-                id="auth-name"
-                className="tf-field"
-                type="text"
-                value={name}
-                onChange={e => setName(e.target.value)}
-                placeholder={t('authNamePlaceholder', language)}
-                required
-              />
-            </div>
-          )}
-
           <div className="tf-field-group">
             <label className="tf-field-label" htmlFor="auth-email">
               {t('authEmailLabel', language)}
@@ -133,45 +105,9 @@ export default function AuthPage() {
             disabled={loading}
             style={{ width: '100%' }}
           >
-            {loading
-              ? t('authProcessing', language)
-              : isSignUp
-                ? t('authCreateButton', language)
-                : t('authLoginButton', language)}
+            {loading ? t('authProcessing', language) : t('authLoginButton', language)}
           </button>
         </form>
-
-        <div
-          style={{
-            textAlign: 'center',
-            marginTop: '24px',
-            paddingTop: '20px',
-            borderTop: '1px solid var(--tf-line)',
-          }}
-        >
-          <p style={{ fontSize: '14px', marginBottom: '8px' }}>
-            {isSignUp ? t('authHaveAccount', language) : t('authNoAccount', language)}
-          </p>
-          <button
-            type="button"
-            onClick={() => {
-              setIsSignUp(!isSignUp)
-              setError('')
-            }}
-            style={{
-              background: 'none',
-              border: 'none',
-              color: 'var(--tf-blue-500)',
-              fontSize: '14.5px',
-              fontWeight: 600,
-              cursor: 'pointer',
-              textDecoration: 'underline',
-              fontFamily: 'var(--tf-sans)',
-            }}
-          >
-            {isSignUp ? t('authSwitchToLogin', language) : t('authSwitchToSignUp', language)}
-          </button>
-        </div>
       </div>
     </div>
   )

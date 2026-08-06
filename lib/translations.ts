@@ -46,7 +46,6 @@ export const translations = {
     progress: '我的進度',
     certificate: '領取證書',
     login: '登入',
-    signup: '註冊',
     logout: '登出',
     loggedIn: '已登入',
 
@@ -200,22 +199,14 @@ export const translations = {
     certificatePreviewAlt: '證書預覽',
 
     // Auth Page
-    authSignUpSuccess: '註冊成功，請登入',
     authError: '發生錯誤',
-    authCreateAccount: '建立新帳號',
     authLogin: '登入您的帳號',
-    authNameLabel: '姓名',
     authNamePlaceholder: '例如：陳小明',
     authEmailLabel: '電子郵件',
     authPasswordLabel: '密碼',
     authPasswordPlaceholder: '至少 6 個字元',
     authProcessing: '處理中...',
-    authCreateButton: '建立帳號',
     authLoginButton: '登入',
-    authHaveAccount: '已有帳號？',
-    authNoAccount: '還沒有帳號？',
-    authSwitchToLogin: '登入',
-    authSwitchToSignUp: '註冊',
 
     // Card labels
     cardWeek: '第',
@@ -231,7 +222,6 @@ export const translations = {
     progress: '進捗状況',
     certificate: '修了証書',
     login: 'ログイン',
-    signup: '登録',
     logout: 'ログアウト',
     loggedIn: 'ログイン済み',
 
@@ -385,22 +375,14 @@ export const translations = {
     certificatePreviewAlt: '証書プレビュー',
 
     // Auth Page (新增)
-    authSignUpSuccess: '登録が完了しました。ログインしてください',
     authError: 'エラーが発生しました',
-    authCreateAccount: '新しいアカウントを作成',
     authLogin: 'アカウントにログイン',
-    authNameLabel: '名前',
     authNamePlaceholder: '例：山田太郎',
     authEmailLabel: 'メールアドレス',
     authPasswordLabel: 'パスワード',
     authPasswordPlaceholder: '最低 6 文字',
     authProcessing: '処理中...',
-    authCreateButton: 'アカウント作成',
     authLoginButton: 'ログイン',
-    authHaveAccount: 'アカウントをお持ちですか？',
-    authNoAccount: 'アカウントをお持ちでないですか？',
-    authSwitchToLogin: 'ログイン',
-    authSwitchToSignUp: '登録',
 
     // Card labels
     cardWeek: '第',
