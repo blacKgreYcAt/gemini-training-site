@@ -22,15 +22,12 @@ export function generateCertificateNumber(): string {
   const dateStr = `${year}${month}${day}`;
 
   const todayKey = `cert-sequence-${dateStr}`;
-  let sequence = parseInt(localStorage.getItem(todayKey) || '0', 10) + 1;
+  const sequence = parseInt(localStorage.getItem(todayKey) || '0', 10) + 1;
   localStorage.setItem(todayKey, String(sequence));
 
   return `TFG-GEMINI-${dateStr}-${String(sequence).padStart(4, '0')}`;
 }
 
-/**
- * 格式化日期
- */
 /**
  * 自創証書生成：完全用 Canvas 繪製，無需範本圖片
  */
