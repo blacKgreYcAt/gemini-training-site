@@ -10,7 +10,7 @@ import {
   displayCertificatePreview,
   type CertificateData
 } from '@/lib/certificate-utils'
-import { getProgress, checkCertificateEligibility, type UserProgress } from '@/lib/progress-utils'
+import { getProgress, saveProgress, checkCertificateEligibility, type UserProgress } from '@/lib/progress-utils'
 import { ProtectedRoute } from '@/components/ProtectedRoute'
 import { Navbar } from '@/components/Navbar'
 import { useLanguage } from '@/lib/language-context'
@@ -78,7 +78,8 @@ function CertificatePageContent() {
         }
       }
 
-      localStorage.setItem('userProgress', JSON.stringify(updatedProgress))
+      await saveProgress(updatedProgress)
+      setProgress(updatedProgress)
 
       setCertificateData(certData)
       setCanvas(generatedCanvas)
