@@ -114,11 +114,18 @@ async function fetchProgressFromSupabase(userId: string): Promise<UserProgress |
  */
 async function saveProgressToSupabase(userId: string, progress: UserProgress): Promise<boolean> {
   try {
-    const { error } = await supabase.from('user_progress_full').upsert({
-      user_id: userId,
-      progress_data: progress,
-      updated_at: new Date().toISOString()
-    })
+    // upsert 沒有明確指定 onConflict 時，Supabase 依主鍵（id）判斷衝突。
+    // 這張表的主鍵是自動產生的 id，user_id 只是另外加的 UNIQUE 限制，
+    // 沒帶 id 的話每次都會被當成新增列，第二次起就會撞 user_id 的
+    // UNIQUE 限制回傳 409 —— 等於同一使用者的進度只存得進去第一筆。
+    const { error } = await supabase.from('user_progress_full').upsert(
+      {
+        user_id: userId,
+        progress_data: progress,
+        updated_at: new Date().toISOString()
+      },
+      { onConflict: 'user_id' }
+    )
 
     if (error) {
       console.warn('⚠️ Supabase 進度同步失敗:', error.message)
