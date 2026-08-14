@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import {
   generateCertificateNumber,
@@ -24,6 +24,7 @@ function CertificatePageContent() {
   const [certificateGenerated, setCertificateGenerated] = useState(false)
   const [certificateData, setCertificateData] = useState<CertificateData | null>(null)
   const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null)
+  const rehydratedRef = useRef(false)
 
   useEffect(() => {
     const loadProgress = async () => {
@@ -33,6 +34,35 @@ function CertificatePageContent() {
     }
     loadProgress()
   }, [])
+
+  // 已經拿過證書的人回到這頁時，用當初存下的編號/日期重建畫面，
+  // 而不是落到「尚未生成」表單——不然每次重新整理都會被當成第一次
+  // 生成，產生日期是今天、編號遞增的新證書。用 ref 只做一次，這樣
+  // 使用者按「重新生成」把 certificateGenerated 設回 false 時才會
+  // 真的看到空白表單，而不是立刻被這裡的邏輯蓋回去。
+  useEffect(() => {
+    if (!progress || rehydratedRef.current) return
+    rehydratedRef.current = true
+
+    if (!progress.statistics.certificateEarned || !progress.statistics.certificateNumber) return
+
+    const certData: CertificateData = {
+      userName: progress.userName || '',
+      completionDate: progress.statistics.certificateGeneratedAt
+        ? new Date(progress.statistics.certificateGeneratedAt)
+        : new Date(),
+      certificateNumber: progress.statistics.certificateNumber,
+      quizAccuracy: progress.statistics.quizAccuracy,
+      totalLearningHours: progress.statistics.totalLearningHours,
+      language: language as 'zh' | 'ja'
+    }
+
+    generateCertificateCanvas(certData).then(generatedCanvas => {
+      setCertificateData(certData)
+      setCanvas(generatedCanvas)
+      setCertificateGenerated(true)
+    })
+  }, [progress, language])
 
   const isCertificateEligible = () => {
     if (!progress) return false
