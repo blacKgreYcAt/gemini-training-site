@@ -13,11 +13,13 @@ import {
 import { getProgress, saveProgress, checkCertificateEligibility, type UserProgress } from '@/lib/progress-utils'
 import { ProtectedRoute } from '@/components/ProtectedRoute'
 import { Navbar } from '@/components/Navbar'
+import { useAuth } from '@/lib/auth-context'
 import { useLanguage } from '@/lib/language-context'
 import { t } from '@/lib/translations'
 
 function CertificatePageContent() {
   const { language } = useLanguage()
+  const { user } = useAuth()
   const [progress, setProgress] = useState<UserProgress | null>(null)
   const [userName, setUserName] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
@@ -81,10 +83,14 @@ function CertificatePageContent() {
       return
     }
 
+    // 編號取自帳號 ID，沒有 user 就生不出唯一編號。這頁包在 ProtectedRoute
+    // 裡，正常情況不會走到這裡。
+    if (!user) return
+
     setIsGenerating(true)
 
     try {
-      const certNumber = generateCertificateNumber()
+      const certNumber = generateCertificateNumber(user.id)
       const certData: CertificateData = {
         userName: userName.trim(),
         completionDate: new Date(),

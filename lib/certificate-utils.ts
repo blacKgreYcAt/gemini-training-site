@@ -13,19 +13,24 @@ export interface CertificateData {
 
 /**
  * 生成證書編號
+ *
+ * 後綴取自使用者帳號 ID，不是流水號。先前把每日序號存在 localStorage，
+ * 但 localStorage 每台裝置各自獨立，每個人的計數器都從 0 起算 —— 同一天
+ * 完成的所有人都會拿到 -0001，編號等於沒有識別作用。
+ *
+ * 改用帳號 ID 推導後：編號保證唯一，同一個人不論換裝置或重新生成都拿到
+ * 同一組，且可以從編號反查是哪個帳號。
  */
-export function generateCertificateNumber(): string {
+export function generateCertificateNumber(userId: string): string {
   const now = new Date();
   const year = now.getFullYear();
   const month = String(now.getMonth() + 1).padStart(2, '0');
   const day = String(now.getDate()).padStart(2, '0');
   const dateStr = `${year}${month}${day}`;
 
-  const todayKey = `cert-sequence-${dateStr}`;
-  const sequence = parseInt(localStorage.getItem(todayKey) || '0', 10) + 1;
-  localStorage.setItem(todayKey, String(sequence));
+  const suffix = userId.replace(/-/g, '').slice(0, 6).toUpperCase().padEnd(6, '0');
 
-  return `TFG-GEMINI-${dateStr}-${String(sequence).padStart(4, '0')}`;
+  return `TFG-GEMINI-${dateStr}-${suffix}`;
 }
 
 /**
